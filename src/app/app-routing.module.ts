@@ -29,7 +29,7 @@ const routes: Routes = [
 		]
 		
 	},
-	{ path: 'details', loadChildren: () => import('./routes/details/details.module').then(m => m.DetailsModule) },
+	{ path: 'details/:id', loadChildren: () => import('./routes/details/details.module').then(m => m.DetailsModule) },
 	// { path: 'seatlist/name', loadChildren: () => import('./routes/seatlist/seatlist.module').then(m => m.SeatListModule) },
 	// { path: 'seatbind/code', loadChildren: () => import('./routes/seatbind/seatbind.module').then(m => m.SeatBindModule) },
 	// { path: 'seatbind/name', loadChildren: () => import('./routes/seatbind/seatbind.module').then(m => m.SeatBindModule) }

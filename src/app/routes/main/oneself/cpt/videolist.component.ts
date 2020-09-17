@@ -42,6 +42,9 @@ export class VideoListComponent implements OnInit {
         // }
 	}
 
+	videoClick(item):void{
+		this.router.navigate(['/details/'+item.id]);
+	}
 	
 	getUserCircle():void{
 		this.loading = true;

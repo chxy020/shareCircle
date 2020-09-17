@@ -48,6 +48,10 @@ export class ChoiceComponent implements OnInit {
         // }
 	}
 
+	videoClick(item):void{
+		this.router.navigate(['/details/'+item.id]);
+	}
+
 	// baseUrl + '/' + item.video_image || videoImg
 
 	// get getVideoImage(ele:any,url:any){

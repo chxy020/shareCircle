@@ -41,10 +41,19 @@ export class HeaderConsoleComponent implements OnInit {
     ) { 
         
         // console.log(this.router.url);
-        // let url = this.router.url;
-        // if(url.indexOf("/main/choice") > -1){
-        //     this.menus[0].current = true;
-        // }
+
+        this.menus.map((item)=>item.current=false);
+
+        let url = this.router.url;
+        if(url.indexOf("/main/choice") > -1){
+            this.menus[0].current = true;
+        }
+        if(url.indexOf("/main/attention") > -1){
+            this.menus[1].current = true;
+        }
+        if(url.indexOf("/main/oneself") > -1){
+            this.menus[2].current = true;
+        }
         // this.route.params.pipe(map).map(params => {
         //     return params['id'];
         // }).subscribe(id => {

@@ -1,11 +1,11 @@
-<loading [isshow]="loading"></loading>
 
+<!-- <loading [isshow]="loading"></loading> -->
 
 <div dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
     <div class="contDiv">
 		<ul class="contDiv-list">
 			<li *ngFor="let item of data;">
-				<div class="contDiv-img">
+				<div (click)="videoClick(item)" class="contDiv-img">
 					<img #vimg [src]="baseUrl + '/' + item.video_image || videoImg" alt="">
 					<span>{{item.video_len}}</span>
 				</div>

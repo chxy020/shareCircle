@@ -94,7 +94,7 @@ export class PlayListComponent implements OnInit {
         console.log("drapDown------------");
         this.me = me;
         this.page++;
-        this.getUserCircle();
+        // this.getUserCircle();
 	}
 	
 	
