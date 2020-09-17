@@ -25,6 +25,8 @@ export class DetailsComponent implements OnInit {
 
 	tabType = 1;
 
+	commentMsg = "";
+
 	constructor(
 		private route: ActivatedRoute,
 		private http: HttpService,
@@ -59,6 +61,31 @@ export class DetailsComponent implements OnInit {
 	
 	changeTabType(t){
 		this.tabType = +t;
+	}
+
+	addComment(){
+		if(!this.commentMsg){
+			alert("请输入评论信息");
+		}
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("messages",this.commentMsg);
+		params.set("uid",this.uid);
+		params.set("circleId",this.detail.id);
+
+		let url = "/jqkj/cricle/comment";
+		this.http.post(url, params, null).subscribe(data => {
+			// console.log(data)
+			if(data.status == 0){
+				// this.detail = data.data || {};
+				alert("评论成功");
+				this.getCircleComment();
+				this.commentMsg = "";
+			}
+			this.loading = false;
+		}, error => {
+			console.error(error);
+			this.loading = false;
+		});
 	}
 
 	findUserPublish():void{

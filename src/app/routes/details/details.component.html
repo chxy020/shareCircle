@@ -41,10 +41,10 @@
             <li *ngFor="let item of comment">
                 <div class="a"><img src="assets/images/headimg.png" alt=""></div>
                 <div class="b">
-                    <div class="b1">评论--小胖妈妈的生活</div>
+                    <div class="b1">{{item.circleMine.circleName}}</div>
                     <div class="b2">
-                        <div class="pl">感谢分享</div>
-                        <div class="time">10-1 12:12</div>
+                        <div class="pl">{{item.messages}}</div>
+                        <div class="time">{{item.create_time}}</div>
                     </div>
                 </div>
             </li>
@@ -100,8 +100,8 @@
 
 
 <div class="bottomBtn">
-    <div class="form"><input type="text" placeholder="快捷评论"></div>
-    <div class="pinglun"><span></span></div>
+    <div class="form"><input type="text" [(ngModel)]="commentMsg" placeholder="快捷评论"></div>
+    <div (click)="addComment()" class="pinglun"><span></span></div>
     <div class="dianzan"><span></span></div>
     <div class="fengxiang"><span></span></div>
     <div class="zhuancun"><span></span></div>
