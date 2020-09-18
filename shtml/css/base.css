@@ -310,6 +310,37 @@ font-size: 0.30rem;
 color: #666666;
 margin-top: 0.4rem;
 }
+.bofanglist-list.video-list li .bofanglist-img {
+width: 2.1rem;
+height: 1.18rem;
+}
+.bofanglist-list.video-list li .bofanglist-img img {
+width: 2.1rem;
+height: 1.18rem;max-width:2.1rem;
+border-radius: 0.12rem;
+}
+.bofanglist-list.video-list li .bofanglist-text-top {
+font-size: 0.28rem;
+font-weight:normal;
+color: #000000;
+
+line-height: 0.36rem;
+text-align: justify;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+margin-top: 0.08rem;
+}
+.chainLink{
+padding: 0 0.2rem;
+font-size: .24rem;
+font-family: PingFang SC;
+color: #BBBBBB;
+line-height: .36rem;
+}
+.chainLink span{
+color: #2B7EE2
+}
 /*------authorCircle------*/
 .topDiv{
 background-color: #fff;
