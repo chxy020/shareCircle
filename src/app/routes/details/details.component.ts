@@ -21,10 +21,7 @@ export class DetailsComponent implements OnInit {
 	baseUrl;
 	id;
 
-	comment = [];
-
 	tabType = 1;
-
 	commentMsg = "";
 
 	constructor(
@@ -47,13 +44,13 @@ export class DetailsComponent implements OnInit {
 		this.findUserPublish();
 	}
 
-	meetClick(item):void{
-        if(this.id==1){
-            this.router.navigate(['/seatlist/code',{id:this.id,meetid:item.id}]);
-        }else{
-            this.router.navigate(['/seatlist/name',{id:this.id,meetid:item.id}]);
-        }
-	}
+	// meetClick(item):void{
+    //     if(this.id==1){
+    //         this.router.navigate(['/seatlist/code',{id:this.id,meetid:item.id}]);
+    //     }else{
+    //         this.router.navigate(['/seatlist/name',{id:this.id,meetid:item.id}]);
+    //     }
+	// }
 
 	back(){
 		this.location.back();
@@ -61,31 +58,6 @@ export class DetailsComponent implements OnInit {
 	
 	changeTabType(t){
 		this.tabType = +t;
-	}
-
-	addComment(){
-		if(!this.commentMsg){
-			alert("请输入评论信息");
-		}
-		const params: Map<string, any> = new Map<string, any>();
-		params.set("messages",this.commentMsg);
-		params.set("uid",this.uid);
-		params.set("circleId",this.detail.id);
-
-		let url = "/jqkj/cricle/comment";
-		this.http.post(url, params, null).subscribe(data => {
-			// console.log(data)
-			if(data.status == 0){
-				// this.detail = data.data || {};
-				alert("评论成功");
-				this.getCircleComment();
-				this.commentMsg = "";
-			}
-			this.loading = false;
-		}, error => {
-			console.error(error);
-			this.loading = false;
-		});
 	}
 
 	findUserPublish():void{
@@ -101,7 +73,7 @@ export class DetailsComponent implements OnInit {
 			if(data.status == 0){
 				this.detail = data.data || {};
 
-				this.getCircleComment();
+				// this.getFirstComment();
 			}
 			this.loading = false;
 		}, error => {
@@ -109,29 +81,27 @@ export class DetailsComponent implements OnInit {
 			this.loading = false;
 		});
 	}
-	
-	getCircleComment():void{
+
+	addComment(){
+		if(!this.commentMsg){
+			alert("请输入评论信息");
+			return;
+		}
 		this.loading = true;
 		const params: Map<string, any> = new Map<string, any>();
+		params.set("messages",this.commentMsg);
+		params.set("uid",this.uid);
 		params.set("circleId",this.detail.id);
 
-		let url = "/jqkj/cricle/getCircleComment";
-		this.http.get(url, params, null).subscribe(data => {
+		let url = "/jqkj/cricle/comment";
+		this.http.post(url, params, null).subscribe(data => {
+			// console.log(data)
 			if(data.status == 0){
-				this.comment = data.data || [];
+				alert("评论成功");
 
-				// this.data = this.data.concat(list);
-
-				// 锁定
-				this.me.lock();
-				// 无数据
-				this.me.noData(true);
-
-				setTimeout(()=>{
-					this.me.resetload();
-				},200);
+				this.detail.comment_num++;
+				this.commentMsg = "";
 			}
-
 			this.loading = false;
 		}, error => {
 			console.error(error);
@@ -139,22 +109,30 @@ export class DetailsComponent implements OnInit {
 		});
 	}
 
-	me;
-	drapUp(me:any){
-        console.log("drapUp-----");
-        this.me = me;
-        this.me.resetload();
-        this.me.unlock();
-		this.me.noData(false);
-		
-        // this.page = 1;
-        // this.data = [];
-        // this.getSelectedCircle();
-    }
-    drapDown(me:any){
-        console.log("drapDown------------");
-        this.me = me;
-        // this.page++;
-        
+	addGive(){
+		this.loading = true;
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("uid",this.uid);
+		params.set("circleId",this.detail.id);
+
+		let url = "/jqkj/cricle/give";
+		this.http.post(url, params, null).subscribe(data => {
+			// console.log(data)
+			// 0 成功 -1 失败 -2 已经点过赞了
+			if(data.status == 0){
+				alert("点赞成功");
+				this.detail.give_num++;
+			}else if(data.status ==  -1){
+				alert("点赞失败");
+			}else if(data.status ==  -2){
+				alert("已经点过赞了");
+			}
+			this.loading = false;
+		}, error => {
+			console.error(error);
+			this.loading = false;
+		});
 	}
+
+	
 }

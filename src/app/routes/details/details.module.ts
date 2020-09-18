@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { PageRoutes } from './details.routing';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { DetailsComponent } from './details.component';
+import { CommentListComponent } from './cpts/comment.component';
+import { GiveListComponent } from './cpts/give.component';
 
 @NgModule({
 	imports: [
@@ -13,6 +15,8 @@ import { DetailsComponent } from './details.component';
 	],
 	declarations: [
 		DetailsComponent,
+		CommentListComponent,
+		GiveListComponent,
 		// CarouselSensePipe,
 		// DelSensePipe,
 		// SenseSharedKeySearchPipe

@@ -2,7 +2,7 @@
 
 <div class="videoInfo">
     <div (click)="back();" class="videoInfo-btnL"></div>
-    <video id="video1" width="100%" height="100%" controls >
+    <video id="video1" width="100%" height="100%" controls x5-playsinline  playsinline  webkit-playsinline="true"  >
         <source [src]="(baseUrl + detail.video_path)" type="video/mp4">
     </video>
 </div>
@@ -21,7 +21,7 @@
         <!-- <div class="c">+ 加入圈子</div> -->
     </div>
     <div class="managementInfo-b">
-        <div class="a">转存此资源，需消耗<span>35</span>金币</div>
+        <div class="a">转存此资源，需消耗<span>{{detail.transfer_pirce}}</span>金币</div>
         <div class="b">{{detail.create_time}}发布</div>
     </div>
 </div>
@@ -34,30 +34,34 @@
     <li (click)="changeTabType(3)" [class.tabDivActive]="tabType == 3" ><span>分享</span>{{detail.follow_num}}</li>
     <li (click)="changeTabType(4)" [class.tabDivActive]="tabType == 4" ><span>转存</span>{{detail.transfer_num}}</li>
 </ul>
-<div dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)">
-    <div class="detailsContDiv">
+
+<comment-list *ngIf="tabType==1" [circleId]="detail.id"></comment-list>
+<give-list *ngIf="tabType==2" [circleId]="detail.id"></give-list>
+
+<!-- <div dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" style="margin-bottom: 50px;">
+    <div class="detailsContDiv"> -->
         <!-- 评论 -->
-        <ul class="detailsCont">
+        <!-- <ul *ngIf="tabType==1" class="detailsCont">
             <li *ngFor="let item of comment">
-                <div class="a"><img src="assets/images/headimg.png" alt=""></div>
+                <div class="a"><img [src]="detail.headimgurl || headImg" alt=""></div>
                 <div class="b">
-                    <div class="b1">{{item.circleMine.circleName}}</div>
+                    <div class="b1">{{item.circleName}}</div>
                     <div class="b2">
                         <div class="pl">{{item.messages}}</div>
                         <div class="time">{{item.create_time}}</div>
                     </div>
                 </div>
             </li>
-        </ul>
+        </ul> -->
         <!-- 点赞 -->
-        <!-- <ul class="detailsCont detailsContDianzan">
-            <li>
-                <div class="a"><img src="assets/images/headimg.png" alt=""></div>
+        <!-- <ul *ngIf="tabType==2" class="detailsCont detailsContDianzan">
+            <li *ngFor="let item of comment">
+                <div class="a"><img [src]="detail.headimgurl || headImg" alt=""></div>
                 <div class="b">
-                    <div class="b1">点赞--小胖妈妈的生活</div>
+                    <div class="b1">{{item.circleName}}</div>
                     <div class="b2">
-                        <div class="pl">点赞了此资源</div>
-                        <div class="time">10-1 12:12</div>
+                        <div class="pl">{{item.messages}}</div>
+                        <div class="time">{{item.create_time}}</div>
                     </div>
                 </div>
             </li>
@@ -91,8 +95,8 @@
                 </div>
             </li>
         </ul> -->
-    </div>
-</div>
+    <!-- </div>
+</div> -->
 <!-- <div class="viewMore">查看更多</div> -->
 
 
@@ -102,7 +106,7 @@
 <div class="bottomBtn">
     <div class="form"><input type="text" [(ngModel)]="commentMsg" placeholder="快捷评论"></div>
     <div (click)="addComment()" class="pinglun"><span></span></div>
-    <div class="dianzan"><span></span></div>
+    <div (click)="addGive()" class="dianzan"><span></span></div>
     <div class="fengxiang"><span></span></div>
     <div class="zhuancun"><span></span></div>
 </div>
