@@ -16,8 +16,8 @@ export class VideoListComponent implements OnInit {
 	page = 0;
 	limit = 10;
 
-	headImg = "./assets/images/headimg.png";
-	videoImg = "./assets/images/listimg.jpg";
+	headImg = "./assets/images/default-touxiang.png";
+	videoImg = "./assets/images/default-img.png";
 
 	baseUrl = "";
 

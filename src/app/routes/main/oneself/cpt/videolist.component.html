@@ -6,7 +6,7 @@
 		<ul class="contDiv-list">
 			<li *ngFor="let item of data;">
 				<div (click)="videoClick(item)" class="contDiv-img">
-					<img #vimg [src]="baseUrl + '/' + item.video_image || videoImg" alt="">
+					<img #vimg [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" />
 					<span>{{item.video_len}}</span>
 				</div>
 				<div class="contDiv-text">

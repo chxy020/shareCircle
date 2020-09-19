@@ -3,9 +3,10 @@
 <div dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
 	<div class="contDiv">
 		<ul class="contDiv-list">
-			<li *ngFor="let item of data;">
+			<li *ngFor="let item of data;let i = index;">
 				<div (click)="videoClick(item)" class="contDiv-img">
-					<img #vimg [src]="baseUrl + '/' + item.video_image || videoImg" alt="">
+					<img #vimg [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" />
+					<!-- baseUrl + '/' + item.video_image ||  -->
 					<span>{{item.video_len}}</span>
 				</div>
 				<div class="contDiv-text">

@@ -2,13 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LoadingModule } from './loading';
-import { FormatTimePipe } from './pipes/datafilter.pipe';
+import { FormatTimePipe, ImageLazyLoadPipe } from './pipes/datafilter.pipe';
 import { DropLoadModule } from './directives/dropload/dropload.module';
 
 
 @NgModule({
     declarations: [
-		FormatTimePipe
+        FormatTimePipe,
+        ImageLazyLoadPipe
     ],
     imports: [
         CommonModule,
@@ -20,9 +21,12 @@ import { DropLoadModule } from './directives/dropload/dropload.module';
 
     ],
     exports: [
-        FormatTimePipe,
         CommonModule,
         FormsModule,
+        
+        FormatTimePipe,
+        ImageLazyLoadPipe,
+
         LoadingModule,
         DropLoadModule
     ]

@@ -1,4 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Pipe({
@@ -39,5 +40,73 @@ export class FormatTimePipe implements PipeTransform {
             return idate;
         }
         return value;
+    }
+}
+
+
+
+@Pipe({
+    name: 'imagelazyload'
+})
+export class ImageLazyLoadPipe implements PipeTransform {
+    baseUrl = "";
+    constructor (private sanitizer: DomSanitizer) {
+        this.baseUrl = window["context"]["apiroot"];
+    }
+
+    transform(url: any, ele: any, video_image:any): any {
+        // console.log(ele);
+
+        // setTimeout(()=>{
+        //     let img = new Image();
+        //     img.src = this.baseUrl + "/" + video_image;
+        //     img.onload = function(){
+        //         // console.log(ele)
+        //         ele.src = this.baseUrl + "/" + video_image;
+                
+        //     }.bind(this);
+        // },50);
+
+        this.loadImage(ele,video_image);
+
+        return url;
+        // if(p2 > p1 && behavior > 1){
+        //     // return txt;
+        //     if(behavior == 2){
+        //         return this.sanitizer.bypassSecurityTrustHtml(`<marquee style="vertical-align: bottom;" behavior="scroll" scrollamount="2" >${txt}</marquee>`);
+        //     }else{
+        //         return this.sanitizer.bypassSecurityTrustHtml(`<marquee style="vertical-align: bottom;" behavior="alternate" scrollamount="2" >${txt}</marquee>`);
+        //     }
+        //     // return `<marquee behavior="scroll" scrollamount="2" >${txt}</marquee>`;
+        // }else{
+        //     return txt;
+        // }
+    }
+
+    images = [];
+    loaded = false;
+    loadImage(ele,video_image){
+        this.images.push({dom:ele,url:video_image});
+        if(!this.loaded){
+            this.startLoad();
+        }
+    }
+
+    startLoad(){
+        if(!this.loaded && this.images.length > 0){
+            this.loaded = true;
+            let item = this.images.shift();
+            let ele = item.dom;
+            let url = item.url
+            let img = new Image();
+            img.src = this.baseUrl + "/" + url;
+            img.onload = function(){
+                this.loaded = false;
+                // console.log(ele)
+                ele.src = this.baseUrl + "/" + url;
+
+                this.startLoad();
+            }.bind(this);
+        }
     }
 }
