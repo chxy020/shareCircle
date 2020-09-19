@@ -48,12 +48,10 @@ export class OneSelfComponent implements OnInit {
 		const params: Map<string, any> = new Map<string, any>();
 		params.set("uid",this.uid);
 
-		let url = "/jqkj/circle/getImgOrName";
+		let url = "/jqkj/cricle/getImgOrName";
 		this.http.get(url, params, null).subscribe(data => {
-			// console.log(data)
 			if(data.status == 0){
 				this.detail = data.data || {};
-
 				// this.getFirstComment();
 			}
 			this.loading = false;
