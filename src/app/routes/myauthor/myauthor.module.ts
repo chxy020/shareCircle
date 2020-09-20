@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 // import { CarouselSensePipe, DelSensePipe, SenseSharedKeySearchPipe } from './sense.pipe';
-import { PageRoutes } from './author.routing';
+import { PageRoutes } from './myauthor.routing';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { AuthorComponent } from './author.component';
+import { MyAuthorComponent } from './myauthor.component';
 import { VideoListComponent } from './cpts/videolist.component';
 import { PlayListComponent } from './cpts/playlist.component';
 
@@ -14,7 +14,7 @@ import { PlayListComponent } from './cpts/playlist.component';
 		SharedModule
 	],
 	declarations: [
-		AuthorComponent,
+		MyAuthorComponent,
 		VideoListComponent,
 		PlayListComponent,
 		// CarouselSensePipe,
@@ -22,4 +22,4 @@ import { PlayListComponent } from './cpts/playlist.component';
 		// SenseSharedKeySearchPipe
 	]
 })
-export class AuthorModule { }
+export class MyAuthorModule { }

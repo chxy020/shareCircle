@@ -24,6 +24,13 @@ export class DetailsComponent implements OnInit {
 	tabType = 1;
 	commentMsg = "";
 
+	get getVideoPath(): string {
+		return this.baseUrl + this.detail.video_path;
+	}
+	get getVideoImagePath(): string {
+		return this.baseUrl + "/" + this.detail.video_image;
+	}
+	
 	constructor(
 		private route: ActivatedRoute,
 		private http: HttpService,

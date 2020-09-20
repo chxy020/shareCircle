@@ -2,10 +2,21 @@
 
 <div class="videoInfo">
     <div (click)="back();" class="videoInfo-btnL"></div>
-    <video id="video1" width="100%" height="100%" controls x5-playsinline  playsinline  webkit-playsinline="true"  >
-        <source [src]="(baseUrl + detail.video_path)" type="video/mp4">
-    </video>
+
+    <!-- 第一种情况：视频过大 -->
+    <div class="video_large" style="display: none1;">
+        <div class="ltext">
+            视频过大，请转存后观看
+            <span>1.5G</span>
+            <span>120分钟</span>
+        </div>
+        <div class="rbtn"></div>
+    </div>
+    <img [src]="getVideoImagePath imagelazyload:vimg:item.video_image" alt="" width="100%" height="100%">
+    <!-- <video id="video1" [poster]="getVideoImagePath"  [src]="getVideoPath" type="video/mp4" width="100%" height="100%" controls  ></video> -->
 </div>
+
+
 <div class="videoBt">
     <p>{{detail.title}}</p>
     <div class="a">{{detail.video_size}}<span>{{detail.play_num}}次播放</span></div>
@@ -15,7 +26,7 @@
         <div class="a"><img [src]="detail.headimgurl || headImg" alt=""></div>
         <div class="b">
             <p class="b1">{{detail.name}}</p>
-            <p class="b2">资源 {{detail.pubsum}}</p>
+            <p class="b2">资源 {{detail.pubsum}} <span>圈主</span></p>
         </div>
         <div class="c">{{detail.isAdd == 0 ? '已加入圈子' : (detail.isAdd == 1 ? '+ 加入圈子' : '待审核') }}</div>
         <!-- <div class="c">+ 加入圈子</div> -->

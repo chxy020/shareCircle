@@ -52,6 +52,10 @@ export class ChoiceComponent implements OnInit {
 		this.router.navigate(['/details/'+item.id]);
 	}
 
+	headerClick(item):void{
+		this.router.navigate(['/author/main/'+item.uid]);
+	}
+
 	// baseUrl + '/' + item.video_image || videoImg
 
 	// get getVideoImage(ele:any,url:any){

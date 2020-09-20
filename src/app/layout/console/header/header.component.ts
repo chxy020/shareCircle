@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
             <input type="text" placeholder="搜索资源 " readonly onclick="window.location.href='#'">
             <img src="./assets/images/searchTop.png" alt="">
         </div>
-        <div class="rightBtn">
+        <div (click)="myAuthorClick();" class="rightBtn">
             <img src="./assets/images/icon1.png" alt="">
         </div>
     </div>
@@ -97,6 +97,10 @@ export class HeaderConsoleComponent implements OnInit {
         // }else{
         //     this.router.navigate(['/meetlist/name']);
         // }
+    }
+
+    myAuthorClick(){
+        this.router.navigate(['/myauthor/main']);
     }
 
     getLicense(): void {

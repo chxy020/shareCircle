@@ -3,12 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http';
 
 @Component({
-	selector: 'author-main',
-	templateUrl: './author.component.html',
-	styleUrls: ['./author.component.css']
+	selector: 'myauthor-main',
+	templateUrl: './myauthor.component.html',
+	styleUrls: ['./myauthor.component.css']
 })
 
-export class AuthorComponent implements OnInit {
+export class MyAuthorComponent implements OnInit {
 	
 	loading = true;
 
@@ -34,7 +34,7 @@ export class AuthorComponent implements OnInit {
 		// this.title = this.titles[this.id];
 
 		this.baseUrl = window["context"]["apiroot"];
-		this.uid = this.route.snapshot.paramMap.get('uid');
+		this.uid = this.uid = window['context']['uid'];
 		this.getImgOrName();
 	}
 

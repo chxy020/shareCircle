@@ -21,10 +21,23 @@ const routes: Routes = [
 	{
 		path: 'author',
 		component: TitleBackComponent,
+		data: { title: "作者主页" },
+		children: [
+			{
+				path: 'main/:uid',
+				loadChildren: () => import('./routes/author/author.module').then(m => m.AuthorModule)
+			}
+		]
+		
+	},
+	{
+		path: 'myauthor',
+		component: TitleBackComponent,
+		data: { title: "我的主页" },
 		children: [
 			{
 				path: 'main',
-				loadChildren: () => import('./routes/author/author.module').then(m => m.AuthorModule)
+				loadChildren: () => import('./routes/myauthor/myauthor.module').then(m => m.MyAuthorModule)
 			}
 		]
 		
