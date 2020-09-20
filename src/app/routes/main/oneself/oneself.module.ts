@@ -6,6 +6,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { OneSelfComponent } from './oneself.component';
 import { VideoListComponent } from './cpt/videolist.component';
 import { PlayListComponent } from './cpt/playlist.component';
+import { PlayList2Component } from './cpt/playlist2.component';
 
 @NgModule({
 	imports: [
@@ -17,6 +18,7 @@ import { PlayListComponent } from './cpt/playlist.component';
 		OneSelfComponent,
 		VideoListComponent,
 		PlayListComponent,
+		PlayList2Component,
 		// CarouselSensePipe,
 		// DelSensePipe,
 		// SenseSharedKeySearchPipe

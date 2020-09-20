@@ -16,6 +16,8 @@ export class DetailsComponent implements OnInit {
 
 	detail:any = {};
 	loading = true;
+	showTip = false;
+	showMsg = "";
 
 	uid;
 	baseUrl;
@@ -104,7 +106,11 @@ export class DetailsComponent implements OnInit {
 		this.http.post(url, params, null).subscribe(data => {
 			// console.log(data)
 			if(data.status == 0){
-				alert("评论成功");
+				this.showMsg = "评论成功";
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
 
 				this.detail.comment_num++;
 				this.commentMsg = "";
@@ -127,12 +133,25 @@ export class DetailsComponent implements OnInit {
 			// console.log(data)
 			// 0 成功 -1 失败 -2 已经点过赞了
 			if(data.status == 0){
-				alert("点赞成功");
+				this.showMsg = "点赞成功";
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+
 				this.detail.give_num++;
 			}else if(data.status ==  -1){
-				alert("点赞失败");
+				this.showMsg = "点赞失败";
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
 			}else if(data.status ==  -2){
-				alert("已经点过赞了");
+				this.showMsg = "已经点过赞了";
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
 			}
 			this.loading = false;
 		}, error => {

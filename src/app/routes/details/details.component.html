@@ -1,19 +1,21 @@
 <loading [isshow]="loading"></loading>
+<div *ngIf="showTip" class="tip_text">{{showMsg}}</div>
+
 
 <div class="videoInfo">
     <div (click)="back();" class="videoInfo-btnL"></div>
 
     <!-- 第一种情况：视频过大 -->
-    <div class="video_large" style="display: none1;">
+    <!-- <div class="video_large" style="display: none1;">
         <div class="ltext">
             视频过大，请转存后观看
             <span>1.5G</span>
             <span>120分钟</span>
         </div>
         <div class="rbtn"></div>
-    </div>
-    <img [src]="getVideoImagePath imagelazyload:vimg:item.video_image" alt="" width="100%" height="100%">
-    <!-- <video id="video1" [poster]="getVideoImagePath"  [src]="getVideoPath" type="video/mp4" width="100%" height="100%" controls  ></video> -->
+    </div> -->
+    <!-- <img [src]="getVideoImagePath imagelazyload:vimg:item.video_image" alt="" width="100%" height="100%"> -->
+    <video id="video1" [poster]="getVideoImagePath"  [src]="getVideoPath" type="video/mp4" width="100%" playsinline  height="100%" controls  ></video>
 </div>
 
 
