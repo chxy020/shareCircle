@@ -16,7 +16,9 @@ export class PlayListComponent implements OnInit {
 
 	data = [];
 	loading = false;
-	me:any;
+	showTip = false;
+	showMsg = "";
+	
 
 	page = 0;
 	limit = 10;
@@ -25,6 +27,7 @@ export class PlayListComponent implements OnInit {
 	videoImg = "./assets/images/listimg.jpg";
 
 	baseUrl = "";
+	uid;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -32,6 +35,7 @@ export class PlayListComponent implements OnInit {
 		private router: Router
 	) {
 		this.baseUrl = window["context"]["apiroot"];
+		this.uid = window['context']['uid'];
 	}
 
 	ngOnInit() {
@@ -55,7 +59,16 @@ export class PlayListComponent implements OnInit {
 	}
 
 	createFolderBtn(){
-		console.log(this.folderName)
+		console.log(this.folderName);
+		if(this.folderName){
+			this.insertFile();
+		}else{
+			this.showMsg = "请输入列表名称";
+			this.showTip = true;
+			setTimeout(() =>{
+				this.showTip = false;
+			},2500);
+		}
 	}
 
 	showVideoList(){
@@ -65,17 +78,48 @@ export class PlayListComponent implements OnInit {
 		this.isFolder = true;
 	}
 
-	
-	getUserCircle():void{
+	insertFile():void{
 		this.loading = true;
-		let uid = window['context']['uid'];
+		
+
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("filename",this.folderName);
+		params.set("uid",this.uid);
+		
+		let url = "/jqkj/circleFiles/insertFile";
+		this.http.post(url, params, null).subscribe(data => {
+			this.closePop();
+
+			if(data.status == 0){
+				this.showMsg = "创建成功";
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}else{
+				this.showMsg = data.msg;
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}
+			
+			this.loading = false;
+		}, error => {
+			console.error(error);
+			this.loading = false;
+		});
+	}
+	
+	getFileList():void{
+		this.loading = true;
 
 		const params: Map<string, any> = new Map<string, any>();
 		params.set("page",this.page);
 		params.set("limit",this.limit);
-		params.set("uid",uid);
+		params.set("uid",this.uid);
 		
-		let url = "/jqkj/cricle/getUserCircle";
+		let url = "/jqkj/circleFiles/getFileList";
 		this.http.get(url, params, null).subscribe(data => {
 			if(data.code == 0){
 				let list = data.data || [];
@@ -101,7 +145,7 @@ export class PlayListComponent implements OnInit {
 		});
 	}
 
-
+	me:any;
 	drapUp(me:any){
         console.log("drapUp-----");
         this.me = me;
@@ -109,17 +153,15 @@ export class PlayListComponent implements OnInit {
         this.me.unlock();
 		this.me.noData(false);
 		
-        // this.page = 1;
-        // this.data = [];
-        // this.getUserCircle();
+        this.page = 1;
+        this.data = [];
+        this.getFileList();
     }
     drapDown(me:any){
         console.log("drapDown------------");
         this.me = me;
         this.page++;
-        // this.getUserCircle();
+        this.getFileList();
 	}
-	
-	
 	
 }
