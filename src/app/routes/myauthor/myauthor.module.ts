@@ -8,6 +8,7 @@ import { VideoListComponent } from './cpts/videolist.component';
 import { PlayListComponent } from './cpts/playlist.component';
 import { BasicInfoComponent } from './cpts/basicinfo.component';
 import { ApplyListComponent } from './cpts/applylist.component';
+import { PlayList2Component } from './cpts/playlist2.component';
 
 @NgModule({
 	imports: [
@@ -19,6 +20,7 @@ import { ApplyListComponent } from './cpts/applylist.component';
 		MyAuthorComponent,
 		BasicInfoComponent,
 		PlayListComponent,
+		PlayList2Component,
 		VideoListComponent,
 		ApplyListComponent,
 		// CarouselSensePipe,

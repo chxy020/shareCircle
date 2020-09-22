@@ -1,21 +1,17 @@
-import { Component, OnInit, ViewChild, ElementRef, Injector } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Injector, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http';
 
 @Component({
-	selector: 'myauthor-play-list',
-	templateUrl: './playlist.component.html'
+	selector: 'myauthor-play-list2',
+	templateUrl: './playlist2.component.html'
 })
 
-export class PlayListComponent implements OnInit {
+export class PlayList2Component implements OnInit {
+	@Output() public changeFolder = new EventEmitter<any>();
 	
-	newPop = false;
-	folderName;
-
-	isFolder = true;
-
 	data = [];
-	loading = false;
+	loading = true;
 	me:any;
 
 	page = 0;
@@ -39,30 +35,8 @@ export class PlayListComponent implements OnInit {
 		// this.title = this.titles[this.id];
 	}
 
-	meetClick(item):void{
-        // if(this.id==1){
-        //     this.router.navigate(['/seatlist/code',{id:this.id,meetid:item.id}]);
-        // }else{
-        //     this.router.navigate(['/seatlist/name',{id:this.id,meetid:item.id}]);
-        // }
-	}
-
-	closePop(){
-		this.newPop = false;
-	}
-	createBtn(){
-		this.newPop = true;
-	}
-
-	createFolderBtn(){
-		console.log(this.folderName)
-	}
-
-	showVideoList(){
-		this.isFolder = false;
-	}
-	showFolderList(){
-		this.isFolder = true;
+	showFolder(){
+		this.changeFolder.emit();
 	}
 
 	
