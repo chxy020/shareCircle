@@ -42,6 +42,18 @@ const routes: Routes = [
 		]
 		
 	},
+	{ 
+		path: 'mycircle',
+		component: TitleBackComponent,
+		data: { title: "圈友管理" },
+		loadChildren: () => import('./routes/mycircle/mycircle.module').then(m => m.MyCircleModule)
+	},
+	{ 
+		path: 'myapply',
+		component: TitleBackComponent,
+		data: { title: "申请加入" },
+		loadChildren: () => import('./routes/myapply/myapply.module').then(m => m.MyApplyModule)
+	},
 	{ path: 'details/:id', loadChildren: () => import('./routes/details/details.module').then(m => m.DetailsModule) },
 	// { path: 'seatlist/name', loadChildren: () => import('./routes/seatlist/seatlist.module').then(m => m.SeatListModule) },
 	// { path: 'seatbind/code', loadChildren: () => import('./routes/seatbind/seatbind.module').then(m => m.SeatBindModule) },

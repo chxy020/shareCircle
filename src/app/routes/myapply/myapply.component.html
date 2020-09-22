@@ -1,26 +1,98 @@
 <loading [isshow]="loading"></loading>
-
-<div class="authorInfo">
-    <p class="a"><img [src]="detail.headimgurl || headImg" alt=""></p>
-    <p class="b">{{detail.circleName}}的圈子</p>
-    <div class="c">
-        <p>资源 {{detail.resourceNum}}</p>
-        <p>分享 {{detail.resourceNum}}</p>
-        <p>下载 {{detail.downLoad}}</p>
-    </div>
-</div>
-
-<div class="contDivOutside">
-    <ul class="contTab myCircleTab">
-        <li (click)="changePage(1)" [class.tabDivActive]="pageType==1" >基本信息</li>
-        <li (click)="changePage(2)" [class.tabDivActive]="pageType==2" >播放列表</li>
-        <li (click)="changePage(3)" [class.tabDivActive]="pageType==3" >历史发布</li>
-        <li (click)="changePage(4)" [class.tabDivActive]="pageType==4" >加精申请</li>
+<div class="bgfff">
+    <ul class="detailsCont detailsContFenxiang" style="display: none-;">
+        <li>
+            <div class="a"><img src="assets/images/headimg.png" alt=""></div>
+            <div class="b">
+                <div class="b1">
+                    <div class="nc">分享--小胖妈妈的生活</div>
+                </div>
+                <div class="b2">
+                    <div class="pl">13884267878</div>
+                </div>
+            </div>
+            <div class="list-rbtn"><p class="l">审核</p></div>
+        </li>
+        <li>
+            <div class="a"><img src="assets/images/touxiang.png" alt=""></div>
+            <div class="b">
+                <div class="b1">
+                    <div class="nc">333小胖妈妈的生活</div>
+                </div>
+                <div class="b2">
+                    <div class="pl">分享到了微信</div>
+                </div>
+            </div>
+            <div class="list-rbtn"><p class="l">审核</p></div>
+        </li>
+        <li>
+            <div class="a"><img src="assets/images/headimg.png" alt=""></div>
+            <div class="b">
+                <div class="b1">
+                    <div class="nc">333小胖妈妈的生活</div>
+                </div>
+                <div class="b2">
+                    <div class="pl">转存了此资源</div>
+                </div>
+            </div>
+            <div class="list-rbtn"><p class="l">审核</p></div>
+        </li>
     </ul>
-    <myauthor-basic-info *ngIf="pageType==1"></myauthor-basic-info>
-    <myauthor-play-list *ngIf="pageType==2"></myauthor-play-list>
-    <myauthor-video-list *ngIf="pageType==3"></myauthor-video-list>
-    <myauthor-apply-list *ngIf="pageType==4"></myauthor-apply-list>
+</div>
+<div class="bgfff mt20">
+    <div class="tab-list">
+        <p>已审核</p>
+        <ul>
+            <li class="on">全部</li>
+            <li>可发布</li>
+            <li>仅查看</li>
+            <li>拒绝</li>
+        </ul>
+    </div>
+    <ul class="detailsCont detailsContFenxiang" style="display: none-;">
+        <li>
+            <div class="a"><img src="assets/images/headimg.png" alt=""></div>
+            <div class="b">
+                <div class="b1">
+                    <div class="nc">分享--小胖妈妈的生活</div>
+                </div>
+                <div class="b2">
+                    <div class="pl">13884267878</div>
+                </div>
+            </div>
+            <div class="list-rbtn">
+                <p class="h">修改</p>
+                <p class="t">通过并允许发布</p>
+            </div>
+        </li>
+        <li>
+            <div class="a"><img src="assets/images/touxiang.png" alt=""></div>
+            <div class="b">
+                <div class="b1">
+                    <div class="nc">333小胖妈妈的生活</div>
+                </div>
+                <div class="b2">
+                    <div class="pl">分享到了微信</div>
+                </div>
+            </div>
+            <div class="list-rbtn">
+                <p class="h">审核</p>
+                <p class="t">通过但只能查看</p>
+            </div>
+        </li>
+        <li>
+            <div class="a"><img src="assets/images/headimg.png" alt=""></div>
+            <div class="b">
+                <div class="b1">
+                    <div class="nc">333小胖妈妈的生活</div>
+                </div>
+                <div class="b2">
+                    <div class="pl">转存了此资源</div>
+                </div>
+            </div>
+            <div class="list-rbtn"><p class="r">拒绝</p></div>
+        </li>
+    </ul>
 </div>
 
 <!-- 
@@ -33,12 +105,12 @@
         <ul class="contDiv-list">
             <li>
                 <div class="contDiv-img">
-                    <img src="assets/images/listimg.jpg" alt="">
+                    <img src="assets/assets/assets/assets/images/listimg.jpg" alt="">
                     <span>10:20</span>
                 </div>
                 <div class="contDiv-text">
                     <div class="contDiv-text-left">
-                        <img src="assets/images/headimg.png" alt="">
+                        <img src="assets/assets/assets/assets/images/headimg.png" alt="">
                     </div>
                     <div class="contDiv-text-right">
                         <div class="t">日出-愿你有一个美好的今日时光！日出-愿你有一个美好好的好的的今日时日出-愿你有一个美好的今日时光光</div>
@@ -51,12 +123,12 @@
             </li>
             <li>
                 <div class="contDiv-img">
-                    <img src="assets/images/listimg.jpg" alt="">
+                    <img src="assets/assets/assets/assets/images/listimg.jpg" alt="">
                     <span>10:20</span>
                 </div>
                 <div class="contDiv-text">
                     <div class="contDiv-text-left">
-                        <img src="assets/images/headimg.png" alt="">
+                        <img src="assets/assets/assets/assets/images/headimg.png" alt="">
                     </div>
                     <div class="contDiv-text-right">
                         <div class="t">日出-愿你有一个美好的今日时光！日出-愿你有一个美好好的好的的今日时日出-愿你有一个美好的今日时光光</div>
@@ -69,12 +141,12 @@
             </li>
             <li>
                 <div class="contDiv-img">
-                    <img src="assets/images/listimg.jpg" alt="">
+                    <img src="assets/assets/assets/assets/images/listimg.jpg" alt="">
                     <span>10:20</span>
                 </div>
                 <div class="contDiv-text">
                     <div class="contDiv-text-left">
-                        <img src="assets/images/headimg.png" alt="">
+                        <img src="assets/assets/assets/assets/images/headimg.png" alt="">
                     </div>
                     <div class="contDiv-text-right">
                         <div class="t">日出-愿你有一个美好的今日时光！日出-愿你有一个美好好的好的的今日时日出-愿你有一个美好的今日时光光</div>
@@ -87,12 +159,12 @@
             </li>
             <li>
                 <div class="contDiv-img">
-                    <img src="assets/images/listimg.jpg" alt="">
+                    <img src="assets/assets/assets/assets/images/listimg.jpg" alt="">
                     <span>10:20</span>
                 </div>
                 <div class="contDiv-text">
                     <div class="contDiv-text-left">
-                        <img src="assets/images/headimg.png" alt="">
+                        <img src="assets/assets/assets/assets/images/headimg.png" alt="">
                     </div>
                     <div class="contDiv-text-right">
                         <div class="t">日出-愿你有一个美好的今日时光！日出-愿你有一个美好好的好的的今日时日出-愿你有一个美好的今日时光光</div>
@@ -105,12 +177,12 @@
             </li>
             <li>
                 <div class="contDiv-img">
-                    <img src="assets/images/listimg.jpg" alt="">
+                    <img src="assets/assets/assets/assets/images/listimg.jpg" alt="">
                     <span>10:20</span>
                 </div>
                 <div class="contDiv-text">
                     <div class="contDiv-text-left">
-                        <img src="assets/images/headimg.png" alt="">
+                        <img src="assets/assets/assets/assets/images/headimg.png" alt="">
                     </div>
                     <div class="contDiv-text-right">
                         <div class="t">日出-愿你有一个美好的今日时光！日出-愿你有一个美好好的好的的今日时日出-愿你有一个美好的今日时光光</div>
@@ -123,12 +195,12 @@
             </li>
             <li>
                 <div class="contDiv-img">
-                    <img src="assets/images/listimg.jpg" alt="">
+                    <img src="assets/assets/assets/assets/images/listimg.jpg" alt="">
                     <span>10:20</span>
                 </div>
                 <div class="contDiv-text">
                     <div class="contDiv-text-left">
-                        <img src="assets/images/headimg.png" alt="">
+                        <img src="assets/assets/assets/assets/images/headimg.png" alt="">
                     </div>
                     <div class="contDiv-text-right">
                         <div class="t">日出-愿你有一个美好的今日时光！日出-愿你有一个美好好的好的的今日时日出-愿你有一个美好的今日时光光</div>
@@ -141,12 +213,12 @@
             </li>
             <li>
                 <div class="contDiv-img">
-                    <img src="assets/images/listimg.jpg" alt="">
+                    <img src="assets/assets/assets/assets/images/listimg.jpg" alt="">
                     <span>10:20</span>
                 </div>
                 <div class="contDiv-text">
                     <div class="contDiv-text-left">
-                        <img src="assets/images/headimg.png" alt="">
+                        <img src="assets/assets/assets/assets/images/headimg.png" alt="">
                     </div>
                     <div class="contDiv-text-right">
                         <div class="t">日出-愿你有一个美好的今日时光！日出-愿你有一个美好好的好的的今日时日出-愿你有一个美好的今日时光光</div>
@@ -159,12 +231,12 @@
             </li>
             <li>
                 <div class="contDiv-img">
-                    <img src="assets/images/listimg.jpg" alt="">
+                    <img src="assets/assets/assets/assets/images/listimg.jpg" alt="">
                     <span>10:20</span>
                 </div>
                 <div class="contDiv-text">
                     <div class="contDiv-text-left">
-                        <img src="assets/images/headimg.png" alt="">
+                        <img src="assets/assets/assets/assets/images/headimg.png" alt="">
                     </div>
                     <div class="contDiv-text-right">
                         <div class="t">日出-愿你有一个美好的今日时光！日出-愿你有一个美好好的好的的今日时日出-愿你有一个美好的今日时光光</div>
@@ -177,12 +249,12 @@
             </li>
             <li>
                 <div class="contDiv-img">
-                    <img src="assets/images/listimg.jpg" alt="">
+                    <img src="assets/assets/assets/assets/images/listimg.jpg" alt="">
                     <span>10:20</span>
                 </div>
                 <div class="contDiv-text">
                     <div class="contDiv-text-left">
-                        <img src="assets/images/headimg.png" alt="">
+                        <img src="assets/assets/assets/assets/images/headimg.png" alt="">
                     </div>
                     <div class="contDiv-text-right">
                         <div class="t">日出-愿你有一个美好的今日时光！日出-愿你有一个美好好的好的的今日时日出-愿你有一个美好的今日时光光</div>
@@ -199,7 +271,7 @@
         <ul class="bofanglist-list">
             <li>
                 <div class="bofanglist-img">
-                    <img src="assets/images/listimg.jpg" alt="">
+                    <img src="assets/assets/assets/assets/images/listimg.jpg" alt="">
                     <div class="a">
                         <span>320</span>
                         <i></i>
@@ -214,7 +286,7 @@
             </li>
             <li>
                 <div class="bofanglist-img">
-                    <img src="assets/images/listimg.jpg" alt="">
+                    <img src="assets/assets/assets/assets/images/listimg.jpg" alt="">
                     <div class="a">
                         <span>320</span>
                         <i></i>
@@ -229,7 +301,7 @@
             </li>
             <li>
                 <div class="bofanglist-img">
-                    <img src="assets/images/listimg.jpg" alt="">
+                    <img src="assets/assets/assets/assets/images/listimg.jpg" alt="">
                     <div class="a">
                         <span>320</span>
                         <i></i>
@@ -244,7 +316,7 @@
             </li>
             <li>
                 <div class="bofanglist-img">
-                    <img src="assets/images/listimg.jpg" alt="">
+                    <img src="assets/assets/assets/assets/images/listimg.jpg" alt="">
                     <div class="a">
                         <span>320</span>
                         <i></i>
@@ -259,7 +331,7 @@
             </li>
             <li>
                 <div class="bofanglist-img">
-                    <img src="assets/images/listimg.jpg" alt="">
+                    <img src="assets/assets/assets/assets/images/listimg.jpg" alt="">
                     <div class="a">
                         <span>320</span>
                         <i></i>
@@ -274,7 +346,7 @@
             </li>
             <li>
                 <div class="bofanglist-img">
-                    <img src="assets/images/listimg.jpg" alt="">
+                    <img src="assets/assets/assets/assets/images/listimg.jpg" alt="">
                     <div class="a">
                         <span>320</span>
                         <i></i>
@@ -289,7 +361,7 @@
             </li>
             <li>
                 <div class="bofanglist-img">
-                    <img src="assets/images/listimg.jpg" alt="">
+                    <img src="assets/assets/assets/assets/images/listimg.jpg" alt="">
                     <div class="a">
                         <span>320</span>
                         <i></i>
@@ -304,7 +376,7 @@
             </li>
             <li>
                 <div class="bofanglist-img">
-                    <img src="assets/images/listimg.jpg" alt="">
+                    <img src="assets/assets/assets/assets/images/listimg.jpg" alt="">
                     <div class="a">
                         <span>320</span>
                         <i></i>
@@ -319,7 +391,7 @@
             </li>
             <li>
                 <div class="bofanglist-img">
-                    <img src="assets/images/listimg.jpg" alt="">
+                    <img src="assets/assets/assets/assets/images/listimg.jpg" alt="">
                     <div class="a">
                         <span>320</span>
                         <i></i>

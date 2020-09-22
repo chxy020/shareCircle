@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { LoadingModule } from './loading';
 import { FormatTimePipe, ImageLazyLoadPipe } from './pipes/datafilter.pipe';
 import { DropLoadModule } from './directives/dropload/dropload.module';
+import { AddCircleModule } from './addcircle/addcircle.module';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { DropLoadModule } from './directives/dropload/dropload.module';
         CommonModule,
         FormsModule,
         LoadingModule,
+        AddCircleModule,
         DropLoadModule
     ],
     providers: [
@@ -28,7 +30,8 @@ import { DropLoadModule } from './directives/dropload/dropload.module';
         ImageLazyLoadPipe,
 
         LoadingModule,
-        DropLoadModule
+        DropLoadModule,
+        AddCircleModule
     ]
 })
 export class SharedModule {

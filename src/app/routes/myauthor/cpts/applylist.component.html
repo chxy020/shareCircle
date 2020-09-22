@@ -2,8 +2,7 @@
 <!-- <loading [isshow]="loading"></loading> -->
 
 <div dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
-	<div class="contDiv" >
-        <div class="chainLink">我的圈子 > <span>晓晓私密圈</span></div>
+    <div class="contDiv" >
         <ul class="bofanglist-list video-list history-list">
             <li>
                 <div class="bofanglist-img">
@@ -11,10 +10,13 @@
                 </div>
                 <div class="bofanglist-text">
                     <div class="bofanglist-text-top">
-                        日出-愿你有一个美好的今日时光！生活中有一个治愈式的美好 时光！
+                        <p>日出-愿你有一个美好的今日时光！生活中有一个治愈式的美好 时光！</p>
+                    </div>
+                    <div class="bofanglist-text-vcenter">
+                        <p>日出-我的圈子 > 晓晓私密圈</p>
                     </div>
                     <div class="bofanglist-text-bottom">
-                        <div class="rbtn"></div>
+                        <div class="rbtn-a">待平台审核</div>
                     </div>
                 </div>
             </li>
@@ -24,10 +26,13 @@
                 </div>
                 <div class="bofanglist-text">
                     <div class="bofanglist-text-top">
-                        日出-愿你有一个美好的今日时光！生活中有一个治愈式的美好 时光！
+                        <p>日出-愿你有一个美好的今日时光！生活中有一个治愈式的美好 时光！</p>
+                    </div>
+                    <div class="bofanglist-text-vcenter">
+                        <p>日出-我的圈子 > 晓晓私密圈</p>
                     </div>
                     <div class="bofanglist-text-bottom">
-                        <div class="rbtn"></div>
+                        <div class="rbtn-a">加精失败</div>
                     </div>
                 </div>
             </li>
@@ -37,35 +42,16 @@
                 </div>
                 <div class="bofanglist-text">
                     <div class="bofanglist-text-top">
-                        日出-愿你有一个美好的今日时光！生活中有一个治愈式的美好 时光！
+                        <p>日出-愿你有一个美好的今日时光！生活中有一个治愈式的美好 时光！</p>
+                    </div>
+                    <div class="bofanglist-text-vcenter">
+                        <p>日出-我的圈子 > 晓晓私密圈</p>
                     </div>
                     <div class="bofanglist-text-bottom">
-                        <div class="rbtn"></div>
+                        <div class="rbtn-a">已加精</div>
                     </div>
                 </div>
             </li>
         </ul>
     </div>
-    <!-- <div class="contDiv">
-		<ul class="contDiv-list">
-			<li *ngFor="let item of data;">
-				<div (click)="videoClick(item)" class="contDiv-img">
-					<img #vimg [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" />
-					<span>{{item.video_len}}</span>
-				</div>
-				<div class="contDiv-text">
-					<div class="contDiv-text-left">
-						<img [src]="item.headimgurl || headImg" alt="">
-					</div>
-					<div class="contDiv-text-right">
-						<div class="t">{{item.title}}</div>
-						<div class="c">
-							<p>{{item.name}}·{{item.create_time | formattime}}</p>
-							<p class="d">{{item.comment_num || 0}}</p>
-						</div>
-					</div>
-				</div>
-			</li>
-		</ul>
-	</div> -->
 </div>

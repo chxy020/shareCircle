@@ -1,0 +1,36 @@
+
+<!-- <loading [isshow]="loading"></loading> -->
+
+<div dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
+    <div class="contDiv" >
+        <ul class="myCircle-list">
+            <li>
+                <div class="myCircle-list-l">
+                    圈名
+                </div>
+                <div class="myCircle-list-c">
+                    用户张三丰
+                </div>
+                <div class="myCircle-list-r"></div>
+            </li>
+            <li (click)="myCircleBtn()">
+                <div class="myCircle-list-l">
+                    圈友管理
+                </div>
+                <div class="myCircle-list-c">
+                    <span>9</span>
+                </div>
+                <div class="myCircle-list-r"></div>
+            </li>
+            <li (click)="myApplyBtn()">
+                <div class="myCircle-list-l">
+                    加入申请
+                </div>
+                <div class="myCircle-list-c">
+                    <span>2</span>
+                </div>
+                <div class="myCircle-list-r"></div>
+            </li>
+        </ul>
+    </div>
+</div>

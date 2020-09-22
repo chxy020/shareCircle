@@ -11,15 +11,16 @@ import { HttpService } from 'src/app/shared/services/http';
 export class AuthorComponent implements OnInit {
 	
 	loading = true;
+	addCircle = false;
 
-	headImg = "./assets/images/headimg.png";
+	headImg = "./assets/images/default-touxiang.png";
 
 	pageType = 1;
 
 	baseUrl = "";
 	uid;
-
-	detail = {};
+	
+	detail:any = {};
 
 	constructor(
 		private route: ActivatedRoute,
@@ -32,27 +33,34 @@ export class AuthorComponent implements OnInit {
 	ngOnInit() {
 		// this.id = +this.route.snapshot.data.id;
 		// this.title = this.titles[this.id];
-
-		this.baseUrl = window["context"]["apiroot"];
 		this.uid = this.route.snapshot.paramMap.get('uid');
-		this.getImgOrName();
+		this.getCircleMine();
 	}
 
 	changePage(i):void{
         this.pageType = i;
 	}
 	
-	getImgOrName():void{
+	addCircleSuccess(){
+		this.addCircle = false;
+	}
+	closePop():void{
+		this.addCircle = false;
+	}
+	addCircleBtn():void{
+		this.addCircle = true;
+	}
+
+	getCircleMine():void{
 		this.loading = true;
 
 		const params: Map<string, any> = new Map<string, any>();
 		params.set("uid",this.uid);
 
-		let url = "/jqkj/cricle/getImgOrName";
+		let url = "/jqkj/circleMine/getCircleMine";
 		this.http.get(url, params, null).subscribe(data => {
 			if(data.status == 0){
 				this.detail = data.data || {};
-				// this.getFirstComment();
 			}
 			this.loading = false;
 		}, error => {

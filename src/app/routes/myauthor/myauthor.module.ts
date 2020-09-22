@@ -6,6 +6,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MyAuthorComponent } from './myauthor.component';
 import { VideoListComponent } from './cpts/videolist.component';
 import { PlayListComponent } from './cpts/playlist.component';
+import { BasicInfoComponent } from './cpts/basicinfo.component';
+import { ApplyListComponent } from './cpts/applylist.component';
 
 @NgModule({
 	imports: [
@@ -15,8 +17,10 @@ import { PlayListComponent } from './cpts/playlist.component';
 	],
 	declarations: [
 		MyAuthorComponent,
-		VideoListComponent,
+		BasicInfoComponent,
 		PlayListComponent,
+		VideoListComponent,
+		ApplyListComponent,
 		// CarouselSensePipe,
 		// DelSensePipe,
 		// SenseSharedKeySearchPipe

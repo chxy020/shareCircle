@@ -6,6 +6,6 @@ const {
 } = environment;
 
 window['context'] = {
-	apiroot: 'http://39.107.249.187:8080',
+	apiroot: 'http://39.107.249.187:8082',
 	uid:"5bea735b8c324eafbfd11b679eb758d01"
 };

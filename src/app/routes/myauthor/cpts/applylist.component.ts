@@ -3,11 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http';
 
 @Component({
-	selector: 'author-video-list',
-	templateUrl: './videolist.component.html'
+	selector: 'myauthor-apply-list',
+	templateUrl: './applylist.component.html'
 })
 
-export class VideoListComponent implements OnInit {
+export class ApplyListComponent implements OnInit {
 	
 	data = [];
 	loading = true;
@@ -20,7 +20,6 @@ export class VideoListComponent implements OnInit {
 	videoImg = "./assets/images/default-img.png";
 
 	baseUrl = "";
-	uid;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -33,8 +32,6 @@ export class VideoListComponent implements OnInit {
 	ngOnInit() {
 		// this.id = +this.route.snapshot.data.id;
 		// this.title = this.titles[this.id];
-
-		this.uid = this.route.snapshot.paramMap.get('uid');
 	}
 
 	meetClick(item):void{
@@ -51,11 +48,12 @@ export class VideoListComponent implements OnInit {
 	
 	getUserCircle():void{
 		this.loading = true;
+		let uid = window['context']['uid'];
 
 		const params: Map<string, any> = new Map<string, any>();
 		params.set("page",this.page);
 		params.set("limit",this.limit);
-		params.set("uid",this.uid);
+		params.set("uid",uid);
 		
 		let url = "/jqkj/cricle/getUserCircle";
 		this.http.get(url, params, null).subscribe(data => {

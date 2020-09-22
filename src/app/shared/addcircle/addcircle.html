@@ -1,0 +1,42 @@
+
+
+
+<loading [isshow]="loading"></loading>
+<div *ngIf="showTip" class="tip_text">{{showMsg}}</div>
+
+<!-- 加入圈子弹框 -->
+<div class="pop-mask" *ngIf="popShow">
+    <div class="circleExitpop joincirclepop">
+        <div class="det-sharepop-bt">
+            <div class="ltext">
+                加入圈子
+            </div>
+            <div (click)="closePop()" class="rbtn"></div>
+        </div>
+        <div class="popcontent-text2">
+            <div class="p-tishi">
+                <div></div>
+                什么是圈子，如何创建圈子 >
+            </div>
+            <div class="forminput"><input type="text" [(ngModel)]="num" placeholder="请输入邀圈子邀请码"></div>
+                
+        </div>
+        <div (click)="addBtn()" class="popcontent-btn">申请加入</div>
+    </div>
+</div>
+
+<!-- 申请审核弹框 -->
+<div class="pop-mask" *ngIf="isSuccess">
+    <div class="circleExitpop">
+        <div class="det-sharepop-bt">
+            <div class="ltext">
+                已提交申请
+            </div>
+            <div class="rbtn"></div>
+        </div>
+        <div class="popcontent-text">
+            <p>申请成功，圈主审核中通过后即可加入</p>
+        </div>
+        <div (click)="succesBtn()" class="popcontent-btn">知道了</div>
+    </div>
+</div>
