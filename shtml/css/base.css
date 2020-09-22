@@ -221,7 +221,7 @@ body {
 .contDiv-text-left img {
 	width:0.86rem;
 	height:0.86rem;
-	border-radius:0.12rem;
+	border-radius:50%;
 	margin-right:0.2rem;
 }
 .contDiv-text-right {
@@ -237,16 +237,9 @@ body {
 	width:100%;
 	margin-top:0.08rem;
 	display: -webkit-box;
+	text-align: justify;
+    overflow: hidden;
 }
-.contDiv-text-right .t p{
-overflow: hidden;
-text-overflow: ellipsis;
-display: -webkit-box;
--webkit-line-clamp:2;
-flex-direction: column;
-}
-
-
 .contDiv-text-right .c {
 	display:-webkit-box;
 	display:-ms-flexbox;
@@ -538,6 +531,7 @@ flex-direction: column;
 .authorInfo .a img{
 	width:1.2rem;
 	height:1.2rem;
+	border-radius: 50%;
 }
 .authorInfo .b {
 	font-size:0.28rem;
