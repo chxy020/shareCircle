@@ -357,6 +357,7 @@ body {
 	display:-webkit-flex;
 	display:-ms-flex;
 	display:flex;
+	
 }
 .bofanglist-list li:first-child {
 	border-top:none;
@@ -422,8 +423,23 @@ body {
 	display:flex;
 	/* flex-direction:row;
 	*/
-  	justify-content:space-between
+	  justify-content:space-between;
+	  position: relative;
 }
+
+.bofanglist-list li .bofanglist-text-bottom .tip_operlist {
+	position: absolute;
+	right:-0.2rem;
+	top:0.5rem;
+	z-index: 9999;
+	display: none;
+}
+.bofanglist-list li .bofanglist-text-bottom .tip_operlist li{
+	border:none
+}
+
+
+
 .bofanglist-list li .bofanglist-text-bottom .rbtn {
 	width:.44rem;
 	height:.44rem;
@@ -439,6 +455,9 @@ body {
 	border-radius:0.08rem;
 	padding:0 0.1rem
 }
+
+
+
 .bofanglist-list.video-list li .bofanglist-img {
 	width:2.1rem;
 	height:1.18rem;
