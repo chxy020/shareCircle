@@ -1,14 +1,14 @@
-import { Component, OnInit, ViewChild, ElementRef, Injector } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Injector, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http';
 
 @Component({
-	selector: 'attention-list',
-	templateUrl: './attention.component.html',
-	styleUrls: ['./attention.component.css']
+	selector: 'myauthor-play-list2',
+	templateUrl: './playlist2.component.html'
 })
 
-export class AttentionComponent implements OnInit {
+export class PlayList2Component implements OnInit {
+	@Output() public changeFolder = new EventEmitter<any>();
 	
 	data = [];
 	loading = true;
@@ -17,11 +17,10 @@ export class AttentionComponent implements OnInit {
 	page = 0;
 	limit = 10;
 
-	headImg = "./assets/images/default-touxiang.png";
-	videoImg = "./assets/images/default-img.png";
+	headImg = "./assets/images/headimg.png";
+	videoImg = "./assets/images/listimg.jpg";
 
 	baseUrl = "";
-	uid;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -29,7 +28,6 @@ export class AttentionComponent implements OnInit {
 		private router: Router
 	) {
 		this.baseUrl = window["context"]["apiroot"];
-		this.uid = window['context']['uid'];
 	}
 
 	ngOnInit() {
@@ -37,30 +35,21 @@ export class AttentionComponent implements OnInit {
 		// this.title = this.titles[this.id];
 	}
 
-	meetClick(item):void{
-        // if(this.id==1){
-        //     this.router.navigate(['/seatlist/code',{id:this.id,meetid:item.id}]);
-        // }else{
-        //     this.router.navigate(['/seatlist/name',{id:this.id,meetid:item.id}]);
-        // }
+	showFolder(){
+		this.changeFolder.emit();
 	}
 
-	videoClick(item):void{
-		this.router.navigate(['/details/'+item.id]);
-	}
-
-	headerClick(item):void{
-		this.router.navigate(['/author/main/'+item.uid]);
-	}
 	
-	getFollow():void{
+	getUserCircle():void{
 		this.loading = true;
+		let uid = window['context']['uid'];
+
 		const params: Map<string, any> = new Map<string, any>();
 		params.set("page",this.page);
 		params.set("limit",this.limit);
-		params.set("uid",this.uid);
-
-		let url = "/jqkj/cricle/getFollow";
+		params.set("uid",uid);
+		
+		let url = "/jqkj/cricle/getUserCircle";
 		this.http.get(url, params, null).subscribe(data => {
 			if(data.code == 0){
 				let list = data.data || [];
@@ -94,16 +83,17 @@ export class AttentionComponent implements OnInit {
         this.me.unlock();
 		this.me.noData(false);
 		
-        this.page = 1;
-        this.data = [];
-        this.getFollow();
+        // this.page = 1;
+        // this.data = [];
+        // this.getUserCircle();
     }
     drapDown(me:any){
         console.log("drapDown------------");
         this.me = me;
         this.page++;
-        this.getFollow();
+        // this.getUserCircle();
 	}
-
+	
+	
 	
 }

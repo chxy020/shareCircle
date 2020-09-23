@@ -45,6 +45,10 @@ export class VideoListComponent implements OnInit {
 	videoClick(item):void{
 		this.router.navigate(['/details/'+item.id]);
 	}
+
+	showMenu(evt:MouseEvent){
+		
+	}
 	
 	getUserCircle():void{
 		this.loading = true;

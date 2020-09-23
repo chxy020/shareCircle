@@ -1,68 +1,54 @@
-<!-- <loading [isshow]="loading"></loading> -->
+<loading [isshow]="loading"></loading>
 
+<div *ngIf="showTip" class="tip_text">{{showMsg}}</div>
 
-<div class="contDiv" >
-    <div class="contDiv">
-        <ul class="bofanglist-list">
-            <li>
-                <div class="bofanglist-img">
-                    <img src="assets/images/new.png" alt="">
-                </div>
-            </li>
-            <li>
-                <div class="bofanglist-img">
-                    <img src="assets/images/listimg.jpg" alt="">
-                    <div class="a">
-                        <span>320</span>
-                        <i></i>
+<!-- 创建列表弹框 -->
+<div class="pop-mask" *ngIf="newPop">
+    <div class="circleExitpop joincirclepop">
+        <div class="det-sharepop-bt">
+            <div class="ltext">
+                创建列表
+            </div>
+            <div (click)="closePop()" class="rbtn"></div>
+        </div>
+        <div class="popcontent-text2">
+            <div class="forminput"><input type="text" [(ngModel)]="folderName" placeholder="请输入列表名称"></div>
+        </div>
+        <div (click)="createFolderBtn()" class="popcontent-btn">立即创建</div>
+    </div>
+</div>
+
+<myauthor-play-list2 (changeFolder)="showFolderList()" *ngIf="!isFolder"></myauthor-play-list2>
+
+<div *ngIf="isFolder" dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
+    <div class="contDiv" >
+        <div class="contDiv">
+            <ul class="bofanglist-list">
+                <li (click)="createBtn()">
+                    <div class="bofanglist-img">
+                        <img src="assets/images/new.png" alt="">
                     </div>
-                </div>
-                <div class="bofanglist-text">
-                    <div class="bofanglist-text-top">
-                        优选广告合集优选广告合集优选广告合集优选广告合集
+                </li>
+                <li (click)="showVideoList()" *ngFor="let item of data;" >
+                    <div class="bofanglist-img">
+                        <img src="assets/images/listimg.jpg" alt="">
+                        <div class="a">
+                            <span>{{item.number}}</span>
+                            <i></i>
+                        </div>
                     </div>
-                    <div class="bofanglist-text-bottom">
-                        9视频
-                        <div class="rbtn"></div>
+                    <div class="bofanglist-text">
+                        <div class="bofanglist-text-top">
+                            {{item.filename}}
+                        </div>
+                        <div class="bofanglist-text-bottom">
+                            {{item.number}}视频
+                            <div class="rbtn"></div>
+                        </div>
                     </div>
-                </div>
-            </li>
-            <li>
-                <div class="bofanglist-img">
-                    <img src="assets/images/listimg.jpg" alt="">
-                    <div class="a">
-                        <span>320</span>
-                        <i></i>
-                    </div>
-                </div>
-                <div class="bofanglist-text">
-                    <div class="bofanglist-text-top">
-                        晓晓私密圈私密圈圈圈圈
-                    </div>
-                    <div class="bofanglist-text-bottom">
-                        90视频
-                        <div class="rbtn"></div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="bofanglist-img">
-                    <img src="assets/images/listimg.jpg" alt="">
-                    <div class="a">
-                        <span>320</span>
-                        <i></i>
-                    </div>
-                </div>
-                <div class="bofanglist-text">
-                    <div class="bofanglist-text-top">
-                        晓晓私密圈
-                    </div>
-                    <div class="bofanglist-text-bottom">
-                        9000视频
-                        <div class="rbtn"></div>
-                    </div>
-                </div>
-            </li>
-        </ul>
+                </li>
+                
+            </ul>
+        </div>
     </div>
 </div>
