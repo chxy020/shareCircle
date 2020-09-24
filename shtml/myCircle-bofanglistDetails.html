@@ -144,6 +144,17 @@
                     </div>
                     <div class="bofanglist-text-bottom">
                         <div class="rbtn"></div>
+                        <div class="tip_operlist">
+                            <ul>
+                                <li>通过并允许发布</li>
+                                <li>分享邀请码</li>
+                                <li class="disabled">加入列表</li>
+                                <li>申请加精</li>
+                                <li class="active">仅自己可见</li>
+                                <li>隐藏</li>
+                                <li>删除</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -157,6 +168,17 @@
                     </div>
                     <div class="bofanglist-text-bottom">
                         <div class="rbtn"></div>
+                        <div class="tip_operlist">
+                            <ul>
+                                <li>通过并允许发布</li>
+                                <li>分享邀请码</li>
+                                <li class="disabled">加入列表</li>
+                                <li>申请加精</li>
+                                <li class="active">仅自己可见</li>
+                                <li>隐藏</li>
+                                <li>删除</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -170,6 +192,17 @@
                     </div>
                     <div class="bofanglist-text-bottom">
                         <div class="rbtn"></div>
+                        <div class="tip_operlist">
+                            <ul>
+                                <li>通过并允许发布</li>
+                                <li>分享邀请码</li>
+                                <li class="disabled">加入列表</li>
+                                <li>申请加精</li>
+                                <li class="active">仅自己可见</li>
+                                <li>隐藏</li>
+                                <li>删除</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -229,5 +262,24 @@
         </ul>
     </div>
 </div>
+<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+<script>
+    $('.history-list .bofanglist-text-bottom .rbtn').on('click',function (e) {
+        if($(this).next().is(':visible')){
+            $(this).next().hide().css({"top":"auto","bottom":"auto"});
+        }else{
+            $(this).parents(".history-list").find(".tip_operlist").hide();
+            var rbtnTop = $(this).offset().top + 20;
+            var popH = $(this).next().height();
+            var windowH = document.body.clientHeight;
+            // var windowH = window.screen.height;
+            if(popH > windowH-rbtnTop){
+                $(this).next().show().css({"top":"auto","bottom":"0.5rem"});
+            }else{
+                $(this).next().show().css({"top":"0.5rem","bottom":"auto"});
+            }
+        }
+    })
+</script>
 </body>
 </html>
