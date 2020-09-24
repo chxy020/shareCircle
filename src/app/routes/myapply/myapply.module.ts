@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 // import { CarouselSensePipe, DelSensePipe, SenseSharedKeySearchPipe } from './sense.pipe';
 import { PageRoutes } from './myapply.routing';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MyApplyComponent } from './myapply.component';
+import { CircleDataFilterPipe, MyApplyComponent } from './myapply.component';
 
 @NgModule({
 	imports: [
@@ -12,6 +12,7 @@ import { MyApplyComponent } from './myapply.component';
 		SharedModule
 	],
 	declarations: [
+		CircleDataFilterPipe,
 		MyApplyComponent
 		// CarouselSensePipe,
 		// DelSensePipe,

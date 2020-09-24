@@ -1,7 +1,7 @@
 
 <!-- <loading [isshow]="loading"></loading> -->
 
-<div dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
+<div dropload [options]="2" (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
     <div class="contDiv" >
         <ul class="myCircle-list">
             <li>
@@ -9,7 +9,7 @@
                     圈名
                 </div>
                 <div class="myCircle-list-c">
-                    用户张三丰
+                    {{circleName}}
                 </div>
                 <div class="myCircle-list-r"></div>
             </li>
