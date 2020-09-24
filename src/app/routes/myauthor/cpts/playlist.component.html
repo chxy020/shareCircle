@@ -31,7 +31,7 @@
                 </li>
                 <li (click)="showVideoList()" *ngFor="let item of data;" >
                     <div class="bofanglist-img">
-                        <img src="assets/images/listimg.jpg" alt="">
+                        <img #vimg [src]="videoImg | imagelazyload:vimg:item.firstImage" alt="" />
                         <div class="a">
                             <span>{{item.number}}</span>
                             <i></i>

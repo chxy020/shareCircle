@@ -41,6 +41,9 @@ export class MyAuthorComponent implements OnInit {
         this.pageType = i;
 	}
 
+	drapUpEvent(){
+		this.getCircleMine();
+	}
 	getCircleMine():void{
 		this.loading = true;
 

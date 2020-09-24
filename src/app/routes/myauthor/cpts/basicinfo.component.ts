@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Injector, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Injector, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http';
 
@@ -9,6 +9,10 @@ import { HttpService } from 'src/app/shared/services/http';
 
 export class BasicInfoComponent implements OnInit {
 	@Input() circleName:string;
+	@Input() friendNum:string;
+	@Input() appleNum:string;
+	@Output() public drapUpEvent = new EventEmitter<any>();
+
 
 	data = [];
 	loading = true;
@@ -33,7 +37,7 @@ export class BasicInfoComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.getAddCircleNum();
+		// this.getAddCircleNum();
 	}
 
 	meetClick(item):void{
@@ -79,7 +83,8 @@ export class BasicInfoComponent implements OnInit {
         this.me.unlock();
 		this.me.noData(false);
 		
-        this.getAddCircleNum();
+		this.drapUpEvent.emit();
+        // this.getAddCircleNum();
     }
     drapDown(me:any){
         console.log("drapDown------------");

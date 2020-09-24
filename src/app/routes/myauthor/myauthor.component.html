@@ -17,7 +17,7 @@
         <li (click)="changePage(3)" [class.tabDivActive]="pageType==3" >历史发布</li>
         <li (click)="changePage(4)" [class.tabDivActive]="pageType==4" >加精申请</li>
     </ul>
-    <myauthor-basic-info [circleName]="detail.circleName" *ngIf="pageType==1"></myauthor-basic-info>
+    <myauthor-basic-info (drapUpEvent)="drapUpEvent()" [circleName]="detail.circleName" [friendNum]="detail.friendNum" [appleNum]="detail.appleNum" *ngIf="pageType==1"></myauthor-basic-info>
     <myauthor-play-list *ngIf="pageType==2"></myauthor-play-list>
     <myauthor-video-list *ngIf="pageType==3"></myauthor-video-list>
     <myauthor-apply-list *ngIf="pageType==4"></myauthor-apply-list>

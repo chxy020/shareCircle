@@ -17,8 +17,8 @@
                 <div class="myCircle-list-l">
                     圈友管理
                 </div>
-                <div class="myCircle-list-c">
-                    <span>9</span>
+                <div *ngIf="friendNum" class="myCircle-list-c">
+                    <span>{{friendNum}}</span>
                 </div>
                 <div class="myCircle-list-r"></div>
             </li>
@@ -26,8 +26,8 @@
                 <div class="myCircle-list-l">
                     加入申请
                 </div>
-                <div class="myCircle-list-c">
-                    <span>2</span>
+                <div *ngIf="appleNum" class="myCircle-list-c">
+                    <span>{{appleNum}}</span>
                 </div>
                 <div class="myCircle-list-r"></div>
             </li>

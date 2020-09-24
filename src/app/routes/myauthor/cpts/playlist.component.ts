@@ -27,8 +27,8 @@ export class PlayListComponent implements OnInit {
 	page = 0;
 	limit = 10;
 
-	headImg = "./assets/images/headimg.png";
-	videoImg = "./assets/images/listimg.jpg";
+	headImg = "./assets/images/default-touxiang.png";
+	videoImg = "./assets/images/default-img.png";
 
 	baseUrl = "";
 	uid;
@@ -104,7 +104,7 @@ export class PlayListComponent implements OnInit {
 		this.isFolder = true;
 	}
 
-
+	currentItem;
 	currentMenuEle;
 	eleOut;
 	menuBtn(evt:MouseEvent,ele:any){
@@ -123,7 +123,7 @@ export class PlayListComponent implements OnInit {
 			ele.style.display = "none";
 		},3000);
 	}
-
+	
 	renameBtn(evt:MouseEvent,item:any){
 		evt.preventDefault();
 		evt.stopPropagation();
@@ -132,6 +132,7 @@ export class PlayListComponent implements OnInit {
 			this.currentMenuEle.style.display = "none";
 		}
 
+		this.currentItem = item;
 		this.folderName = item.filename;
 		this.folderId = item.id;
 		this.newPopEdit = true;
@@ -204,8 +205,9 @@ export class PlayListComponent implements OnInit {
 			this.closePop();
 
 			if(data.status == 0){
-				this.drapUp(this.me);
-
+				if(this.currentItem){
+					this.currentItem.filename = this.folderName;
+				}
 				this.showMsg = "修改成功";
 				this.showTip = true;
 				setTimeout(() =>{
