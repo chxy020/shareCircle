@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef, Injector } from '@angular/core';
+import { Component, OnInit,  ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http';
+declare var $;
 
 @Component({
 	selector: 'myauthor-play-list',
@@ -8,9 +9,12 @@ import { HttpService } from 'src/app/shared/services/http';
 })
 
 export class PlayListComponent implements OnInit {
-	
+
+	newPopEdit = false;
 	newPop = false;
+
 	folderName;
+	folderId;
 
 	isFolder = true;
 
@@ -41,6 +45,23 @@ export class PlayListComponent implements OnInit {
 	ngOnInit() {
 		// this.id = +this.route.snapshot.data.id;
 		// this.title = this.titles[this.id];
+
+		// $('.bofanglist-list .bofanglist-text-bottom .rbtn').on('click',function (e) {
+		// 	if($(this).next().is(':visible')){
+		// 		$(this).next().hide().css({"top":"auto","bottom":"auto"});
+		// 	}else{
+		// 		$(this).parents(".history-list").find(".tip_operlist").hide();
+		// 		var rbtnTop = $(this).offset().top + 20;
+		// 		var popH = $(this).next().height();
+		// 		var windowH = document.body.clientHeight;
+		// 		// var windowH = window.screen.height;
+		// 		if(popH > windowH-rbtnTop){
+		// 			$(this).next().show().css({"top":"auto","bottom":"0.5rem"});
+		// 		}else{
+		// 			$(this).next().show().css({"top":"0.5rem","bottom":"auto"});
+		// 		}
+		// 	}
+		// })
 	}
 
 	meetClick(item):void{
@@ -55,13 +76,18 @@ export class PlayListComponent implements OnInit {
 		this.newPop = false;
 	}
 	createBtn(){
+		this.newPopEdit = false;
 		this.newPop = true;
+		this.folderName = "";
 	}
 
 	createFolderBtn(){
-		console.log(this.folderName);
 		if(this.folderName){
-			this.insertFile();
+			if(this.newPopEdit){
+				this.updateFile();
+			}else{
+				this.insertFile();
+			}
 		}else{
 			this.showMsg = "请输入列表名称";
 			this.showTip = true;
@@ -78,6 +104,60 @@ export class PlayListComponent implements OnInit {
 		this.isFolder = true;
 	}
 
+
+	currentMenuEle;
+	eleOut;
+	menuBtn(evt:MouseEvent,ele:any){
+		evt.preventDefault();
+		evt.stopPropagation();
+		
+		if(this.currentMenuEle){
+			this.currentMenuEle.style.display = "none";
+		}
+
+		this.currentMenuEle = ele;
+		ele.style.display = "block";
+
+		clearTimeout(this.eleOut);
+		this.eleOut = setTimeout(()=>{
+			ele.style.display = "none";
+		},3000);
+	}
+
+	renameBtn(evt:MouseEvent,item:any){
+		evt.preventDefault();
+		evt.stopPropagation();
+
+		if(this.currentMenuEle){
+			this.currentMenuEle.style.display = "none";
+		}
+
+		this.folderName = item.filename;
+		this.folderId = item.id;
+		this.newPopEdit = true;
+		this.newPop = true;
+	}
+
+	delBtn(evt:MouseEvent,item:any){
+		evt.preventDefault();
+		evt.stopPropagation();
+
+		if(this.currentMenuEle){
+			this.currentMenuEle.style.display = "none";
+		}
+
+		let b = window.confirm("确认删除吗?");
+		if(b){
+			
+		}
+
+		// this.folderName = item.filename;
+		// this.folderId = item.id;
+		// this.newPopEdit = true;
+		// this.newPop = true;
+	}
+
+
 	insertFile():void{
 		this.loading = true;
 		
@@ -92,6 +172,41 @@ export class PlayListComponent implements OnInit {
 
 			if(data.status == 0){
 				this.showMsg = "创建成功";
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}else{
+				this.showMsg = data.msg;
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}
+			
+			this.loading = false;
+		}, error => {
+			console.error(error);
+			this.loading = false;
+		});
+	}
+
+	updateFile():void{
+		this.loading = true;
+		
+
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("filename",this.folderName);
+		params.set("id",this.folderId);
+		
+		let url = "/jqkj/circleFiles/updateFile";
+		this.http.post(url, params, null).subscribe(data => {
+			this.closePop();
+
+			if(data.status == 0){
+				this.drapUp(this.me);
+
+				this.showMsg = "修改成功";
 				this.showTip = true;
 				setTimeout(() =>{
 					this.showTip = false;

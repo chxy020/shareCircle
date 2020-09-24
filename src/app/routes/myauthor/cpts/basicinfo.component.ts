@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Injector } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Injector, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http';
 
@@ -8,7 +8,8 @@ import { HttpService } from 'src/app/shared/services/http';
 })
 
 export class BasicInfoComponent implements OnInit {
-	
+	@Input() circleName:string;
+
 	data = [];
 	loading = true;
 	me:any;
@@ -20,6 +21,7 @@ export class BasicInfoComponent implements OnInit {
 	videoImg = "./assets/images/default-img.png";
 
 	baseUrl = "";
+	uid;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -27,11 +29,11 @@ export class BasicInfoComponent implements OnInit {
 		private router: Router
 	) {
 		this.baseUrl = window["context"]["apiroot"];
+		this.uid = window['context']['uid'];
 	}
 
 	ngOnInit() {
-		// this.id = +this.route.snapshot.data.id;
-		// this.title = this.titles[this.id];
+		this.getAddCircleNum();
 	}
 
 	meetClick(item):void{
@@ -49,32 +51,17 @@ export class BasicInfoComponent implements OnInit {
 		this.router.navigate(['/myapply']);
 	}
 	
-	getUserCircle():void{
+	getAddCircleNum():void{
 		this.loading = true;
-		let uid = window['context']['uid'];
 
 		const params: Map<string, any> = new Map<string, any>();
-		params.set("page",this.page);
-		params.set("limit",this.limit);
-		params.set("uid",uid);
+		params.set("uid",this.uid);
 		
-		let url = "/jqkj/cricle/getUserCircle";
+		let url = "/jqkj/circleMine/getAddCircleNum";
 		this.http.get(url, params, null).subscribe(data => {
+			console.log("getAddCircleNum---",data)
 			if(data.code == 0){
-				let list = data.data || [];
-
-				this.data = this.data.concat(list);
-
-				if(list.length < this.limit){
-					// 锁定
-					this.me.lock();
-					// 无数据
-					this.me.noData(true);
-				}
-
-				setTimeout(()=>{
-					this.me.resetload();
-				},200);
+				
 			}
 
 			this.loading = false;
@@ -92,15 +79,12 @@ export class BasicInfoComponent implements OnInit {
         this.me.unlock();
 		this.me.noData(false);
 		
-        this.page = 1;
-        this.data = [];
-        this.getUserCircle();
+        this.getAddCircleNum();
     }
     drapDown(me:any){
         console.log("drapDown------------");
         this.me = me;
-        this.page++;
-        this.getUserCircle();
+        
 	}
 	
 }
