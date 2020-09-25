@@ -1,7 +1,6 @@
 import { Component, OnInit,  ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http';
-declare var $;
 
 @Component({
 	selector: 'myauthor-play-list',
@@ -45,23 +44,6 @@ export class PlayListComponent implements OnInit {
 	ngOnInit() {
 		// this.id = +this.route.snapshot.data.id;
 		// this.title = this.titles[this.id];
-
-		// $('.bofanglist-list .bofanglist-text-bottom .rbtn').on('click',function (e) {
-		// 	if($(this).next().is(':visible')){
-		// 		$(this).next().hide().css({"top":"auto","bottom":"auto"});
-		// 	}else{
-		// 		$(this).parents(".history-list").find(".tip_operlist").hide();
-		// 		var rbtnTop = $(this).offset().top + 20;
-		// 		var popH = $(this).next().height();
-		// 		var windowH = document.body.clientHeight;
-		// 		// var windowH = window.screen.height;
-		// 		if(popH > windowH-rbtnTop){
-		// 			$(this).next().show().css({"top":"auto","bottom":"0.5rem"});
-		// 		}else{
-		// 			$(this).next().show().css({"top":"0.5rem","bottom":"auto"});
-		// 		}
-		// 	}
-		// })
 	}
 
 	meetClick(item):void{
@@ -97,8 +79,10 @@ export class PlayListComponent implements OnInit {
 		}
 	}
 
-	showVideoList(){
+	filesId;
+	showVideoList(item){
 		this.isFolder = false;
+		this.filesId = item.id;
 	}
 	showFolderList(){
 		this.isFolder = true;

@@ -49,6 +49,12 @@ const routes: Routes = [
 		loadChildren: () => import('./routes/mycircle/mycircle.module').then(m => m.MyCircleModule)
 	},
 	{ 
+		path: 'invitecode',
+		component: TitleBackComponent,
+		data: { title: "邀请码" },
+		loadChildren: () => import('./routes/invitecode/invitecode.module').then(m => m.InviteCodeModule)
+	},
+	{ 
 		path: 'myapply',
 		component: TitleBackComponent,
 		data: { title: "申请加入" },

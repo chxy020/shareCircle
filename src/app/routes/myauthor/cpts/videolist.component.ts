@@ -85,7 +85,6 @@ export class VideoListComponent implements OnInit {
 		});
 	}
 
-
 	drapUp(me:any){
         console.log("drapUp-----");
         this.me = me;

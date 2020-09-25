@@ -1,44 +1,56 @@
 <!-- <loading [isshow]="loading"></loading> -->
+<div *ngIf="showTip" class="tip_text">{{showMsg}}</div>
 
 <div class="bgfff">
-    <ul class="detailsCont detailsContFenxiang" style="display: none-;">
-        <li>
-            <div class="a"><img src="assets/images/headimg.png" alt=""></div>
-            <div class="b">
-                <div class="b1">
-                    <div class="nc">分享--小胖妈妈的生活</div>
+    <div dropload (drapDown)="drapDown($event,1)" (drapUp)="drapUp($event,1)" >
+        <ul class="detailsCont detailsContFenxiang" >
+            <li *ngFor="let item of data1">
+                <div class="a"><img [src]="item.applyHeadImg || headImg" alt=""></div>
+                <div class="b">
+                    <div class="b1">
+                        <div class="nc">{{item.applyName}}</div>
+                    </div>
+                    <div class="b2">
+                        <div class="pl">{{item.applyPhone}}</div>
+                    </div>
                 </div>
-                <div class="b2">
-                    <div class="pl">13884267878</div>
+                <div class="list-rbtn">
+                    <p (click)="menuBtn($event,menuele)" class="l">审核</p>
+                    <div #menuele class="tip_operlist" >
+                        <ul>
+                            <li (click)="reviewBtn($event,item,1)" >通过并允许发布</li>
+                            <li (click)="reviewBtn($event,item,2)" >通过但只能查看</li>
+                            <li (click)="reviewBtn($event,item,3)" >拒绝</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="list-rbtn"><p class="l">审核</p></div>
-        </li>
-        <li>
-            <div class="a"><img src="assets/images/touxiang.png" alt=""></div>
-            <div class="b">
-                <div class="b1">
-                    <div class="nc">333小胖妈妈的生活</div>
+            </li>
+            <!-- <li>
+                <div class="a"><img src="assets/images/touxiang.png" alt=""></div>
+                <div class="b">
+                    <div class="b1">
+                        <div class="nc">333小胖妈妈的生活</div>
+                    </div>
+                    <div class="b2">
+                        <div class="pl">分享到了微信</div>
+                    </div>
                 </div>
-                <div class="b2">
-                    <div class="pl">分享到了微信</div>
+                <div class="list-rbtn"><p class="l">审核</p></div>
+            </li>
+            <li>
+                <div class="a"><img src="assets/images/headimg.png" alt=""></div>
+                <div class="b">
+                    <div class="b1">
+                        <div class="nc">333小胖妈妈的生活</div>
+                    </div>
+                    <div class="b2">
+                        <div class="pl">转存了此资源</div>
+                    </div>
                 </div>
-            </div>
-            <div class="list-rbtn"><p class="l">审核</p></div>
-        </li>
-        <li>
-            <div class="a"><img src="assets/images/headimg.png" alt=""></div>
-            <div class="b">
-                <div class="b1">
-                    <div class="nc">333小胖妈妈的生活</div>
-                </div>
-                <div class="b2">
-                    <div class="pl">转存了此资源</div>
-                </div>
-            </div>
-            <div class="list-rbtn"><p class="l">审核</p></div>
-        </li>
-    </ul>
+                <div class="list-rbtn"><p class="l">审核</p></div>
+            </li> -->
+        </ul>
+    </div>
 </div>
 
 <div class="bgfff mt20">
@@ -51,16 +63,16 @@
             <li (click)="changeType(4)" [class.on]="pageType==4">拒绝</li>
         </ul>
     </div>
-    <div dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
+    <div dropload (drapDown)="drapDown($event,2)" (drapUp)="drapUp($event,2)" >
         <ul class="detailsCont detailsContFenxiang" >
-            <li *ngFor="let item of data | circledatafilter:pageType;">
+            <li *ngFor="let item of data2 | circledatafilter:pageType;">
                 <div class="a"><img [src]="item.applyHeadImg || headImg" alt=""></div>
                 <div class="b">
                     <div class="b1">
                         <div class="nc">{{item.applyName}}</div>
                     </div>
                     <div class="b2">
-                        <div class="pl">{{item.applyName}}</div>
+                        <div class="pl">{{item.applyPhone}}</div>
                     </div>
                 </div>
                 <div class="list-rbtn" style="position: relative;">

@@ -18,7 +18,7 @@
     </div>
 </div>
 
-<myauthor-play-list2 (changeFolder)="showFolderList()" *ngIf="!isFolder"></myauthor-play-list2>
+<myauthor-play-list2 [filesId]="filesId" (changeFolder)="showFolderList()" *ngIf="!isFolder"></myauthor-play-list2>
 
 <div *ngIf="isFolder" dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
     <div class="contDiv" >
@@ -29,7 +29,7 @@
                         <img src="assets/images/new.png" alt="">
                     </div>
                 </li>
-                <li (click)="showVideoList()" *ngFor="let item of data;" >
+                <li (click)="showVideoList(item)" *ngFor="let item of data;" >
                     <div class="bofanglist-img">
                         <img #vimg [src]="videoImg | imagelazyload:vimg:item.firstImage" alt="" />
                         <div class="a">

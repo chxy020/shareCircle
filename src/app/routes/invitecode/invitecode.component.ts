@@ -3,37 +3,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http';
 
 
-@Pipe({
-    name: 'circledatafilter'
-})
-export class CircleDataFilterPipe implements PipeTransform {
-    transform(list:Array<any>, pageType?: any): any {
-		console.log(pageType);
-		if(pageType == 2){
-			return list.filter(item=>item.ispublish == 0);
-		}else if(pageType == 3){
-			return list.filter(item=>item.ispublish == 1);
-		}else if(pageType == 4){
-			return list.filter(item=>item.ispass == 2);
-		}
-        return list;
-    }
-}
-
-
 @Component({
-	selector: 'myapply',
-	templateUrl: './myapply.component.html'
+	selector: 'invitecode',
+	templateUrl: './invitecode.component.html'
 })
 
-export class MyApplyComponent implements OnInit {
+export class InviteCodeComponent implements OnInit {
 	
 	data1 = [];
 	data2 = [];
 
-	loading = false;
-	showTip = false;
-	showMsg = "";
+	loading = true;
 	
 	pageType = 1;
 
@@ -88,7 +68,7 @@ export class MyApplyComponent implements OnInit {
 		},3000);
 	}
 
-	reviewBtn(evt:MouseEvent,item:any,type:number){
+	reviewBtn(evt:MouseEvent,ele:any,type:number){
 		evt.preventDefault();
 		evt.stopPropagation();
 
@@ -96,65 +76,11 @@ export class MyApplyComponent implements OnInit {
 			this.currentMenuEle.style.display = "none";
 		}
 
-		// ipass = 1 & ispublish = 0   对应 设置允许发布
-		// ipass = 1 & ispublish = 1  对应 设置允许查看
-		// ipass = 2 & ispublish = 2  对应 拒绝
-		
 		// this.currentItem = item;
 		// this.folderName = item.filename;
 		// this.folderId = item.id;
 		// this.newPopEdit = true;
 		// this.newPop = true;
-		if(type == 1){
-			//设置允许发布
-			this.updateAddStatus(item,1,0);
-		}else if(type == 2){
-			//设置允许查看
-			this.updateAddStatus(item,1,1);
-		}else{
-			//拒绝
-			this.updateAddStatus(item,2,2);
-		}
-	}
-
-	updateAddStatus(item,ispass,ispublish):void{
-		this.loading = true;
-		
-
-		const params: Map<string, any> = new Map<string, any>();
-		params.set("addId",item.id);
-		params.set("ispass",ispass);
-		params.set("ispublish",ispublish);
-		
-		let url = "/jqkj/circleMine/updateAddStatus";
-		this.http.post(url, params, null).subscribe(data => {
-
-			if(data.status == 0){
-				this.showMsg = "设置成功";
-				this.showTip = true;
-				setTimeout(() =>{
-					this.showTip = false;
-				},2500);
-
-				item.ispass = ispass;
-				item.ispublish = ispublish;
-			
-				this.page2 = 1;
-				this.data2 = [];
-				this.getAddCircleOk();
-			}else{
-				this.showMsg = data.msg;
-				this.showTip = true;
-				setTimeout(() =>{
-					this.showTip = false;
-				},2500);
-			}
-			
-			this.loading = false;
-		}, error => {
-			console.error(error);
-			this.loading = false;
-		});
 	}
 
 	getAddCircleOk():void{
@@ -171,7 +97,7 @@ export class MyApplyComponent implements OnInit {
 		params.set("page",this.page2);
 		params.set("limit",this.limit);
 
-		let url = "/jqkj/circleMine/getAllAddCircleOk";
+		let url = "/jqkj/circleMine/getAddCircleOk";
 		this.http.get(url, params, null).subscribe(data => {
 			if(data.code == 0){
 				let list = data.data || [];
@@ -249,7 +175,7 @@ export class MyApplyComponent implements OnInit {
 
 			this.page1 = 1;
 			this.data1 = [];
-			this.getAddCircleNo();
+			this.getAddCircleOk();
 
 		}else{
 			this.me2 = me;
