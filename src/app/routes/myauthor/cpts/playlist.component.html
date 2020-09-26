@@ -18,7 +18,7 @@
     </div>
 </div>
 
-<myauthor-play-list2 [filesId]="filesId" (changeFolder)="showFolderList()" *ngIf="!isFolder"></myauthor-play-list2>
+<myauthor-play-list2 [filesName]="filesName" [filesId]="filesId" (changeFolder)="showFolderList()" *ngIf="!isFolder"></myauthor-play-list2>
 
 <div *ngIf="isFolder" dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
     <div class="contDiv" >

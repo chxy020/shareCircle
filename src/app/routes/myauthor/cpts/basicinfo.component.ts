@@ -49,12 +49,25 @@ export class BasicInfoComponent implements OnInit {
 	}
 
 	myCircleBtn():void{
+		this.clickFriend();
+
 		this.router.navigate(['/mycircle']);
 	}
 	myApplyBtn():void{
 		this.router.navigate(['/myapply']);
 	}
 	
+	clickFriend():void{
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("uid",this.uid);
+		
+		let url = "/jqkj/circleMine/clickFriend";
+		this.http.post(url, params, null).subscribe(data => {
+		}, error => {
+			console.error(error);
+		});
+	}
+
 	getAddCircleNum():void{
 		this.loading = true;
 

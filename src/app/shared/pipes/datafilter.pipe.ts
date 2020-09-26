@@ -67,7 +67,9 @@ export class ImageLazyLoadPipe implements PipeTransform {
         //     }.bind(this);
         // },50);
 
-        this.loadImage(ele,video_image);
+        if(video_image){
+            this.loadImage(ele,video_image);
+        }
 
         return url;
         // if(p2 > p1 && behavior > 1){

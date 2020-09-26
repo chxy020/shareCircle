@@ -1,12 +1,12 @@
 <loading [isshow]="loading"></loading>
 
 <div class="authorInfo">
-    <p class="a"><img [src]="detail.headimgurl || headImg" alt=""></p>
-    <p class="b">{{detail.circleName}}的圈子</p>
+    <p class="a"><img [src]="detail?.headimgurl || headImg" alt=""></p>
+    <p class="b">{{detail?.circleName}}的圈子</p>
     <div class="c">
-        <p>资源 {{detail.resourceNum}}</p>
-        <p>分享 {{detail.shareNum}}</p>
-        <p>下载 {{detail.downLoad}}</p>
+        <p>资源 {{detail?.resourceNum}}</p>
+        <p>分享 {{detail?.shareNum}}</p>
+        <p>下载 {{detail?.downLoad}}</p>
     </div>
 </div>
 

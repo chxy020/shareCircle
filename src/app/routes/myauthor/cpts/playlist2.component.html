@@ -4,7 +4,7 @@
 
 <div dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)">
     <div class="contDiv">
-        <div (click)="showFolder()" class="chainLink">我的圈子 > <span>晓晓私密圈</span></div>
+        <div (click)="showFolder()" class="chainLink">我的圈子 > <span>{{filesName}}</span></div>
         <ul class="bofanglist-list video-list history-list">
             <li *ngFor="let item of data;">
                 <div class="bofanglist-img">

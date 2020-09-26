@@ -19,7 +19,8 @@ export class AuthorComponent implements OnInit {
 
 	baseUrl = "";
 	uid;
-	
+	authorUid;
+
 	detail:any = {};
 
 	constructor(
@@ -28,13 +29,14 @@ export class AuthorComponent implements OnInit {
 		private router: Router
 	) {
 		this.baseUrl = window["context"]["apiroot"];
+		this.uid = window['context']['uid'];
 	}
 
 	ngOnInit() {
 		// this.id = +this.route.snapshot.data.id;
 		// this.title = this.titles[this.id];
-		this.uid = this.route.snapshot.paramMap.get('uid');
-		this.getCircleMine();
+		this.authorUid = this.route.snapshot.paramMap.get('uid');
+		this.getAuthorInfo();
 	}
 
 	changePage(i):void{
@@ -51,17 +53,16 @@ export class AuthorComponent implements OnInit {
 		this.addCircle = true;
 	}
 
-	getCircleMine():void{
+	getAuthorInfo():void{
 		this.loading = true;
 
 		const params: Map<string, any> = new Map<string, any>();
 		params.set("uid",this.uid);
+		params.set("authorUid",this.authorUid);
 
-		let url = "/jqkj/circleMine/getCircleMine";
+		let url = "/jqkj/circleMine/getAuthorInfo";
 		this.http.get(url, params, null).subscribe(data => {
-			if(data.status == 0){
-				this.detail = data.data || {};
-			}
+			this.detail = data || {};
 			this.loading = false;
 		}, error => {
 			console.error(error);

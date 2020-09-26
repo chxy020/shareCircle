@@ -9,17 +9,23 @@ import { HttpService } from 'src/app/shared/services/http';
 
 export class PlayListComponent implements OnInit {
 	
+	isFolder = true;
+	filesName = "";
+	
 	data = [];
-	loading = true;
-	me:any;
+	loading = false;
+	showTip = false;
+	showMsg = "";
+	
 
 	page = 0;
 	limit = 10;
 
-	headImg = "./assets/images/headimg.png";
-	videoImg = "./assets/images/listimg.jpg";
+	headImg = "./assets/images/default-touxiang.png";
+	videoImg = "./assets/images/default-img.png";
 
 	baseUrl = "";
+	uid;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -27,6 +33,7 @@ export class PlayListComponent implements OnInit {
 		private router: Router
 	) {
 		this.baseUrl = window["context"]["apiroot"];
+		this.uid = window['context']['uid'];
 	}
 
 	ngOnInit() {
@@ -42,17 +49,75 @@ export class PlayListComponent implements OnInit {
         // }
 	}
 
+	filesId;
+	showVideoList(item){
+		this.isFolder = false;
+		this.filesId = item.id;
+		this.filesName = item.filename;
+	}
+	showFolderList(){
+		this.isFolder = true;
+	}
+
+	currentItem;
+	currentMenuEle;
+	eleOut;
+	menuBtn(evt:MouseEvent,ele:any){
+		evt.preventDefault();
+		evt.stopPropagation();
+		
+		if(this.currentMenuEle){
+			this.currentMenuEle.style.display = "none";
+		}
+
+		this.currentMenuEle = ele;
+		ele.style.display = "block";
+
+		clearTimeout(this.eleOut);
+		this.eleOut = setTimeout(()=>{
+			ele.style.display = "none";
+		},3000);
+	}
 	
-	getUserCircle():void{
+	renameBtn(evt:MouseEvent,item:any){
+		evt.preventDefault();
+		evt.stopPropagation();
+
+		if(this.currentMenuEle){
+			this.currentMenuEle.style.display = "none";
+		}
+
+		this.currentItem = item;
+	}
+
+	delBtn(evt:MouseEvent,item:any){
+		evt.preventDefault();
+		evt.stopPropagation();
+
+		if(this.currentMenuEle){
+			this.currentMenuEle.style.display = "none";
+		}
+
+		let b = window.confirm("确认删除吗?");
+		if(b){
+			
+		}
+
+		// this.folderName = item.filename;
+		// this.folderId = item.id;
+		// this.newPopEdit = true;
+		// this.newPop = true;
+	}
+	
+	getFileList():void{
 		this.loading = true;
-		let uid = window['context']['uid'];
 
 		const params: Map<string, any> = new Map<string, any>();
 		params.set("page",this.page);
 		params.set("limit",this.limit);
-		params.set("uid",uid);
+		params.set("uid",this.uid);
 		
-		let url = "/jqkj/cricle/getUserCircle";
+		let url = "/jqkj/circleFiles/getFileList";
 		this.http.get(url, params, null).subscribe(data => {
 			if(data.code == 0){
 				let list = data.data || [];
@@ -78,7 +143,7 @@ export class PlayListComponent implements OnInit {
 		});
 	}
 
-
+	me:any;
 	drapUp(me:any){
         console.log("drapUp-----");
         this.me = me;
@@ -88,15 +153,13 @@ export class PlayListComponent implements OnInit {
 		
         this.page = 1;
         this.data = [];
-        this.getUserCircle();
+        this.getFileList();
     }
     drapDown(me:any){
         console.log("drapDown------------");
         this.me = me;
         this.page++;
-        // this.getUserCircle();
+        this.getFileList();
 	}
-	
-	
 	
 }

@@ -1,142 +1,37 @@
 <!-- <loading [isshow]="loading"></loading> -->
 
-<self-play-list2 ></self-play-list2>
-<div class="contDiv" *ngIf="0">
-    <ul class="bofanglist-list">
-        <li>
-            <div class="bofanglist-img">
-                <img src="assets/images/listimg.jpg" alt="">
-                <div class="a">
-                    <span>320</span>
-                    <i></i>
-                </div>
-            </div>
-            <div class="bofanglist-text">
-                <div class="bofanglist-text-top">
-                    晓晓私密圈
-                </div>
-                <div class="bofanglist-text-bottom">17视频</div>
-            </div>
-        </li>
-        <li>
-            <div class="bofanglist-img">
-                <img src="assets/images/listimg.jpg" alt="">
-                <div class="a">
-                    <span>320</span>
-                    <i></i>
-                </div>
-            </div>
-            <div class="bofanglist-text">
-                <div class="bofanglist-text-top">
-                    晓晓私密圈
-                </div>
-                <div class="bofanglist-text-bottom">17视频</div>
-            </div>
-        </li>
-        <li>
-            <div class="bofanglist-img">
-                <img src="assets/images/listimg.jpg" alt="">
-                <div class="a">
-                    <span>320</span>
-                    <i></i>
-                </div>
-            </div>
-            <div class="bofanglist-text">
-                <div class="bofanglist-text-top">
-                    晓晓私密圈
-                </div>
-                <div class="bofanglist-text-bottom">17视频</div>
-            </div>
-        </li>
-        <li>
-            <div class="bofanglist-img">
-                <img src="assets/images/listimg.jpg" alt="">
-                <div class="a">
-                    <span>320</span>
-                    <i></i>
-                </div>
-            </div>
-            <div class="bofanglist-text">
-                <div class="bofanglist-text-top">
-                    晓晓私密圈
-                </div>
-                <div class="bofanglist-text-bottom">17视频</div>
-            </div>
-        </li>
-        <li>
-            <div class="bofanglist-img">
-                <img src="assets/images/listimg.jpg" alt="">
-                <div class="a">
-                    <span>320</span>
-                    <i></i>
-                </div>
-            </div>
-            <div class="bofanglist-text">
-                <div class="bofanglist-text-top">
-                    晓晓私密圈
-                </div>
-                <div class="bofanglist-text-bottom">17视频</div>
-            </div>
-        </li>
-        <li>
-            <div class="bofanglist-img">
-                <img src="assets/images/listimg.jpg" alt="">
-                <div class="a">
-                    <span>320</span>
-                    <i></i>
-                </div>
-            </div>
-            <div class="bofanglist-text">
-                <div class="bofanglist-text-top">
-                    晓晓私密圈
-                </div>
-                <div class="bofanglist-text-bottom">17视频</div>
-            </div>
-        </li>
-        <li>
-            <div class="bofanglist-img">
-                <img src="assets/images/listimg.jpg" alt="">
-                <div class="a">
-                    <span>320</span>
-                    <i></i>
-                </div>
-            </div>
-            <div class="bofanglist-text">
-                <div class="bofanglist-text-top">
-                    晓晓私密圈
-                </div>
-                <div class="bofanglist-text-bottom">17视频</div>
-            </div>
-        </li>
-        <li>
-            <div class="bofanglist-img">
-                <img src="assets/images/listimg.jpg" alt="">
-                <div class="a">
-                    <span>320</span>
-                    <i></i>
-                </div>
-            </div>
-            <div class="bofanglist-text">
-                <div class="bofanglist-text-top">
-                    晓晓私密圈
-                </div>
-                <div class="bofanglist-text-bottom">17视频</div>
-            </div>
-        </li>
-        <li>
-            <div class="bofanglist-img">
-                <img src="assets/images/listimg.jpg" alt="">
-                <div class="a">
-                    <span>320</span>
-                    <i></i>
-                </div>
-            </div>
-            <div class="bofanglist-text">
-                <div class="bofanglist-text-top">
-                    晓晓私密圈
-                </div>
-                <div class="bofanglist-text-bottom">17视频</div>
-            </div>
-        </li>
-    </ul>
+<self-play-list2 [filesName]="filesName" [filesId]="filesId" (changeFolder)="showFolderList()" *ngIf="!isFolder" ></self-play-list2>
+
+<div *ngIf="isFolder" dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
+    <div class="contDiv" style="padding-bottom: 0px;">
+        <div class="contDiv">
+            <ul class="bofanglist-list">
+                <li (click)="showVideoList(item)" *ngFor="let item of data;" >
+                    <div class="bofanglist-img">
+                        <img #vimg [src]="videoImg | imagelazyload:vimg:item.firstImage" alt="" />
+                        <div class="a">
+                            <span>{{item.number}}</span>
+                            <i></i>
+                        </div>
+                    </div>
+                    <div class="bofanglist-text">
+                        <div class="bofanglist-text-top">
+                            {{item.filename}}
+                        </div>
+                        <div class="bofanglist-text-bottom">
+                            {{item.number}}视频
+                            <!-- <div (click)="menuBtn($event,menuele)" class="rbtn"></div>
+                            <div #menuele class="tip_operlist" >
+                                <ul>
+                                    <li (click)="renameBtn($event,item)">重命名</li>
+                                    <li (click)="delBtn($event,item)">删除</li>
+                                </ul>
+                            </div> -->
+                        </div>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
 </div>

@@ -9,6 +9,7 @@ import { HttpService } from 'src/app/shared/services/http';
 
 export class PlayList2Component implements OnInit {
 	@Input() filesId:String;
+	@Input() filesName:String;
 	@Output() public changeFolder = new EventEmitter<any>();
 	
 	data = [];

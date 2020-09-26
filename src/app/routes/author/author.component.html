@@ -11,12 +11,16 @@
     </div>
 </div>
 <!-- 没权限时 -->
-<div class="tipsText" *ngIf="detail.isCircle==0">
+<div class="tipsText" *ngIf="detail.status==-1">
     <p>申请加入查看他的精彩视频~</p>
     <div (click)="addCircleBtn()" class="tipsTextBtn"></div><!-- 申请加入按钮 -->
 </div>
+<div class="tipsText" *ngIf="detail.status==-2">
+    <p>作者审核中~</p>
+    <!-- <div (click)="addCircleBtn()" class="tipsTextBtn"></div>申请加入按钮 -->
+</div>
 
-<div class="contDivOutside" *ngIf="detail.isCircle==1">
+<div class="contDivOutside" *ngIf="detail.status==0">
     <ul class="contTab">
         <li (click)="changePage(1)" [class.tabDivActive]="pageType==1" >视频</li>
         <li (click)="changePage(2)" [class.tabDivActive]="pageType==2" >播放列表</li>

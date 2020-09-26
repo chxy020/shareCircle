@@ -16,7 +16,8 @@ export class PlayListComponent implements OnInit {
 	folderId;
 
 	isFolder = true;
-
+	filesName = "";
+	
 	data = [];
 	loading = false;
 	showTip = false;
@@ -83,6 +84,7 @@ export class PlayListComponent implements OnInit {
 	showVideoList(item){
 		this.isFolder = false;
 		this.filesId = item.id;
+		this.filesName = item.filename;
 	}
 	showFolderList(){
 		this.isFolder = true;
