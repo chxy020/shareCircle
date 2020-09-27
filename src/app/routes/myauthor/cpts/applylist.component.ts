@@ -20,13 +20,14 @@ export class ApplyListComponent implements OnInit {
 	videoImg = "./assets/images/default-img.png";
 
 	baseUrl = "";
-
+	uid;
 	constructor(
 		private route: ActivatedRoute,
 		private http: HttpService,
 		private router: Router
 	) {
 		this.baseUrl = window["context"]["apiroot"];
+		this.uid = window['context']['uid'];
 	}
 
 	ngOnInit() {
@@ -46,16 +47,15 @@ export class ApplyListComponent implements OnInit {
 		this.router.navigate(['/details/'+item.id]);
 	}
 	
-	getUserCircle():void{
+	getApplySelectedList():void{
 		this.loading = true;
-		let uid = window['context']['uid'];
 
 		const params: Map<string, any> = new Map<string, any>();
 		params.set("page",this.page);
 		params.set("limit",this.limit);
-		params.set("uid",uid);
+		params.set("uid",this.uid);
 		
-		let url = "/jqkj/cricle/getUserCircle";
+		let url = "/jqkj/circleMine/getApplySelectedList";
 		this.http.get(url, params, null).subscribe(data => {
 			if(data.code == 0){
 				let list = data.data || [];
@@ -91,13 +91,13 @@ export class ApplyListComponent implements OnInit {
 		
         this.page = 1;
         this.data = [];
-        this.getUserCircle();
+        this.getApplySelectedList();
     }
     drapDown(me:any){
         console.log("drapDown------------");
         this.me = me;
         this.page++;
-        this.getUserCircle();
+        this.getApplySelectedList();
 	}
 	
 }
