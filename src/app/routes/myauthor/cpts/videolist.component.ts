@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, Injector } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 import { HttpService } from 'src/app/shared/services/http';
 
 @Component({
@@ -9,9 +10,13 @@ import { HttpService } from 'src/app/shared/services/http';
 
 export class VideoListComponent implements OnInit {
 	
+	fileData = [];
+	filePop = false;
+
 	data = [];
 	loading = true;
-	me:any;
+	showTip = false;
+	showMsg = "";
 
 	page = 0;
 	limit = 10;
@@ -20,6 +25,7 @@ export class VideoListComponent implements OnInit {
 	videoImg = "./assets/images/default-img.png";
 
 	baseUrl = "";
+	uid;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -27,11 +33,14 @@ export class VideoListComponent implements OnInit {
 		private router: Router
 	) {
 		this.baseUrl = window["context"]["apiroot"];
+		this.uid = window['context']['uid'];
 	}
 
 	ngOnInit() {
 		// this.id = +this.route.snapshot.data.id;
 		// this.title = this.titles[this.id];
+
+		this.getFileList();
 	}
 
 	meetClick(item):void{
@@ -46,10 +55,181 @@ export class VideoListComponent implements OnInit {
 		this.router.navigate(['/details/'+item.id]);
 	}
 
-	showMenu(evt:MouseEvent){
+	currentItem;
+	currentMenuEle;
+	eleOut;
+	menuBtn(evt:MouseEvent,ele:any){
+		evt.preventDefault();
+		evt.stopPropagation();
 		
+		if(this.currentMenuEle){
+			this.currentMenuEle.style.display = "none";
+		}
+
+		this.currentMenuEle = ele;
+		ele.style.display = "block";
+
+		clearTimeout(this.eleOut);
+		this.eleOut = setTimeout(()=>{
+			ele.style.display = "none";
+		},3000);
+	}
+
+	addFolderPop(evt:MouseEvent,item:any){
+		evt.preventDefault();
+		evt.stopPropagation();
+
+		if(!!item.filesId){
+			return;
+		}
+
+		if(this.currentMenuEle){
+			this.currentMenuEle.style.display = "none";
+		}
+
+		this.currentItem = item;
+
+		this.filePop = true;
+
+		// this.folderName = item.filename;
+		// this.folderId = item.id;
+		// this.newPopEdit = true;
+		// this.newPop = true;
+	}
+	addRecommend(evt:MouseEvent,item:any){
+		evt.preventDefault();
+		evt.stopPropagation();
+
+		if(+item.type === 0){
+			return;
+		}
+
+		if(this.currentMenuEle){
+			this.currentMenuEle.style.display = "none";
+		}
+
+		// this.currentItem = item;
+		// this.folderName = item.filename;
+		// this.folderId = item.id;
+		// this.newPopEdit = true;
+		// this.newPop = true;
+	}
+	changeShowStatus(evt:MouseEvent,item:any){
+		evt.preventDefault();
+		evt.stopPropagation();
+		if(this.currentMenuEle){
+			this.currentMenuEle.style.display = "none";
+		}
+
+		// this.currentItem = item;
+		// this.folderName = item.filename;
+		// this.folderId = item.id;
+		// this.newPopEdit = true;
+		// this.newPop = true;
+	}
+	delItem(evt:MouseEvent,item:any){
+		evt.preventDefault();
+		evt.stopPropagation();
+		if(this.currentMenuEle){
+			this.currentMenuEle.style.display = "none";
+		}
+
+		// this.currentItem = item;
+		// this.folderName = item.filename;
+		// this.folderId = item.id;
+		// this.newPopEdit = true;
+		// this.newPop = true;
 	}
 	
+	currentFolderItem;
+	folderItemClick(ele:any,item:any){
+		this.fileData.map(item=>{
+			return item.checked = false;
+		});
+		item.checked = true;
+		this.currentFolderItem = item;
+	}
+
+	closePop(){
+		this.filePop = false;
+	}
+
+	addFolder(){
+		let filesId = this.currentFolderItem && this.currentFolderItem.id;
+		if(!filesId){
+			this.showMsg = "没有选择视频文件夹";
+			this.showTip = true;
+			setTimeout(() =>{
+				this.showTip = false;
+			},2500);
+			return;
+		}
+		let fileName = this.currentFolderItem.filename;
+		this.movePublish(filesId,fileName);
+	}
+
+
+	movePublish(filesId,fileName):void{
+		this.loading = true;
+		
+
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("circleId",this.currentItem.id);
+		params.set("filesId",filesId);
+		params.set("uid",this.uid);
+		
+		let url = "/jqkj/circleFiles/movePublish";
+		this.http.post(url, params, null).subscribe(data => {
+			this.closePop();
+
+			if(data.status == 0){
+				this.showMsg = "移入视频成功";
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+
+				this.currentItem.filesId = 1;
+				this.currentItem.fileName = fileName;
+			}else{
+				this.showMsg = data.msg;
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}
+			
+			this.loading = false;
+		}, error => {
+			console.error(error);
+			this.loading = false;
+		});
+	}
+
+	getFileList():void{
+		this.loading = true;
+
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("page",this.page);
+		params.set("limit",this.limit);
+		params.set("uid",this.uid);
+		
+		let url = "/jqkj/circleFiles/getFileList";
+		this.http.get(url, params, null).subscribe(data => {
+			if(data.code == 0){
+				let list = data.data || [];
+
+				this.fileData = this.fileData.concat(list);
+
+			}
+
+			this.loading = false;
+		}, error => {
+			console.error(error);
+			this.loading = false;
+		});
+	}
+
 	getUserCircle():void{
 		this.loading = true;
 		let uid = window['context']['uid'];
@@ -85,6 +265,8 @@ export class VideoListComponent implements OnInit {
 		});
 	}
 
+	
+	me:any;
 	drapUp(me:any){
         console.log("drapUp-----");
         this.me = me;

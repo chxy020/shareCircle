@@ -13,6 +13,34 @@
     </ul>
 </div> -->
 
+<div *ngIf="showTip" class="tip_text">{{showMsg}}</div>
+
+<!-- 加入文件夹弹框 -->
+<div class="pop-mask" *ngIf="filePop">
+    <div class="choosepop" style="height:auto;">
+        <div class="det-sharepop-bt">
+            <div class="ltext">
+                选择列表
+            </div>
+            <div class="rbtn"></div>
+        </div>
+        <div class="choosepop-list">
+            <ul>
+                <!--  class="on"  -->
+                <li #fileli (click)="folderItemClick(fileli,item)" [class.on]="item.checked" *ngFor="let item of fileData;">
+                    <div class="a"></div>
+                    <div class="b">{{item.filename}}</div>
+                    <div class="c"></div>
+                </li>
+            </ul>
+        </div>
+        <div class="choosepop-btn">
+            <div (click)="closePop()" class="a">取消</div>
+            <div (click)="addFolder()" class="b">加入</div>
+        </div>
+    </div>
+</div>
+
 <div dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
 	<div class="contDiv" >
         <ul class="bofanglist-list video-list history-list">
@@ -25,10 +53,20 @@
                         <p>{{item.title}}</p>
                     </div>
                     <div class="bofanglist-text-vcenter">
-                        <p>日出-我的圈子 > 晓晓私密圈</p>
+                        <p>{{item.name}} > {{item.fileName || '未分组'}}</p>
                     </div>
                     <div class="bofanglist-text-bottom">
-                        <div (click)="showMenu($event)" class="rbtn"></div>
+                        <div (click)="menuBtn($event,menuele)" class="rbtn"></div>
+                        <div #menuele class="tip_operlist" >
+                            <ul>
+                                <li (click)="addFolderPop($event,item)" [class.disabled]="!!item.filesId">加入列表</li>
+                                <li (click)="addRecommend($event,item)" [class.disabled]="+item.type===0">申请加精</li>
+                                <li (click)="changeShowStatus($event,item)">{{+item.isshow === 0 ? '仅自己可见' : '公开' }}</li>
+                                <li (click)="delItem($event,item)">删除</li>
+                                <!-- <li class="disabled">加入列表</li> -->
+                                <!-- <li class="active">仅自己可见</li> -->
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </li>

@@ -40,7 +40,7 @@ export class PlayList2Component implements OnInit {
 		// this.id = +this.route.snapshot.data.id;
 		// this.title = this.titles[this.id];
 	}
-
+	
 	showFolder(){
 		this.changeFolder.emit();
 	}
