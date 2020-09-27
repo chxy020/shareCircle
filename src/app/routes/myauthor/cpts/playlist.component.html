@@ -29,7 +29,7 @@
                         <img src="assets/images/new.png" alt="">
                     </div>
                 </li>
-                <li (click)="showVideoList(item)" *ngFor="let item of data;" >
+                <li (click)="showVideoList(item)" *ngFor="let item of data | datadeleteitem:delcount;" >
                     <div class="bofanglist-img">
                         <img #vimg [src]="videoImg | imagelazyload:vimg:item.firstImage" alt="" />
                         <div class="a">

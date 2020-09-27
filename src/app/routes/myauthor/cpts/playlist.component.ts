@@ -33,6 +33,7 @@ export class PlayListComponent implements OnInit {
 	baseUrl = "";
 	uid;
 
+	delcount = 0;
 	constructor(
 		private route: ActivatedRoute,
 		private http: HttpService,
@@ -135,7 +136,7 @@ export class PlayListComponent implements OnInit {
 
 		let b = window.confirm("确认删除吗?");
 		if(b){
-			
+			this.deletePlayList(item);
 		}
 
 		// this.folderName = item.filename;
@@ -163,6 +164,10 @@ export class PlayListComponent implements OnInit {
 				setTimeout(() =>{
 					this.showTip = false;
 				},2500);
+
+				this.page = 1;
+				this.data = [];
+				this.getFileList();
 			}else{
 				this.showMsg = data.msg;
 				this.showTip = true;
@@ -214,6 +219,42 @@ export class PlayListComponent implements OnInit {
 		});
 	}
 	
+	deletePlayList(item:any):void{
+		this.loading = true;
+		
+
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("filesId",item.id);
+		
+		let url = "/jqkj/circleFiles/deletePlayList";
+		this.http.post(url, params, null).subscribe(data => {
+			this.closePop();
+
+			if(data.status == 0){
+				this.delcount ++;
+				item.del = true;
+
+				this.showMsg = "删除成功";
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}else{
+				this.showMsg = data.msg;
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}
+			
+			this.loading = false;
+		}, error => {
+			console.error(error);
+			this.loading = false;
+		});
+	}
+
+
 	getFileList():void{
 		this.loading = true;
 

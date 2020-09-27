@@ -3,6 +3,15 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Pipe({
+    name: 'datadeleteitem'
+})
+export class DataDelteItemPipe implements PipeTransform {
+    transform(list: Array<any>, i?: any): any {
+        return list.filter(item=>!item.del);
+    }
+}
+
+@Pipe({
     name: 'formattime'
 })
 export class FormatTimePipe implements PipeTransform {
