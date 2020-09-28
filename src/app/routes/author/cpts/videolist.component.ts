@@ -48,6 +48,26 @@ export class VideoListComponent implements OnInit {
 	videoClick(item):void{
 		this.router.navigate(['/details/'+item.id]);
 	}
+
+	currentItem;
+	currentMenuEle;
+	eleOut;
+	menuBtn(evt:MouseEvent,ele:any){
+		evt.preventDefault();
+		evt.stopPropagation();
+		
+		if(this.currentMenuEle){
+			this.currentMenuEle.style.display = "none";
+		}
+
+		this.currentMenuEle = ele;
+		ele.style.display = "block";
+
+		clearTimeout(this.eleOut);
+		this.eleOut = setTimeout(()=>{
+			ele.style.display = "none";
+		},3000);
+	}
 	
 	getUserCircle():void{
 		this.loading = true;
