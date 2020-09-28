@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HttpService } from 'src/app/shared/services/http';
 
 @Component({
     selector: 'header-console',
@@ -24,19 +25,27 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 
 export class HeaderConsoleComponent implements OnInit {
-    // ctx: string;
-    // id=1;
-    uid;
+    loading = true;
+
+	headImg = "./assets/images/headimg.png";
+
+	pageType = 1;
+
+	baseUrl = "";
+	uid;
+
+    routeUrl;
 
     // <li class="tabDivActive">精选</li>
-    menus = [
-        {id:1,name:"精选",current:true},
+    menus:Array<any> = [
+        {id:1,name:"精选",current:false},
         {id:2,name:"关注",current:false},
         {id:3,name:"我的圈子",current:false}
     ];
 
     constructor(
         private route: ActivatedRoute,
+        private http: HttpService,
         private router: Router
     ) { 
         
@@ -66,6 +75,10 @@ export class HeaderConsoleComponent implements OnInit {
 
     ngOnInit() {
         this.uid = window["context"]["uid"];
+        this.routeUrl = this.router.url.toString();
+
+        this.getMineNavigation();
+
         // let url = this.router.url;
         // if(url == '/meetlist/name'){
         //     this.id = 2;
@@ -91,18 +104,43 @@ export class HeaderConsoleComponent implements OnInit {
                 this.router.navigate(['/main/oneself']);
             break;
         }
-        // this.id = i;
-        // if(i==1){
-        //     this.router.navigate(['/meetlist/code']);
-        // }else{
-        //     this.router.navigate(['/meetlist/name']);
-        // }
+        if(item.uid){
+            item.current = true;
+            this.router.navigate(['/main/circle/'+item.uid]);
+        }
     }
 
     myAuthorClick(){
         this.router.navigate(['/myauthor/main']);
     }
 
+    getMineNavigation():void{
+		this.loading = true;
+
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("uid",this.uid);
+
+		let url = "/jqkj/circleMine/getMineNavigation";
+		this.http.get(url, params, null).subscribe(data => {
+			if(data.status == 0){
+                this.menus.map((item)=>item.current=false);
+                let list = data.data || [];
+                list.forEach(item=>{
+                    this.menus.push({
+                        "uid":item.uid,
+                        "name":item.circleName,
+                        "current":this.routeUrl.indexOf(item.uid) > -1 ? true : false
+                    });
+                })
+				// this.menus = this.menus.concat(list);
+			}
+			this.loading = false;
+		}, error => {
+			console.error(error);
+			this.loading = false;
+		});
+    }
+    
     getLicense(): void {
       // this.http.post('/platform/authz/getList', null , this.ctx).subscribe(data => {
       //   if (data.code === 200) {

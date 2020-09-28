@@ -30,7 +30,11 @@ export class DetailsComponent implements OnInit {
 		return this.baseUrl + this.detail.video_path;
 	}
 	get getVideoImagePath(): string {
-		return this.baseUrl + "/" + this.detail.video_image;
+		if(this.detail.video_image){
+			return this.baseUrl + "/" + this.detail.video_image;
+		}else{
+			return this.videoImg;
+		}
 	}
 	
 	constructor(

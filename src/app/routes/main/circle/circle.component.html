@@ -1,0 +1,27 @@
+<!-- <loading [isshow]="loading"></loading> -->
+
+<div dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
+	<div class="contDiv">
+		<ul class="contDiv-list">
+			<li *ngFor="let item of data;let i = index;">
+				<div (click)="videoClick(item)" class="contDiv-img">
+					<img #vimg [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" />
+					<!-- baseUrl + '/' + item.video_image ||  -->
+					<span>{{item.video_len}}</span>
+				</div>
+				<div class="contDiv-text">
+					<div (click)="headerClick(item)" class="contDiv-text-left">
+						<img [src]="item.headimgurl || headImg" alt="">
+					</div>
+					<div class="contDiv-text-right">
+						<div class="t">{{item.title}}</div>
+						<div class="c">
+							<p>{{item.name}}·{{item.create_time | formattime}} <span>圈主</span></p>
+							<p class="d">{{item.comment_num || 0}}</p>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
