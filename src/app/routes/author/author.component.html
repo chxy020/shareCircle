@@ -20,14 +20,16 @@
     <!-- <div (click)="addCircleBtn()" class="tipsTextBtn"></div>申请加入按钮 -->
 </div>
 
-<div class="contDivOutside" *ngIf="detail.status==0">
+<author-video-list *ngIf="detail.status==0"></author-video-list>
+
+<!-- <div class="contDivOutside" *ngIf="detail.status==0">
     <ul class="contTab">
         <li (click)="changePage(1)" [class.tabDivActive]="pageType==1" >视频</li>
         <li (click)="changePage(2)" [class.tabDivActive]="pageType==2" >播放列表</li>
     </ul>
     <author-video-list *ngIf="pageType==1"></author-video-list>
     <author-play-list *ngIf="pageType==2"></author-play-list>
-</div>
+</div> -->
 
 <!-- 
 <div class="contDivOutside" style="display: none-;">

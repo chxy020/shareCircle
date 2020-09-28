@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 import { PageRoutes } from './mycircle.routing';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MyCircleComponent } from './mycircle.component';
+import { NowListComponent } from './cpts/FriendNow.component';
+import { CommentListComponent } from './cpts/comment.component';
+import { ShareListComponent } from './cpts/share.component';
 
 @NgModule({
 	imports: [
@@ -12,7 +15,10 @@ import { MyCircleComponent } from './mycircle.component';
 		SharedModule
 	],
 	declarations: [
-		MyCircleComponent
+		MyCircleComponent,
+		NowListComponent,
+		CommentListComponent,
+		ShareListComponent,
 		// CarouselSensePipe,
 		// DelSensePipe,
 		// SenseSharedKeySearchPipe

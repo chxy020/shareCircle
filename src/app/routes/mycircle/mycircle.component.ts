@@ -70,6 +70,7 @@ export class MyCircleComponent implements OnInit {
 		});
 	}
 
+
 	currentItem;
 	currentMenuEle;
 	eleOut;
@@ -104,56 +105,5 @@ export class MyCircleComponent implements OnInit {
 		// this.newPop = true;
 	}
 	
-	getFriendNow():void{
-		this.loading = true;
-
-		const params: Map<string, any> = new Map<string, any>();
-		params.set("page",this.page);
-		params.set("limit",this.limit);
-		params.set("uid",this.uid);
-		
-		let url = "/jqkj/circleMine/getFriendNow";
-		this.http.get(url, params, null).subscribe(data => {
-			if(data.code == 0){
-				let list = data.data || [];
-
-				this.data = this.data.concat(list);
-
-				if(list.length < this.limit){
-					// 锁定
-					this.me.lock();
-					// 无数据
-					this.me.noData(true);
-				}
-
-				setTimeout(()=>{
-					this.me.resetload();
-				},200);
-			}
-
-			this.loading = false;
-		}, error => {
-			console.error(error);
-			this.loading = false;
-		});
-	}
-
-	me;
-	drapUp(me:any){
-        console.log("drapUp-----");
-        this.me = me;
-        this.me.resetload();
-        this.me.unlock();
-		this.me.noData(false);
-		
-        this.page = 1;
-        this.data = [];
-        this.getFriendNow();
-    }
-    drapDown(me:any){
-        console.log("drapDown------------");
-        this.me = me;
-        this.page++;
-        this.getFriendNow();
-	}
+	
 }

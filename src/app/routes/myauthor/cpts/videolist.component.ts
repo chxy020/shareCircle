@@ -90,11 +90,6 @@ export class VideoListComponent implements OnInit {
 		this.currentItem = item;
 
 		this.filePop = true;
-
-		// this.folderName = item.filename;
-		// this.folderId = item.id;
-		// this.newPopEdit = true;
-		// this.newPop = true;
 	}
 	addRecommend(evt:MouseEvent,item:any){
 		evt.preventDefault();
@@ -108,11 +103,14 @@ export class VideoListComponent implements OnInit {
 			this.currentMenuEle.style.display = "none";
 		}
 
-		// this.currentItem = item;
-		// this.folderName = item.filename;
-		// this.folderId = item.id;
-		// this.newPopEdit = true;
-		// this.newPop = true;
+		// let b = window.confirm("确认删除吗?");
+		// if(b){
+			
+		// }
+
+		this.currentItem = item;
+
+		this.applySelected();
 	}
 	changeShowStatus(evt:MouseEvent,item:any){
 		evt.preventDefault();
@@ -121,11 +119,10 @@ export class VideoListComponent implements OnInit {
 			this.currentMenuEle.style.display = "none";
 		}
 
-		// this.currentItem = item;
-		// this.folderName = item.filename;
-		// this.folderId = item.id;
-		// this.newPopEdit = true;
-		// this.newPop = true;
+		this.currentItem = item;
+
+		let isshow = +!item.isshow
+		this.updateIsShow(isshow);
 	}
 	delItem(evt:MouseEvent,item:any){
 		evt.preventDefault();
@@ -191,6 +188,77 @@ export class VideoListComponent implements OnInit {
 
 				this.currentItem.filesId = 1;
 				this.currentItem.fileName = fileName;
+			}else{
+				this.showMsg = data.msg;
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}
+			
+			this.loading = false;
+		}, error => {
+			console.error(error);
+			this.loading = false;
+		});
+	}
+
+	applySelected():void{
+		this.loading = true;
+		
+
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("circleId",this.currentItem.id);
+		params.set("uid",this.uid);
+		
+		let url = "/jqkj/circleMine/applySelected";
+		this.http.post(url, params, null).subscribe(data => {
+			this.closePop();
+
+			if(data.status == 0){
+				this.showMsg = "视频加精已申请";
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+
+				this.currentItem.type = 0;
+				// this.currentItem.fileName = fileName;
+			}else{
+				this.showMsg = data.msg;
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}
+			
+			this.loading = false;
+		}, error => {
+			console.error(error);
+			this.loading = false;
+		});
+	}
+
+	updateIsShow(isshow):void{
+		this.loading = true;
+		
+
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("circleId",this.currentItem.id);
+		params.set("isshow",isshow);
+		
+		let url = "/jqkj/circleMine/updateIsShow";
+		this.http.post(url, params, null).subscribe(data => {
+			this.closePop();
+
+			if(data.status == 0){
+				this.showMsg = "视频状态设置成功";
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+
+				this.currentItem.isshow = isshow;
 			}else{
 				this.showMsg = data.msg;
 				this.showTip = true;
