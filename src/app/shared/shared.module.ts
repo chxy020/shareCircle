@@ -20,9 +20,6 @@ import { AddCircleModule } from './addcircle/addcircle.module';
         AddCircleModule,
         DropLoadModule
     ],
-    providers: [
-
-    ],
     exports: [
         CommonModule,
         FormsModule,

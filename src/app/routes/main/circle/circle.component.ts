@@ -35,7 +35,6 @@ export class CircleComponent implements OnInit {
 		// this.id = +this.route.snapshot.data.id;
 		// this.title = this.titles[this.id];
 		this.uid = this.route.snapshot.paramMap.get('uid');
-		debugger
 	}
 
 	meetClick(item):void{
@@ -51,7 +50,12 @@ export class CircleComponent implements OnInit {
 	}
 
 	headerClick(item):void{
-		this.router.navigate(['/author/main/'+item.uid]);
+		if(this.uid == item.uid){
+			//自己的视频，进入自己首页
+			this.router.navigate(['/myauthor/main']);
+		}else{
+			this.router.navigate(['/author/main/'+item.uid]);
+		}
 	}
 	
 	getNavigationContent():void{

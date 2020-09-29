@@ -3,15 +3,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http';
 
 @Component({
-	selector: 'author-video-list',
-	templateUrl: './videolist.component.html'
+	selector: 'author-now-list',
+	templateUrl: './friendnow.component.html'
 })
 
-export class VideoListComponent implements OnInit {
+export class NowListComponent implements OnInit {
 	
 	data = [];
 	loading = true;
-	me:any;
 
 	page = 0;
 	limit = 10;
@@ -21,20 +20,19 @@ export class VideoListComponent implements OnInit {
 
 	baseUrl = "";
 	uid;
-
 	constructor(
 		private route: ActivatedRoute,
 		private http: HttpService,
 		private router: Router
 	) {
 		this.baseUrl = window["context"]["apiroot"];
+		// this.uid = window['context']['uid'];
+		this.uid = this.route.snapshot.paramMap.get('uid');
 	}
 
 	ngOnInit() {
 		// this.id = +this.route.snapshot.data.id;
 		// this.title = this.titles[this.id];
-
-		this.uid = this.route.snapshot.paramMap.get('uid');
 	}
 
 	meetClick(item):void{
@@ -48,7 +46,7 @@ export class VideoListComponent implements OnInit {
 	videoClick(item):void{
 		this.router.navigate(['/details/'+item.id]);
 	}
-
+	
 	currentItem;
 	currentMenuEle;
 	eleOut;
@@ -69,7 +67,7 @@ export class VideoListComponent implements OnInit {
 		},3000);
 	}
 	
-	getUserCircle():void{
+	getFriendNow():void{
 		this.loading = true;
 
 		const params: Map<string, any> = new Map<string, any>();
@@ -77,7 +75,7 @@ export class VideoListComponent implements OnInit {
 		params.set("limit",this.limit);
 		params.set("uid",this.uid);
 		
-		let url = "/jqkj/cricle/getUserCircle";
+		let url = "/jqkj/circleMine/getFriendNow";
 		this.http.get(url, params, null).subscribe(data => {
 			if(data.code == 0){
 				let list = data.data || [];
@@ -103,7 +101,7 @@ export class VideoListComponent implements OnInit {
 		});
 	}
 
-
+	me;
 	drapUp(me:any){
         console.log("drapUp-----");
         this.me = me;
@@ -113,13 +111,13 @@ export class VideoListComponent implements OnInit {
 		
         this.page = 1;
         this.data = [];
-        this.getUserCircle();
+        this.getFriendNow();
     }
     drapDown(me:any){
         console.log("drapDown------------");
         this.me = me;
         this.page++;
-        this.getUserCircle();
+        this.getFriendNow();
 	}
 	
 }

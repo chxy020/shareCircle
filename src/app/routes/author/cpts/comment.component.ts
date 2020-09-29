@@ -3,16 +3,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http';
 
 @Component({
-	selector: 'attention-list',
-	templateUrl: './attention.component.html',
-	styleUrls: ['./attention.component.css']
+	selector: 'author-comment-list',
+	templateUrl: './comment.component.html'
 })
 
-export class AttentionComponent implements OnInit {
+export class CommentListComponent implements OnInit {
 	
 	data = [];
 	loading = true;
-	me:any;
 
 	page = 0;
 	limit = 10;
@@ -22,14 +20,13 @@ export class AttentionComponent implements OnInit {
 
 	baseUrl = "";
 	uid;
-
 	constructor(
 		private route: ActivatedRoute,
 		private http: HttpService,
 		private router: Router
 	) {
 		this.baseUrl = window["context"]["apiroot"];
-		this.uid = window['context']['uid'];
+		this.uid = this.route.snapshot.paramMap.get('uid');
 	}
 
 	ngOnInit() {
@@ -48,24 +45,36 @@ export class AttentionComponent implements OnInit {
 	videoClick(item):void{
 		this.router.navigate(['/details/'+item.id]);
 	}
-
-	headerClick(item):void{
-		if(this.uid == item.uid){
-			//自己的视频，进入自己首页
-			this.router.navigate(['/myauthor/main']);
-		}else{
-			this.router.navigate(['/author/main/'+item.uid]);
+	
+	currentItem;
+	currentMenuEle;
+	eleOut;
+	menuBtn(evt:MouseEvent,ele:any){
+		evt.preventDefault();
+		evt.stopPropagation();
+		
+		if(this.currentMenuEle){
+			this.currentMenuEle.style.display = "none";
 		}
+
+		this.currentMenuEle = ele;
+		ele.style.display = "block";
+
+		clearTimeout(this.eleOut);
+		this.eleOut = setTimeout(()=>{
+			ele.style.display = "none";
+		},3000);
 	}
 	
-	getFollow():void{
+	getFriendComment():void{
 		this.loading = true;
+
 		const params: Map<string, any> = new Map<string, any>();
 		params.set("page",this.page);
 		params.set("limit",this.limit);
 		params.set("uid",this.uid);
-
-		let url = "/jqkj/cricle/getFollow";
+		
+		let url = "/jqkj/circleMine/getFriendComment";
 		this.http.get(url, params, null).subscribe(data => {
 			if(data.code == 0){
 				let list = data.data || [];
@@ -91,7 +100,7 @@ export class AttentionComponent implements OnInit {
 		});
 	}
 
-
+	me;
 	drapUp(me:any){
         console.log("drapUp-----");
         this.me = me;
@@ -101,14 +110,13 @@ export class AttentionComponent implements OnInit {
 		
         this.page = 1;
         this.data = [];
-        this.getFollow();
+        this.getFriendComment();
     }
     drapDown(me:any){
         console.log("drapDown------------");
         this.me = me;
         this.page++;
-        this.getFollow();
+        this.getFriendComment();
 	}
-
 	
 }

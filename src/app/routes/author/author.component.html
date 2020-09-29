@@ -3,11 +3,11 @@
 
 <div class="authorInfo">
     <p class="a"><img [src]="detail.headimgurl || headImg" alt=""></p>
-    <p class="b">{{detail.circleName}}的圈子</p>
+    <p class="b">{{detail?.data?.circleName}}的圈子</p>
     <div class="c">
-        <p>资源 {{detail.resourceNum}}</p>
-        <p>分享 {{detail.resourceNum}}</p>
-        <p>下载 {{detail.downLoad}}</p>
+        <p>资源 {{detail?.data?.resourceNum}}</p>
+        <p>分享 {{detail?.data?.resourceNum}}</p>
+        <p>下载 {{detail?.data?.downLoad}}</p>
     </div>
 </div>
 <!-- 没权限时 -->
@@ -20,326 +20,38 @@
     <!-- <div (click)="addCircleBtn()" class="tipsTextBtn"></div>申请加入按钮 -->
 </div>
 
-<author-video-list *ngIf="detail.status==0"></author-video-list>
-
-<!-- <div class="contDivOutside" *ngIf="detail.status==0">
-    <ul class="contTab">
-        <li (click)="changePage(1)" [class.tabDivActive]="pageType==1" >视频</li>
-        <li (click)="changePage(2)" [class.tabDivActive]="pageType==2" >播放列表</li>
-    </ul>
-    <author-video-list *ngIf="pageType==1"></author-video-list>
-    <author-play-list *ngIf="pageType==2"></author-play-list>
-</div> -->
-
-<!-- 
-<div class="contDivOutside" style="display: none-;">
-    <ul class="contTab">
-        <li>视频</li>
-        <li class="tabDivActive">播放列表</li>
-    </ul>
-    <div class="contDiv" style="display: none;">
-        <ul class="contDiv-list">
-            <li>
-                <div class="contDiv-img">
-                    <img src="assets/images/listimg.jpg" alt="">
-                    <span>10:20</span>
-                </div>
-                <div class="contDiv-text">
-                    <div class="contDiv-text-left">
-                        <img src="assets/images/headimg.png" alt="">
-                    </div>
-                    <div class="contDiv-text-right">
-                        <div class="t">日出-愿你有一个美好的今日时光！日出-愿你有一个美好好的好的的今日时日出-愿你有一个美好的今日时光光</div>
-                        <div class="c">
-                            <p>管理员·1小时前</p>
-                            <p class="d">127</p>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="contDiv-img">
-                    <img src="assets/images/listimg.jpg" alt="">
-                    <span>10:20</span>
-                </div>
-                <div class="contDiv-text">
-                    <div class="contDiv-text-left">
-                        <img src="assets/images/headimg.png" alt="">
-                    </div>
-                    <div class="contDiv-text-right">
-                        <div class="t">日出-愿你有一个美好的今日时光！日出-愿你有一个美好好的好的的今日时日出-愿你有一个美好的今日时光光</div>
-                        <div class="c">
-                            <p>管理员·1小时前</p>
-                            <p class="d">127</p>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="contDiv-img">
-                    <img src="assets/images/listimg.jpg" alt="">
-                    <span>10:20</span>
-                </div>
-                <div class="contDiv-text">
-                    <div class="contDiv-text-left">
-                        <img src="assets/images/headimg.png" alt="">
-                    </div>
-                    <div class="contDiv-text-right">
-                        <div class="t">日出-愿你有一个美好的今日时光！日出-愿你有一个美好好的好的的今日时日出-愿你有一个美好的今日时光光</div>
-                        <div class="c">
-                            <p>管理员·1小时前</p>
-                            <p class="d">127</p>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="contDiv-img">
-                    <img src="assets/images/listimg.jpg" alt="">
-                    <span>10:20</span>
-                </div>
-                <div class="contDiv-text">
-                    <div class="contDiv-text-left">
-                        <img src="assets/images/headimg.png" alt="">
-                    </div>
-                    <div class="contDiv-text-right">
-                        <div class="t">日出-愿你有一个美好的今日时光！日出-愿你有一个美好好的好的的今日时日出-愿你有一个美好的今日时光光</div>
-                        <div class="c">
-                            <p>管理员·1小时前</p>
-                            <p class="d">127</p>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="contDiv-img">
-                    <img src="assets/images/listimg.jpg" alt="">
-                    <span>10:20</span>
-                </div>
-                <div class="contDiv-text">
-                    <div class="contDiv-text-left">
-                        <img src="assets/images/headimg.png" alt="">
-                    </div>
-                    <div class="contDiv-text-right">
-                        <div class="t">日出-愿你有一个美好的今日时光！日出-愿你有一个美好好的好的的今日时日出-愿你有一个美好的今日时光光</div>
-                        <div class="c">
-                            <p>管理员·1小时前</p>
-                            <p class="d">127</p>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="contDiv-img">
-                    <img src="assets/images/listimg.jpg" alt="">
-                    <span>10:20</span>
-                </div>
-                <div class="contDiv-text">
-                    <div class="contDiv-text-left">
-                        <img src="assets/images/headimg.png" alt="">
-                    </div>
-                    <div class="contDiv-text-right">
-                        <div class="t">日出-愿你有一个美好的今日时光！日出-愿你有一个美好好的好的的今日时日出-愿你有一个美好的今日时光光</div>
-                        <div class="c">
-                            <p>管理员·1小时前</p>
-                            <p class="d">127</p>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="contDiv-img">
-                    <img src="assets/images/listimg.jpg" alt="">
-                    <span>10:20</span>
-                </div>
-                <div class="contDiv-text">
-                    <div class="contDiv-text-left">
-                        <img src="assets/images/headimg.png" alt="">
-                    </div>
-                    <div class="contDiv-text-right">
-                        <div class="t">日出-愿你有一个美好的今日时光！日出-愿你有一个美好好的好的的今日时日出-愿你有一个美好的今日时光光</div>
-                        <div class="c">
-                            <p>管理员·1小时前</p>
-                            <p class="d">127</p>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="contDiv-img">
-                    <img src="assets/images/listimg.jpg" alt="">
-                    <span>10:20</span>
-                </div>
-                <div class="contDiv-text">
-                    <div class="contDiv-text-left">
-                        <img src="assets/images/headimg.png" alt="">
-                    </div>
-                    <div class="contDiv-text-right">
-                        <div class="t">日出-愿你有一个美好的今日时光！日出-愿你有一个美好好的好的的今日时日出-愿你有一个美好的今日时光光</div>
-                        <div class="c">
-                            <p>管理员·1小时前</p>
-                            <p class="d">127</p>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="contDiv-img">
-                    <img src="assets/images/listimg.jpg" alt="">
-                    <span>10:20</span>
-                </div>
-                <div class="contDiv-text">
-                    <div class="contDiv-text-left">
-                        <img src="assets/images/headimg.png" alt="">
-                    </div>
-                    <div class="contDiv-text-right">
-                        <div class="t">日出-愿你有一个美好的今日时光！日出-愿你有一个美好好的好的的今日时日出-愿你有一个美好的今日时光光</div>
-                        <div class="c">
-                            <p>管理员·1小时前</p>
-                            <p class="d">127</p>
-                        </div>
-                    </div>
-                </div>
-            </li>
+<div class="contDivOutside" *ngIf="detail.status==0">
+    <div class="tab-list">
+        <p>主页动态</p>
+        <ul>
+            <li (click)="changePage(1)" [class.on]="pageType==1">最新发布</li>
+            <li (click)="changePage(2)" [class.on]="pageType==2">最多评论</li>
+            <li (click)="changePage(3)" [class.on]="pageType==3">最多分享</li>
         </ul>
     </div>
-    <div class="contDiv" style="display: none-;">
-        <ul class="bofanglist-list">
-            <li>
-                <div class="bofanglist-img">
-                    <img src="assets/images/listimg.jpg" alt="">
-                    <div class="a">
-                        <span>320</span>
-                        <i></i>
-                    </div>
-                </div>
-                <div class="bofanglist-text">
-                    <div class="bofanglist-text-top">
-                        晓晓私密圈
-                    </div>
-                    <div class="bofanglist-text-bottom">17视频</div>
-                </div>
-            </li>
-            <li>
-                <div class="bofanglist-img">
-                    <img src="assets/images/listimg.jpg" alt="">
-                    <div class="a">
-                        <span>320</span>
-                        <i></i>
-                    </div>
-                </div>
-                <div class="bofanglist-text">
-                    <div class="bofanglist-text-top">
-                        晓晓私密圈
-                    </div>
-                    <div class="bofanglist-text-bottom">17视频</div>
-                </div>
-            </li>
-            <li>
-                <div class="bofanglist-img">
-                    <img src="assets/images/listimg.jpg" alt="">
-                    <div class="a">
-                        <span>320</span>
-                        <i></i>
-                    </div>
-                </div>
-                <div class="bofanglist-text">
-                    <div class="bofanglist-text-top">
-                        晓晓私密圈
-                    </div>
-                    <div class="bofanglist-text-bottom">17视频</div>
-                </div>
-            </li>
-            <li>
-                <div class="bofanglist-img">
-                    <img src="assets/images/listimg.jpg" alt="">
-                    <div class="a">
-                        <span>320</span>
-                        <i></i>
-                    </div>
-                </div>
-                <div class="bofanglist-text">
-                    <div class="bofanglist-text-top">
-                        晓晓私密圈
-                    </div>
-                    <div class="bofanglist-text-bottom">17视频</div>
-                </div>
-            </li>
-            <li>
-                <div class="bofanglist-img">
-                    <img src="assets/images/listimg.jpg" alt="">
-                    <div class="a">
-                        <span>320</span>
-                        <i></i>
-                    </div>
-                </div>
-                <div class="bofanglist-text">
-                    <div class="bofanglist-text-top">
-                        晓晓私密圈
-                    </div>
-                    <div class="bofanglist-text-bottom">17视频</div>
-                </div>
-            </li>
-            <li>
-                <div class="bofanglist-img">
-                    <img src="assets/images/listimg.jpg" alt="">
-                    <div class="a">
-                        <span>320</span>
-                        <i></i>
-                    </div>
-                </div>
-                <div class="bofanglist-text">
-                    <div class="bofanglist-text-top">
-                        晓晓私密圈
-                    </div>
-                    <div class="bofanglist-text-bottom">17视频</div>
-                </div>
-            </li>
-            <li>
-                <div class="bofanglist-img">
-                    <img src="assets/images/listimg.jpg" alt="">
-                    <div class="a">
-                        <span>320</span>
-                        <i></i>
-                    </div>
-                </div>
-                <div class="bofanglist-text">
-                    <div class="bofanglist-text-top">
-                        晓晓私密圈
-                    </div>
-                    <div class="bofanglist-text-bottom">17视频</div>
-                </div>
-            </li>
-            <li>
-                <div class="bofanglist-img">
-                    <img src="assets/images/listimg.jpg" alt="">
-                    <div class="a">
-                        <span>320</span>
-                        <i></i>
-                    </div>
-                </div>
-                <div class="bofanglist-text">
-                    <div class="bofanglist-text-top">
-                        晓晓私密圈
-                    </div>
-                    <div class="bofanglist-text-bottom">17视频</div>
-                </div>
-            </li>
-            <li>
-                <div class="bofanglist-img">
-                    <img src="assets/images/listimg.jpg" alt="">
-                    <div class="a">
-                        <span>320</span>
-                        <i></i>
-                    </div>
-                </div>
-                <div class="bofanglist-text">
-                    <div class="bofanglist-text-top">
-                        晓晓私密圈
-                    </div>
-                    <div class="bofanglist-text-bottom">17视频</div>
-                </div>
-            </li>
-        </ul>
+    
+    <author-now-list *ngIf="pageType==1"></author-now-list>
+    <author-comment-list *ngIf="pageType==2"></author-comment-list>
+    <author-share-list *ngIf="pageType==3"></author-share-list>
+</div>
+
+
+<!-- 退出圈子弹框 -->
+<div class="pop-mask" *ngIf="quitPop">
+    <div class="circleExitpop">
+        <div class="det-sharepop-bt">
+            <div class="ltext">
+                退出圈子
+            </div>
+            <div (click)="quitPop=false;" class="rbtn"></div>
+        </div>
+        <div class="circleExitpop-list">
+                <label><input type="radio" [(ngModel)]="quitType" name="exit" value="1" >退出并删除圈子动态</label>
+                <label><input type="radio" [(ngModel)]="quitType" name="exit" value="2" >退出但保留圈子动态</label>
+        </div>
+        <div class="circleExitpop-btn">
+            <div (click)="quitPop=false;" class="a">再想想</div>
+            <div (click)="quitEnter()" class="b">确定</div>
+        </div>
     </div>
-</div> -->
+</div>

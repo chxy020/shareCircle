@@ -3,30 +3,30 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http';
 
 @Component({
-	selector: 'author-play-list',
-	templateUrl: './playlist.component.html'
+	selector: 'author-share-list',
+	templateUrl: './share.component.html'
 })
 
-export class PlayListComponent implements OnInit {
+export class ShareListComponent implements OnInit {
 	
 	data = [];
 	loading = true;
-	me:any;
 
 	page = 0;
 	limit = 10;
 
-	headImg = "./assets/images/headimg.png";
-	videoImg = "./assets/images/listimg.jpg";
+	headImg = "./assets/images/default-touxiang.png";
+	videoImg = "./assets/images/default-img.png";
 
 	baseUrl = "";
-
+	uid;
 	constructor(
 		private route: ActivatedRoute,
 		private http: HttpService,
 		private router: Router
 	) {
 		this.baseUrl = window["context"]["apiroot"];
+		this.uid = this.route.snapshot.paramMap.get('uid');
 	}
 
 	ngOnInit() {
@@ -42,17 +42,39 @@ export class PlayListComponent implements OnInit {
         // }
 	}
 
+	videoClick(item):void{
+		this.router.navigate(['/details/'+item.id]);
+	}
 	
-	getUserCircle():void{
+	currentItem;
+	currentMenuEle;
+	eleOut;
+	menuBtn(evt:MouseEvent,ele:any){
+		evt.preventDefault();
+		evt.stopPropagation();
+		
+		if(this.currentMenuEle){
+			this.currentMenuEle.style.display = "none";
+		}
+
+		this.currentMenuEle = ele;
+		ele.style.display = "block";
+
+		clearTimeout(this.eleOut);
+		this.eleOut = setTimeout(()=>{
+			ele.style.display = "none";
+		},3000);
+	}
+	
+	getFriendShare():void{
 		this.loading = true;
-		let uid = window['context']['uid'];
 
 		const params: Map<string, any> = new Map<string, any>();
 		params.set("page",this.page);
 		params.set("limit",this.limit);
-		params.set("uid",uid);
+		params.set("uid",this.uid);
 		
-		let url = "/jqkj/cricle/getUserCircle";
+		let url = "/jqkj/circleMine/getFriendShare";
 		this.http.get(url, params, null).subscribe(data => {
 			if(data.code == 0){
 				let list = data.data || [];
@@ -78,7 +100,7 @@ export class PlayListComponent implements OnInit {
 		});
 	}
 
-
+	me;
 	drapUp(me:any){
         console.log("drapUp-----");
         this.me = me;
@@ -88,15 +110,13 @@ export class PlayListComponent implements OnInit {
 		
         this.page = 1;
         this.data = [];
-        this.getUserCircle();
+        this.getFriendShare();
     }
     drapDown(me:any){
         console.log("drapDown------------");
         this.me = me;
         this.page++;
-        // this.getUserCircle();
+        this.getFriendShare();
 	}
-	
-	
 	
 }

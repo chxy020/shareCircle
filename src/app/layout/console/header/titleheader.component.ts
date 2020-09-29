@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { SubjectService } from 'src/app/shared/services/subjectService.service';
 
 @Component({
     selector: 'title-header',
@@ -9,10 +10,14 @@ import { Location } from '@angular/common';
         <div (click)="back()" class="topDiv-btnL"></div>
         {{title}}
 
-        <div (click)="menuBtn($event,menuele)" *ngIf="title=='我的主页'" class="topDiv-btnR"></div>
+        <div (click)="menuBtn($event,menuele)" *ngIf="title=='我的主页' || title=='作者主页'" class="topDiv-btnR"></div>
         <div #menuele style="display:none;" class="tip_operlist">
-            <ul>
+            <ul *ngIf="title=='我的主页'" >
                 <li (click)="shareCode()" >分享邀请码</li>
+            </ul>
+            <ul *ngIf="title=='作者主页'" >
+                <li (click)="shareCode()" >发布分享</li>
+                <li (click)="quitCircle()" >退出圈子</li>
             </ul>
         </div>
     </div>
@@ -28,6 +33,7 @@ export class TitleHeaderComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private location: Location,
+        private sub:SubjectService,
         private router: Router
     ) { 
         
@@ -65,5 +71,9 @@ export class TitleHeaderComponent implements OnInit {
     
     shareCode(){
         this.router.navigate(['/invitecode']);
+    }
+
+    quitCircle(){
+        this.sub.quitCircleSub();
     }
 }

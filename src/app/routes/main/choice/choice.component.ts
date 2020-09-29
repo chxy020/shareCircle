@@ -24,6 +24,7 @@ export class ChoiceComponent implements OnInit {
 	videoImg = "./assets/images/default-img.png";
 
 	baseUrl = "";
+	uid;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -31,6 +32,7 @@ export class ChoiceComponent implements OnInit {
 		private router: Router
 	) {
 		this.baseUrl = window["context"]["apiroot"];
+		this.uid = window['context']['uid'];
 	}
 
 	ngOnInit() {
@@ -53,7 +55,12 @@ export class ChoiceComponent implements OnInit {
 	}
 
 	headerClick(item):void{
-		this.router.navigate(['/author/main/'+item.uid]);
+		if(this.uid == item.uid){
+			//自己的视频，进入自己首页
+			this.router.navigate(['/myauthor/main']);
+		}else{
+			this.router.navigate(['/author/main/'+item.uid]);
+		}
 	}
 
 	// baseUrl + '/' + item.video_image || videoImg

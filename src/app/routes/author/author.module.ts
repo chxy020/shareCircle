@@ -4,8 +4,9 @@ import { CommonModule } from '@angular/common';
 import { PageRoutes } from './author.routing';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AuthorComponent } from './author.component';
-import { VideoListComponent } from './cpts/videolist.component';
-import { PlayListComponent } from './cpts/playlist.component';
+import { NowListComponent } from './cpts/friendnow.component';
+import { CommentListComponent } from './cpts/comment.component';
+import { ShareListComponent } from './cpts/share.component';
 
 @NgModule({
 	imports: [
@@ -13,10 +14,12 @@ import { PlayListComponent } from './cpts/playlist.component';
 		PageRoutes,
 		SharedModule
 	],
+	
 	declarations: [
 		AuthorComponent,
-		VideoListComponent,
-		PlayListComponent,
+		NowListComponent,
+		CommentListComponent,
+		ShareListComponent,
 		// CarouselSensePipe,
 		// DelSensePipe,
 		// SenseSharedKeySearchPipe

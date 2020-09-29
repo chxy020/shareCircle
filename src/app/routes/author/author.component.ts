@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, Injector } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http';
+import { SubjectService } from 'src/app/shared/services/subjectService.service';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'author-main',
@@ -23,9 +25,20 @@ export class AuthorComponent implements OnInit {
 
 	detail:any = {};
 
+	quitSub:Subscription;
+
+	quitPop = false;
+	quitType = "1";
+
+    ngOnDestroy(): void {
+        if (this.quitSub) {
+            this.quitSub.unsubscribe();
+        }
+    }
 	constructor(
 		private route: ActivatedRoute,
 		private http: HttpService,
+		private sub:SubjectService,
 		private router: Router
 	) {
 		this.baseUrl = window["context"]["apiroot"];
@@ -33,8 +46,12 @@ export class AuthorComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		// this.id = +this.route.snapshot.data.id;
-		// this.title = this.titles[this.id];
+		this.quitSub = this.sub.quitCircleObservable.subscribe(
+            (param:any) =>{
+				this.quitPop = true;
+			}
+		);
+		
 		this.authorUid = this.route.snapshot.paramMap.get('uid');
 		this.getAuthorInfo();
 	}
@@ -51,6 +68,10 @@ export class AuthorComponent implements OnInit {
 	}
 	addCircleBtn():void{
 		this.addCircle = true;
+	}
+
+	quitEnter(){
+		console.log(this.quitType)
 	}
 
 	getAuthorInfo():void{

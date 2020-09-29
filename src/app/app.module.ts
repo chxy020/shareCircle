@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpService } from './shared/services/http';
 import { SharedModule } from './shared/shared.module';
+import { SubjectService } from './shared/services/subjectService.service';
 
 @NgModule({
 	declarations: [
@@ -19,6 +20,7 @@ import { SharedModule } from './shared/shared.module';
 	],
 	providers: [
 		HttpClient,
+		SubjectService,
 		HttpService
 	],
 	bootstrap: [AppComponent]

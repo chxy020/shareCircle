@@ -53,6 +53,19 @@ export class HeaderConsoleComponent implements OnInit {
 
         this.menus.map((item)=>item.current=false);
 
+        this.currentPage();
+
+        // this.route.params.pipe(map).map(params => {
+        //     return params['id'];
+        // }).subscribe(id => {
+        //     this.loadDB(id);
+        // });
+
+        // this.heroService.getHero(id)
+        //   .subscribe(hero => this.hero = hero);
+    }
+
+    currentPage(){
         let url = this.router.url;
         if(url.indexOf("/main/choice") > -1){
             this.menus[0].current = true;
@@ -63,14 +76,6 @@ export class HeaderConsoleComponent implements OnInit {
         if(url.indexOf("/main/oneself") > -1){
             this.menus[2].current = true;
         }
-        // this.route.params.pipe(map).map(params => {
-        //     return params['id'];
-        // }).subscribe(id => {
-        //     this.loadDB(id);
-        // });
-
-        // this.heroService.getHero(id)
-        //   .subscribe(hero => this.hero = hero);
     }
 
     ngOnInit() {
@@ -129,9 +134,11 @@ export class HeaderConsoleComponent implements OnInit {
                     this.menus.push({
                         "uid":item.uid,
                         "name":item.circleName,
-                        "current":this.routeUrl.indexOf(item.uid) > -1 ? true : false
+                        "current":this.routeUrl.indexOf('circle/'+item.uid) > -1 ? true : false
                     });
-                })
+                });
+
+                this.currentPage();
 				// this.menus = this.menus.concat(list);
 			}
 			this.loading = false;
