@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, Injector } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { HttpService } from 'src/app/shared/services/http';
+import { SubjectService } from 'src/app/shared/services/subjectService.service';
 
 @Component({
 	selector: 'circle-list',
@@ -23,18 +25,41 @@ export class CircleComponent implements OnInit {
 	baseUrl = "";
 	uid;
 
+	keySearchSub:Subscription;
+	keyWord;
+
+    ngOnDestroy(): void {
+        if (this.keySearchSub) {
+            this.keySearchSub.unsubscribe();
+        }
+    }
 	constructor(
 		private route: ActivatedRoute,
 		private http: HttpService,
+		private sub: SubjectService,
 		private router: Router
 	) {
 		this.baseUrl = window["context"]["apiroot"];
+
+		let keyword = window["context"]["keyWord"] || "";
+		this.keyWord = keyword;
 	}
 
 	ngOnInit() {
 		// this.id = +this.route.snapshot.data.id;
 		// this.title = this.titles[this.id];
 		this.uid = this.route.snapshot.paramMap.get('uid');
+
+		this.keySearchSub = this.sub.keyWordObservable.subscribe(
+            () =>{
+				let keyword = window["context"]["keyWord"] || "";
+				this.keyWord = keyword;
+
+				this.page = 1;
+        		this.data = [];
+				this.getNavigationContent();
+			}
+		);
 	}
 
 	meetClick(item):void{
@@ -61,11 +86,22 @@ export class CircleComponent implements OnInit {
 	getNavigationContent():void{
 		this.loading = true;
 		const params: Map<string, any> = new Map<string, any>();
-		params.set("page",this.page);
-		params.set("limit",this.limit);
-		params.set("uid",this.uid);
 
 		let url = "/jqkj/circleMine/getNavigationContent";
+		//判断关键字搜索
+		if(this.keyWord){
+			url = "/jqkj/cricle/search";
+			params.set("title",this.keyWord);
+			params.set("pageNum",this.page);
+			params.set("limit",this.limit);
+			params.set("circleUid",this.uid);
+			params.set("type",3);
+		}else{
+			params.set("page",this.page);
+			params.set("limit",this.limit);
+			params.set("uid",this.uid);
+		}
+
 		this.http.get(url, params, null).subscribe(data => {
 			if(data.code == 0){
 				let list = data.data || [];

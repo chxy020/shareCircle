@@ -11,6 +11,8 @@ export class NowListComponent implements OnInit {
 	
 	data = [];
 	loading = true;
+	showTip = false;
+	showMsg = "";
 
 	page = 0;
 	limit = 10;
@@ -43,7 +45,7 @@ export class NowListComponent implements OnInit {
 	}
 
 	videoClick(item):void{
-		this.router.navigate(['/details/'+item.id]);
+		this.router.navigate(['/details/'+item.circleId]);
 	}
 	
 	currentItem;
@@ -66,6 +68,104 @@ export class NowListComponent implements OnInit {
 		},3000);
 	}
 	
+	addRecommend(evt:MouseEvent,item:any){
+		evt.preventDefault();
+		evt.stopPropagation();
+
+		if(+item.type === 0){
+			return;
+		}
+
+		if(this.currentMenuEle){
+			this.currentMenuEle.style.display = "none";
+		}
+		this.currentItem = item;
+
+		this.applySelected();
+	}
+
+	delItem(evt:MouseEvent,item:any){
+		evt.preventDefault();
+		evt.stopPropagation();
+		if(this.currentMenuEle){
+			this.currentMenuEle.style.display = "none";
+		}
+
+		this.currentItem = item;
+		let b = window.confirm("确认删除吗?");
+		if(b){
+			this.delectCircle();
+		}
+	}
+	
+	delcount = 0;
+	delectCircle():void{
+		this.loading = true;
+		
+
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("circleId",this.currentItem.circleId);
+		
+		let url = "/jqkj/cricle/delectCircle";
+		this.http.post(url, params, null).subscribe(data => {
+			if(data.status == 0){
+				this.showMsg = "视频删除成功";
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+
+				this.currentItem.del = true;
+				this.delcount++;
+			}else{
+				this.showMsg = data.msg;
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}
+			
+			this.loading = false;
+		}, error => {
+			console.error(error);
+			this.loading = false;
+		});
+	}
+
+	applySelected():void{
+		this.loading = true;
+		
+
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("circleId",this.currentItem.circleId);
+		params.set("uid",this.uid);
+		
+		let url = "/jqkj/circleMine/applySelected";
+		this.http.post(url, params, null).subscribe(data => {
+
+			if(data.status == 0){
+				this.showMsg = "视频加精已申请";
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+
+				this.currentItem.type = 0;
+			}else{
+				this.showMsg = data.msg;
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}
+			
+			this.loading = false;
+		}, error => {
+			console.error(error);
+			this.loading = false;
+		});
+	}
+
 	getFriendNow():void{
 		this.loading = true;
 

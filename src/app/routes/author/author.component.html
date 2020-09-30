@@ -1,4 +1,7 @@
 <loading [isshow]="loading"></loading>
+
+<div *ngIf="showTip" class="tip_text">{{showMsg}}</div>
+
 <addcircle (addSuccess)="addCircleSuccess()" (close)="closePop()" [addUid]="uid" [popShow]="addCircle"></addcircle>
 
 <div class="authorInfo">
@@ -47,7 +50,7 @@
         </div>
         <div class="circleExitpop-list">
                 <label><input type="radio" [(ngModel)]="quitType" name="exit" value="1" >退出并删除圈子动态</label>
-                <label><input type="radio" [(ngModel)]="quitType" name="exit" value="2" >退出但保留圈子动态</label>
+                <label><input type="radio" [(ngModel)]="quitType" name="exit" value="0" >退出但保留圈子动态</label>
         </div>
         <div class="circleExitpop-btn">
             <div (click)="quitPop=false;" class="a">再想想</div>

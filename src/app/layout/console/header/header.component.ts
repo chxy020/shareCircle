@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http';
+import { Subject, Subscription } from 'rxjs'
+import { debounceTime } from 'rxjs/operators';
+import { SubjectService } from 'src/app/shared/services/subjectService.service';
 
 @Component({
     selector: 'header-console',
     template: `
     <div class="searchTop">
         <div class="inputDiv">
-            <input type="text" placeholder="搜索资源 " readonly onclick="window.location.href='#'">
-            <img src="./assets/images/searchTop.png" alt="">
+            <input type="text" #term (keyup)="keyWordSearch(term.value)" autocomplete="off" placeholder="搜索资源" >
+            <img src="./assets/images/searchTop.png" alt="" />
         </div>
         <div (click)="myAuthorClick();" class="rightBtn">
             <img src="./assets/images/icon1.png" alt="">
@@ -20,7 +23,12 @@ import { HttpService } from 'src/app/shared/services/http';
         </ul>
     </div>
     `,
-    styles: [``]
+    styles: [`
+    input[type="search"]::-webkit-search-cancel-button{
+        display: none;
+        -webkit-appearance: none;
+    }
+    `]
 })
 
 
@@ -36,6 +44,9 @@ export class HeaderConsoleComponent implements OnInit {
 
     routeUrl;
 
+    searchTermStream = new Subject(); 
+    keySub:Subscription;
+    
     // <li class="tabDivActive">精选</li>
     menus:Array<any> = [
         {id:1,name:"精选",current:false},
@@ -43,9 +54,15 @@ export class HeaderConsoleComponent implements OnInit {
         {id:3,name:"我的圈子",current:false}
     ];
 
+    ngOnDestroy(): void {
+        if (this.keySub) {
+            this.keySub.unsubscribe();
+        }
+    }
     constructor(
         private route: ActivatedRoute,
         private http: HttpService,
+        private sub: SubjectService,
         private router: Router
     ) { 
         
@@ -81,6 +98,12 @@ export class HeaderConsoleComponent implements OnInit {
     ngOnInit() {
         this.uid = window["context"]["uid"];
         this.routeUrl = this.router.url.toString();
+
+        this.keySub = this.searchTermStream.pipe(debounceTime(500)).subscribe((keyword) => {
+                window["context"]["keyWord"] = keyword;
+                this.sub.keyWordSub();
+            }
+        );
 
         this.getMineNavigation();
 
@@ -146,6 +169,11 @@ export class HeaderConsoleComponent implements OnInit {
 			console.error(error);
 			this.loading = false;
 		});
+    }
+    
+    
+    keyWordSearch(term:string) {
+        this.searchTermStream.next(term); 
     }
     
     getLicense(): void {

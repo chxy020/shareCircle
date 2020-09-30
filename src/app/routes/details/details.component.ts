@@ -118,6 +118,12 @@ export class DetailsComponent implements OnInit {
 
 				this.detail.comment_num++;
 				this.commentMsg = "";
+			}else{
+				this.showMsg = data.msg;
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
 			}
 			this.loading = false;
 		}, error => {

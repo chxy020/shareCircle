@@ -65,7 +65,7 @@ export class CommentListComponent implements OnInit {
 			ele.style.display = "none";
 		},3000);
 	}
-	
+
 	getFriendComment():void{
 		this.loading = true;
 

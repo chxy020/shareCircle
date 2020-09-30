@@ -6,10 +6,12 @@ import { ConsoleComponent } from './console/console.component';
 import { HeaderConsoleComponent } from './console/header/header.component';
 import { TitleHeaderComponent } from './console/header/titleheader.component';
 import { TitleBackComponent } from './console/titleback.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
 	imports: [
 		CommonModule,
+		FormsModule,
 		RouterModule
 	],
 	declarations: [

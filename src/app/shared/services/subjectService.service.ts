@@ -10,4 +10,10 @@ export class SubjectService {
 	quitCircleSub(): void {
 		this.quitCircleSubject.next();
 	}
+
+	private keyWordSubject = new Subject<any>();
+	public keyWordObservable = this.keyWordSubject.asObservable();
+	keyWordSub(): void {
+		this.keyWordSubject.next();
+	}
 }

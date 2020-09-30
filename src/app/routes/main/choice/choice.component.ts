@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, Injector } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { HttpService } from 'src/app/shared/services/http';
+import { SubjectService } from 'src/app/shared/services/subjectService.service';
 
 @Component({
 	selector: 'choice-list',
@@ -26,20 +28,41 @@ export class ChoiceComponent implements OnInit {
 	baseUrl = "";
 	uid;
 
+	keySearchSub:Subscription;
+	keyWord;
+
+    ngOnDestroy(): void {
+        if (this.keySearchSub) {
+            this.keySearchSub.unsubscribe();
+        }
+    }
 	constructor(
 		private route: ActivatedRoute,
 		private http: HttpService,
+		private sub: SubjectService,
 		private router: Router
 	) {
 		this.baseUrl = window["context"]["apiroot"];
 		this.uid = window['context']['uid'];
+
+		let keyword = window["context"]["keyWord"] || "";
+		this.keyWord = keyword;
 	}
 
 	ngOnInit() {
 		// this.id = +this.route.snapshot.data.id;
 		// this.title = this.titles[this.id];
 
-		
+		this.keySearchSub = this.sub.keyWordObservable.subscribe(
+            () =>{
+				let keyword = window["context"]["keyWord"] || "";
+				this.keyWord = keyword;
+
+				this.page = 1;
+        		this.data = [];
+				this.getSelectedCircle();
+			}
+		);
 	}
 
 	meetClick(item):void{
@@ -62,27 +85,27 @@ export class ChoiceComponent implements OnInit {
 			this.router.navigate(['/author/main/'+item.uid]);
 		}
 	}
-
-	// baseUrl + '/' + item.video_image || videoImg
-
-	// get getVideoImage(ele:any,url:any){
-	// 	ele.src = this.videoImg;
-
-	// 	let img = new Image();
-    //     img.src = this.baseUrl + "/" + url;
-    //     img.onload = function(){
-	// 		// console.log(11111111111)
-    //         // ele.src = this.baseUrl + "/" + url;
-    //     }.bind(this);
-	// }
 	
 	getSelectedCircle():void{
 		this.loading = true;
 		const params: Map<string, any> = new Map<string, any>();
-		params.set("page",this.page);
-		params.set("limit",this.limit);
+		
 
 		let url = "/jqkj/cricle/getSelectedCircle";
+		
+		//判断关键字搜索
+		if(this.keyWord){
+			url = "/jqkj/cricle/search";
+			params.set("title",this.keyWord);
+			params.set("pageNum",this.page);
+			params.set("limit",this.limit);
+			params.set("circleUid",this.uid);
+			params.set("type",0);
+		}else{
+			params.set("page",this.page);
+			params.set("limit",this.limit);
+		}
+
 		this.http.get(url, params, null).subscribe(data => {
 			if(data.code == 0){
 				let list = data.data || [];

@@ -27,6 +27,8 @@ export class VideoListComponent implements OnInit {
 	baseUrl = "";
 	uid;
 
+	delcount = 0;
+
 	constructor(
 		private route: ActivatedRoute,
 		private http: HttpService,
@@ -131,11 +133,11 @@ export class VideoListComponent implements OnInit {
 			this.currentMenuEle.style.display = "none";
 		}
 
-		// this.currentItem = item;
-		// this.folderName = item.filename;
-		// this.folderId = item.id;
-		// this.newPopEdit = true;
-		// this.newPop = true;
+		this.currentItem = item;
+		let b = window.confirm("确认删除吗?");
+		if(b){
+			this.delectCircle();
+		}
 	}
 	
 	currentFolderItem;
@@ -259,6 +261,39 @@ export class VideoListComponent implements OnInit {
 				},2500);
 
 				this.currentItem.isshow = isshow;
+			}else{
+				this.showMsg = data.msg;
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}
+			
+			this.loading = false;
+		}, error => {
+			console.error(error);
+			this.loading = false;
+		});
+	}
+
+	delectCircle():void{
+		this.loading = true;
+		
+
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("circleId",this.currentItem.id);
+		
+		let url = "/jqkj/cricle/delectCircle";
+		this.http.post(url, params, null).subscribe(data => {
+			if(data.status == 0){
+				this.showMsg = "视频删除成功";
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+
+				this.currentItem.del = true;
+				this.delcount++;
 			}else{
 				this.showMsg = data.msg;
 				this.showTip = true;

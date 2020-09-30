@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, Injector } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { HttpService } from 'src/app/shared/services/http';
+import { SubjectService } from 'src/app/shared/services/subjectService.service';
 
 @Component({
 	selector: 'self-video-list',
@@ -20,18 +22,40 @@ export class VideoListComponent implements OnInit {
 	videoImg = "./assets/images/default-img.png";
 
 	baseUrl = "";
+	uid;
+	
+	keySearchSub:Subscription;
+	keyWord;
 
+    ngOnDestroy(): void {
+        if (this.keySearchSub) {
+            this.keySearchSub.unsubscribe();
+        }
+    }
 	constructor(
 		private route: ActivatedRoute,
 		private http: HttpService,
+		private sub: SubjectService,
 		private router: Router
 	) {
 		this.baseUrl = window["context"]["apiroot"];
+		this.uid = window['context']['uid'];
+
+		let keyword = window["context"]["keyWord"] || "";
+		this.keyWord = keyword;
 	}
 
 	ngOnInit() {
-		// this.id = +this.route.snapshot.data.id;
-		// this.title = this.titles[this.id];
+		this.keySearchSub = this.sub.keyWordObservable.subscribe(
+            () =>{
+				let keyword = window["context"]["keyWord"] || "";
+				this.keyWord = keyword;
+
+				this.page = 1;
+        		this.data = [];
+				this.getUserCircle();
+			}
+		);
 	}
 
 	meetClick(item):void{
@@ -48,14 +72,25 @@ export class VideoListComponent implements OnInit {
 	
 	getUserCircle():void{
 		this.loading = true;
-		let uid = window['context']['uid'];
 
 		const params: Map<string, any> = new Map<string, any>();
-		params.set("page",this.page);
-		params.set("limit",this.limit);
-		params.set("uid",uid);
+		
 		
 		let url = "/jqkj/cricle/getUserCircle";
+		//判断关键字搜索
+		if(this.keyWord){
+			url = "/jqkj/cricle/search";
+			params.set("title",this.keyWord);
+			params.set("pageNum",this.page);
+			params.set("limit",this.limit);
+			params.set("circleUid",this.uid);
+			params.set("type",2);
+		}else{
+			params.set("page",this.page);
+			params.set("limit",this.limit);
+			params.set("uid",this.uid);
+		}
+
 		this.http.get(url, params, null).subscribe(data => {
 			if(data.code == 0){
 				let list = data.data || [];

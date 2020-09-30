@@ -14,6 +14,8 @@ export class AuthorComponent implements OnInit {
 	
 	loading = true;
 	addCircle = false;
+	showTip = false;
+	showMsg = "";
 
 	headImg = "./assets/images/default-touxiang.png";
 
@@ -71,7 +73,8 @@ export class AuthorComponent implements OnInit {
 	}
 
 	quitEnter(){
-		console.log(this.quitType)
+		// console.log(this.quitType);
+		this.quitCircle();
 	}
 
 	getAuthorInfo():void{
@@ -93,5 +96,36 @@ export class AuthorComponent implements OnInit {
 		});
 	}
 
-	
+	quitCircle():void{
+		this.loading = true;
+
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("uid",this.uid);
+		params.set("quitUid",this.authorUid);
+		params.set("type",this.quitType);
+
+		let url = "/jqkj/circleMine/quitCircle";
+		this.http.post(url, params, null).subscribe(data => {
+			if(data.status == 0){
+				this.showMsg = "退出圈子成功";
+				this.showTip = true;
+				this.quitPop = false;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+
+				this.getAuthorInfo();
+			}else{
+				this.showMsg = data.msg;
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}
+			this.loading = false;
+		}, error => {
+			console.error(error);
+			this.loading = false;
+		});
+	}
 }

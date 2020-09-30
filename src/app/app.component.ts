@@ -22,6 +22,15 @@ export class AppComponent {
 			let uid = params["uid"];
 			if(uid){
 				window["context"]["uid"] = uid;
+				window.sessionStorage.setItem("__uid",uid);
+			}else{
+				uid = window.sessionStorage.getItem("__uid") || "";
+				if(uid){
+					window["context"]["uid"] = uid;
+				}else{
+					// alert("没有获取到用户uid");
+					// this.router.navigate(['/main']);
+				}
 			}
 		});
 	}
