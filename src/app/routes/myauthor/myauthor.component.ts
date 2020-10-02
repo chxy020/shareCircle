@@ -54,6 +54,15 @@ export class MyAuthorComponent implements OnInit {
 		this.http.get(url, params, null).subscribe(data => {
 			if(data.status == 0){
 				this.detail = data.data || {};
+
+				let num = this.detail.num || "";
+				if(num){
+					window.sessionStorage.setItem("__sharedcode",num);
+				}else{
+					window.sessionStorage.setItem("__sharedcode","");
+				}
+			}else{
+				window.sessionStorage.setItem("__sharedcode","");
 			}
 			this.loading = false;
 		}, error => {
