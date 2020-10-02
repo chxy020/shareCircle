@@ -6,6 +6,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { DetailsComponent } from './details.component';
 import { CommentListComponent } from './cpts/comment.component';
 import { GiveListComponent } from './cpts/give.component';
+import { SharedListComponent } from './cpts/shared.component';
+import { TransferListComponent } from './cpts/transfer.component';
 
 @NgModule({
 	imports: [
@@ -17,6 +19,8 @@ import { GiveListComponent } from './cpts/give.component';
 		DetailsComponent,
 		CommentListComponent,
 		GiveListComponent,
+		SharedListComponent,
+		TransferListComponent,
 		// CarouselSensePipe,
 		// DelSensePipe,
 		// SenseSharedKeySearchPipe

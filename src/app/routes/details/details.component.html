@@ -50,6 +50,8 @@
 
 <comment-list *ngIf="tabType==1" [circleId]="detail.id"></comment-list>
 <give-list *ngIf="tabType==2" [circleId]="detail.id"></give-list>
+<shared-list *ngIf="tabType==3" [circleId]="detail.id"></shared-list>
+<transfer-list *ngIf="tabType==4" [circleId]="detail.id"></transfer-list>
 
 <!-- <div dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" style="margin-bottom: 50px;">
     <div class="detailsContDiv"> -->
