@@ -88,6 +88,27 @@ export class MyApplyComponent implements OnInit {
 		},3000);
 	}
 
+	changeBtn(evt:MouseEvent,item:any){
+		evt.preventDefault();
+		evt.stopPropagation();
+
+		if(this.currentMenuEle){
+			this.currentMenuEle.style.display = "none";
+		}
+
+		// ipass = 1 & ispublish = 0   对应 设置允许发布
+		// ipass = 1 & ispublish = 1  对应 设置允许查看
+		// ipass = 2 & ispublish = 2  对应 拒绝
+		
+		// this.currentItem = item;
+		// this.folderName = item.filename;
+		// this.folderId = item.id;
+		// this.newPopEdit = true;
+		// this.newPop = true;
+		let ispublish = item.ispublish == 1 ? 0 : 1;
+		this.updateAddStatus2(item,item.ispass,ispublish);
+	}
+
 	reviewBtn(evt:MouseEvent,item:any,type:number){
 		evt.preventDefault();
 		evt.stopPropagation();
@@ -142,6 +163,41 @@ export class MyApplyComponent implements OnInit {
 				this.page2 = 1;
 				this.data2 = [];
 				this.getAddCircleOk();
+			}else{
+				this.showMsg = data.msg;
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}
+			
+			this.loading = false;
+		}, error => {
+			console.error(error);
+			this.loading = false;
+		});
+	}
+	updateAddStatus2(item,ispass,ispublish):void{
+		this.loading = true;
+		
+
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("addId",item.id);
+		params.set("ispass",ispass);
+		params.set("ispublish",ispublish);
+		
+		let url = "/jqkj/circleMine/updateAddStatus";
+		this.http.post(url, params, null).subscribe(data => {
+
+			if(data.status == 0){
+				this.showMsg = "设置成功";
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+
+				item.ispass = ispass;
+				item.ispublish = ispublish;
 			}else{
 				this.showMsg = data.msg;
 				this.showTip = true;

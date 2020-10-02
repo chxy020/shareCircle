@@ -75,18 +75,23 @@
                         <div class="pl">{{item.applyPhone}}</div>
                     </div>
                 </div>
-                <div class="list-rbtn" style="position: relative;">
+
+                <div class="list-rbtn">
+                    <p *ngIf="item.ispass == 2" class="r">拒绝</p>
+                    <p *ngIf="item.ispass != 2" (click)="menuBtn($event,menuele)" class="h">修改</p>
+                    <p *ngIf="item.ispass != 2" class="t">{{item.ispublish == 0 ? '通过并允许发布' : (item.ispublish == 1 ? '通过但只能查看' : '') }}</p>
+                    <div #menuele class="tip_operlist" >
+                        <ul>
+                            <li (click)="changeBtn($event,item)" >{{item.ispublish == 0 ? '通过但只能查看' : (item.ispublish == 1 ? '通过并允许发布' : '') }}</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- <div class="list-rbtn" style="position: relative;">
                     <p *ngIf="item.ispass != 2" class="h">修改</p>
                     <p *ngIf="item.ispass != 2" class="t">{{item.ispublish == 0 ? '通过并允许发布' : (item.ispublish == 1 ? '通过但只能查看' : '') }}</p>
                     
                     <p *ngIf="item.ispass == 2" class="r">拒绝</p>
-
-                    <!-- <div #menuele class="tip_operlist" style="display: block;position: absolute;">
-                        <ul>
-                            <li (click)="renameBtn($event,item)">只能查看</li>
-                        </ul>
-                    </div> -->
-                </div>
+                </div> -->
             </li>
             <!-- <li>
                 <div class="a"><img src="assets/images/touxiang.png" alt=""></div>
