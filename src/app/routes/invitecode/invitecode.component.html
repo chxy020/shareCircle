@@ -1,10 +1,28 @@
-<!-- <loading [isshow]="loading"></loading> -->
+<loading [isshow]="loading"></loading>
 
 <div class="invitecode">
     <p class="a">您的邀请码为</p>
     <p class="b">{{sharedCode}}</p>
     <p class="c">立即邀请好友，加入你的圈子</p>
 </div>
-<div class="invitecode-btn">
-    <div class="btna">分享至</div>
+<div class="invitecode-btn" style="margin-top:0px;">
+    <div (click)="sharedPop=true" class="btna">分享至</div>
+</div>
+
+<!-- 分享弹框 -->
+<div class="pop-mask" *ngIf="sharedPop">
+    <div class="det-sharepop">
+        <div class="det-sharepop-bt">
+            <div class="ltext">
+                分享至
+            </div>
+            <div class="rbtn" (click)="sharedPop=false"></div>
+        </div>
+        <div class="det-sharepop-list">
+            <ul>
+                <li (click)="sharedAppMessage()" class="a"><span></span><p>微信</p></li>
+                <li (click)="sharedTimeline()" class="b"><span></span><p>朋友圈</p></li>
+            </ul>
+        </div>
+    </div>
 </div>

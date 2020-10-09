@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>测试分享</title>
-		<script src="./jquery.min.js"></script>
+		<script src="./assets/js/jquery.min.js"></script>
 		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	</head>
 	<body>
@@ -20,7 +20,7 @@
 		    return parseInt(new Date().getTime() / 1000) + '';
 		}; 
 		$.ajax({
-			url:"http://47.104.157.79/jqkj/wxShare/getSignature",
+			url:"http://39.107.249.187:8082/jqkj/wxShare/getSignature",
 			type:"post",
 			data: {
 				url:location.href.split('#')[0], //url 如果写的是固定的值的话，分享之后在分享会报错
@@ -33,7 +33,7 @@
 				//微信初始化
 				wx.config({
 				    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-				    appId: "wxa4c8260a67716517", // 必填，公众号的唯一标识
+				    appId: "wx04ad9813254366a7", // 必填，公众号的唯一标识
 				    timestamp: data.timestamp , // 必填，生成签名的时间戳
 				    nonceStr: data.nonce, // 必填，生成签名的随机串
 				    signature: data.signature,// 必填，签名，见附录1
@@ -41,8 +41,8 @@
 				});
 				wx.ready(function(){
 				    var sdata = {
-				 		imgUrl: "http://47.104.157.79/jqkj/fileupload/video/3b3e353052a24476aed3d6b0dc41e572.jpg", // 分享图标
-				 		link: "http://47.104.157.79/jqkj/cricle/getSelectedCircle",
+				 		imgUrl: "http://39.107.249.187:8082/jqkj/fileupload/video/3b3e353052a24476aed3d6b0dc41e572.jpg", // 分享图标
+				 		link: "http://39.107.249.187:8082/jqkj/cricle/getSelectedCircle",
 				    	title: "测试微信分享", // 分享标题
 				 		desc: "分享描述", // 分享描述
 					    success: function () {
@@ -53,13 +53,13 @@
 					    }
 					    
 					};
-				    wx.onMenuShareAppMessage(sdata);// 发送给朋友
-				    wx.onMenuShareTimeline(sdata);//分享到朋友圈
+				    wx.updateAppMessageShareData(sdata);// 发送给朋友
+				    wx.updateTimelineShareData(sdata);//分享到朋友圈
 				});
 				wx.error(function(res){
 				    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
 					alert("抱歉，服务器初始化错误。");
-					alert(res);
+					console.log(res);
 				});
 			},
 			error:function(xhr, type, errorThrown){

@@ -19,12 +19,12 @@
             <div class="a"><img [src]="item.headimgurl || headImg"  alt=""></div>
             <div class="b">
                 <div class="b1">
-                    <div class="nc">分享--小胖妈妈的生活</div>
-                    <div class="jb">获得<span>5</span>金币</div>
+                    <div class="nc">{{item.circleName}}</div>
+                    <div class="jb">获得<span>{{item.pirce}}</span>金币</div>
                 </div>
                 <div class="b2">
                     <div class="pl">分享到了微信</div>
-                    <div class="time">10-1 12:12</div>
+                    <div class="time">{{item.create_time | formattime}}</div>
                 </div>
             </div>
         </li>
