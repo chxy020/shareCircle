@@ -27,6 +27,7 @@ export class PlayList2Component implements OnInit {
 	baseUrl = "";
 	uid;
 
+	delcount = 0;
 	constructor(
 		private route: ActivatedRoute,
 		private http: HttpService,
@@ -77,7 +78,7 @@ export class PlayList2Component implements OnInit {
 
 		let b = window.confirm("确认删除吗?");
 		if(b){
-			this.updateMovePublish(circleId);
+			this.updateMovePublish(circleId,item);
 		}
 
 		// this.folderName = item.filename;
@@ -86,7 +87,7 @@ export class PlayList2Component implements OnInit {
 		// this.newPop = true;
 	}
 
-	updateMovePublish(circleId):void{
+	updateMovePublish(circleId,item:any):void{
 		this.loading = true;
 		
 
@@ -97,6 +98,9 @@ export class PlayList2Component implements OnInit {
 		let url = "/jqkj/circleFiles/updateMovePublish";
 		this.http.post(url, params, null).subscribe(data => {
 			if(data.status == 0){
+				this.delcount ++;
+				item.del = true;
+
 				this.showMsg = "删除成功";
 				this.showTip = true;
 				setTimeout(() =>{

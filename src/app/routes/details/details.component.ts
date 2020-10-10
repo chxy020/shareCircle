@@ -174,8 +174,6 @@ export class DetailsComponent implements OnInit {
 		});
 	}
 
-	
-
 	getWxSign(){
 		//获取随机串
 		let createNonceStr = function() {
