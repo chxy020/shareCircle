@@ -22,6 +22,10 @@ export class InviteCodeComponent implements OnInit {
 
 	sharedPop = false;
 
+	appId = "";
+	shareUrl = "";
+	linkUrl = "";
+
 	constructor(
 		private route: ActivatedRoute,
 		private http: HttpService,
@@ -29,6 +33,9 @@ export class InviteCodeComponent implements OnInit {
 	) {
 		this.baseUrl = window["context"]["apiroot"];
 		this.uid = window['context']['uid'];
+		this.appId = window['context']['appId'];
+		this.shareUrl = window['context']['shareUrl'];
+		
 	}
 
 	ngOnInit() {
@@ -44,6 +51,8 @@ export class InviteCodeComponent implements OnInit {
 			this.sharedCode = "";
 		}
 
+		this.linkUrl = this.shareUrl + "/shared/invitecode/" + this.sharedCode;
+		
 		this.getWxSign();
 	}
 
@@ -66,7 +75,7 @@ export class InviteCodeComponent implements OnInit {
 
 		this.loading = true;
 		const params: Map<string, any> = new Map<string, any>();
-		params.set("url",location.href.split('#')[0]);
+		params.set("url",this.linkUrl);
 		params.set("timestamp",createTimeStamp());
 		params.set("nonce",createNonceStr());
 		this.http.post("/jqkj/wxShare/getSignature", params, null).subscribe(data => {
@@ -134,7 +143,7 @@ export class InviteCodeComponent implements OnInit {
 	setWxSign(data:any){
 		wx.config({
 			debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-			appId: "wx04ad9813254366a7", // 必填，公众号的唯一标识
+			appId: this.appId, // 必填，公众号的唯一标识
 			timestamp: data.timestamp , // 必填，生成签名的时间戳
 			nonceStr: data.nonce, // 必填，生成签名的随机串
 			signature: data.signature,// 必填，签名，见附录1
@@ -167,12 +176,12 @@ export class InviteCodeComponent implements OnInit {
 
 	sharedAppMessage(){
 		wx.ready(function(){
-			console.log("wx----ready---")
+			// console.log("wx----ready---")
 			var sdata = {
 				imgUrl: "http://39.107.249.187:8082/jqkj/fileupload/video/3b3e353052a24476aed3d6b0dc41e572.jpg", // 分享图标
-				link: "http://39.107.249.187:8082/jqkj/cricle/getSelectedCircle",
-				title: "测试微信分享", // 分享标题
-				desc: "分享描述", // 分享描述
+				link: this.linkUrl,
+				title: "thinNAS邀请码", // 分享标题
+				desc: "thinNAS邀请码，微信好友分享描述", // 分享描述
 				success: function () {
 					console.log("分享成功");
 				},
@@ -196,9 +205,9 @@ export class InviteCodeComponent implements OnInit {
 			console.log("wx----ready---")
 			var sdata = {
 				imgUrl: "http://39.107.249.187:8082/jqkj/fileupload/video/3b3e353052a24476aed3d6b0dc41e572.jpg", // 分享图标
-				link: "http://39.107.249.187:8082/jqkj/cricle/getSelectedCircle",
-				title: "测试微信分享", // 分享标题
-				desc: "分享描述", // 分享描述
+				link: this.linkUrl,
+				title: "thinNAS邀请码", // 分享标题
+				desc: "thinNAS邀请码，微信朋友圈分享描述", // 分享描述
 				success: function () {
 					console.log("分享成功");
 				},

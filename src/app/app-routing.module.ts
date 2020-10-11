@@ -62,6 +62,9 @@ const routes: Routes = [
 		loadChildren: () => import('./routes/myapply/myapply.module').then(m => m.MyApplyModule)
 	},
 	{ path: 'details/:id', loadChildren: () => import('./routes/details/details.module').then(m => m.DetailsModule) },
+	
+	{ path: 'shared/details/:id/:uid', loadChildren: () => import('./routes/shared/details/details.module').then(m => m.DetailsModule) },
+	{ path: 'shared/invitecode/:code', loadChildren: () => import('./routes/shared/invitecode/invitecode.module').then(m => m.InviteCodeModule) },
 	// { path: 'seatlist/name', loadChildren: () => import('./routes/seatlist/seatlist.module').then(m => m.SeatListModule) },
 	// { path: 'seatbind/code', loadChildren: () => import('./routes/seatbind/seatbind.module').then(m => m.SeatBindModule) },
 	// { path: 'seatbind/name', loadChildren: () => import('./routes/seatbind/seatbind.module').then(m => m.SeatBindModule) }

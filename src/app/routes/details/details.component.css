@@ -1,0 +1,10 @@
+.video_large .rbtn {
+	width:1rem;
+	height:0.88rem;
+	background:url('~/assets/images/download.png') no-repeat center;
+	background-size:0.4rem 0.4rem;
+}
+.bottomBtn .zhuancun span {
+	background:url('~/assets/images/download.png') no-repeat center;
+	background-size:0.4rem 0.4rem;
+}

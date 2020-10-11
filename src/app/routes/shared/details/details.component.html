@@ -4,8 +4,6 @@
 
 
 <div class="videoInfo">
-    <div (click)="back();" class="videoInfo-btnL"></div>
-
     <!-- 第一种情况：视频过大 -->
     <div class="video_large" *ngIf="detail?.isBig == 1" >
         <div class="ltext">
@@ -53,33 +51,14 @@
 <shared-list *ngIf="tabType==3" [circleId]="detail.id"></shared-list>
 <transfer-list *ngIf="tabType==4" [circleId]="detail.id"></transfer-list>
 
-<div class="bottomBtn">
+<!-- <div class="bottomBtn">
     <div class="form"><input type="text" [(ngModel)]="commentMsg" placeholder="快捷评论"></div>
     <div (click)="addComment()" class="pinglun"><span></span></div>
     <div (click)="addGive()" class="dianzan"><span></span></div>
     <div (click)="sharedPop=true" class="fengxiang"><span></span></div>
     <div class="zhuancun"><span></span></div>
-</div>
+</div> -->
  
-
-<!-- 分享弹框 -->
-<div class="pop-mask" *ngIf="sharedPop">
-    <div class="det-sharepop">
-        <div class="det-sharepop-bt">
-            <div class="ltext">
-                分享至
-            </div>
-            <div class="rbtn" (click)="sharedPop=false"></div>
-        </div>
-        <div class="det-sharepop-list">
-            <ul>
-                <li (click)="sharedAppMessage()" class="a"><span></span><p>微信</p></li>
-                <li (click)="sharedTimeline()" class="b"><span></span><p>朋友圈</p></li>
-                <li (click)="sharedTimeline()" class="b"><span></span><p>NAS</p></li>
-            </ul>
-        </div>
-    </div>
-</div>
 
 <!-- <div dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" style="margin-bottom: 50px;">
     <div class="detailsContDiv"> -->
