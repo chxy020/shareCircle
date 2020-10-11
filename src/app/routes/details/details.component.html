@@ -54,13 +54,17 @@
 <transfer-list *ngIf="tabType==4" [circleId]="detail.id"></transfer-list>
 
 <div class="bottomBtn">
-    <div class="form"><input type="text" [(ngModel)]="commentMsg" placeholder="快捷评论"></div>
+    <div class="form"><input type="text" (click)="textBottom='0px';commentText.focus();" [(ngModel)]="commentMsg" placeholder="快捷评论"></div>
     <div (click)="addComment()" class="pinglun"><span></span></div>
     <div (click)="addGive()" class="dianzan"><span></span></div>
     <div (click)="sharedPop=true" class="fengxiang"><span></span></div>
     <div class="zhuancun"><span></span></div>
 </div>
  
+<div class="bottomBtn bottomBtnBig" [style.bottom]="textBottom">
+    <div class="form"><textarea #commentText (blur)="textBottom='-2rem';" name="commenttext" rows="4"  [(ngModel)]="commentMsg" placeholder="快捷评论" ></textarea></div>
+    <div class="fabu" (click)="addComment()" style="height: 100px;line-height: 100px;">发布</div>
+</div>
 
 <!-- 分享弹框 -->
 <div class="pop-mask" *ngIf="sharedPop">

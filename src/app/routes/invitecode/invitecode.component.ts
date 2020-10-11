@@ -75,7 +75,7 @@ export class InviteCodeComponent implements OnInit {
 
 		this.loading = true;
 		const params: Map<string, any> = new Map<string, any>();
-		params.set("url",this.linkUrl);
+		params.set("url",location.href.split('#')[0]);
 		params.set("timestamp",createTimeStamp());
 		params.set("nonce",createNonceStr());
 		this.http.post("/jqkj/wxShare/getSignature", params, null).subscribe(data => {
@@ -147,7 +147,7 @@ export class InviteCodeComponent implements OnInit {
 			timestamp: data.timestamp , // 必填，生成签名的时间戳
 			nonceStr: data.nonce, // 必填，生成签名的随机串
 			signature: data.signature,// 必填，签名，见附录1
-			jsApiList: ["onMenuShareTimeline","onMenuShareAppMessage","onMenuShareQQ"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+			jsApiList: ["onMenuShareTimeline","onMenuShareAppMessage","onMenuShareQQ","updateAppMessageShareData","updateTimelineShareData"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 		});
 		// wx.ready(function(){
 		// 	console.log("wx----ready---")
@@ -177,7 +177,7 @@ export class InviteCodeComponent implements OnInit {
 	sharedAppMessage(){
 		wx.ready(function(){
 			// console.log("wx----ready---")
-			var sdata = {
+			let sdata = {
 				imgUrl: "http://39.107.249.187:8082/jqkj/fileupload/video/3b3e353052a24476aed3d6b0dc41e572.jpg", // 分享图标
 				link: this.linkUrl,
 				title: "thinNAS邀请码", // 分享标题
@@ -192,7 +192,7 @@ export class InviteCodeComponent implements OnInit {
 			};
 			wx.updateAppMessageShareData(sdata);// 发送给朋友
 			// wx.updateTimelineShareData(sdata);//分享到朋友圈
-		});
+		}.bind(this));
 		wx.error(function(res){
 			// config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
 			alert("抱歉，服务器初始化错误。");
@@ -203,7 +203,7 @@ export class InviteCodeComponent implements OnInit {
 	sharedTimeline(){
 		wx.ready(function(){
 			console.log("wx----ready---")
-			var sdata = {
+			let sdata = {
 				imgUrl: "http://39.107.249.187:8082/jqkj/fileupload/video/3b3e353052a24476aed3d6b0dc41e572.jpg", // 分享图标
 				link: this.linkUrl,
 				title: "thinNAS邀请码", // 分享标题
@@ -218,7 +218,7 @@ export class InviteCodeComponent implements OnInit {
 			};
 			// wx.updateAppMessageShareData(sdata);// 发送给朋友
 			wx.updateTimelineShareData(sdata);//分享到朋友圈
-		});
+		}.bind(this));
 		wx.error(function(res){
 			// config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
 			alert("抱歉，服务器初始化错误。");
