@@ -5,7 +5,7 @@
 <addcircle (addSuccess)="addCircleSuccess()" (close)="closePop()" [addUid]="uid" [popShow]="addCircle"></addcircle>
 
 <div class="authorInfo">
-    <p class="a"><img [src]="detail.headimgurl || headImg" alt=""></p>
+    <p class="a"><img [src]="detail?.data?.headimgurl || headImg" alt=""></p>
     <p class="b">{{detail?.data?.circleName}}的圈子</p>
     <div class="c">
         <p>资源 {{detail?.data?.resourceNum}}</p>
