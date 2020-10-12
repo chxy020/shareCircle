@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http';
 import { Location } from '@angular/common';
 declare var wx:any;
+// declare var ckplayer:any;
 
 @Component({
 	selector: 'video-details',
@@ -99,6 +100,16 @@ export class DetailsComponent implements OnInit {
 			// console.log(data)
 			if(data.status == 0){
 				this.detail = data.data || {};
+
+
+				//定义一个变量：videoObject，用来做为视频初始化配置
+				// var videoObject = {
+				// 	container: '#nas_video_div', //“#”代表容器的ID，“.”或“”代表容器的class
+				// 	variable: 'player', //播放函数名称，该属性必需设置，值等于下面的new ckplayer()的对象
+				// 	video: this.detail.video_path//视频地址
+				// };
+				// var player = new ckplayer(videoObject);//初始化播放器
+
 
 				// this.getFirstComment();
 			}

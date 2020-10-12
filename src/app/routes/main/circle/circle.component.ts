@@ -24,6 +24,7 @@ export class CircleComponent implements OnInit {
 
 	baseUrl = "";
 	uid;
+	userUid;
 
 	keySearchSub:Subscription;
 	keyWord;
@@ -40,6 +41,7 @@ export class CircleComponent implements OnInit {
 		private router: Router
 	) {
 		this.baseUrl = window["context"]["apiroot"];
+		this.userUid = window["context"]["uid"];
 
 		let keyword = window["context"]["keyWord"] || "";
 		this.keyWord = keyword;
@@ -75,7 +77,7 @@ export class CircleComponent implements OnInit {
 	}
 
 	headerClick(item):void{
-		if(this.uid == item.uid){
+		if(this.userUid == item.uid){
 			//自己的视频，进入自己首页
 			this.router.navigate(['/myauthor/main']);
 		}else{

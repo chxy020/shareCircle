@@ -15,6 +15,8 @@
         </div>
         <div class="rbtn"></div>
     </div>
+    <!-- class="video_large" -->
+    <!-- <div id="nas_video_div" style="width:100%;height:100%;"></div> -->
     <video *ngIf="detail?.isBig == 0" autoplay  id="nas_video" [poster]="getVideoImagePath"  [src]="detail?.video_path" type="video/mp4" width="100%" playsinline  height="100%" controls  ></video>
 </div>
 
