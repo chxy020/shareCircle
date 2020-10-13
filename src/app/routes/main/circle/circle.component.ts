@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, Injector } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { HttpService } from 'src/app/shared/services/http';
 import { SubjectService } from 'src/app/shared/services/subjectService.service';
@@ -62,6 +62,15 @@ export class CircleComponent implements OnInit {
 				this.getNavigationContent();
 			}
 		);
+
+		this.route.paramMap.subscribe((params: ParamMap) => {
+			this.uid = params.get('uid');
+			if(!this.loading){
+				this.page = 1;
+        		this.data = [];
+				this.getNavigationContent();
+			}
+		});
 	}
 
 	meetClick(item):void{
