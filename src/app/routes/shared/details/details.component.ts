@@ -19,6 +19,10 @@ export class DetailsComponent implements OnInit {
 	showTip = false;
 	showMsg = "";
 
+	data = [];
+	page = 0;
+	limit = 10;
+
 	uid;
 	baseUrl;
 	id;
@@ -58,6 +62,7 @@ export class DetailsComponent implements OnInit {
 
 
 		this.findUserPublish();
+		this.getSelectedCircle();
 	}
 
 	back(){
@@ -87,4 +92,27 @@ export class DetailsComponent implements OnInit {
 			this.loading = false;
 		});
 	}
+
+	getSelectedCircle():void{
+		this.loading = true;
+		const params: Map<string, any> = new Map<string, any>();
+
+		let url = "/jqkj/cricle/getSelectedCircle";
+		params.set("page",this.page);
+		params.set("limit",this.limit);
+
+		this.http.get(url, params, null).subscribe(data => {
+			if(data.code == 0){
+				let list = data.data || [];
+
+				this.data = this.data.concat(list);
+			}
+
+			this.loading = false;
+		}, error => {
+			console.error(error);
+			this.loading = false;
+		});
+	}
+
 }

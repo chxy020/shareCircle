@@ -3,6 +3,23 @@
 <div *ngIf="showTip" class="tip_text">{{showMsg}}</div>
 
 
+<div class="topDiv">
+    <div class="topDiv-btnL topDiv-btngb"></div>
+    {{detail.title}}
+    <div class="topDiv-btnR"></div>
+    <!-- <div class="tip_operlist">
+        <ul>
+            <li>通过并允许发布</li>
+            <li>分享邀请码</li>
+            <li class="disabled">加入列表</li>
+            <li>申请加精</li>
+            <li class="active">仅自己可见</li>
+            <li>隐藏</li>
+            <li>删除</li>
+        </ul>
+    </div> -->
+</div>
+
 <div class="videoInfo">
     <!-- 第一种情况：视频过大 -->
     <div class="video_large" *ngIf="detail?.isBig == 1" >
@@ -31,98 +48,76 @@
         <div class="c">{{detail.isAdd == 0 ? '已加入圈子' : (detail.isAdd == 1 ? '+ 未加入' : (detail.isAdd == 2 ? '待审核' : '我的圈子')) }}</div>
         <!-- <div class="c">+ 加入圈子</div> -->
     </div>
-    <div class="managementInfo-b">
-        <div class="a">下载此资源，需消耗<span>{{detail.transfer_pirce}}</span>金币</div>
-        <div class="b">{{detail.create_time}}发布</div>
+    <div class="managementInfo-btn">
+        <div class="a"><span></span>{{detail.comment_num}}</div>
+        <div class="b"><span></span>{{detail.give_num}}</div>
+        <div class="c"><span></span>{{detail.transfer_num}}</div>
     </div>
 </div>
-<div class="videogg">
-    <img src="assets/images/guangg.jpg" alt="">
+
+<div class="appDoenInfo">
+    <div class="logo"></div>
+    <div class="text">
+        <div class="a">
+            <span>快存私有云</span>
+            <div class="aimg">
+                <s></s><s></s><s></s><s></s><s></s>(1.2万)
+            </div>
+        </div>
+        <div class="b">
+            <span>快存私有云</span>
+        </div>
+    </div>
+    <div class="btn">立即下载</div>
 </div>
-<ul class="detailsContTab">
-    <li (click)="changeTabType(1)" [class.tabDivActive]="tabType == 1" ><span>评论</span>{{detail.comment_num}}</li>
-    <li (click)="changeTabType(2)" [class.tabDivActive]="tabType == 2" ><span>点赞</span>{{detail.give_num}}</li>
-    <li (click)="changeTabType(3)" [class.tabDivActive]="tabType == 3" ><span>分享</span>{{detail.share_num}}</li>
-    <li (click)="changeTabType(4)" [class.tabDivActive]="tabType == 4" ><span>下载</span>{{detail.transfer_num}}</li>
-</ul>
 
-<comment-list *ngIf="tabType==1" [circleId]="detail.id"></comment-list>
-<give-list *ngIf="tabType==2" [circleId]="detail.id"></give-list>
-<shared-list *ngIf="tabType==3" [circleId]="detail.id"></shared-list>
-<transfer-list *ngIf="tabType==4" [circleId]="detail.id"></transfer-list>
 
-<!-- <div class="bottomBtn">
-    <div class="form"><input type="text" [(ngModel)]="commentMsg" placeholder="快捷评论"></div>
-    <div (click)="addComment()" class="pinglun"><span></span></div>
-    <div (click)="addGive()" class="dianzan"><span></span></div>
-    <div (click)="sharedPop=true" class="fengxiang"><span></span></div>
-    <div class="zhuancun"><span></span></div>
-</div> -->
- 
 
-<!-- <div dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" style="margin-bottom: 50px;">
-    <div class="detailsContDiv"> -->
-        <!-- 评论 -->
-        <!-- <ul *ngIf="tabType==1" class="detailsCont">
-            <li *ngFor="let item of comment">
-                <div class="a"><img [src]="detail.headimgurl || headImg" alt=""></div>
-                <div class="b">
-                    <div class="b1">{{item.circleName}}</div>
-                    <div class="b2">
-                        <div class="pl">{{item.messages}}</div>
-                        <div class="time">{{item.create_time}}</div>
+<!-- 相关推荐 -->
+<div class="tuijianDiv">
+    <div class="tuijianBT">
+        相关推荐
+    </div>
+    <ul class="contDiv-list">
+        <!-- <li>
+            <div class="contDiv-img">
+                <img src="images/default-img.png" alt="">
+                <span>10:20</span>
+            </div>
+            <div class="contDiv-text">
+                <div class="contDiv-text-left">
+                    <img src="images/default-touxiang.png" alt="">
+                </div>
+                <div class="contDiv-text-right">
+                    <div class="t">日出-愿你有一个美好的今日时光！日出-愿你有一个美好好的好的的今日时日出-愿你有一个美好的今日时光光</div>
+                    <div class="c">
+                        <p>管理员·1小时前 <span>圈主</span></p>
+                        <p class="d">127</p>
                     </div>
                 </div>
-            </li>
-        </ul> -->
-        <!-- 点赞 -->
-        <!-- <ul *ngIf="tabType==2" class="detailsCont detailsContDianzan">
-            <li *ngFor="let item of comment">
-                <div class="a"><img [src]="detail.headimgurl || headImg" alt=""></div>
-                <div class="b">
-                    <div class="b1">{{item.circleName}}</div>
-                    <div class="b2">
-                        <div class="pl">{{item.messages}}</div>
-                        <div class="time">{{item.create_time}}</div>
+            </div>
+        </li> -->
+        <li *ngFor="let item of data;let i = index;">
+            <!-- (click)="videoClick(item)"  -->
+            <div class="contDiv-img">
+                <img #vimg [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" />
+                <!-- baseUrl + '/' + item.video_image ||  -->
+                <span>{{item.video_len}}</span>
+            </div>
+            <div class="contDiv-text">
+                <!-- (click)="headerClick(item)"  -->
+                <div class="contDiv-text-left">
+                    <img [src]="item.headimgurl || headImg" alt="">
+                </div>
+                <div class="contDiv-text-right">
+                    <div class="t">{{item.title}}</div>
+                    <div class="c">
+                        <p>{{item.name}}·{{item.create_time | formattime}} <span>圈主</span></p>
+                        <p class="d">{{item.comment_num || 0}}</p>
                     </div>
                 </div>
-            </li>
-        </ul> -->
-        <!-- 分享 -->
-        <!-- <ul class="detailsCont detailsContFenxiang ">
-            <li>
-                <div class="a"><img src="assets/images/headimg.png" alt=""></div>
-                <div class="b">
-                    <div class="b1">
-                        <div class="nc">分享--小胖妈妈的生活</div>
-                        <div class="jb">获得<span>5</span>金币</div>
-                    </div>
-                    <div class="b2">
-                        <div class="pl">分享到了微信</div>
-                        <div class="time">10-1 12:12</div>
-                    </div>
-                </div>
-            </li>
-        </ul> -->
-        <!-- 转存 -->
-        <!-- <ul class="detailsCont detailsContDianzan">
-            <li>
-                <div class="a"><img src="assets/images/headimg.png" alt=""></div>
-                <div class="b">
-                    <div class="b1">转存---小胖妈妈的生活</div>
-                    <div class="b2">
-                        <div class="pl">转存了此资源</div>
-                        <div class="time">10-1 12:12</div>
-                    </div>
-                </div>
-            </li>
-        </ul> -->
-    <!-- </div>
-</div> -->
-<!-- <div class="viewMore">查看更多</div> -->
-
-
-
-
-
-
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="ggbtn"></div>
