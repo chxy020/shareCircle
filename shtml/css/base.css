@@ -207,6 +207,35 @@ body {
 	color:#fff;
 	font-size:0.26rem
 }
+.contDiv-img-forwarding{
+	display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+	background: #F7F7F7;
+	border-radius: 0.12rem;
+	align-items: center;
+}
+.contDiv-img-forwarding div{
+	width: 1.28rem;
+	height: 1.28rem;
+	border-radius: 0.12rem;
+}
+.contDiv-img-forwarding div img{
+	width: 1.28rem;
+	height: 1.28rem;
+	border-radius: 0.12rem;
+}
+.contDiv-img-forwarding p{
+	-webkit-box-flex:1;
+	-ms-flex:1;
+	flex:1;
+	color:#070707;
+	font-size: 0.24rem;
+	padding:0.2rem
+}
+
+
+
 .contDiv-text {
 	display:-webkit-box;
 	display:-ms-flexbox;
@@ -1737,4 +1766,30 @@ line-height: .6rem;
 .shareimg p span{
 	color: #2B7EE2;
 	}
+
+.circleQAlist{
+	margin:0.2rem 0.4rem;
+}
+.circleQAlist li{
+	margin-bottom:0.3rem;
+	border-bottom:0.01rem solid #eee;
+	padding-bottom: 0.3rem;
+	padding-top: 0.2rem;
+}
+
+.circleQAlist li h4{
+	font-size: 0.32rem;
+	color: #000;
+	line-height: 180%;
+	margin-bottom: 0.2rem;
+
+}
+.circleQAlist li p{
+	padding-left: 0.5rem;
+	font-size: 0.28rem;
+	color: #696969;
+	line-height: 180%;
+}
+
+
 
