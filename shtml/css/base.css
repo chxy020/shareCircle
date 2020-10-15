@@ -207,6 +207,35 @@ body {
 	color:#fff;
 	font-size:0.26rem
 }
+.contDiv-img-forwarding{
+	display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+	background: #F7F7F7;
+	border-radius: 0.12rem;
+	align-items: center;
+}
+.contDiv-img-forwarding div{
+	width: 1.28rem;
+	height: 1.28rem;
+	border-radius: 0.12rem;
+}
+.contDiv-img-forwarding div img{
+	width: 1.28rem;
+	height: 1.28rem;
+	border-radius: 0.12rem;
+}
+.contDiv-img-forwarding p{
+	-webkit-box-flex:1;
+	-ms-flex:1;
+	flex:1;
+	color:#070707;
+	font-size: 0.24rem;
+	padding:0.2rem
+}
+
+
+
 .contDiv-text {
 	display:-webkit-box;
 	display:-ms-flexbox;
