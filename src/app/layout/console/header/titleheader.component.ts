@@ -11,7 +11,7 @@ declare var circle:any;
         <div (click)="back()" class="topDiv-btnL"></div>
         {{title}}
 
-        <div (click)="menuBtn($event,menuele)" *ngIf="title=='我的主页' || title=='作者主页'" class="topDiv-btnR"></div>
+        <div (click)="menuBtn($event,menuele)" *ngIf="title=='我的主页' || title=='作者主页' || title == '关于圈子'" class="topDiv-btnR"></div>
         <div #menuele style="display:none;" class="tip_operlist">
             <ul *ngIf="title=='我的主页'" >
                 <li (click)="shareCode()" >分享邀请码</li>

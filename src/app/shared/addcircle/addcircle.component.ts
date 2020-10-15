@@ -1,4 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, SimpleChange, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../services/http/http.service';
 
 @Component({
@@ -22,7 +23,8 @@ export class AddCircleComponent implements OnInit, OnDestroy {
 	uid;
 
 	constructor(
-		// private route: ActivatedRoute,
+		private route: ActivatedRoute,
+		private router: Router,
 		private http: HttpService
 	) {
 		this.baseUrl = window["context"]["apiroot"];
@@ -53,6 +55,10 @@ export class AddCircleComponent implements OnInit, OnDestroy {
 
 	addBtn(){
 		this.addCircle();
+	}
+
+	goQa(){
+		this.router.navigate(['/qa']);
 	}
 
 	succesBtn(){

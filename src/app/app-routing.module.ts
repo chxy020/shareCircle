@@ -61,6 +61,12 @@ const routes: Routes = [
 		data: { title: "申请加入" },
 		loadChildren: () => import('./routes/myapply/myapply.module').then(m => m.MyApplyModule)
 	},
+	{ 
+		path: 'qa',
+		component: TitleBackComponent,
+		data: { title: "关于圈子" },
+		loadChildren: () => import('./routes/qa/qa.module').then(m => m.QaModule)
+	},
 	{ path: 'details/:id', loadChildren: () => import('./routes/details/details.module').then(m => m.DetailsModule) },
 	
 	{ path: 'shared/details/:id/:uid', loadChildren: () => import('./routes/shared/details/details.module').then(m => m.DetailsModule) },

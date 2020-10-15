@@ -87,7 +87,7 @@ export class AuthorComponent implements OnInit {
 		let url = "/jqkj/circleMine/getAuthorInfo";
 		this.http.get(url, params, null).subscribe(data => {
 			this.detail = data || {};
-			// this.detail.status = 0;
+			// this.detail.status = -1;
 
 			this.loading = false;
 		}, error => {

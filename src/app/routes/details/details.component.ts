@@ -68,6 +68,7 @@ export class DetailsComponent implements OnInit {
 
 		this.linkUrl = this.shareUrl + "/details/" + this.id + "/" + this.uid;
 
+		this.updatePlayNum();
 		this.findUserPublish();
 		this.getWxSign();
 	}
@@ -86,6 +87,17 @@ export class DetailsComponent implements OnInit {
 	
 	changeTabType(t){
 		this.tabType = +t;
+	}
+
+	updatePlayNum():void{
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("circleId",this.id);
+
+		let url = "/jqkj/cricle/updatePlayNum";
+		this.http.post(url, params, null).subscribe(data => {
+		}, error => {
+			console.error(error);
+		});
 	}
 
 	findUserPublish():void{
