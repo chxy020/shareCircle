@@ -1767,3 +1767,29 @@ line-height: .6rem;
 	color: #2B7EE2;
 	}
 
+.circleQAlist{
+	margin:0.2rem 0.4rem;
+}
+.circleQAlist li{
+	margin-bottom:0.3rem;
+	border-bottom:0.01rem solid #eee;
+	padding-bottom: 0.3rem;
+	padding-top: 0.2rem;
+}
+
+.circleQAlist li h4{
+	font-size: 0.32rem;
+	color: #000;
+	line-height: 180%;
+	margin-bottom: 0.2rem;
+
+}
+.circleQAlist li p{
+	padding-left: 0.5rem;
+	font-size: 0.28rem;
+	color: #696969;
+	line-height: 180%;
+}
+
+
+
