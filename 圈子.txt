@@ -1,8 +1,25 @@
 https://lanhuapp.com/url/4sFVq
 密码: 9rPs
 
+https://lanhuapp.com/url/XkU8G
+密码: VkZf
+
+用我的账号13419361523  密码111111
+
 stopDetailVideo();
 playDetailVideo();
+
+
+publishCircle()跳转到发布页面
+downloadToNasCircle(json串)跳转到转存nas设备页面
+shareCircle(json串)弹出底部分享框
+forwardCircle(json串)跳转到转发页面
+转发的json串{
+    "name":"***",
+    "video_path":"***",
+    "video_image":"***",
+    "video_id":“***”
+}
 
 
 1.登录状态 如何保持到 网页端? native那边进行登录之后，怎么跟书贤提供的服务之间共享，需要先考虑一下。
