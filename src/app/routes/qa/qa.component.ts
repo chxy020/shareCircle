@@ -276,40 +276,22 @@ export class QaComponent implements OnInit {
 
 	me1:any;
 	me2:any;
-	drapUp(me:any,t){
+	drapUp(me:any){
 		console.log("drapUp-----");
-		if(t==1){
-			this.me1 = me;
-			this.me1.resetload();
-			this.me1.unlock();
-			this.me1.noData(false);
+		// this.me1 = me;
+		// this.me1.resetload();
+		// this.me1.unlock();
+		// this.me1.noData(false);
 
-			this.page1 = 1;
-			this.data1 = [];
-			this.getAddCircleNo();
-
-		}else{
-			this.me2 = me;
-			this.me2.resetload();
-			this.me2.unlock();
-			this.me2.noData(false);
-			
-			this.page2 = 1;
-			this.data2 = [];
-			this.getAddCircleOk();
-		}
+		// this.page1 = 1;
+		// this.data1 = [];
+		// this.getAddCircleNo();
     }
-    drapDown(me:any,t){
+    drapDown(me:any){
 		console.log("drapDown------------");
-		if(t==1){
-			this.me1 = me;
-			this.page1++;
-			this.getAddCircleNo();
-		}else{
-			this.me2 = me;
-			this.page2++;
-			this.getAddCircleOk();
-		}
+		// this.me1 = me;
+		// this.page1++;
+		// this.getAddCircleNo();
 	}
 	
 }
