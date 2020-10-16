@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { SubjectService } from 'src/app/shared/services/subjectService.service';
-declare var circle:any;
+
 
 @Component({
     selector: 'title-header',
@@ -75,14 +75,23 @@ export class TitleHeaderComponent implements OnInit {
     }
 
     choiceShare(){
+        // alert("choiceShare");
+        // alert(navigator.userAgent);
         let u = navigator.userAgent;
         let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
         let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
         if (isAndroid) {
             //这个是安卓操作系统
             // alert("android");
-            if(typeof circle != "undefined"){
-                circle.choiceJoinOrShareCircle();
+            // alert(window["circle"]);
+            if(typeof window["circle"] != "undefined"){
+                // alert(window["circle"].publishCircle)
+                try{
+                    window["circle"].publishCircle();
+                }catch(ex){
+                    alert("publishCircle catch")
+                }
+                // var msg = circle.choiceJoinOrShareCircle();
                 // var msg = H5JsStorage.showDetail("{'test':'123'}");
                 // document.getElementById("native").innerHTML = "native响应：" + msg;
             }else{

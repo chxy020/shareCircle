@@ -62,8 +62,8 @@
     <div class="form"><input type="text" (click)="textBottom='0px';commentText.focus();" [(ngModel)]="commentMsg" placeholder="快捷评论"></div>
     <div (click)="addComment()" class="pinglun"><span></span></div>
     <div (click)="addGive()" class="dianzan"><span></span></div>
-    <div (click)="sharedPop=true" class="fengxiang"><span></span></div>
-    <div class="zhuancun"><span></span></div>
+    <div (click)="sharedVideo()" class="fengxiang"><span></span></div>
+    <div (click)="downloadVideo()" class="zhuancun"><span></span></div>
 </div>
  
 <div class="bottomBtn bottomBtnBig" [style.bottom]="textBottom">
@@ -72,7 +72,7 @@
 </div>
 
 <!-- 分享弹框 -->
-<div class="pop-mask" *ngIf="sharedPop">
+<!-- <div class="pop-mask" *ngIf="sharedPop">
     <div class="det-sharepop">
         <div class="det-sharepop-bt">
             <div class="ltext">
@@ -88,7 +88,7 @@
             </ul>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- <div dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" style="margin-bottom: 50px;">
     <div class="detailsContDiv"> -->

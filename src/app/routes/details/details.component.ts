@@ -70,7 +70,7 @@ export class DetailsComponent implements OnInit {
 
 		this.updatePlayNum();
 		this.findUserPublish();
-		this.getWxSign();
+		// this.getWxSign();
 	}
 
 	// meetClick(item):void{
@@ -87,6 +87,106 @@ export class DetailsComponent implements OnInit {
 	
 	changeTabType(t){
 		this.tabType = +t;
+	}
+
+	sharedVideo(){
+		let u = navigator.userAgent;
+        let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+        let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		
+		let condi = {
+			"name":this.detail.title,
+			"video_path":this.detail.video_path,
+			"video_image":this.baseUrl + "/" + this.detail.video_image,
+			"video_id":this.id
+		};
+
+		if (isAndroid) {
+            //这个是安卓操作系统
+            // alert("android");
+            // alert(window["circle"]);
+            if(typeof window["circle"] != "undefined"){
+                // alert(window["circle"].publishCircle)
+                try{
+                    window["circle"].shareCircle(condi);
+                }catch(ex){
+                    alert("shareCircle catch")
+                }
+                // var msg = circle.choiceJoinOrShareCircle();
+                // var msg = H5JsStorage.showDetail("{'test':'123'}");
+                // document.getElementById("native").innerHTML = "native响应：" + msg;
+            }else{
+                alert("circle不存在");
+            }
+        }
+        if (isIOS) {
+            //这个是ios操作系统
+            // alert("ios");
+            // if(typeof webkit != "undefined"){
+            //     if(typeof webkit.messageHandlers != "undefined"){
+            //         if(typeof webkit.messageHandlers.showDetail != "undefined"){
+            //             var msg = webkit.messageHandlers.showDetail.postMessage("{'test':'123'}");
+            //             document.getElementById("native").innerHTML = "native响应：" + msg;
+            //         }else{
+            //             alert("window.webkit.messageHandlers.showDetail不存在");
+            //         }
+            //     }else{
+            //         alert("window.webkit.messageHandlers不存在");
+            //     }
+            // }else{
+            //     alert("window.webkit不存在");
+            // }
+        }
+	}
+
+	downloadVideo(){
+		let u = navigator.userAgent;
+        let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+        let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		
+		let condi = {
+			"name":this.detail.title,
+			"video_path":this.detail.video_path,
+			"video_image":this.baseUrl + "/" + this.detail.video_image,
+			"video_id":this.id
+		};
+
+		if (isAndroid) {
+            //这个是安卓操作系统
+            // alert("android");
+            // alert(window["circle"]);
+            if(typeof window["circle"] != "undefined"){
+                // alert(window["circle"].publishCircle)
+                try{
+                    window["circle"].downloadToNasCircle(condi);
+                }catch(ex){
+                    alert("downloadToNasCircle catch")
+                }
+                // var msg = circle.choiceJoinOrShareCircle();
+                // var msg = H5JsStorage.showDetail("{'test':'123'}");
+                // document.getElementById("native").innerHTML = "native响应：" + msg;
+            }else{
+                alert("circle不存在");
+            }
+        }
+        if (isIOS) {
+            //这个是ios操作系统
+            // alert("ios");
+            // if(typeof webkit != "undefined"){
+            //     if(typeof webkit.messageHandlers != "undefined"){
+            //         if(typeof webkit.messageHandlers.showDetail != "undefined"){
+            //             var msg = webkit.messageHandlers.showDetail.postMessage("{'test':'123'}");
+            //             document.getElementById("native").innerHTML = "native响应：" + msg;
+            //         }else{
+            //             alert("window.webkit.messageHandlers.showDetail不存在");
+            //         }
+            //     }else{
+            //         alert("window.webkit.messageHandlers不存在");
+            //     }
+            // }else{
+            //     alert("window.webkit不存在");
+            // }
+        }
 	}
 
 	updatePlayNum():void{

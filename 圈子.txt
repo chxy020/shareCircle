@@ -21,6 +21,8 @@ forwardCircle(json串)跳转到转发页面
     "video_id":“***”
 }
 
+http://39.107.249.187:8082/jqkj/cricle/updatePlayNum
+
 
 1.登录状态 如何保持到 网页端? native那边进行登录之后，怎么跟书贤提供的服务之间共享，需要先考虑一下。
 
