@@ -148,7 +148,8 @@ export class DetailsComponent implements OnInit {
 			"name":this.detail.title,
 			"video_path":this.detail.video_path,
 			"video_image":this.baseUrl + "/" + this.detail.video_image,
-			"video_id":this.id
+			"video_id":this.id,
+			"link":this.linkUrl,
 		};
 
 		if (isAndroid) {
