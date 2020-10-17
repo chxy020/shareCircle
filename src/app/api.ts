@@ -10,6 +10,7 @@ window['context'] = {
 	apiroot: 'http://39.107.249.187:8082',
 	appId: 'wx04ad9813254366a7',
 	shareUrl: 'http://circle.jinquntech.com',
+	downloadUrl:'http://www.baidu.com',
 	uid:""
 };
 window['stopDetailVideo'] = function(){

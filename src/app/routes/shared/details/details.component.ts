@@ -73,6 +73,14 @@ export class DetailsComponent implements OnInit {
 		this.tabType = +t;
 	}
 
+	downloadApp(){
+		this.router.navigate(['/shared/download']);
+	}
+
+	startApp(){
+		window.location.href = "thinnas://thinnas";
+	}
+
 	findUserPublish():void{
 		this.loading = true;
 

@@ -3,22 +3,11 @@
 <div *ngIf="showTip" class="tip_text">{{showMsg}}</div>
 
 
-<div class="topDiv">
+<!-- <div class="topDiv">
     <div class="topDiv-btnL topDiv-btngb"></div>
     {{detail.title}}
     <div class="topDiv-btnR"></div>
-    <!-- <div class="tip_operlist">
-        <ul>
-            <li>通过并允许发布</li>
-            <li>分享邀请码</li>
-            <li class="disabled">加入列表</li>
-            <li>申请加精</li>
-            <li class="active">仅自己可见</li>
-            <li>隐藏</li>
-            <li>删除</li>
-        </ul>
-    </div> -->
-</div>
+</div> -->
 
 <div class="videoInfo">
     <!-- 第一种情况：视频过大 -->
@@ -49,9 +38,9 @@
         <!-- <div class="c">+ 加入圈子</div> -->
     </div>
     <div class="managementInfo-btn">
-        <div class="a"><span></span>{{detail.comment_num}}</div>
-        <div class="b"><span></span>{{detail.give_num}}</div>
-        <div class="c"><span></span>{{detail.transfer_num}}</div>
+        <div (click)="downloadApp()" class="a"><span></span>{{detail.comment_num}}</div>
+        <div (click)="downloadApp()" class="b"><span></span>{{detail.give_num}}</div>
+        <div (click)="downloadApp()" class="c"><span></span>{{detail.transfer_num}}</div>
     </div>
 </div>
 
@@ -68,7 +57,7 @@
             <span>快存私有云</span>
         </div>
     </div>
-    <div class="btn">立即下载</div>
+    <div (click)="downloadApp()" class="btn">立即下载</div>
 </div>
 
 
@@ -99,7 +88,7 @@
         </li> -->
         <li *ngFor="let item of data;let i = index;">
             <!-- (click)="videoClick(item)"  -->
-            <div class="contDiv-img">
+            <div (click)="downloadApp()"  class="contDiv-img">
                 <img #vimg [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" />
                 <!-- baseUrl + '/' + item.video_image ||  -->
                 <span>{{item.video_len}}</span>
@@ -120,4 +109,4 @@
         </li>
     </ul>
 </div>
-<div class="ggbtn"></div>
+<div (click)="startApp()" class="ggbtn"></div>

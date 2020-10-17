@@ -9,6 +9,8 @@ https://lanhuapp.com/url/XkU8G
 stopDetailVideo();
 playDetailVideo();
 
+调起APP
+<a href="thinnas://thinnas">打开app</a>
 
 publishCircle()跳转到发布页面
 downloadToNasCircle(json串)跳转到转存nas设备页面
