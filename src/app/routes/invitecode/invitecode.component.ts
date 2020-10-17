@@ -73,7 +73,7 @@ export class InviteCodeComponent implements OnInit {
             if(typeof window["circle"] != "undefined"){
                 // alert(window["circle"].publishCircle)
                 try{
-                    window["circle"].invitationCodeShareCircle(condi);
+                    window["circle"].invitationCodeShareCircle(JSON.stringify(condi));
                 }catch(ex){
                     alert("invitationCodeShareCircle catch")
                 }

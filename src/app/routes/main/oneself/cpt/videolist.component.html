@@ -5,14 +5,24 @@
     <div class="contDiv">
 		<ul class="contDiv-list">
 			<li *ngFor="let item of data;">
-				<div (click)="videoClick(item)" class="contDiv-img">
+				<!-- <div (click)="videoClick(item)" class="contDiv-img">
 					<img #vimg [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" />
 					<span>{{item.video_len}}</span>
-				</div>
+				</div> -->
 				<!-- <div class="contDiv-img-forwarding">
                     <div><img #vimg [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" /></div>
                     <p>刘德华99红磡演唱会，至今公认华人最完美的演唱会！完整版奉上</p>
-                </div> -->
+				</div> -->
+				<div *ngIf="!item.isforward" (click)="videoClick(item)" class="contDiv-img">
+					<img #vimg [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" />
+					<span>{{item.video_len}}</span>
+				</div>
+
+				<div *ngIf="!!item.isforward" (click)="videoClick(item)" class="contDiv-img-forwarding">
+                    <div><img #vimg [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" /></div>
+                    <p>{{item.forwardTitle}}</p>
+				</div>
+				
 				<div class="contDiv-text">
 					<div class="contDiv-text-left">
 						<img [src]="item.headimgurl || headImg" alt="">

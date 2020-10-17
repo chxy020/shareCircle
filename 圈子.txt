@@ -19,6 +19,12 @@ forwardCircle(json串)跳转到转发页面
     "video_path":"***",
     "video_image":"***",
     "video_id":“***”
+    "link":"http://xxxxx"
+}
+invitationCodeShareCircle(json串)
+{
+     "sharecode":"AAAA",
+     "line":"http:xxxxx"
 }
 
 http://39.107.249.187:8082/jqkj/cricle/updatePlayNum

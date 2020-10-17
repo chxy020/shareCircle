@@ -5,22 +5,19 @@
     <div class="contDiv" style="padding-bottom: 0px;">
         <div (click)="showFolder()" class="chainLink">我的圈子 > <span>{{filesName}}</span></div>
         <ul class="bofanglist-list video-list history-list">
-            <li *ngFor="let item of data;">
+            <li (click)="videoClick(item)" *ngFor="let item of data;">
                 <div class="bofanglist-img">
                     <img #vimg [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" />
                 </div>
-                <div class="bofanglist-text">
+                <div *ngIf="!item.isforward" class="bofanglist-text">
                     <div class="bofanglist-text-top">
                         {{item.title}}
                     </div>
-                    <!-- <div class="bofanglist-text-bottom">
-                        <div (click)="menuBtn($event,menuele)" class="rbtn"></div>
-                        <div #menuele class="tip_operlist" >
-                            <ul>
-                                <li (click)="delBtn($event,item)">删除</li>
-                            </ul>
-                        </div>
-                    </div> -->
+                </div>
+                <div *ngIf="!!item.isforward" class="bofanglist-text">
+                    <div class="bofanglist-text-top">
+                        转发：{{item.forwardTitle}}
+                    </div>
                 </div>
             </li>
         </ul>

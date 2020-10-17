@@ -67,7 +67,11 @@ export class VideoListComponent implements OnInit {
 	}
 
 	videoClick(item):void{
-		this.router.navigate(['/details/'+item.id]);
+		if(!!item.isforward){
+			this.router.navigate(['/details/'+item.forwardCircle]);
+		}else{
+			this.router.navigate(['/details/'+item.id]);
+		}
 	}
 	
 	getUserCircle():void{
