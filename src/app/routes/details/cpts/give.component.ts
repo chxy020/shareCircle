@@ -9,7 +9,8 @@ import { HttpService } from 'src/app/shared/services/http';
 
 export class GiveListComponent implements OnInit {
 	@Input() circleId:any;
-
+	@Input() refresh:any;
+	
 	data = [];
 	loading = true;
 	me:any;
@@ -36,9 +37,11 @@ export class GiveListComponent implements OnInit {
 	}
 
 	ngOnChanges(changes: SimpleChanges): void {
-        let circleId = changes['circleId'].currentValue || '';
-		console.log("-----",circleId)
-		if(circleId){
+
+		if(changes['circleId'] && changes['circleId'].currentValue){
+			this.getFirstGive();
+		}
+		if(changes['refresh'] && changes['refresh'].currentValue){
 			this.getFirstGive();
 		}
     }

@@ -34,6 +34,9 @@ export class DetailsComponent implements OnInit {
 	shareUrl = "";
 	linkUrl = "";
 
+	commentRefresh = 0;
+	giveRefresh = 0;
+
 	textBottom = "-2rem";
 	@ViewChild('commentText',{static: true}) commentText: ElementRef;
 
@@ -297,6 +300,8 @@ export class DetailsComponent implements OnInit {
 
 				this.detail.comment_num++;
 				this.commentMsg = "";
+
+				this.commentRefresh++;
 			}else{
 				this.showMsg = data.msg;
 				this.showTip = true;
@@ -329,6 +334,8 @@ export class DetailsComponent implements OnInit {
 				},2500);
 
 				this.detail.give_num++;
+
+				this.giveRefresh++;
 			}else if(data.status ==  -1){
 				this.showMsg = "点赞失败";
 				this.showTip = true;

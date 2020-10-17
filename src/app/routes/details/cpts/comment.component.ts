@@ -9,6 +9,7 @@ import { HttpService } from 'src/app/shared/services/http';
 
 export class CommentListComponent implements OnInit {
 	@Input() circleId:any;
+	@Input() refresh:any;
 
 	data = [];
 	loading = true;
@@ -36,9 +37,11 @@ export class CommentListComponent implements OnInit {
 	}
 
 	ngOnChanges(changes: SimpleChanges): void {
-        let circleId = changes['circleId'].currentValue || '';
-		console.log("-----",circleId)
-		if(circleId){
+		
+		if(changes['circleId'] && changes['circleId'].currentValue){
+			this.getFirstComment();
+		}
+		if(changes['refresh'] && changes['refresh'].currentValue){
 			this.getFirstComment();
 		}
     }
