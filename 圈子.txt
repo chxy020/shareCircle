@@ -28,6 +28,8 @@ invitationCodeShareCircle(json´®)
      "sharecode":"AAAA",
      "line":"http:xxxxx"
 }
+¹Ø±Õwebview
+·½·¨£ºcircle.closeWebview()
 
 http://39.107.249.187:8082/jqkj/cricle/updatePlayNum
 
