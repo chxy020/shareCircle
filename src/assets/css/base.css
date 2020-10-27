@@ -175,6 +175,7 @@ body {
 	padding-left:0.15rem;
 	padding-right:0.15rem;
 	font-size:0.34rem;
+	font-weight: bold;
 }
 .tabDivActive {
 	color:#2B7EE2;
@@ -231,11 +232,9 @@ body {
 	flex:1;
 	color:#070707;
 	font-size: 0.24rem;
-	padding:0.2rem
+	padding:0.2rem;
+	font-weight: bold;
 }
-
-
-
 .contDiv-text {
 	display:-webkit-box;
 	display:-ms-flexbox;
@@ -261,7 +260,7 @@ body {
 .contDiv-text-right .t {
 	font-weight:bold;
 	font-size:0.28rem;
-	height:0.8rem;
+	max-height: 0.8rem;
 	line-height:0.4rem;
 	width:100%;
 	margin-top:0.08rem;
@@ -276,7 +275,8 @@ body {
 	font-size:0.24rem;
 	color:#666666;
 	margin-top:0.1rem;
-	margin-bottom:0.05rem
+	margin-bottom:0.05rem;
+	font-weight: bold;
 }
 .contDiv-text-right .c span {
 	display: inline-block;
@@ -325,6 +325,7 @@ body {
 	height:0.44rem;
 	line-height:0.44rem;
 	color:#FFFEFE;
+	font-weight: bold;
 }
 .myinfo .b span {
 	display:inline-block;
@@ -373,6 +374,7 @@ body {
 	border-bottom:.04rem solid #fff;
 	color:#999999;
 	text-align:center;
+	font-weight: bold;
 }
 .bofanglist-list {
 	background:#FFFFFF;
@@ -454,6 +456,7 @@ body {
 	*/
 	  justify-content:space-between;
 	  position: relative;
+	  font-weight: bold;
 }
 
 .bofanglist-list li .bofanglist-text-bottom .tip_operlist {
@@ -506,6 +509,7 @@ body {
 	text-overflow:ellipsis;
 	display:-webkit-box;
 	margin-top:0.08rem;
+	font-weight: bold;
 }
 .bofanglist-list.video-list.history-list li .bofanglist-text-top p {
 	display:block;
@@ -513,6 +517,7 @@ body {
 	white-space:nowrap;
 	overflow:hidden;
 	text-overflow:ellipsis;
+	font-weight: bold;
 }
 .bofanglist-list.history-list li .bofanglist-text-bottom {
 	margin-top:0;
@@ -521,6 +526,7 @@ body {
 .bofanglist-list.history-list li .bofanglist-text-vcenter {
 	font-size:.20rem;
 	color:#BCBCBC;
+	font-weight: bold;
 }
 .chainLink {
 	padding:0 0.2rem;
@@ -528,6 +534,7 @@ body {
 	font-family:PingFang SC;
 	color:#BBBBBB;
 	line-height:.36rem;
+	font-weight: bold;
 }
 .chainLink span {
 	color:#2B7EE2
@@ -569,6 +576,7 @@ body {
 	height:3.38rem;
 	background:#122255 url(../images/authorbg.jpg) no-repeat center;
 	background-size:100% 3.38rem;
+	font-weight: bold;
 }
 .authorInfo .a {
 	height:1.64rem;
@@ -612,6 +620,7 @@ body {
 	line-height:0.6rem;
 	margin-top:1.5rem;
 	text-align:center;
+	font-weight: bold;
 }
 .tipsTextBtn {
 	height:0.82rem;
@@ -652,7 +661,8 @@ body {
 .videoBt {
 	background-color:#fff;
 	padding:0.3rem 0.3rem 0.2rem;
-	border-bottom:0.01rem solid #f2f6fc
+	border-bottom:0.01rem solid #f2f6fc;
+	font-weight: bold;
 }
 .videoBt p {
 	font-size:0.34rem;
@@ -669,7 +679,8 @@ body {
 }
 .managementInfo {
 	background:#FFFFFF;
-	padding:0.3rem 0.3rem 0.2rem
+	padding:0.3rem 0.3rem 0.2rem;
+	font-weight: bold;
 }
 .managementInfo-a {
 	display:-webkit-box;
@@ -851,6 +862,7 @@ body {
 	display:-webkit-box;
 	display:-ms-flexbox;
 	display:flex;
+	font-weight: bold;
 }
 .detailsCont li:first-child {
 	border-top:none;
@@ -938,6 +950,7 @@ body {
 	height:0.86rem;
 	padding-top:0.28rem;
 	display:flex;
+	font-weight: bold;
 }
 .detailsContTab li {
 	margin-left:0.3rem;
@@ -968,6 +981,7 @@ body {
 	height:0.88rem;
 	justify-items:center;
 	align-items:center;
+	font-weight: bold;
 }
 .video_large .ltext {
 	-webkit-box-flex:1;
@@ -1014,6 +1028,7 @@ body {
 	font-size:0.36rem;
 	color:#333333;
 	border-bottom:0.02rem solid #F6F3F3;
+	font-weight: bold;
 }
 .det-sharepop-bt .rbtn {
 	position:absolute;
@@ -1066,6 +1081,7 @@ body {
 }
 .myCircle-list {
 	margin:0 0.3rem;
+	font-weight: bold;
 }
 .myCircle-list li {
 	display:-webkit-box;
@@ -1140,6 +1156,7 @@ body {
 	font-weight: normal;
 	display:block;
 	z-index: 2000;
+	font-weight: bold;
 }
 .tip_operlist li {
 	padding:0 0.3rem
@@ -1223,6 +1240,7 @@ body {
 	display:flex;
 	padding:0 0.1rem 0 0.3rem;
 	border-bottom:0.01rem solid #ebeef5;
+	font-weight: bold;
 }
 .tab-list p {
 	-webkit-box-flex:1;
@@ -1271,6 +1289,7 @@ body {
 	box-shadow: 0 0 0.3rem 0 rgba(185,182,182,0.3);
 	border-radius: 0.12rem;
 	z-index: 20;
+	font-weight: bold;
 }
 .circleExitpop .det-sharepop-bt {
 	text-align:left;
@@ -1335,7 +1354,8 @@ body {
 	margin-top:1.19rem;
 	margin-left:auto;
 	margin-right:auto;
-	text-align:center
+	text-align:center;
+	font-weight: bold;
 }
 .invitecode .a {
 	height:.54rem;
@@ -1382,7 +1402,8 @@ body {
 	text-align:center;
 	font-size:.3rem;
 	box-sizing:content-box;
-	border-radius:.12rem
+	border-radius:.12rem;
+	font-weight: bold;
 }
 .choosepop {
 	width:5.66rem;
@@ -1411,6 +1432,7 @@ body {
 	display:-ms-flexbox;
 	display:flex;
 	align-items:center;
+	font-weight: bold;
 }
 .choosepop-list li.on {
 	background:#F0F2F5;
@@ -1448,6 +1470,7 @@ body {
 	color:#343434;
 	text-align:center;
 	border-top:.01rem solid #E1E1E1;
+	font-weight: bold;
 }
 .choosepop-btn .a {
 	border-right:.01rem solid #E1E1E1;
@@ -1644,6 +1667,7 @@ body {
 	display:-ms-flexbox;
 	display:flex;
 	align-items: center;
+	font-weight: bold;
 }
 
 .appDoenInfo .logo{
@@ -1704,6 +1728,7 @@ body {
 	color:#000;
 	font-size:.36rem;
 	padding: 0.4rem 0.3rem 0.2rem;
+	font-weight: bold;
 }
 .tuijianDiv .contDiv-list li {
 	margin: 0;
@@ -1729,6 +1754,7 @@ body {
 	padding-top:.8rem;
 	text-align: center;
 	background-color: #fff;
+	font-weight: bold;
 }
 .shareimg .c{
 	width: 5.12rem;
