@@ -94,11 +94,10 @@ export class DetailsComponent implements OnInit {
             // alert("android");
             // alert(window["circle"]);
             if(typeof window["circle"] != "undefined"){
-                // alert(window["circle"].publishCircle)
                 try{
-                    window["circle"].backToshowBottom();
+                    window["circle"].hideBottom();
                 }catch(ex){
-                    alert("backToshowBottom catch")
+                    alert("hideBottom catch")
                 }
                 // var msg = circle.choiceJoinOrShareCircle();
                 // var msg = H5JsStorage.showDetail("{'test':'123'}");
