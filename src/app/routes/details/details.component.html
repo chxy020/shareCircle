@@ -35,7 +35,7 @@
             <p class="b1">{{detail.name}}</p>
             <p class="b2">资源 {{detail.pubsum}} <span>圈主</span></p>
         </div>
-        <div class="c">{{detail.isAdd == 0 ? '已加入圈子' : (detail.isAdd == 1 ? '+ 未加入' : (detail.isAdd == 2 ? '待审核' : '我的圈子')) }}</div>
+        <div *ngIf="!detail.isAdmin" class="c">{{(detail.isAdd == 0 ? '已加入圈子' : (detail.isAdd == 1 ? '+ 未加入' : (detail.isAdd == 2 ? '待审核' : '我的圈子'))) }}</div>
         <!-- <div class="c">+ 加入圈子</div> -->
     </div>
     <div class="managementInfo-b">

@@ -7,7 +7,7 @@
         <div (click)="showFolder()" class="chainLink">我的圈子 > <span>{{filesName}}</span></div>
         <ul class="bofanglist-list video-list history-list">
             <li *ngFor="let item of data | datadeleteitem:delcount;">
-                <div class="bofanglist-img">
+                <div (click)="videoClick(item)" class="bofanglist-img">
                     <img #vimg [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" />
                 </div>
                 <div class="bofanglist-text">

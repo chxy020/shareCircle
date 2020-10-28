@@ -44,7 +44,7 @@ export class NowListComponent implements OnInit {
 	}
 
 	videoClick(item):void{
-		this.router.navigate(['/details/'+item.id]);
+		this.router.navigate(['/details/'+item.circleId]);
 	}
 	
 	currentItem;

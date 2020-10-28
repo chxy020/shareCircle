@@ -50,8 +50,7 @@ export class HeaderConsoleComponent implements OnInit {
     // <li class="tabDivActive">精选</li>
     menus:Array<any> = [
         {id:1,name:"精选",current:false},
-        {id:2,name:"关注",current:false},
-        {id:3,name:"我的圈子",current:false}
+        {id:2,name:"关注",current:false}
     ];
 
     ngOnDestroy(): void {
@@ -153,12 +152,29 @@ export class HeaderConsoleComponent implements OnInit {
 			if(data.status == 0){
                 this.menus.map((item)=>item.current=false);
                 let list = data.data || [];
-                list.forEach(item=>{
-                    this.menus.push({
-                        "uid":item.uid,
-                        "name":item.circleName,
-                        "current":this.routeUrl.indexOf('circle/'+item.uid) > -1 ? true : false
-                    });
+                list.forEach((item,index)=>{
+                    // console.log(index);
+                    let path = this.routeUrl.indexOf('circle');
+                    let cpath = this.routeUrl.substr(path);
+
+                    if(index == 0){
+                        // item.circleName = this.uid == item.uid ? "我的圈子" : item.circleName;
+                        if(this.uid == item.uid){
+                            this.menus.push({id:3,name:"我的圈子",current:false})
+                        }else{
+                            this.menus.push({
+                                "uid":item.uid,
+                                "name":item.circleName,
+                                "current":cpath == ('circle/'+item.uid) ? true : false
+                            });
+                        }
+                    }else{
+                        this.menus.push({
+                            "uid":item.uid,
+                            "name":item.circleName,
+                            "current":cpath == ('circle/'+item.uid) ? true : false
+                        });
+                    }
                 });
 
                 this.currentPage();

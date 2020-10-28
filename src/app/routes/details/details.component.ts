@@ -45,7 +45,8 @@ export class DetailsComponent implements OnInit {
 	}
 	get getVideoImagePath(): string {
 		if(this.detail.video_image){
-			return this.baseUrl + "/" + this.detail.video_image;
+			// return this.baseUrl + "/" + this.detail.video_image;
+			return this.detail.video_image;
 		}else{
 			return this.videoImg;
 		}
@@ -140,7 +141,7 @@ export class DetailsComponent implements OnInit {
 		let condi = {
 			"name":this.detail.title,
 			"video_path":this.detail.video_path,
-			"video_image":this.baseUrl + "/" + this.detail.video_image,
+			"video_image":this.detail.video_image,
 			"video_id":this.id,
 			"link":this.linkUrl
 		};
@@ -191,7 +192,7 @@ export class DetailsComponent implements OnInit {
 		let condi = {
 			"name":this.detail.title,
 			"video_path":this.detail.video_path,
-			"video_image":this.baseUrl + "/" + this.detail.video_image,
+			"video_image":this.detail.video_image,
 			"video_id":this.id
 		};
 

@@ -46,6 +46,10 @@ export class PlayList2Component implements OnInit {
 		this.changeFolder.emit();
 	}
 
+	videoClick(item):void{
+		this.router.navigate(['/details/'+item.id]);
+	}
+
 	currentItem;
 	currentMenuEle;
 	eleOut;
