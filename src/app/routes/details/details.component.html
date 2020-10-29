@@ -30,7 +30,7 @@
 </div>
 <div class="managementInfo">
     <div class="managementInfo-a">
-        <div class="a"><img [src]="detail?.headimgurl || headImg" alt=""></div>
+        <div (click)="headerClick(detail)" class="a"><img [src]="detail?.headimgurl || headImg" alt=""></div>
         <div class="b">
             <p class="b1">{{detail.name}}</p>
             <p class="b2">资源 {{detail.pubsum}} <span>圈主</span></p>

@@ -37,19 +37,26 @@ export class CommentListComponent implements OnInit {
 	}
 
 	ngOnChanges(changes: SimpleChanges): void {
-		
 		if(changes['circleId'] && changes['circleId'].currentValue){
+			this.circleId = changes['circleId'].currentValue;
 			this.getFirstComment();
 		}
-		if(changes['refresh'] && changes['refresh'].currentValue){
+		else if(changes['refresh'] && changes['refresh'].currentValue){
+			this.refresh = changes['refresh'].currentValue;
 			this.getFirstComment();
 		}
     }
 
 	getFirstComment():void{
-		this.data.length = 0;
+		if(this.me){
+			this.me.resetload();
+			this.me.unlock();
+			this.me.noData(false);
+		}
 		this.page = 1;
-
+		this.data.length = 0;
+		this.data = [];
+		
 		this.getCircleComment();
 	}
 
@@ -101,7 +108,7 @@ export class CommentListComponent implements OnInit {
     drapDown(me:any){
         console.log("drapDown------------");
 		this.me = me;
-		if(this.circleId){
+		if(this.circleId && this.page > 0){
 			this.page++;
         	this.getCircleComment();
 		}

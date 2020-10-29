@@ -70,7 +70,7 @@ export class DetailsComponent implements OnInit {
 		this.shareUrl = window['context']['shareUrl'];
 		this.id = +this.route.snapshot.paramMap.get('id');
 
-		this.linkUrl = this.shareUrl + "/details/" + this.id + "/" + this.uid;
+		this.linkUrl = this.shareUrl + "/shared/details/" + this.id + "/" + this.uid;
 
 		this.updatePlayNum();
 		this.findUserPublish();
@@ -129,6 +129,15 @@ export class DetailsComponent implements OnInit {
 		this.location.back();
 	}
 	
+	headerClick(item):void{
+		if(this.uid == item.uid){
+			//自己的视频，进入自己首页
+			this.router.navigate(['/myauthor/main']);
+		}else{
+			this.router.navigate(['/author/main/'+item.uid+'/'+(+item.isAdmin)]);
+		}
+	}
+
 	changeTabType(t){
 		this.tabType = +t;
 	}

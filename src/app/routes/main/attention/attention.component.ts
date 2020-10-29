@@ -80,7 +80,7 @@ export class AttentionComponent implements OnInit {
 			//自己的视频，进入自己首页
 			this.router.navigate(['/myauthor/main']);
 		}else{
-			this.router.navigate(['/author/main/'+item.uid]);
+			this.router.navigate(['/author/main/'+item.uid+'/'+(+item.isAdmin)]);
 		}
 	}
 	
