@@ -5,11 +5,11 @@
             <li *ngFor="let item of data">
                 <div class="a"><img [src]="item.headimgurl || headImg" alt="" /></div>
                 <div class="b">
-                    <div class="b1">{{item.circleName}}</div>
                     <div class="b2">
-                        <div class="pl">{{item.messages}}</div>
+                        <div class="pl">{{item.circleName}}</div>
                         <div class="time">{{item.create_time}}</div>
                     </div>
+                    <div class="b1">{{item.messages}}</div>
                 </div>
             </li>
         </ul>

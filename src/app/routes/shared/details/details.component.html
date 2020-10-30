@@ -32,7 +32,8 @@
         <div class="a"><img [src]="detail?.headimgurl || headImg" alt=""></div>
         <div class="b">
             <p class="b1">{{detail.name}}</p>
-            <p class="b2">资源 {{detail.pubsum}} <span>圈主</span></p>
+            <p class="b2">资源 {{detail.pubsum}}</p>
+            <!-- <span>圈主</span> -->
         </div>
         <div class="c">{{detail.isAdd == 0 ? '已加入圈子' : (detail.isAdd == 1 ? '+ 未加入' : (detail.isAdd == 2 ? '待审核' : '我的圈子')) }}</div>
         <!-- <div class="c">+ 加入圈子</div> -->
@@ -101,7 +102,7 @@
                 <div class="contDiv-text-right">
                     <div class="t">{{item.title}}</div>
                     <div class="c">
-                        <p>{{item.name}}·{{item.create_time | formattime}} <span>圈主</span></p>
+                        <p>{{item.name}}·{{item.create_time | formattime}} <!--<span>圈主</span>--></p>
                         <p class="d">{{item.comment_num || 0}}</p>
                     </div>
                 </div>
