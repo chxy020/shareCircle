@@ -15,6 +15,8 @@ export class ChoiceComponent implements OnInit {
 	// titles=["","设备绑定","姓名绑定"];
 	// title;
 	// id=1;
+	userInfo = [];
+
 	data = [];
 	loading = true;
 	me:any;
@@ -63,6 +65,8 @@ export class ChoiceComponent implements OnInit {
 				this.getSelectedCircle();
 			}
 		);
+
+		this.getSelectUserInfo();
 	}
 
 	meetClick(item):void{
@@ -86,6 +90,34 @@ export class ChoiceComponent implements OnInit {
 		}
 	}
 	
+	getSelectUserInfo():void{
+
+		const params: Map<string, any> = new Map<string, any>();
+
+		let url = "/jqkj/circleMine/getSelectUserInfo";
+		this.http.get(url, params, null).subscribe(data => {
+			// console.log(data)
+			if(data.status == 0){
+				this.userInfo = data.data || [];
+				this.replaceHeadImg();
+			}
+			// this.loading = false;
+		}, error => {
+			console.error(error);
+			// this.loading = false;
+		});
+	}
+
+	replaceHeadImg(){
+		if(this.data.length > 0 && this.userInfo.length > 0){
+			this.userInfo.forEach(item=>{
+				this.data.map(item2=>{
+					return item2.uid == item.uid ? item2.headimgurl = item.headimgurl : item.headimgurl;
+				})
+			})
+		}
+	}
+
 	getSelectedCircle():void{
 		this.loading = true;
 		const params: Map<string, any> = new Map<string, any>();
@@ -111,7 +143,8 @@ export class ChoiceComponent implements OnInit {
 				let list = data.data || [];
 
 				this.data = this.data.concat(list);
-
+				this.replaceHeadImg();
+				
 				if(list.length < this.limit){
 					// 锁定
 					this.me.lock();
