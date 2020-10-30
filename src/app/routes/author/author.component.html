@@ -23,7 +23,7 @@
     <!-- <div (click)="addCircleBtn()" class="tipsTextBtn"></div>申请加入按钮 -->
 </div>
 
-<div class="contDivOutside" *ngIf="detail.status==0">
+<div class="contDivOutside" *ngIf="detail.status==0 && isAdmin == 0">
     <div class="tab-list">
         <p>主页动态</p>
         <ul>

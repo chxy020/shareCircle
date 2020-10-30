@@ -16,4 +16,10 @@ export class SubjectService {
 	keyWordSub(): void {
 		this.keyWordSubject.next();
 	}
+
+	private mainTitleSubject = new Subject<any>();
+	public mainTitleObservable = this.mainTitleSubject.asObservable();
+	mainTitleSub(): void {
+		this.mainTitleSubject.next();
+	}
 }

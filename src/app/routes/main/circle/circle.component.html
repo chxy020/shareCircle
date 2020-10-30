@@ -26,7 +26,7 @@
 						<div class="t">{{item.title}}</div>
 						<div class="c">
 							<p>{{item.name}}·{{item.create_time | formattime}} <!--<span>圈主</span>--></p>
-							<p class="d">{{item.comment_num || 0}}</p>
+							<p (click)="videoClick(item)" class="d">{{item.comment_num || 0}}</p>
 						</div>
 					</div>
 				</div>

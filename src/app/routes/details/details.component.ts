@@ -45,7 +45,8 @@ export class DetailsComponent implements OnInit {
 	}
 	get getVideoImagePath(): string {
 		if(this.detail.video_image){
-			return this.baseUrl + "/" + this.detail.video_image;
+			// return this.baseUrl + "/" + this.detail.video_image;
+			return this.detail.video_image;
 		}else{
 			return this.videoImg;
 		}
@@ -69,7 +70,7 @@ export class DetailsComponent implements OnInit {
 		this.shareUrl = window['context']['shareUrl'];
 		this.id = +this.route.snapshot.paramMap.get('id');
 
-		this.linkUrl = this.shareUrl + "/details/" + this.id + "/" + this.uid;
+		this.linkUrl = this.shareUrl + "/shared/details/" + this.id + "/" + this.uid;
 
 		this.updatePlayNum();
 		this.findUserPublish();
@@ -94,11 +95,10 @@ export class DetailsComponent implements OnInit {
             // alert("android");
             // alert(window["circle"]);
             if(typeof window["circle"] != "undefined"){
-                // alert(window["circle"].publishCircle)
                 try{
-                    window["circle"].backToshowBottom();
+                    window["circle"].hideBottom();
                 }catch(ex){
-                    alert("backToshowBottom catch")
+                    alert("hideBottom catch")
                 }
                 // var msg = circle.choiceJoinOrShareCircle();
                 // var msg = H5JsStorage.showDetail("{'test':'123'}");
@@ -129,6 +129,15 @@ export class DetailsComponent implements OnInit {
 		this.location.back();
 	}
 	
+	headerClick(item):void{
+		if(this.uid == item.uid){
+			//自己的视频，进入自己首页
+			this.router.navigate(['/myauthor/main']);
+		}else{
+			this.router.navigate(['/author/main/'+item.uid+'/'+(+item.isAdmin)]);
+		}
+	}
+
 	changeTabType(t){
 		this.tabType = +t;
 	}
@@ -141,7 +150,7 @@ export class DetailsComponent implements OnInit {
 		let condi = {
 			"name":this.detail.title,
 			"video_path":this.detail.video_path,
-			"video_image":this.baseUrl + "/" + this.detail.video_image,
+			"video_image":this.detail.video_image,
 			"video_id":this.id,
 			"link":this.linkUrl
 		};
@@ -192,7 +201,7 @@ export class DetailsComponent implements OnInit {
 		let condi = {
 			"name":this.detail.title,
 			"video_path":this.detail.video_path,
-			"video_image":this.baseUrl + "/" + this.detail.video_image,
+			"video_image":this.detail.video_image,
 			"video_id":this.id
 		};
 

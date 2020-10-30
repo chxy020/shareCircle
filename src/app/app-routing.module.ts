@@ -25,7 +25,7 @@ const routes: Routes = [
 		data: { title: "作者主页" },
 		children: [
 			{
-				path: 'main/:uid',
+				path: 'main/:uid/:isAdmin',
 				loadChildren: () => import('./routes/author/author.module').then(m => m.AuthorModule)
 			}
 		]

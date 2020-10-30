@@ -41,14 +41,20 @@ export class GiveListComponent implements OnInit {
 		if(changes['circleId'] && changes['circleId'].currentValue){
 			this.getFirstGive();
 		}
-		if(changes['refresh'] && changes['refresh'].currentValue){
+		else if(changes['refresh'] && changes['refresh'].currentValue){
 			this.getFirstGive();
 		}
     }
 
 	getFirstGive():void{
-		this.data.length = 0;
+		if(this.me){
+			this.me.resetload();
+			this.me.unlock();
+			this.me.noData(false);
+		}
 		this.page = 1;
+		this.data.length = 0;
+		this.data = [];
 
 		this.getCircleGive();
 	}

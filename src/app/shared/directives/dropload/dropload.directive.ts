@@ -33,7 +33,7 @@ export class DropLoadDirective implements OnInit{
             // distance: 100,
             // autoLoad:false
         };
-        console.log(this.options)
+        // console.log(this.options)
         if(this.options === 1){
             config["loadUpFn"] = function(me){
                 // console.log("loadUpFn----",me,this);

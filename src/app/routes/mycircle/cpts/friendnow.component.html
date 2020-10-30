@@ -2,8 +2,8 @@
 <div dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
     <div class="contDiv" >
         <ul class="bofanglist-list video-list history-list">
-            <li (click)="videoClick(item)" *ngFor="let item of data | datadeleteitem:delcount;">
-                <div class="bofanglist-img">
+            <li *ngFor="let item of data | datadeleteitem:delcount;">
+                <div (click)="videoClick(item)" class="bofanglist-img">
                     <img #vimg [src]="videoImg | imagelazyload:vimg:item.videoImage" alt="" />
                 </div>
                 <div class="bofanglist-text">

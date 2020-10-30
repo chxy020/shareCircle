@@ -24,6 +24,7 @@ export class AuthorComponent implements OnInit {
 	baseUrl = "";
 	uid;
 	authorUid;
+	isAdmin;
 
 	detail:any = {};
 
@@ -55,7 +56,15 @@ export class AuthorComponent implements OnInit {
 		);
 		
 		this.authorUid = this.route.snapshot.paramMap.get('uid');
-		this.getAuthorInfo();
+		this.isAdmin = +this.route.snapshot.paramMap.get('isAdmin');
+
+		if(this.isAdmin == 1){
+			// this.getSelectUserInfo();
+			this.sub.mainTitleSub();
+		}
+		// }else{
+			this.getAuthorInfo();
+		// }
 	}
 
 	changePage(i):void{
@@ -83,6 +92,7 @@ export class AuthorComponent implements OnInit {
 		const params: Map<string, any> = new Map<string, any>();
 		params.set("uid",this.uid);
 		params.set("authorUid",this.authorUid);
+		params.set("isAdmin",this.isAdmin);
 
 		let url = "/jqkj/circleMine/getAuthorInfo";
 		this.http.get(url, params, null).subscribe(data => {

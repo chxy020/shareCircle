@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { SubjectService } from 'src/app/shared/services/subjectService.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { SubjectService } from 'src/app/shared/services/subjectService.service';
         <div (click)="back()" class="topDiv-btnL"></div>
         {{title}}
 
-        <div (click)="menuBtn($event,menuele)" *ngIf="title=='我的主页' || title=='作者主页'" class="topDiv-btnR"></div>
+        <div (click)="menuBtn($event,menuele)" *ngIf="(title=='我的主页' || title=='作者主页') && isShow" class="topDiv-btnR"></div>
         <div #menuele style="display:none;" class="tip_operlist">
             <ul *ngIf="title=='我的主页'" >
                 <li (click)="shareCode()" >分享邀请码</li>
@@ -29,17 +30,29 @@ import { SubjectService } from 'src/app/shared/services/subjectService.service';
 
 export class TitleHeaderComponent implements OnInit {
     
+    isShow = 1;
     title;
     //是否本地跳转，本地跳转，关闭webview
     n = 0;
 
+    mainTitleSub:Subscription;
+
+    ngOnDestroy(): void {
+        if (this.mainTitleSub) {
+            this.mainTitleSub.unsubscribe();
+        }
+    }
     constructor(
         private route: ActivatedRoute,
         private location: Location,
         private sub:SubjectService,
         private router: Router
     ) { 
-        
+        this.mainTitleSub = this.sub.mainTitleObservable.subscribe(
+            () =>{
+				this.isShow = 0;
+			}
+		);
     }
 
     ngOnInit() {
@@ -49,7 +62,7 @@ export class TitleHeaderComponent implements OnInit {
         
         this.route.queryParams.subscribe(params => {
 			this.n = params["n"];
-		});
+        });
     }
 
     back(){

@@ -110,11 +110,13 @@ export class ImageLazyLoadPipe implements PipeTransform {
             let ele = item.dom;
             let url = item.url
             let img = new Image();
-            img.src = this.baseUrl + "/" + url;
+            // img.src = this.baseUrl + "/" + url;
+            img.src = url;
             img.onload = function(){
                 this.loaded = false;
                 // console.log(ele)
-                ele.src = this.baseUrl + "/" + url;
+                // ele.src = this.baseUrl + "/" + url;
+                ele.src = url;
 
                 this.startLoad();
             }.bind(this);
