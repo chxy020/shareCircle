@@ -2,11 +2,13 @@
 <loading [isshow]="loading"></loading>
 <div *ngIf="showTip" class="tip_text">{{showMsg}}</div>
 
-<div class="topDiv">
+<div class="topDiv" style="position: fixed;top:0;
+width: 100%;">
     <div (click)="back()" class="topDiv-btnL"></div>
     视频详情
 </div>
-<div class="videoInfo">
+<div class="videoInfo" style="position: fixed;top:1rem;
+width: 100%;">
     <!-- <div (click)="back();" class="videoInfo-btnL"></div> -->
 
     <!-- 第一种情况：视频过大 -->
@@ -24,7 +26,7 @@
 </div>
 
 
-<div class="videoBt">
+<div class="videoBt" style="margin-top: 5.2rem;">
     <p>{{detail.title}}</p>
     <div class="a">{{detail.video_size}}<span>{{detail.play_num}}次播放</span></div>
 </div>
@@ -66,7 +68,7 @@
     <div (click)="sharedVideo()" class="fengxiang"><span></span></div>
     <div (click)="downloadVideo()" class="zhuancun"><span></span></div>
 </div>
- 
+
 <div class="bottomBtn bottomBtnBig" [style.bottom]="textBottom">
     <div class="form"><textarea #commentText (blur)="textBottom='-2rem';" name="commenttext" rows="4"  [(ngModel)]="commentMsg" placeholder="快捷评论" ></textarea></div>
     <div class="fabu" (click)="addComment()" style="height: 100px;line-height: 100px;">发布</div>

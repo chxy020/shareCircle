@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http';
 import { Location } from '@angular/common';
 declare var wx:any;
+
 // declare var ckplayer:any;
 
 @Component({
@@ -74,6 +75,7 @@ export class DetailsComponent implements OnInit {
 
 		this.updatePlayNum();
 		this.findUserPublish();
+
 		// this.getWxSign();
 	}
 
@@ -141,7 +143,7 @@ export class DetailsComponent implements OnInit {
 	changeTabType(t){
 		this.tabType = +t;
 	}
-
+	
 	sharedVideo(){
 		let u = navigator.userAgent;
         let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
