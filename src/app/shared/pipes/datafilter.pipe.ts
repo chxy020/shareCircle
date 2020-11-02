@@ -120,6 +120,10 @@ export class ImageLazyLoadPipe implements PipeTransform {
 
                 this.startLoad();
             }.bind(this);
+            img.onerror = function(){
+                this.loaded = false;
+                this.startLoad();
+            }.bind(this);
         }
     }
 }
