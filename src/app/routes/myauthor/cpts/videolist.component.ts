@@ -97,7 +97,7 @@ export class VideoListComponent implements OnInit {
 		evt.preventDefault();
 		evt.stopPropagation();
 
-		if(+item.type === 0){
+		if(+item.type === 1){
 			return;
 		}
 
@@ -224,7 +224,7 @@ export class VideoListComponent implements OnInit {
 					this.showTip = false;
 				},2500);
 
-				this.currentItem.type = 0;
+				this.currentItem.type = 1;
 				// this.currentItem.fileName = fileName;
 			}else{
 				this.showMsg = data.msg;

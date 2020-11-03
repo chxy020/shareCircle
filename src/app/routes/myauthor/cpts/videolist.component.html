@@ -60,7 +60,7 @@
                         <div #menuele class="tip_operlist" >
                             <ul>
                                 <li (click)="addFolderPop($event,item)" [class.disabled]="!!item.filesId">加入列表</li>
-                                <li (click)="addRecommend($event,item)" [class.disabled]="+item.type===0">申请加精</li>
+                                <li (click)="addRecommend($event,item)" [class.disabled]="!(+item.type===0 && item.isforward==0 && item.examineStatus == null)">申请加精</li>
                                 <li (click)="changeShowStatus($event,item)">{{+item.isshow === 0 ? '仅自己可见' : '公开' }}</li>
                                 <li (click)="delItem($event,item)">删除</li>
                                 <!-- <li class="disabled">加入列表</li> -->
