@@ -90,7 +90,11 @@ export class HeaderConsoleComponent implements OnInit {
             this.menus[1].current = true;
         }
         if(url.indexOf("/main/oneself") > -1){
-            this.menus[2].current = true;
+            if(this.menus.length > 2){
+                // this.menus.push({id:3,name:"我的圈子",current:false});
+                this.menus[2].current = true;
+            }
+            
         }
     }
 
@@ -160,7 +164,7 @@ export class HeaderConsoleComponent implements OnInit {
                     if(index == 0){
                         // item.circleName = this.uid == item.uid ? "我的圈子" : item.circleName;
                         if(this.uid == item.uid){
-                            this.menus.push({id:3,name:"我的圈子",current:false})
+                            this.menus.push({id:3,name:"我的圈子",current:false});
                         }else{
                             this.menus.push({
                                 "uid":item.uid,
