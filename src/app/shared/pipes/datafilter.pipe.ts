@@ -12,6 +12,16 @@ export class DataDelteItemPipe implements PipeTransform {
 }
 
 @Pipe({
+    name: 'datafilteritem'
+})
+export class DataFilterItemPipe implements PipeTransform {
+    transform(list: Array<any>, id: any): any {
+        return list.filter(item=>item.id != id);
+    }
+}
+
+
+@Pipe({
     name: 'formattime'
 })
 export class FormatTimePipe implements PipeTransform {

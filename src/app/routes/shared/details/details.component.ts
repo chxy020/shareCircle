@@ -112,7 +112,7 @@ export class DetailsComponent implements OnInit {
 		this.http.get(url, params, null).subscribe(data => {
 			if(data.code == 0){
 				let list = data.data || [];
-
+				// list = list.filter(item=>item.id != this.detail.id);
 				this.data = this.data.concat(list);
 			}
 

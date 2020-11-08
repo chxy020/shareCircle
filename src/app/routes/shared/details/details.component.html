@@ -35,14 +35,11 @@
             <p class="b2">资源 {{detail.pubsum}}</p>
             <!-- <span>圈主</span> -->
         </div>
-        <div class="c">{{detail.isAdd == 0 ? '已加入圈子' : (detail.isAdd == 1 ? '+ 未加入' : (detail.isAdd == 2 ? '待审核' : '我的圈子')) }}</div>
+        <!-- <div class="c">{{detail.isAdd == 0 ? '已加入圈子' : (detail.isAdd == 1 ? '+ 未加入' : (detail.isAdd == 2 ? '待审核' : '我的圈子')) }}</div> -->
+        <div *ngIf="!detail.isAdmin" class="c">{{(detail.isAdd == 0 ? '已加入圈子' : (detail.isAdd == 1 ? '+ 未加入' : (detail.isAdd == 2 ? '待审核' : '我的圈子'))) }}</div>
         <!-- <div class="c">+ 加入圈子</div> -->
     </div>
-    <div class="managementInfo-btn">
-        <div (click)="downloadApp()" class="a"><span></span>{{detail.comment_num}}</div>
-        <div (click)="downloadApp()" class="b"><span></span>{{detail.give_num}}</div>
-        <div (click)="downloadApp()" class="c"><span></span>{{detail.transfer_num}}</div>
-    </div>
+    
 </div>
 
 <div class="appDoenInfo">
@@ -60,8 +57,30 @@
     </div>
     <div (click)="downloadApp()" class="btn">立即下载</div>
 </div>
+<div class="managementInfo2">
+    <div class="managementInfo-btn">
+        <div (click)="downloadApp()" class="a"><span></span>{{detail.comment_num}}</div>
+        <div (click)="downloadApp()" class="b"><span></span>{{detail.give_num}}</div>
+        <div (click)="downloadApp()" class="c"><span></span>{{detail.transfer_num}}</div>
+    </div>
+</div>
 
-
+<div class="detailsContDiv">
+    <!-- 评论 -->
+    <ul class="detailsCont detailsContnoborder" style="display: none-;">
+        <li>
+            <div class="a"><img src="./assets/images/headimg.png" alt=""></div>
+            <div class="b">
+                <div class="b2">
+                    <div class="pl">小小月月-昵称</div>
+                    <div class="time">10-1 12:12</div>
+                </div>
+                <div class="b1">评论内容，视频很好，视频很好，视频很好，视频很好，视频很好，视频很好，视频很好，视频很好，视频很好。</div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="viewMore2">查看更多</div>
 
 <!-- 相关推荐 -->
 <div class="tuijianDiv">
@@ -69,28 +88,11 @@
         相关推荐
     </div>
     <ul class="contDiv-list">
-        <!-- <li>
-            <div class="contDiv-img">
-                <img src="images/default-img.png" alt="">
-                <span>10:20</span>
-            </div>
-            <div class="contDiv-text">
-                <div class="contDiv-text-left">
-                    <img src="images/default-touxiang.png" alt="">
-                </div>
-                <div class="contDiv-text-right">
-                    <div class="t">日出-愿你有一个美好的今日时光！日出-愿你有一个美好好的好的的今日时日出-愿你有一个美好的今日时光光</div>
-                    <div class="c">
-                        <p>管理员·1小时前 <span>圈主</span></p>
-                        <p class="d">127</p>
-                    </div>
-                </div>
-            </div>
-        </li> -->
-        <li *ngFor="let item of data;let i = index;">
+        <li *ngFor="let item of data | datafilteritem:detail.id;let i = index;">
             <!-- (click)="videoClick(item)"  -->
-            <div (click)="downloadApp()"  class="contDiv-img">
-                <img #vimg [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" />
+            <div class="contDiv-img">
+                <!-- <img #vimg [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" /> -->
+                <video [poster]="item.video_image"  [src]="item.video_path" type="video/mp4" width="100%" playsinline  height="100%" controls  ></video>
                 <!-- baseUrl + '/' + item.video_image ||  -->
                 <span>{{item.video_len}}</span>
             </div>
