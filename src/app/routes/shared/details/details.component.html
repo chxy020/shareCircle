@@ -91,8 +91,8 @@
         <li *ngFor="let item of data | datafilteritem:detail.id;let i = index;">
             <!-- (click)="videoClick(item)"  -->
             <div class="contDiv-img">
-                <!-- <img #vimg [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" /> -->
-                <video [poster]="item.video_image"  [src]="item.video_path" type="video/mp4" width="100%" playsinline  height="100%" controls  ></video>
+                <img #vimg [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" />
+                <!-- <video [poster]="item.video_image"  [src]="item.video_path" type="video/mp4" width="100%" playsinline  height="100%" controls  ></video> -->
                 <!-- baseUrl + '/' + item.video_image ||  -->
                 <span>{{item.video_len}}</span>
             </div>
