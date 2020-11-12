@@ -2065,4 +2065,47 @@ line-height: .46rem;
 	background: #01b6d8 url(../images/geren_bg.jpg) no-repeat top center;
 	height: 3.58rem;
 }
+.detailsContDiv .formDIV{
+	padding:0.17rem 0.3rem;
+	display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+	align-items:center;
+}
+.detailsContDiv .formDIV .form{
+	-webkit-box-flex:1;
+	-ms-flex:1;
+	flex:1;
+	position: relative;
+}
+.detailsContDiv .formDIV .form input {
+	padding-left: 0.7rem;
+}
+.detailsContDiv .formDIV .form .headImg{
+	width: 0.4rem;
+	height: 0.4rem;
+	position: absolute;
+	left:0.16rem;
+	top:0.14rem;
+	background:url(../images/default-touxiang.png) no-repeat center;
+	background-size:0.4rem 0.4rem;
+}
+.detailsContDiv .formDIV .form .headImg img{
+	width: 0.4rem;
+	height: 0.4rem;
+	border-radius: 50%;
+}
+.detailsContDiv .formDIV .formBtn{
+	width: 0.98rem;
+	height: 0.52rem;
+	line-height: 0.52rem;
+	background-color: #058cff;
+	border-radius: 0.05rem;
+	font-size: 0.28rem;
+	text-align: center;
+	margin-left:0.34rem;
+	color: #fff;
+}
+
+
 
