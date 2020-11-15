@@ -1,17 +1,40 @@
 <loading [isshow]="loading"></loading>
 
-<div class="myinfo">
+<!-- <div class="myinfo">
     <p class="a"><img [src]="detail?.headimgurl || headImg"  alt=""></p>
     <p class="b">{{detail?.circleName || ""}}<span></span></p>
+</div> -->
+
+<div class="myinfoADIV">
+    <div class="myinfoA">
+        <p class="a"><img [src]="detail?.headimgurl || headImg"  alt=""></p>
+        <!-- myauthor/main -->
+        <p class="b">{{detail?.circleName}}</p>
+        <p (click)="myAuthorClick();" class="c"></p><!-- 管理 按钮 -->
+    </div>
+    <div (click)="myIntroductionClick();" class="myinfoB">
+        圈子简介：用视频记录生活,用趣的灵魂会说话...用视频记录生活 ,用趣的灵魂会说话...<span></span>
+    </div>
 </div>
 
-<div class="contDivOutside">
+<div class="chuangjiantipsText" style="display: none;">
+    <p class="tibg"></p>
+    <div (click)="createCircleQa()" class="tipsTextBtn"></div><!-- 申请加入按钮 -->
+</div>
+
+<div *ngIf="empty" class="chuangjiantipsText" >
+    <p class="tibg imga"></p>
+    <p class="a">暂无视频</p>
+    <p class="b">试着去发布内容吧</p>
+</div>
+
+<div *ngIf="!empty" class="contDivOutside">
     <ul class="contTab">
         <li (click)="changePage(1)" [class.tabDivActive]="pageType==1" >视频</li>
         <li (click)="changePage(2)" [class.tabDivActive]="pageType==2" >播放列表</li>
     </ul>
-    <self-video-list *ngIf="pageType==1"></self-video-list>
-    <self-play-list *ngIf="pageType==2"></self-play-list>
+    <self-video-list *ngIf="pageType==1" (noData)="empty=true;" ></self-video-list>
+    <self-play-list *ngIf="pageType==2" (noData)="empty=true;" ></self-play-list>
     <!-- <div class="contDiv" style="display: none;">
         <ul class="contDiv-list">
             <li>

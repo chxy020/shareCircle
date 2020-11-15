@@ -13,6 +13,13 @@
         <p>下载 {{detail?.data?.downLoad}}</p>
     </div>
 </div>
+
+<!--系统精选账户-->
+<div class="chuangjiantipsText pt70" *ngIf="isAdmin == 1">
+    <p class="tibg imgb"></p>
+    <p class="b mt20">暂无内容</p>
+</div>
+
 <!-- 没权限时 -->
 <div class="tipsText" *ngIf="detail.status==-1">
     <p>申请加入查看他的精彩视频~</p>

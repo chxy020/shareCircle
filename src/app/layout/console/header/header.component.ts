@@ -50,7 +50,8 @@ export class HeaderConsoleComponent implements OnInit {
     // <li class="tabDivActive">精选</li>
     menus:Array<any> = [
         {id:1,name:"精选",current:false},
-        {id:2,name:"关注",current:false}
+        {id:2,name:"关注",current:false},
+        {id:3,name:"我的圈子",current:false}
     ];
 
     ngOnDestroy(): void {
@@ -142,7 +143,8 @@ export class HeaderConsoleComponent implements OnInit {
     }
 
     myAuthorClick(){
-        this.router.navigate(['/myauthor/main']);
+        // this.router.navigate(['/myauthor/main']);
+        this.router.navigate(['/usercenter/main']);
     }
 
     getMineNavigation():void{
@@ -164,7 +166,7 @@ export class HeaderConsoleComponent implements OnInit {
                     if(index == 0){
                         // item.circleName = this.uid == item.uid ? "我的圈子" : item.circleName;
                         if(this.uid == item.uid){
-                            this.menus.push({id:3,name:"我的圈子",current:false});
+                            // this.menus.push({id:3,name:"我的圈子",current:false});
                         }else{
                             this.menus.push({
                                 "uid":item.uid,

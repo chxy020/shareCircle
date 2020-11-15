@@ -1,8 +1,10 @@
 <loading [isshow]="loading"></loading>
 
+<div *ngIf="showTip" class="tip_text">{{showMsg}}</div>
+
 <div class="authorInfo">
     <p class="a"><img [src]="detail?.headimgurl || headImg" alt=""></p>
-    <p class="b">{{detail?.circleName}}的圈子</p>
+    <p (click)="editModel=true;" class="b">{{detail?.circleName}}的圈子<span></span></p>
     <div class="c">
         <p>资源 {{detail?.resourceNum}}</p>
         <p>分享 {{detail?.shareNum}}</p>
@@ -21,6 +23,23 @@
     <myauthor-play-list *ngIf="pageType==2"></myauthor-play-list>
     <myauthor-video-list *ngIf="pageType==3"></myauthor-video-list>
     <myauthor-apply-list *ngIf="pageType==4"></myauthor-apply-list>
+</div>
+
+<!-- 修改昵称弹框 -->
+<div class="pop-mask" *ngIf="editModel" >
+    <div class="editpop">
+        <div class="det-sharepop-bt">
+            <div class="ltext">
+                修改昵称
+            </div>
+            <div class="rbtn" (click)="editModel=false;"></div>
+        </div>
+        <div class="forminput"><input type="text" [(ngModel)]="detail.circleName" placeholder="请输入2-16个字符的昵称"></div>
+        <div class="choosepop-btn">
+            <div class="a" (click)="editModel=false;">取消</div>
+            <div class="b" (click)="updateCircleMine();">确定</div>
+        </div>
+    </div>
 </div>
 
 <!-- 

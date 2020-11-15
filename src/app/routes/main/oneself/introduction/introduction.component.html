@@ -1,0 +1,10 @@
+<loading [isshow]="loading"></loading>
+
+<div class="topDiv">
+    <div (click)="back()" class="topDiv-btnL"></div>
+    编辑简介
+    <div (click)="saveInfo()" class="topDiv-btnR topDiv-btnRT">完成</div>
+</div>
+<div class="bianjifrom">
+    <textarea name="infoarea" [(ngModel)]="info" rows="4" placeholder="" ></textarea>
+</div>

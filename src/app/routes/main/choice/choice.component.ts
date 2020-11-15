@@ -151,7 +151,7 @@ export class ChoiceComponent implements OnInit {
 					// 无数据
 					this.me.noData(true);
 				}
-
+				
 				setTimeout(()=>{
 					this.me.resetload();
 				},200);

@@ -108,7 +108,7 @@ export class AuthorComponent implements OnInit {
 
 	quitCircle():void{
 		this.loading = true;
-
+		
 		const params: Map<string, any> = new Map<string, any>();
 		params.set("uid",this.uid);
 		params.set("quitUid",this.authorUid);
@@ -116,7 +116,7 @@ export class AuthorComponent implements OnInit {
 
 		let url = "/jqkj/circleMine/quitCircle";
 		this.http.post(url, params, null).subscribe(data => {
-			if(data.status == 0){
+			if(data.status == 0 || data.status == 1){
 				this.showMsg = "退出圈子成功";
 				this.showTip = true;
 				this.quitPop = false;

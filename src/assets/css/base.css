@@ -1846,6 +1846,10 @@ body {
 	background: url(../images/quanziwishipin.png) no-repeat center center;
 	background-size: 3.02rem 2.34rem;
 }
+.chuangjiantipsText .tibg.imgb{
+	background: url(../images/noneirong.png) no-repeat center center;
+	background-size: 3.02rem 2.34rem;
+}
 .chuangjiantipsText .tipsTextBtn{
 	width: 2.2rem;
 	height: 0.64rem;
@@ -1862,7 +1866,6 @@ body {
 .chuangjiantipsText .b{
 	font-size: .22rem;
 	line-height: .36rem;
-	font-weight: bold;
 	color: #A3A3A3;
 }
 .myinfoADIV{
@@ -1902,6 +1905,7 @@ body {
 	line-height:0.44rem;
 	color:#FFFEFE;
 	font-weight: bold;
+	text-align: justify;
 }
 .myinfoA .b span {
 	display:inline-block;
@@ -1926,3 +1930,182 @@ body {
 	background-size:0.26rem 0.26rem;
 	vertical-align:middle;
 }
+.bianjifrom{
+	background-color: #fff;
+	padding-bottom: .3rem;
+}
+.bianjifrom textarea {
+font-size: .3rem;
+color: #000000;
+line-height: .46rem;
+
+	border: 0;
+	outline: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	width:100%;
+	background:#fff;
+	border-radius:0.12rem;
+	padding:0.3rem;
+	transform-origin:0 0;
+	box-sizing: border-box;
+		text-align: justify;
+}
+.topDiv-btnRT {
+    position: absolute;
+    top: 0.09rem;
+    right: 0;
+    width: 1.2rem;
+    height: 0.8rem;
+	background: none;
+	font-size: .3rem;
+    line-height: 0.8rem;
+    text-align: center;
+	font-weight: normal;
+	color:#2B7EE2;
+}
+
+.mt20{
+	margin-top: .2rem;
+}
+.pt70{
+	padding-top: .7rem;
+}
+.authorInfo .b span {
+    display: inline-block;
+    height: 0.44rem;
+    width: 0.44rem;
+    background: url(../images/icon3.png) no-repeat center;
+    background-size: 0.28rem 0.28rem;
+    vertical-align: middle;
+}
+
+
+
+.editpop {
+    width: 5.66rem;
+    height: 3.6rem;
+    background: #FFFFFF;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-top: -2.8rem;
+    margin-left: -2.83rem;
+    background: #FFFFFF;
+    box-shadow: 0 0 0.3rem 0 rgba(185,182,182,0.3);
+    border-radius: 0.12rem;
+    z-index: 20;
+}
+.editpop .forminput{
+    margin: .1rem .2rem .3rem;
+}
+.editpop .forminput input {
+	border:none;
+	border-radius: 0;
+	font-size: .28rem;
+}
+.contDiv2 {
+	border-radius: 0.12rem;
+    margin-top: -0.1rem;
+	margin-bottom: 0.5rem;
+	background-color: #fff;
+}
+.geren-list {
+	margin:0 0.3rem;
+	font-weight: bold;
+}
+.geren-list li {
+	display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+	height:1.1rem;
+	align-items:center;
+}
+.geren-list li .geren-list-l {
+	-webkit-box-flex:1;
+	-ms-flex:1;
+	flex:1;
+	font-size: .3rem;
+	font-weight: bold;
+}
+.geren-list li .geren-list-c {
+	width:0.4rem;
+	height:0.4rem;
+	margin-right: 0.34rem;
+}
+.geren-list li .geren-list-c.a {
+	background:url(../images/gricon1.png) no-repeat center;
+	background-size:0.4rem 0.4rem;
+}
+.geren-list li .geren-list-c.b {
+	background:url(../images/gricon2.png) no-repeat center;
+	background-size:0.4rem 0.4rem;
+}
+.geren-list li .geren-list-c.c {
+	background:url(../images/gricon3.png) no-repeat center;
+	background-size:0.4rem 0.4rem;
+}
+.geren-list li .geren-list-c.d {
+	background:url(../images/gricon4.png) no-repeat center;
+	background-size:0.4rem 0.4rem;
+}
+.geren-list li .geren-list-c.e {
+	background:url(../images/gricon5.png) no-repeat center;
+	background-size:0.4rem 0.4rem;
+}
+.geren-list li .geren-list-r {
+	width:0.5rem;
+	height:0.5rem;
+	background:url(../images/arr-right.png) no-repeat center;
+	background-size:0.24rem 0.24rem;
+}
+.myindexbg{
+	background: #0063a1 url(../images/myindexbg.jpg) no-repeat top center;
+}
+.gerenbg{
+	background: #01b6d8 url(../images/geren_bg.jpg) no-repeat top center;
+	height: 3.58rem;
+}
+.detailsContDiv .formDIV{
+	padding:0.17rem 0.3rem;
+	display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+	align-items:center;
+}
+.detailsContDiv .formDIV .form{
+	-webkit-box-flex:1;
+	-ms-flex:1;
+	flex:1;
+	position: relative;
+}
+.detailsContDiv .formDIV .form input {
+	padding-left: 0.7rem;
+}
+.detailsContDiv .formDIV .form .headImg{
+	width: 0.4rem;
+	height: 0.4rem;
+	position: absolute;
+	left:0.16rem;
+	top:0.14rem;
+	background:url(../images/default-touxiang.png) no-repeat center;
+	background-size:0.4rem 0.4rem;
+}
+.detailsContDiv .formDIV .form .headImg img{
+	width: 0.4rem;
+	height: 0.4rem;
+	border-radius: 50%;
+}
+.detailsContDiv .formDIV .formBtn{
+	width: 0.98rem;
+	height: 0.52rem;
+	line-height: 0.52rem;
+	background-color: #058cff;
+	border-radius: 0.05rem;
+	font-size: 0.28rem;
+	text-align: center;
+	margin-left:0.34rem;
+	color: #fff;
+}
+
+
+

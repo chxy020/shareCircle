@@ -1,0 +1,54 @@
+<loading [isshow]="loading"></loading>
+
+<div class="authorInfo gerenbg">
+
+    <p class="a"><img [src]="detail?.headimgurl || headImg" alt=""></p>
+    <p class="b">{{detail?.circleName}}的圈子</p>
+    <div class="c">
+        <p>资源 {{detail?.resourceNum}}</p>
+        <p>分享 {{detail?.shareNum}}</p>
+        <p>下载 {{detail?.downLoad}}</p>
+    </div>
+
+</div>
+
+<!-- 基本信息 -->
+<div class="contDiv2">
+    <ul class="geren-list">
+        <li (click)="showqa(1)">
+            <div class="geren-list-c a"></div>
+            <div class="geren-list-l">
+                什么是圈子
+            </div>
+            <div class="geren-list-r"></div>
+        </li>
+        <li (click)="showqa(2)">
+            <div class="geren-list-c b"></div>
+            <div class="geren-list-l">
+                如何建立圈子
+            </div>
+            <div class="geren-list-r"></div>
+        </li>
+        <li (click)="showqa(3)">
+            <div class="geren-list-c c"></div>
+            <div class="geren-list-l">
+                如何邀请别人加入圈子
+            </div>
+            <div class="geren-list-r"></div>
+        </li>
+        <li (click)="showqa(4)">
+            <div class="geren-list-c d"></div>
+            <div class="geren-list-l">
+                如何赚金币
+            </div>
+            <div class="geren-list-r"></div>
+        </li>
+        <li (click)="showqa(5)">
+            <div class="geren-list-c e"></div>
+            <div class="geren-list-l">
+                如何分享
+            </div>
+            <div class="geren-list-r"></div>
+        </li>
+    </ul>
+</div>

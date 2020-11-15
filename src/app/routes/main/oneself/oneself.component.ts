@@ -21,6 +21,8 @@ export class OneSelfComponent implements OnInit {
 
 	detail;
 
+	empty = false;
+	
 	constructor(
 		private route: ActivatedRoute,
 		private http: HttpService,
@@ -59,5 +61,17 @@ export class OneSelfComponent implements OnInit {
 			console.error(error);
 			this.loading = false;
 		});
+	}
+
+	myAuthorClick(){
+		this.router.navigate(['/myauthor/main']);
+	}
+
+	myIntroductionClick(){
+		this.router.navigate(['/oneself/introduction']);
+	}
+
+	createCircleQa(){
+		this.router.navigate(['/usercenter/createcircle']);
 	}
 }

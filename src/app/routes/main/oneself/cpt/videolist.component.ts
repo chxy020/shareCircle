@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Injector } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Injector, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { HttpService } from 'src/app/shared/services/http';
@@ -11,6 +11,8 @@ import { SubjectService } from 'src/app/shared/services/subjectService.service';
 
 export class VideoListComponent implements OnInit {
 	
+	@Output() public noData = new EventEmitter<any>();
+
 	data = [];
 	loading = true;
 	me:any;
@@ -111,6 +113,10 @@ export class VideoListComponent implements OnInit {
 				setTimeout(()=>{
 					this.me.resetload();
 				},200);
+
+				if(this.data.length == 0){
+					this.noData.emit();
+				}
 			}
 
 			this.loading = false;

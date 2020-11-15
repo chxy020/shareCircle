@@ -7,7 +7,7 @@ const {
 } = environment;
 
 window['context'] = {
-	apiroot: 'http://39.107.249.187:8082',
+	apiroot: 'http://139.196.147.194:8082',
 	appId: 'wx04ad9813254366a7',
 	shareUrl: 'http://circle.jinquntech.com',
 	downloadUrl:'http://www.baidu.com',

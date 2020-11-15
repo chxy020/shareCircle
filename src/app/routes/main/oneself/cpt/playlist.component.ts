@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Injector } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http';
 
@@ -8,6 +8,8 @@ import { HttpService } from 'src/app/shared/services/http';
 })
 
 export class PlayListComponent implements OnInit {
+	
+	@Output() public noData = new EventEmitter<any>();
 	
 	isFolder = true;
 	filesName = "";
@@ -134,6 +136,10 @@ export class PlayListComponent implements OnInit {
 				setTimeout(()=>{
 					this.me.resetload();
 				},200);
+
+				if(this.data.length == 0){
+					this.noData.emit();
+				}
 			}
 
 			this.loading = false;

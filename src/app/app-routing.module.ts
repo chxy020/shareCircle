@@ -34,11 +34,23 @@ const routes: Routes = [
 	{
 		path: 'myauthor',
 		component: TitleBackComponent,
-		data: { title: "我的主页" },
+		data: { title: "管理圈子" },
 		children: [
 			{
 				path: 'main',
 				loadChildren: () => import('./routes/myauthor/myauthor.module').then(m => m.MyAuthorModule)
+			}
+		]
+		
+	},
+	{
+		path: 'usercenter',
+		component: TitleBackComponent,
+		data: { title: "个人中心" },
+		children: [
+			{
+				path: 'main',
+				loadChildren: () => import('./routes/usercenter/usercenter.module').then(m => m.UserCenterModule)
 			}
 		]
 		
@@ -67,6 +79,41 @@ const routes: Routes = [
 		data: { title: "关于圈子" },
 		loadChildren: () => import('./routes/qa/qa.module').then(m => m.QaModule)
 	},
+	{ 
+		path: 'usercenter/circle',
+		component: TitleBackComponent,
+		pathMatch: 'prefix',
+		data: { title: "什么是圈子" },
+		loadChildren: () => import('./routes/usercenter/circle/circle.module').then(m => m.CircleModule)
+	},
+	{ 
+		path: 'usercenter/createcircle',
+		component: TitleBackComponent,
+		pathMatch: 'prefix',
+		data: { title: "如何建立圈子" },
+		loadChildren: () => import('./routes/usercenter/createcircle/createcircle.module').then(m => m.CreateCircleModule)
+	},
+	{ 
+		path: 'usercenter/addcircle',
+		component: TitleBackComponent,
+		data: { title: "如何邀请别人加入圈子" },
+		loadChildren: () => import('./routes/usercenter/addcircle/addcircle.module').then(m => m.AddCircleModule)
+	},
+	{ 
+		path: 'usercenter/gold',
+		component: TitleBackComponent,
+		data: { title: "如何赚金币" },
+		loadChildren: () => import('./routes/usercenter/gold/gold.module').then(m => m.GoldModule)
+	},
+	{ 
+		path: 'usercenter/shared',
+		component: TitleBackComponent,
+		data: { title: "如何分享" },
+		loadChildren: () => import('./routes/usercenter/shared/shared.module').then(m => m.QaSharedModule)
+	},
+
+	{ path: 'oneself/introduction', loadChildren: () => import('./routes/main/oneself/introduction/introduction.module').then(m => m.IntroductionModule)},
+
 	{ path: 'details/:id', loadChildren: () => import('./routes/details/details.module').then(m => m.DetailsModule) },
 	
 	{ path: 'shared/details/:id/:uid', loadChildren: () => import('./routes/shared/details/details.module').then(m => m.DetailsModule) },
