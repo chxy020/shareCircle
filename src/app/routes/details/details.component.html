@@ -8,7 +8,7 @@ width: 100%;">
     视频详情
 </div>
 <div class="videoInfo" style="position: fixed;top:1rem;
-width: 100%;">
+width: 100%;background: #fff;margin-top: -1px;">
     <!-- <div (click)="back();" class="videoInfo-btnL"></div> -->
 
     <!-- 第一种情况：视频过大 -->
@@ -22,7 +22,7 @@ width: 100%;">
     </div>
     <!-- class="video_large" -->
     <!-- <div id="nas_video_div" style="width:100%;height:100%;"></div> -->
-    <video *ngIf="!detail?.isBig" autoplay  id="nas_video" [poster]="getVideoImagePath"  [src]="detail?.video_path" type="video/mp4" width="100%" playsinline  height="100%" controls  ></video>
+    <video *ngIf="!detail?.isBig" autoplay  id="nas_video" style="object-fit: fill;" [poster]="getVideoImagePath"  [src]="detail?.video_path" type="video/mp4" width="100%" playsinline  height="100%" controls  ></video>
 </div>
 
 
@@ -72,6 +72,7 @@ width: 100%;">
 <div class="bottomBtn bottomBtnBig" [style.bottom]="textBottom">
     <div class="form"><textarea #commentText (blur)="textBottom='-2rem';" name="commenttext" rows="4"  [(ngModel)]="commentMsg" placeholder="快捷评论" ></textarea></div>
     <div class="fabu" (click)="addComment()" style="height: 100px;line-height: 100px;">发布</div>
+    <!-- background: url(assets/images/fabu.png);padding:0 0.4rem 0 0.8rem; -->
 </div>
 
 <!-- 分享弹框 -->

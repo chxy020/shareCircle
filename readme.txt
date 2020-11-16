@@ -2,6 +2,9 @@
 部署地址
 
 root@39.107.249.187:/opt/jq/www/circle_www
+最新地址
+root@139.196.147.194:/opt/jq/www/circle_www
+
 Hzsj!1234
 
 http://circle.jinquntech.com/main/choice

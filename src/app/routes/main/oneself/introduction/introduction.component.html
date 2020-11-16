@@ -1,4 +1,5 @@
 <loading [isshow]="loading"></loading>
+<div *ngIf="showTip" class="tip_text">{{showMsg}}</div>
 
 <div class="topDiv">
     <div (click)="back()" class="topDiv-btnL"></div>

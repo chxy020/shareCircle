@@ -1,4 +1,4 @@
-<loading [isshow]="loading"></loading>
+<!-- <loading [isshow]="loading"></loading> -->
 
 <!-- <div class="myinfo">
     <p class="a"><img [src]="detail?.headimgurl || headImg"  alt=""></p>
@@ -13,7 +13,7 @@
         <p (click)="myAuthorClick();" class="c"></p><!-- 管理 按钮 -->
     </div>
     <div (click)="myIntroductionClick();" class="myinfoB">
-        圈子简介：用视频记录生活,用趣的灵魂会说话...用视频记录生活 ,用趣的灵魂会说话...<span></span>
+        圈子简介：{{detail?.synopsis || ""}}<span></span>
     </div>
 </div>
 

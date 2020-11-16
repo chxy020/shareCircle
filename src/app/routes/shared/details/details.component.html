@@ -9,7 +9,7 @@
     <div class="topDiv-btnR"></div>
 </div> -->
 
-<div class="videoInfo">
+<div class="videoInfo" style="background: #fff;margin-top: -1px;">
     <!-- 第一种情况：视频过大 -->
     <div class="video_large" *ngIf="detail?.isBig == 1" >
         <div class="ltext">
@@ -19,7 +19,7 @@
         </div>
         <div class="rbtn"></div>
     </div>
-    <video *ngIf="detail?.isBig == 0" autoplay  id="nas_video" [poster]="getVideoImagePath"  [src]="detail?.video_path" type="video/mp4" width="100%" playsinline  height="100%" controls  ></video>
+    <video *ngIf="detail?.isBig == 0" autoplay style="object-fit: fill;" id="nas_video" [poster]="getVideoImagePath"  [src]="detail?.video_path" type="video/mp4" width="100%" playsinline  height="100%" controls  ></video>
 </div>
 
 

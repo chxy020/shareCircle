@@ -11,7 +11,9 @@ import { Location } from '@angular/common';
 
 export class IntroductionComponent implements OnInit {
 	
-	loading = true;
+	loading = false;
+	showTip = false;
+	showMsg = "";
 
 	headImg = "./assets/images/headimg.png";
 
@@ -39,8 +41,8 @@ export class IntroductionComponent implements OnInit {
 		this.baseUrl = window["context"]["apiroot"];
 
 		// this.getImgOrName();
-
-		this.info = "123123";
+		let synopsis = window.sessionStorage.getItem("_synopsis") || "";
+		this.info = synopsis;
 	}
 
 	back(){
@@ -48,7 +50,37 @@ export class IntroductionComponent implements OnInit {
 	}
 	
 	saveInfo(){
+		this.updateCircleMine();
+	}
 
+	updateCircleMine(){
+		this.loading = true;
+
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("uid",this.uid);
+		params.set("synopsis",this.info);
+
+		let url = "/jqkj/circleMine/updateCircleMine";
+		this.http.post(url, params, null).subscribe(data => {
+			if(data.status == 0){
+				this.showMsg = "修改成功";
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+				// this.editModel = false;
+			}else{
+				this.showMsg = data.msg;
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}
+			this.loading = false;
+		}, error => {
+			console.error(error);
+			this.loading = false;
+		});
 	}
 
 	changePage(i):void{

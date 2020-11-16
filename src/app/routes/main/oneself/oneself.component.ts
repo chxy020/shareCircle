@@ -68,6 +68,7 @@ export class OneSelfComponent implements OnInit {
 	}
 
 	myIntroductionClick(){
+		window.sessionStorage.setItem("_synopsis",this.detail.synopsis || "");
 		this.router.navigate(['/oneself/introduction']);
 	}
 
