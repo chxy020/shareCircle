@@ -2107,5 +2107,32 @@ line-height: .46rem;
 	color: #fff;
 }
 
-
-
+.circleQAlistA {
+	margin: 1rem 0.4rem;
+	}
+.circleQAlistA {
+margin-bottom: 0.3rem;
+padding-bottom: 0.3rem;
+padding-top: 0.2rem;
+}.circleQAlistA h4 {
+	font-size: 0.32rem;
+	color: #000;
+	line-height: 180%;
+	margin-bottom: 0.1rem;
+	margin-top: 0.2rem;
+}
+.circleQAlistA p {
+	text-indent: 0.6rem;
+	font-size: 0.28rem;
+	color: #333;
+	line-height: 180%;
+	text-align: justify;
+	margin-bottom:0.1rem
+}
+.circleQAlistA p.a {
+	text-align: right;
+}
+.circleQAlistA p.b {
+	font-weight: bold;
+}
+.circleQAlistA img{ display: block; margin: 0.2rem auto;}
