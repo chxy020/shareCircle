@@ -11,7 +11,8 @@ import { SubjectService } from 'src/app/shared/services/subjectService.service';
 
 export class VideoListComponent implements OnInit {
 	
-	@Output() public noData = new EventEmitter<any>();
+	// @Output() public noData = new EventEmitter<any>();
+	noData = false;
 
 	data = [];
 	loading = true;
@@ -115,7 +116,9 @@ export class VideoListComponent implements OnInit {
 				},200);
 
 				if(this.data.length == 0){
-					this.noData.emit();
+					this.noData = true;
+				}else{
+					this.noData = false;
 				}
 			}
 

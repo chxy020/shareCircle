@@ -1,8 +1,14 @@
 <!-- <loading [isshow]="loading"></loading> -->
 
+<div *ngIf="noData" class="chuangjiantipsText" >
+    <p class="tibg imga"></p>
+    <p class="a">暂无视频</p>
+    <p class="b">试着去发布内容吧</p>
+</div>
+
 <self-play-list2 [filesName]="filesName" [filesId]="filesId" (changeFolder)="showFolderList()" *ngIf="!isFolder" ></self-play-list2>
 
-<div *ngIf="isFolder" dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
+<div *ngIf="isFolder && !noData" dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
     <div class="contDiv" style="padding-bottom: 0px;">
         <div class="contDiv">
             <ul class="bofanglist-list">

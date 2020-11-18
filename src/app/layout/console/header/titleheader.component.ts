@@ -12,9 +12,9 @@ import { Subscription } from 'rxjs';
         <div (click)="back()" class="topDiv-btnL"></div>
         {{title}}
 
-        <div (click)="menuBtn($event,menuele)" *ngIf="(title=='我的主页' || title=='作者主页') && isShow" class="topDiv-btnR"></div>
+        <div (click)="menuBtn($event,menuele)" *ngIf="(title=='管理圈子' || title=='作者主页') && isShow" class="topDiv-btnR"></div>
         <div #menuele style="display:none;" class="tip_operlist">
-            <ul *ngIf="title=='我的主页'" >
+            <ul *ngIf="title=='管理圈子'" >
                 <li (click)="shareCode()" >分享邀请码</li>
             </ul>
             <ul *ngIf="title=='作者主页'" >

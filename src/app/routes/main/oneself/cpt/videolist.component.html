@@ -1,7 +1,13 @@
 
 <!-- <loading [isshow]="loading"></loading> -->
 
-<div dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
+<div *ngIf="noData" class="chuangjiantipsText" >
+    <p class="tibg imga"></p>
+    <p class="a">暂无视频</p>
+    <p class="b">试着去发布内容吧</p>
+</div>
+
+<div dropload *ngIf="!noData" (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
     <div class="contDiv">
 		<ul class="contDiv-list">
 			<li *ngFor="let item of data;">

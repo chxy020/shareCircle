@@ -9,7 +9,8 @@ import { HttpService } from 'src/app/shared/services/http';
 
 export class PlayListComponent implements OnInit {
 	
-	@Output() public noData = new EventEmitter<any>();
+	// @Output() public noData = new EventEmitter<any>();
+	noData = false;
 	
 	isFolder = true;
 	filesName = "";
@@ -138,7 +139,9 @@ export class PlayListComponent implements OnInit {
 				},200);
 
 				if(this.data.length == 0){
-					this.noData.emit();
+					this.noData = true;
+				}else{
+					this.noData = false;
 				}
 			}
 

@@ -65,9 +65,13 @@ export class IntroductionComponent implements OnInit {
 			if(data.status == 0){
 				this.showMsg = "修改成功";
 				this.showTip = true;
+
+				this.back();
+
 				setTimeout(() =>{
 					this.showTip = false;
 				},2500);
+				
 				// this.editModel = false;
 			}else{
 				this.showMsg = data.msg;
