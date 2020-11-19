@@ -14,7 +14,7 @@ const routes: Routes = [
 			// { path: 'choice', data: { id: 1 }, loadChildren: () => import('./routes/meetlist/meetlist.module').then(m => m.MeetListModule) },
 			{ path: 'choice', loadChildren: () => import('./routes/main/choice/choice.module').then(m => m.ChoiceListModule) },
 			{ path: 'attention', data: { type: "all" }, loadChildren: () => import('./routes/main/attention/attention.module').then(m => m.AttentionListModule)},
-			{ path: 'oneself', loadChildren: () => import('./routes/main/oneself/oneself.module').then(m => m.OneSelfListModule)},
+			{ path: 'oneself/:myuid', loadChildren: () => import('./routes/main/oneself/oneself.module').then(m => m.OneSelfListModule)},
 			{ path: 'circle/:uid', loadChildren: () => import('./routes/main/circle/circle.module').then(m => m.CircleListModule)},
 			// { path: 'name', data: { id: 2 }, loadChildren: () => import('./routes/meetlist/meetlist.module').then(m => m.MeetListModule) },
 		]

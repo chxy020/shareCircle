@@ -22,7 +22,11 @@ export class OneSelfComponent implements OnInit {
 	detail;
 
 	empty = false;
-	
+
+	myUid;
+
+	hasNas = false;
+
 	constructor(
 		private route: ActivatedRoute,
 		private http: HttpService,
@@ -36,6 +40,14 @@ export class OneSelfComponent implements OnInit {
 		// this.title = this.titles[this.id];
 		this.uid = window['context']['uid'];
 		this.baseUrl = window["context"]["apiroot"];
+
+		this.myUid = this.route.snapshot.paramMap.get('myuid');
+
+		if(this.myUid == this.uid){
+			this.hasNas = true;
+		}else{
+			this.hasNas = false;
+		}
 
 		this.getImgOrName();
 	}

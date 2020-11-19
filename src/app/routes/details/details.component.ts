@@ -82,6 +82,10 @@ export class DetailsComponent implements OnInit {
 		// this.getWxSign();
 	}
 
+	createCircleQa(){
+		this.router.navigate(['/usercenter/gold']);
+	}
+
 	// meetClick(item):void{
     //     if(this.id==1){
     //         this.router.navigate(['/seatlist/code',{id:this.id,meetid:item.id}]);

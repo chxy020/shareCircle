@@ -54,6 +54,8 @@ export class HeaderConsoleComponent implements OnInit {
         {id:3,name:"我的圈子",current:false}
     ];
 
+    myuid;
+
     ngOnDestroy(): void {
         if (this.keySub) {
             this.keySub.unsubscribe();
@@ -133,7 +135,7 @@ export class HeaderConsoleComponent implements OnInit {
             break;
             case 3:
                 this.menus[2].current = true;
-                this.router.navigate(['/main/oneself']);
+                this.router.navigate(['/main/oneself/'+this.myuid]);
             break;
         }
         if(item.uid){
@@ -166,8 +168,10 @@ export class HeaderConsoleComponent implements OnInit {
                     if(index == 0){
                         // item.circleName = this.uid == item.uid ? "我的圈子" : item.circleName;
                         if(this.uid == item.uid){
+                            this.myuid = item.uid;
                             // this.menus.push({id:3,name:"我的圈子",current:false});
                         }else{
+                            this.myuid = item.uid;
                             this.menus.push({
                                 "uid":item.uid,
                                 "name":item.circleName,
