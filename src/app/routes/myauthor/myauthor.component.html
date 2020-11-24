@@ -4,7 +4,7 @@
 
 <div class="authorInfo">
     <p class="a"><img [src]="detail?.headimgurl || headImg" alt=""></p>
-    <p (click)="editModel=true;" class="b">{{detail?.circleName}}的圈子<span></span></p>
+    <p (click)="editModel=true;" class="b">{{detail?.circleName}}<span></span></p>
     <div class="c">
         <p>资源 {{detail?.resourceNum}}</p>
         <p>分享 {{detail?.shareNum}}</p>
@@ -30,7 +30,7 @@
     <div class="editpop">
         <div class="det-sharepop-bt">
             <div class="ltext">
-                修改昵称
+                修改圈名
             </div>
             <div class="rbtn" (click)="editModel=false;"></div>
         </div>

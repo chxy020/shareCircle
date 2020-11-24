@@ -5,7 +5,7 @@
     <p class="b">{{detail?.circleName || ""}}<span></span></p>
 </div> -->
 
-<div class="myinfoADIV">
+<div *ngIf="hasNas" class="myinfoADIV">
     <div class="myinfoA">
         <p class="a"><img [src]="detail?.headimgurl || headImg"  alt=""></p>
         <!-- myauthor/main -->

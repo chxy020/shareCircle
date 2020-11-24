@@ -75,5 +75,33 @@ export class UserCenterComponent implements OnInit {
 		});
 	}
 
-	
+	updateCircleMine(){
+		this.loading = true;
+
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("uid",this.uid);
+		params.set("circleName",this.detail.circleName);
+
+		let url = "/jqkj/circleMine/updateCircleMine";
+		this.http.post(url, params, null).subscribe(data => {
+			if(data.status == 0){
+				this.showMsg = "修改成功";
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+				this.editModel = false;
+			}else{
+				this.showMsg = data.msg;
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}
+			this.loading = false;
+		}, error => {
+			console.error(error);
+			this.loading = false;
+		});
+	}
 }

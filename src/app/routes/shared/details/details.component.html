@@ -9,7 +9,7 @@
     <div class="topDiv-btnR"></div>
 </div> -->
 
-<div class="videoInfo" style="background: #fff;margin-top: -1px;">
+<div class="videoInfo" style="margin-top: -1px;">
     <!-- 第一种情况：视频过大 -->
     <div class="video_large" *ngIf="detail?.isBig == 1" >
         <div class="ltext">
@@ -19,7 +19,8 @@
         </div>
         <div class="rbtn"></div>
     </div>
-    <video *ngIf="detail?.isBig == 0" autoplay style="object-fit: fill;" id="nas_video" [poster]="getVideoImagePath"  [src]="detail?.video_path" type="video/mp4" width="100%" playsinline  height="100%" controls  ></video>
+    <img #vimg style="position: absolute;z-index: -1;" [src]="videoImg | imagelazyload:vimg:detail?.video_image" alt="" width="100%" height="100%" />
+    <video *ngIf="detail?.isBig == 0" autoplay style="object-fit: fill;" id="nas_video"  [src]="detail?.video_path" type="video/mp4" width="100%" playsinline  height="100%" controls  ></video>
 </div>
 
 
@@ -46,50 +47,50 @@
     <div class="logo"></div>
     <div class="text">
         <div class="a">
-            <span>快存私有云</span>
+            <span>口袋视频存储</span>
             <div class="aimg">
                 <s></s><s></s><s></s><s></s><s></s>(1.2万)
             </div>
         </div>
         <div class="b">
-            <span>快存私有云</span>
+            <span>海量高清视频存储与下载</span>
         </div>
     </div>
     <div (click)="downloadApp()" class="btn">立即下载</div>
 </div>
 <div class="managementInfo2">
     <div class="managementInfo-btn">
-        <div (click)="downloadApp()" class="a"><span></span>{{detail.comment_num}}</div>
-        <div (click)="downloadApp()" class="b"><span></span>{{detail.give_num}}</div>
-        <div (click)="downloadApp()" class="c"><span></span>{{detail.transfer_num}}</div>
+        <div (click)="commentBtn()" class="a"><span></span>{{detail.comment_num}}</div>
+        <div (click)="giveBtn()" class="b"><span></span>{{detail.give_num}}</div>
+        <div (click)="downloadBtn()" class="c"><span></span>{{detail.transfer_num}}</div>
     </div>
 </div>
 
 <div class="detailsContDiv">
     <div class="formDIV">
         <div class="form">
-            <input type="text" placeholder="我来说两句...">
-            <div class="headImg"><img src="./assets/images/headimg.png" alt=""></div>
+            <input type="text" [(ngModel)]="commentMsg" placeholder="我来说两句...">
+            <div class="headImg"><img [src]="headImgUrl || headImg" alt=""></div>
         </div>
-        <div class="formBtn">
+        <div (click)="addComment()" class="formBtn">
             评论
         </div>
     </div>
     <!-- 评论 -->
-    <ul class="detailsCont detailsContnoborder" style="display: none-;">
-        <li>
-            <div class="a"><img src="./assets/images/headimg.png" alt=""></div>
+    <ul class="detailsCont detailsContnoborder" >
+        <li *ngFor="let item of commentData">
+            <div class="a"><img [src]="item.headimgurl || headImg" alt="" /></div>
             <div class="b">
                 <div class="b2">
-                    <div class="pl">小小月月-昵称</div>
-                    <div class="time">10-1 12:12</div>
+                    <div class="pl">{{item.username}}</div>
+                    <div class="time">{{item.create_time}}</div>
                 </div>
-                <div class="b1">评论内容，视频很好，视频很好，视频很好，视频很好，视频很好，视频很好，视频很好，视频很好，视频很好。</div>
+                <div class="b1">{{item.messages}}</div>
             </div>
         </li>
     </ul>
 </div>
-<div class="viewMore2">查看更多</div>
+<div *ngIf="!lastPage" (click)="nextPage()" class="viewMore2">查看更多</div>
 
 <!-- 相关推荐 -->
 <div class="tuijianDiv">
@@ -97,7 +98,7 @@
         相关推荐
     </div>
     <ul class="contDiv-list">
-        <li *ngFor="let item of data | datafilteritem:detail.id;let i = index;">
+        <li (click)="startApp()"  *ngFor="let item of data | datafilteritem:detail.id;let i = index;">
             <!-- (click)="videoClick(item)"  -->
             <div class="contDiv-img">
                 <img #vimg [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" />
