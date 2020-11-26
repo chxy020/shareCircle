@@ -62,8 +62,8 @@ export class UserCenterComponent implements OnInit {
 
 		const params: Map<string, any> = new Map<string, any>();
 		params.set("uid",this.uid);
-
-		let url = "/jqkj/circleMine/getCircleMine";
+		
+		let url = "/jqkj/circleMine/getUserCircleMine";
 		this.http.get(url, params, null).subscribe(data => {
 			if(data.status == 0){
 				this.detail = data.data || {};
@@ -80,11 +80,11 @@ export class UserCenterComponent implements OnInit {
 
 		const params: Map<string, any> = new Map<string, any>();
 		params.set("uid",this.uid);
-		params.set("circleName",this.detail.circleName);
+		params.set("loginName",this.detail.circleName);
 
-		let url = "/jqkj/circleMine/updateCircleMine";
+		let url = "/jqkj/user/updateUser";
 		this.http.post(url, params, null).subscribe(data => {
-			if(data.status == 0){
+			if(data.status == 1){
 				this.showMsg = "修改成功";
 				this.showTip = true;
 				setTimeout(() =>{
