@@ -234,6 +234,7 @@ body {
 	font-size: 0.24rem;
 	padding:0.2rem;
 	font-weight: bold;
+	word-break: break-all;
 }
 .contDiv-text {
 	display:-webkit-box;
@@ -267,6 +268,7 @@ body {
 	display: -webkit-box;
 	text-align: justify;
     overflow: hidden;
+    word-break: break-all;
 }
 .contDiv-text-right .c {
 	display:-webkit-box;
@@ -444,6 +446,7 @@ body {
 	height:1rem;
 	overflow:hidden;
 	text-align:justify;
+	word-break: break-all;
 }
 .bofanglist-list li .bofanglist-text-bottom {
 	font-size:0.30rem;
@@ -668,6 +671,7 @@ body {
 	font-size:0.34rem;
 	color:#000000;
 	line-height:0.48rem;
+	word-break: break-all;
 }
 .videoBt .a {
 	font-size:0.22rem;
@@ -893,6 +897,7 @@ body {
 	font-size:0.28rem;
 	color:#000;
 	font-weight: normal;
+	word-break: break-all;
 }
 .detailsCont .b .b2 {
 	display:-webkit-box;
@@ -1832,6 +1837,7 @@ body {
 	font-size: 0.28rem;
 	color: #696969;
 	line-height: 180%;
+	word-break: break-all;
 }
 .chuangjiantipsText{
 	padding-top:1.07rem;
@@ -2130,7 +2136,8 @@ padding-top: 0.2rem;
 	color: #333;
 	line-height: 180%;
 	text-align: justify;
-	margin-bottom:0.1rem
+	margin-bottom:0.1rem;
+	word-break: break-all;
 }
 .circleQAlistA p.a {
 	text-align: right;
