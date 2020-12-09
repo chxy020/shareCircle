@@ -1,0 +1,80 @@
+<!-- <loading [isshow]="loading"></loading> -->
+
+<!-- 错误提示 -->
+<div class="errorMessage" *ngIf="showTip">{{errorMsg}}</div>
+
+<div class="bggary pm148">
+    <!-- 介绍 -->
+    <div class="promote_bg">
+        <p>温馨提示：目前APP只支持安卓系统手机</p>
+    </div>
+    <!-- 详情 -->
+    <div class="promote_list pm148">
+        <h3><span class="a"></span><span>口袋视频存储功能</span><span class="b"></span></h3>
+        <ul class="clearfix">
+            <li class="a"><span></span>私人家庭影院 </li>
+            <li class="b"><span></span>远程自动下载</li>
+            <li class="a"><span></span>内网穿透 极速传输</li>
+            <li class="b"><span></span>多人共用</li>
+            <li class="a"><span></span>私密安全</li>
+            <li class="b"><span></span>照片视频及时备份</li>
+            <li class="c"><span></span>外网高速访问 大文件便捷传输</li>
+        </ul>
+    </div>
+</div>
+<!-- 注册成为会员 -->
+<div class="promote_bt" >
+    <div (click)="regModel=1" class="promote_btbtn">注册成为会员</div>
+</div>
+
+
+<!-- 下载APP -->
+<!-- <div class="promote_bt">
+    <div class="promote_btbtn">下载APP</div>
+</div> -->
+<!-- 注册弹框 -->
+<div class="pop-mask" *ngIf="regModel" >
+    <div class="circleExitpop promotepop">
+        <div class="det-sharepop-bt">
+            <div class="ltext">
+                填写手机号注册
+            </div>
+            <div (click)="regModel=0" class="rbtn"></div>
+        </div>
+        <div class="popcontent-text3">
+            <div class="forminput2">
+                <div class="inputDiv">
+                    <input [(ngModel)]="phone" type="number" placeholder="请输入手机号" />
+                    <span *ngIf="!!phone" (click)="phone=''" class="icondel"></span>
+                </div>
+            </div>
+            <div class="forminput2">
+                <div class="inputDiv">
+                    <input [(ngModel)]="phoneCode" type="text" placeholder="请输入验证码" />
+                    <span *ngIf="!!phoneCode" (click)="phoneCode=''" class="icondel"></span>
+                </div>
+                <span *ngIf="codeBtn" (click)="getPhoneCode()" class="yanzhengma">获取验证码</span>
+                <span *ngIf="!codeBtn" class="yanzhengmaD">{{countTime}}S后重获</span>
+            </div>
+        </div>
+        <div (click)="enterBtn()" class="popcontent-btn2">确定</div>
+        <p class="pinfo">确定表示你已同意口袋视频存储<a href="#">用户服务协议</a></p>
+    </div>
+</div>
+
+
+
+
+<!-- 手机格式不正确   验证码已发送  该手机号已注册 -->
+<!-- 注册弹框 -->
+<div class="pop-mask" style="display: none;">
+    <div class="circleExitpop messagepop">
+        <div class="det-sharepop-bt">
+            <div class="ltext">
+                注册成功
+            </div>
+            <div class="rbtn"></div>
+        </div>
+        <p class="pinfo pinfo2">你已成功注册为会员 快去下载APP吧</p>
+    </div>
+</div>
