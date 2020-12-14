@@ -76,7 +76,7 @@ export class InviteRegComponent implements OnInit {
 					this.showTip = false;
 				},2500);
 			}else{
-				this.errorMsg = "验证码发送失败";
+				this.errorMsg = data.msg;
 				this.showTip = true;
 				setTimeout(() =>{
 					this.showTip = false;
