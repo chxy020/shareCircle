@@ -58,7 +58,8 @@
             </div>
         </div>
         <div (click)="enterBtn()" class="popcontent-btn2">确定</div>
-        <p class="pinfo">确定表示你已同意口袋视频存储<a href="#">用户服务协议</a></p>
+        <p class="pinfo">确定表示你已同意口袋视频存储<a [href]="userAgreement" target="_blank">用户服务协议</a></p>
+        <!--  -->
     </div>
 </div>
 
@@ -67,14 +68,14 @@
 
 <!-- 手机格式不正确   验证码已发送  该手机号已注册 -->
 <!-- 注册弹框 -->
-<div class="pop-mask" style="display: none;">
+<div class="pop-mask" *ngIf="registerStatus" >
     <div class="circleExitpop messagepop">
         <div class="det-sharepop-bt">
             <div class="ltext">
                 注册成功
             </div>
-            <div class="rbtn"></div>
+            <div (click)="registerStatus=0" class="rbtn"></div>
         </div>
-        <p class="pinfo pinfo2">你已成功注册为会员 快去下载APP吧</p>
+        <p (click)="downloadApp()" class="pinfo pinfo2">你已成功注册为会员 快去下载APP吧</p>
     </div>
 </div>

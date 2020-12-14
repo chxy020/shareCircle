@@ -23,6 +23,10 @@ export class InviteRegComponent implements OnInit {
 
 	regModel = 0;
 
+	userAgreement = "";
+
+	registerStatus = 0;
+
 	constructor(
 		private route: ActivatedRoute,
 		private http: HttpService,
@@ -31,7 +35,8 @@ export class InviteRegComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.userCode = this.route.snapshot.paramMap.get('code');
+		this.userAgreement = window["context"]["userAgreement"];
+		this.userCode = this.route.snapshot.paramMap.get('code') || "";
 
 		console.log(this.userCode)
 	}
@@ -59,14 +64,24 @@ export class InviteRegComponent implements OnInit {
 
 		this.loading = true;
 		const params: Map<string, any> = new Map<string, any>();
-		params.set("id",this.phone);
+		params.set("phone",this.phone);
 
-		let url = "/jqkj/cricle/findUserPublish";
-		this.http.get(url, params, null).subscribe(data => {
+		let url = "/jqkj/user/sendsms";
+		this.http.post(url, params, null).subscribe(data => {
 			// console.log(data)
-			// if(data.status == 0){
-			// 	this.detail = data.data || {};
-			// }
+			if(data.status == 1){
+				this.errorMsg = "验证码已发送";
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}else{
+				this.errorMsg = "验证码发送失败";
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}
 			this.loading = false;
 		}, error => {
 			console.error(error);
@@ -95,19 +110,35 @@ export class InviteRegComponent implements OnInit {
 		return b;
 	}
 
+	downloadApp(){
+		this.router.navigate(['/shared/download']);
+	}
+
 	enterBtn(){
 		this.loading = true;
 		const params: Map<string, any> = new Map<string, any>();
-		params.set("id",this.phone);
-		params.set("id",this.phoneCode);
-		params.set("id",this.userCode);
+		params.set("phone",this.phone);
+		params.set("code",this.phoneCode);
+		params.set("invite_uid",this.userCode);
 
-		let url = "/jqkj/cricle/findUserPublish";
-		this.http.get(url, params, null).subscribe(data => {
-			// console.log(data)
-			// if(data.status == 0){
-			// 	this.detail = data.data || {};
-			// }
+		let url = "/jqkj/extend/inviteRegister";
+		this.http.post(url, params, null).subscribe(data => {
+			if(data.status == 0){
+				this.registerStatus = 1;
+				this.regModel = 0;
+
+				this.errorMsg = "注册成功";
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}else{
+				this.errorMsg = data.msg;
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}
 			this.loading = false;
 		}, error => {
 			console.error(error);
