@@ -2122,6 +2122,16 @@ body {
 	margin-bottom: 0.1rem;
 	margin-top: 0.2rem;
 }
+.circleQAlistA h5 {
+	font-size: 0.3rem;
+	color: #000;
+	line-height: 180%;
+	text-align: justify;
+	margin-top: 0.2rem;
+	margin-bottom: 0.2rem;
+	word-break: break-all;
+}
+
 .circleQAlistA h4.c {
 	text-align: center;
 }
