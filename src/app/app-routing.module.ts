@@ -121,6 +121,11 @@ const routes: Routes = [
 	{ path: 'shared/download', loadChildren: () => import('./routes/shared/download/download.module').then(m => m.DownloadModule) },
 	
 	{ path: 'shared/invitereg/:code', loadChildren: () => import('./routes/shared/invitereg/invitereg.module').then(m => m.InviteRegModule) },
+	
+	{ path: 'shared/gold/:uid', loadChildren: () => import('./routes/shared/gold/gold.module').then(m => m.GoldModule) },
+	{ path: 'shared/goldrules/:uid', loadChildren: () => import('./routes/shared/goldrules/goldrules.module').then(m => m.GoldRulesModule) },
+	{ path: 'shared/signin/:uid', loadChildren: () => import('./routes/shared/signin/signin.module').then(m => m.SignInModule) },
+	
 	// { path: 'seatlist/name', loadChildren: () => import('./routes/seatlist/seatlist.module').then(m => m.SeatListModule) },
 	// { path: 'seatbind/code', loadChildren: () => import('./routes/seatbind/seatbind.module').then(m => m.SeatBindModule) },
 	// { path: 'seatbind/name', loadChildren: () => import('./routes/seatbind/seatbind.module').then(m => m.SeatBindModule) }
