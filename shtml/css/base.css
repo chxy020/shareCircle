@@ -2420,3 +2420,185 @@ body {
 	font-size: 0.32rem;
 	margin-top:0.8rem
 }
+
+
+.hsbg{
+	background-color: #FBC530;
+}
+
+.jinbi_info{
+	height: 3.14rem;
+	background:url(../images/jinbi/jinbibg.jpg) no-repeat center;
+	background-size:7.5rem 3.14rem;
+	display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+	align-items:center;
+	justify-content: center;
+
+}
+.jinbi_info .a{
+	-webkit-box-flex:1;
+	-ms-flex:1;
+	flex:1;
+	padding-left:0.3rem
+}
+.jinbi_info .a .a1{
+	font-size:0.24rem;
+	color: #000000;
+	line-height: 0.56rem;
+	padding-bottom: 0.3rem;
+}
+.jinbi_info .a .a2{
+	height: 0.6rem;
+	line-height: 0.6rem;
+	font-size: 0.8rem;
+	color: #000000;
+	font-family: DIN;
+}
+.jinbi_info .b{
+	width: 1.32rem;
+	height: 0.74rem;
+	line-height:0.74rem;
+	color: #000000;
+	background:url(../images/jinbi/jinbiicon.png) no-repeat center;
+	background-size:1.32rem 0.74rem;
+	text-align: right;
+	padding-right: 0.3rem;
+}
+
+.contDiv3 {
+	border-radius: 0.12rem;
+	margin-top: -0.1rem;
+	margin-bottom: 0.5rem;
+	background-color: #fff;
+}
+.qiandao_bt{
+	padding:0.3rem 0.3rem 0.8rem;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	font-size: 0.36rem;
+	color: #000000;
+}
+.qiandao_list{
+	padding:0 0.3rem;
+}
+.qiandao_list li{
+	display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+	align-items:center;
+	justify-content: center;
+}
+.qiandao_list .a{
+	-webkit-box-flex:1;
+	-ms-flex:1;
+	flex:1;
+	padding:0.2rem 0
+}
+.qiandao_list .a .a1{
+	font-size: 0.3rem;
+	font-family: PingFang SC;
+	font-weight: bold;
+	color: #000000;
+	line-height: 0.56rem;
+}
+.qiandao_list .a .a2{
+	font-size: 0.24rem;
+	color: #BBBBBB;
+	line-height: 0.56rem;
+}
+.qiandao_list .b{
+	font-size: 0.34rem;
+	font-weight: bold;
+	color: #000000;
+	line-height: 0.56rem;
+}
+.qiandao{
+	height: 3.9rem;
+	background:url(../images/jinbi/jinbibg2.jpg) no-repeat center;
+	background-size:7.5rem 3.9rem;
+	padding:0.2rem 0.3rem;
+}
+.qiandaoimg{
+	height: 3.5rem;
+	background:url(../images/jinbi/jinbiimg.jpg) no-repeat center;
+	background-size:6.9rem 3.5rem;
+	border-radius: 0.2rem;
+}
+.qiandaoimg p{
+	font-size: 0.18rem;
+	color: #FFFFFF;
+	line-height: 0.56rem;
+	padding-top: 2.9rem;
+	padding-right: 0.2rem;
+	text-align: right;
+}
+.biaoti{
+	font-size: 0.3rem;
+	font-family: PingFang SC;
+	font-weight: bold;
+	color: #333333;
+	line-height: 0.56rem;
+	padding:0.3rem 0.3rem 0.4rem
+}
+.biaoti span{
+	display: inline-block;
+	vertical-align: middle;
+	height: 0.34rem;
+	width: 0.34rem;
+	background:url(../images/icon_r.png) no-repeat center;
+	background-size:0.34rem 0.34rem;
+	margin-left:0.02rem
+}
+.biaotiinfo{
+	text-align: center;
+	font-size: 0.34rem;
+	font-weight: bold;
+	color: #000000;
+	line-height: 0.68rem;
+	letter-spacing: 0.03rem;
+}
+.biaotiinfo span{
+	font-size: 0.42rem;
+	font-weight: bold;
+	color: #FBC530;
+	padding:0 .15rem;
+	vertical-align: middle;
+}
+.qiandaoa_list{
+	display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+	align-items:center;
+	justify-content: center;
+	padding: 0.3rem 0;
+}
+.qiandaoa_list li{
+	-webkit-box-flex:1;
+	-ms-flex:1;
+	flex:1;
+	text-align: center;
+}
+.qiandaoa_list li .a{
+	font-size: 0.2rem;
+	font-family: PingFang SC;
+	font-weight: bold;
+	color: #FFFFFF;
+	line-height: 0.94rem;
+	text-align: center;
+	background:url(../images/jinbi/jinbiicon1.png) no-repeat center;
+	background-size:0.94rem 0.94rem;
+}
+.qiandaoa_list li.on .a{
+	background:url(../images/jinbi/jinbiicon2.png) no-repeat center;
+	background-size:0.94rem 0.94rem;
+}
+.qiandaoa_list li .b{
+	font-size: 0.2rem;
+	font-family: PingFang SC;
+	font-weight: bold;
+	color: #999999;
+}
+
+
