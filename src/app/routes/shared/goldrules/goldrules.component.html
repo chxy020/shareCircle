@@ -3,7 +3,7 @@
 <!-- 错误提示 -->
 <div class="errorMessage" *ngIf="showTip">{{errorMsg}}</div>
 <div class="topDiv" style="position:fixed;top:0;left:0;width: 100%;">
-    <div class="topDiv-btnL"></div>
+    <div (click)="back()" class="topDiv-btnL"></div>
     金币积分计划细则
 </div>
 <div class="circleQAlistA">
@@ -19,9 +19,9 @@
             <p>每日只能签到1次。</p>
             <p>将APP更新到最新版本：</p>
             <p>用户首次签到获得1个金币，7日内连续签到，金币奖励每日递增1个金币；连续签满7日之后保持每日签到，每次可获取7个金币。</p>
-            <img src="images/introduceImg/jbimg01.png" alt="">
+            <img src="assets/images/introduceImg/jbimg01.png" alt="">
             <p>用户在连续签到过程中漏签，则从签到获得1个金币开始记录。</p>
-            <img src="images/introduceImg/jbimg02.png" alt="">
+            <img src="assets/images/introduceImg/jbimg02.png" alt="">
             <h4 class="c">分享文件奖励</h4>
             <p>用户将保存在自己存储空间的文件通过点对点分享的方式进行分享，每分享一次获得2个金币。</p>
             <p>注意：该规则每天上限奖励不超过30个金币。</p>

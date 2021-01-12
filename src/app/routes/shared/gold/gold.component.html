@@ -4,7 +4,7 @@
 <div class="errorMessage" *ngIf="showTip">{{errorMsg}}</div>
 
 <div class="topDiv hsbg">
-    <div class="topDiv-btnL"></div>
+    <div (click)="back()" class="topDiv-btnL"></div>
     金币详情
 </div>
 <div class="jinbi_info">
@@ -12,58 +12,96 @@
         <p class="a1">我的金币（个）</p>
         <p class="a2">500</p>
     </div>
-    <div class="b">
+    <div (click)="goldRules()" class="b">
         <p>细则</p>
     </div>
 </div>
 <!-- 基本信息 -->
 <div class="contDiv3">
     <h4 class="qiandao_bt">签到记录</h4>
-    <ul class="qiandao_list">
-        <li>
-            <div class="a">
-                <p class="a1">首次签到</p>
-                <p class="a2">2020.12.10  08:20:35</p>
-            </div>
-            <div class="b">
-                +1
-            </div>
-        </li>
-        <li>
-            <div class="a">
-                <p class="a1">连续2天签到</p>
-                <p class="a2">2020.12.08  14:20:20  </p>
-            </div>
-            <div class="b">
-                +2
-            </div>
-        </li>
-        <li>
-            <div class="a">
-                <p class="a1">首次绑定送金币</p>
-                <p class="a2">2020.12.10  08:20:35</p>
-            </div>
-            <div class="b">
-                +20
-            </div>
-        </li>
-        <li>
-            <div class="a">
-                <p class="a1">首次签到</p>
-                <p class="a2">2020.12.10  08:20:35</p>
-            </div>
-            <div class="b">
-                +1
-            </div>
-        </li>
-        <li>
-            <div class="a">
-                <p class="a1">首次签到</p>
-                <p class="a2">2020.12.10  08:20:35</p>
-            </div>
-            <div class="b">
-                +1
-            </div>
-        </li>
-    </ul>
+    <div dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
+        <ul class="qiandao_list">
+            <li>
+                <div class="a">
+                    <p class="a1">首次签到</p>
+                    <p class="a2">2020.12.10  08:20:35</p>
+                </div>
+                <div class="b">
+                    +1
+                </div>
+            </li>
+            <li>
+                <div class="a">
+                    <p class="a1">连续2天签到</p>
+                    <p class="a2">2020.12.08  14:20:20  </p>
+                </div>
+                <div class="b">
+                    +2
+                </div>
+            </li>
+            <li>
+                <div class="a">
+                    <p class="a1">首次绑定送金币</p>
+                    <p class="a2">2020.12.10  08:20:35</p>
+                </div>
+                <div class="b">
+                    +20
+                </div>
+            </li>
+            <li>
+                <div class="a">
+                    <p class="a1">首次签到</p>
+                    <p class="a2">2020.12.10  08:20:35</p>
+                </div>
+                <div class="b">
+                    +1
+                </div>
+            </li>
+            <li>
+                <div class="a">
+                    <p class="a1">首次签到</p>
+                    <p class="a2">2020.12.10  08:20:35</p>
+                </div>
+                <div class="b">
+                    +1
+                </div>
+            </li>
+            <li>
+                <div class="a">
+                    <p class="a1">首次签到</p>
+                    <p class="a2">2020.12.10  08:20:35</p>
+                </div>
+                <div class="b">
+                    +1
+                </div>
+            </li>
+            <li>
+                <div class="a">
+                    <p class="a1">首次签到</p>
+                    <p class="a2">2020.12.10  08:20:35</p>
+                </div>
+                <div class="b">
+                    +1
+                </div>
+            </li>
+            <li>
+                <div class="a">
+                    <p class="a1">首次签到</p>
+                    <p class="a2">2020.12.10  08:20:35</p>
+                </div>
+                <div class="b">
+                    +1
+                </div>
+            </li>
+            <li>
+                <div class="a">
+                    <p class="a1">首次签到</p>
+                    <p class="a2">2020.12.10  08:20:35</p>
+                </div>
+                <div class="b">
+                    +1
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>

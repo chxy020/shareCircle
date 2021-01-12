@@ -122,7 +122,8 @@ const routes: Routes = [
 	
 	{ path: 'shared/invitereg/:code', loadChildren: () => import('./routes/shared/invitereg/invitereg.module').then(m => m.InviteRegModule) },
 	
-	{ path: 'shared/gold/:uid', loadChildren: () => import('./routes/shared/gold/gold.module').then(m => m.GoldModule) },
+	//type = 1, 路由回退, type = 2, 关闭webview
+	{ path: 'shared/gold/:uid/:type', loadChildren: () => import('./routes/shared/gold/gold.module').then(m => m.GoldModule) },
 	{ path: 'shared/goldrules/:uid', loadChildren: () => import('./routes/shared/goldrules/goldrules.module').then(m => m.GoldRulesModule) },
 	{ path: 'shared/signin/:uid', loadChildren: () => import('./routes/shared/signin/signin.module').then(m => m.SignInModule) },
 	
