@@ -1,75 +1,76 @@
 https://lanhuapp.com/url/4sFVq
-ÃÜÂë: 9rPs
+ï¿½ï¿½ï¿½ï¿½: 9rPs
 
+//é‡‘å¸
 https://lanhuapp.com/url/XkU8G
-ÃÜÂë: VkZf
+ï¿½ï¿½ï¿½ï¿½: VkZf
 
-ÓÃÎÒµÄÕËºÅ13419361523  ÃÜÂë111111
+ï¿½ï¿½ï¿½Òµï¿½ï¿½Ëºï¿½13419361523  ï¿½ï¿½ï¿½ï¿½111111
 
 stopDetailVideo();
 playDetailVideo();
 
-µ÷ÆðAPP
-<a href="thinnas://thinnas">´ò¿ªapp</a>
+ï¿½ï¿½ï¿½ï¿½APP
+<a href="thinnas://thinnas">ï¿½ï¿½app</a>
 
-publishCircle()Ìø×ªµ½·¢²¼Ò³Ãæ
-downloadToNasCircle(json´®)Ìø×ªµ½×ª´ænasÉè±¸Ò³Ãæ
-shareCircle(json´®)µ¯³öµ×²¿·ÖÏí¿ò
-forwardCircle(json´®)Ìø×ªµ½×ª·¢Ò³Ãæ
-×ª·¢µÄjson´®{
+publishCircle()ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
+downloadToNasCircle(jsonï¿½ï¿½)ï¿½ï¿½×ªï¿½ï¿½×ªï¿½ï¿½nasï¿½è±¸Ò³ï¿½ï¿½
+shareCircle(jsonï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½×²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+forwardCircle(jsonï¿½ï¿½)ï¿½ï¿½×ªï¿½ï¿½×ªï¿½ï¿½Ò³ï¿½ï¿½
+×ªï¿½ï¿½ï¿½ï¿½jsonï¿½ï¿½{
     "name":"***",
     "video_path":"***",
     "video_image":"***",
-    "video_id":¡°***¡±
+    "video_id":ï¿½ï¿½***ï¿½ï¿½
     "link":"http://xxxxx"
 }
-invitationCodeShareCircle(json´®)
+invitationCodeShareCircle(jsonï¿½ï¿½)
 {
      "sharecode":"AAAA",
      "line":"http:xxxxx"
 }
-¹Ø±Õwebview
-·½·¨£ºcircle.closeWebview()
+ï¿½Ø±ï¿½webview
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½circle.closeWebview()
 
 http://39.107.249.187:8082/jqkj/cricle/updatePlayNum
 
 
-1.µÇÂ¼×´Ì¬ ÈçºÎ±£³Öµ½ ÍøÒ³¶Ë? nativeÄÇ±ß½øÐÐµÇÂ¼Ö®ºó£¬ÔõÃ´¸úÊéÏÍÌá¹©µÄ·þÎñÖ®¼ä¹²Ïí£¬ÐèÒªÏÈ¿¼ÂÇÒ»ÏÂ¡£
+1.ï¿½ï¿½Â¼×´Ì¬ ï¿½ï¿½Î±ï¿½ï¿½Öµï¿½ ï¿½ï¿½Ò³ï¿½ï¿½? nativeï¿½Ç±ß½ï¿½ï¿½Ðµï¿½Â¼Ö®ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¹©ï¿½Ä·ï¿½ï¿½ï¿½Ö®ï¿½ä¹²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½È¿ï¿½ï¿½ï¿½Ò»ï¿½Â¡ï¿½
 
-2.È±ÉÙ È¦×Ó¸öÈËÖÐÐÄµÄUI £¬°üº¬ ¸öÈËÐÅÏ¢£¬ÉóºË µÈ¹¦ÄÜ£¬ÐèÒª²úÆ·ÔÚÏ¸»¯Ò»ÏÂ¡£ 
+2.È±ï¿½ï¿½ È¦ï¿½Ó¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½È¹ï¿½ï¿½Ü£ï¿½ï¿½ï¿½Òªï¿½ï¿½Æ·ï¿½ï¿½Ï¸ï¿½ï¿½Ò»ï¿½Â¡ï¿½ 
 
-3.ÉêÇë¼Ó¾«£¬Òþ²Ø£¬É¾³ý£¬½ö×Ô¼º¿É¼û£¬ËÄ¸ö²Ù×÷ÔÚÒ»Æð£¬È±ÉÙÈë¿Ú½»»¥°´Å¥£¬ÐèÒªUI Éè¼ÆÒ»ÏÂÈë¿Ú¡£
+3.ï¿½ï¿½ï¿½ï¿½Ó¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø£ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½É¼ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½È±ï¿½ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ÒªUI ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ú¡ï¿½
 
-4.ÎÒµÄÈ¦×Ó£¬²¥·ÅÁÐ±í£¬ÊÓÆµÁÐ±í ²»Í¬Õ¹Ê¾·½Ê½£¬ÐèÒªUIÉè¼ÆÐ§¹ûÍ¼¡£
+4.ï¿½Òµï¿½È¦ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½Ð±ï¿½ ï¿½ï¿½Í¬Õ¹Ê¾ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ÒªUIï¿½ï¿½ï¿½Ð§ï¿½ï¿½Í¼ï¿½ï¿½
 
 
-5.¹Ø×¢µÄ Êý¾ÝÊÇ £¬ÒÑ¼ÓÈë¶à¸öÈ¦×ÓµÄ¼¯ºÏÊý¾Ý¡£
+5.ï¿½ï¿½×¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ñ¼ï¿½ï¿½ï¿½ï¿½ï¿½È¦ï¿½ÓµÄ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¡ï¿½
 
-5.¼ÓÈëÈ¦×Ó£¬ÓÐÁ½ÖÖ·½Ê½¡£
-Í¨¹ý Native¼ÓÈëÈ¦×Ó£¬Ö±½ÓÊäÈë È¦×ÓID ½øÐÐ ¼ÓÈë£¬
-Í¨¹ýÏêÇéÒ³Ãæ¼ÓÈëÈ¦×Ó£¬¼ÓÈëÈ¦×ÓÐèÒªÈ¦Ö÷ÉóºË¡£
+5.ï¿½ï¿½ï¿½ï¿½È¦ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½Ê½ï¿½ï¿½
+Í¨ï¿½ï¿½ Nativeï¿½ï¿½ï¿½ï¿½È¦ï¿½Ó£ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¦ï¿½ï¿½ID ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ë£¬
+Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½È¦ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½È¦ï¿½ï¿½ï¿½ï¿½ÒªÈ¦ï¿½ï¿½ï¿½ï¿½Ë¡ï¿½
 
-6.ÉêÇë¼Ó¾«£¬ÐèÒªÔÆ¶Ë ºó¶Ë ½øÐÐÉóºË£¬ÉóºËÍê³ÉÖ®ºó£¬°ÑÎïÀíÊý¾Ý¿½±´µ½ÔÆ¶Ë¡£
+6.ï¿½ï¿½ï¿½ï¿½Ó¾ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Æ¶ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ó£¬°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶Ë¡ï¿½
 
-7.Êý¾Ý·ÖÏí£¬Ö§³Ö·ÖÏíµ½Î¢ÐÅºÃÓÑ¼°Î¢ÐÅÈº¡£
-
---------------
-H5Ò³Ãæ ²¿Êð·½°¸
-1.È¦×ÓÊ×Ò³£¬¸öÈËÖÐÐÄ£¬²¿ÊðÔÚÔÆ¶Ë·þÎñÆ÷¡£
-2.È¦×ÓÊ×Ò³ÄÚµÄ£¬ÎÒµÄÈ¦×ÓTABÒ³Ãæ£¬È¦×ÓÏêÇé£¬ ²¿ÊðÔÚNAS Éè±¸£¬ºóÆÚ¿¼ÂÇÍ¨¹ýNAS ÆäËüÓ¦ÓÃ¶ÔÆä½øÐÐ¸üÐÂ¡£
-
+7.ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½Ö§ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Î¢ï¿½Åºï¿½ï¿½Ñ¼ï¿½Î¢ï¿½ï¿½Èºï¿½ï¿½
 
 --------------
-Natvie Ö§³Ö
-1.¼ÓÈëÈ¦×Ó£¬·¢²¼·ÖÏíµ¯²ã¡£
-2.·¢²¼·ÖÏíÒ³Ãæ ¼° ºóÐø ×ÊÔ´ Ô¤ÀÀÒ³Ãæ¡£
-3.ÊÓÆµÏêÇéÒ³Ãæ ×ª´æ ¹¦ÄÜ£¬µ¯³ö NAS ±¾µØÄ¿Â¼ µ¯²ãÒ³Ãæ¡£
+H5Ò³ï¿½ï¿½ ï¿½ï¿½ï¿½ð·½°ï¿½
+1.È¦ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶Ë·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+2.È¦ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ÚµÄ£ï¿½ï¿½Òµï¿½È¦ï¿½ï¿½TABÒ³ï¿½æ£¬È¦ï¿½ï¿½ï¿½ï¿½ï¿½é£¬ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½NAS ï¿½è±¸ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½Í¨ï¿½ï¿½NAS ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½ï¿½Â¡ï¿½
+
+
+--------------
+Natvie Ö§ï¿½ï¿½
+1.ï¿½ï¿½ï¿½ï¿½È¦ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã¡£
+2.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ô´ Ô¤ï¿½ï¿½Ò³ï¿½æ¡£
+3.ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ ×ªï¿½ï¿½ ï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ NAS ï¿½ï¿½ï¿½ï¿½Ä¿Â¼ ï¿½ï¿½ï¿½ï¿½Ò³ï¿½æ¡£
 
 
 ---------------
-ÁíÍâÐèÒªµ÷ÑÐH5ºÍNative»¥ÏàÍ¨ÐÅµÄ·½°¸
-1.AndroidÍ¨ÐÅ·½°¸ÒÑµ÷ÑÐ£¬Ö§³ÖH5->Native, ºÍ Native->H5
-2.iOSÐèÒªiOSÆ½Ì¨Í¬ÊÂµ÷ÑÐÒ»ÏÂ¡£
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½H5ï¿½ï¿½Nativeï¿½ï¿½ï¿½ï¿½Í¨ï¿½ÅµÄ·ï¿½ï¿½ï¿½
+1.AndroidÍ¨ï¿½Å·ï¿½ï¿½ï¿½ï¿½Ñµï¿½ï¿½Ð£ï¿½Ö§ï¿½ï¿½H5->Native, ï¿½ï¿½ Native->H5
+2.iOSï¿½ï¿½ÒªiOSÆ½Ì¨Í¬ï¿½Âµï¿½ï¿½ï¿½Ò»ï¿½Â¡ï¿½
 
 
 

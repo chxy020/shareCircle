@@ -10,7 +10,7 @@
 <div class="jinbi_info">
     <div class="a">
         <p class="a1">我的金币（个）</p>
-        <p class="a2">500</p>
+        <p class="a2">{{goldNum}}</p>
     </div>
     <div (click)="goldRules()" class="b">
         <p>细则</p>
@@ -21,16 +21,16 @@
     <h4 class="qiandao_bt">签到记录</h4>
     <div dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
         <ul class="qiandao_list">
-            <li>
+            <li *ngFor="let item of data;let i = index;">
                 <div class="a">
-                    <p class="a1">首次签到</p>
-                    <p class="a2">2020.12.10  08:20:35</p>
+                    <p class="a1">{{typeText[item.type]}}</p>
+                    <p class="a2">{{item.created_at | formattime}}</p>
                 </div>
                 <div class="b">
-                    +1
+                    +{{item.pirce}}
                 </div>
             </li>
-            <li>
+            <!-- <li>
                 <div class="a">
                     <p class="a1">连续2天签到</p>
                     <p class="a2">2020.12.08  14:20:20  </p>
@@ -101,7 +101,7 @@
                 <div class="b">
                     +1
                 </div>
-            </li>
+            </li> -->
         </ul>
     </div>
 </div>

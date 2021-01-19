@@ -7,6 +7,7 @@ const {
 } = environment;
 
 window['context'] = {
+	// 正式服务器
 	// apiroot: 'http://139.196.147.194:8082',
 	apiroot: 'http://139.196.147.194:8084',
 	userAgreement: 'http://139.196.147.194:8084/jqkj/fileupload/help/userAgreement.html',

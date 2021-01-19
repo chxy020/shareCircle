@@ -16,10 +16,12 @@ export class SignInComponent implements OnInit {
 	userCode;
 
 	todaySignIn = false;
-	signInDays = 1;
+	singInDays = 1;
 
 	integral = 1;
 	days = [];
+
+	goldNum = 0;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -33,7 +35,11 @@ export class SignInComponent implements OnInit {
 	ngOnInit() {
 		this.userCode = this.route.snapshot.paramMap.get('uid') || "";
 
-		this.countDays();
+		
+
+		this.getPirceNum();
+
+		this.getAttendanceList();
 	}
 
 	gotoGold(){
@@ -63,113 +69,107 @@ export class SignInComponent implements OnInit {
 	}
 
 	signDay(i){
-		if(i==0){
-			this.todaySignIn = true;
+		if(i==0 && !this.todaySignIn){
+			this.attendance();
 		}
 	}
 
-	// getPhoneCode(){
-	// 	if(!this.phone){
-	// 		this.errorMsg = "请输入手机号";
-	// 		this.showTip = true;
-	// 		setTimeout(() =>{
-	// 			this.showTip = false;
-	// 		},2500);
-	// 		return;
-	// 	}
-	// 	if(!this.isTel(this.phone)){
-	// 		this.errorMsg = "手机号输入错误";
-	// 		this.showTip = true;
-	// 		setTimeout(() =>{
-	// 			this.showTip = false;
-	// 		},2500);
-	// 		return;
-	// 	}
+	getPirceNum(){
+		this.loading = true;
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("uid",this.userCode);
 
-	// 	this.codeBtn = 0;
-	// 	this.msgCodeTime();
+		let url = "/jqkj/pirce/getPirceNum";
+		this.http.post(url, params, null).subscribe(data => {
+			if(data.status == 0){
+				this.goldNum = data.data || 0;
+			}else{
+				this.errorMsg = data.msg;
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}
+			this.loading = false;
+		}, error => {
+			console.error(error);
+			this.loading = false;
+		});
+	}
 
-	// 	this.loading = true;
-	// 	const params: Map<string, any> = new Map<string, any>();
-	// 	params.set("phone",this.phone);
+	getAttendanceList(){
+		this.loading = true;
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("uid",this.userCode);
+		params.set("page",1);
+		params.set("limit",1);
 
-	// 	let url = "/jqkj/user/sendsms";
-	// 	this.http.post(url, params, null).subscribe(data => {
-	// 		// console.log(data)
-	// 		if(data.status == 1){
-	// 			this.errorMsg = "验证码已发送";
-	// 			this.showTip = true;
-	// 			setTimeout(() =>{
-	// 				this.showTip = false;
-	// 			},2500);
-	// 		}else{
-	// 			this.errorMsg = data.msg;
-	// 			this.showTip = true;
-	// 			setTimeout(() =>{
-	// 				this.showTip = false;
-	// 			},2500);
-	// 		}
-	// 		this.loading = false;
-	// 	}, error => {
-	// 		console.error(error);
-	// 		this.loading = false;
-	// 	});
-	// }
+		let url = "/jqkj/pirce/getAttendanceList";
+		this.http.get(url, params, null).subscribe(data => {
+			if(data.code == 0){
+				// this.goldNum = data.data || 0;
+				var list = data.data || [];
+				var item = list[0] || {};
 
-	// msgCodeTime(){
-	// 	if(this.countTime > 0){
-	// 		this.countTime--;
-	// 		setTimeout(function(){
-	// 			this.msgCodeTime();
-	// 		}.bind(this),1000);
-	// 	}else{
-	// 		this.countTime = 60;
-	// 		this.codeBtn = 1;
-	// 	}
-	// }
+				// item.continuous_num  = 0
+				var created_at = item.created_at || 0;
+				if(created_at){
+					var st = new Date(+created_at);
+					var y = st.getFullYear();
+					var m = st.getMonth();
+					var d = st.getDate();
+					var stt = new Date(y,m,d).getTime();
+					var now = new Date();
+					var ntt = new Date(now.getFullYear(),now.getMonth(),now.getDate()).getTime();
 
-	// isTel(val){
-	// 	var reg = /^1[3|4|5|6|7|8]\d{9}$/;
-	// 	var b = false;
-	// 	if(val !== ""){
-	// 		b = reg.test(val);
-	// 	}
-	// 	return b;
-	// }
+					var stime = ntt - stt;
+					if(stime > (24 * 60 * 60 * 1000)){
+						this.todaySignIn = false;
+					}else{
+						this.todaySignIn = true;
+					}
+				}
 
-	// downloadApp(){
-	// 	this.router.navigate(['/shared/download']);
-	// }
+				this.singInDays = (+item.continuous_num || 0);
+				var num = (+item.continuous_num || 0) + 1;
+				this.integral = num > 7 ? 7 : num;
 
-	// enterBtn(){
-	// 	this.loading = true;
-	// 	const params: Map<string, any> = new Map<string, any>();
-	// 	params.set("phone",this.phone);
-	// 	params.set("code",this.phoneCode);
-	// 	params.set("invite_uid",this.userCode);
+				this.countDays();
+			}else{
+				this.errorMsg = data.msg;
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}
+			this.loading = false;
+		}, error => {
+			console.error(error);
+			this.loading = false;
+		});
+	}
 
-	// 	let url = "/jqkj/extend/inviteRegister";
-	// 	this.http.post(url, params, null).subscribe(data => {
-	// 		if(data.status == 0){
-	// 			this.registerStatus = 1;
-	// 			this.regModel = 0;
+	attendance(){
+		this.loading = true;
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("uid",this.userCode);
 
-	// 			this.errorMsg = "注册成功";
-	// 			this.showTip = true;
-	// 			setTimeout(() =>{
-	// 				this.showTip = false;
-	// 			},2500);
-	// 		}else{
-	// 			this.errorMsg = data.msg;
-	// 			this.showTip = true;
-	// 			setTimeout(() =>{
-	// 				this.showTip = false;
-	// 			},2500);
-	// 		}
-	// 		this.loading = false;
-	// 	}, error => {
-	// 		console.error(error);
-	// 		this.loading = false;
-	// 	});
-	// }
+		let url = "/jqkj/pirce/attendance";
+		this.http.post(url, params, null).subscribe(data => {
+			if(data.code == 0){
+				this.todaySignIn = true;
+			}else{
+				this.errorMsg = data.msg;
+				this.showTip = true;
+				setTimeout(() =>{
+					this.showTip = false;
+				},2500);
+			}
+			this.loading = false;
+		}, error => {
+			console.error(error);
+			this.loading = false;
+		});
+	}
+	
 }
