@@ -132,6 +132,10 @@ export class SignInComponent implements OnInit {
 
 				this.singInDays = (+item.continuous_num || 0);
 				var num = (+item.continuous_num || 0) + 1;
+				if(this.todaySignIn == true){
+					num--;
+				}
+
 				this.integral = num > 7 ? 7 : num;
 
 				this.countDays();
@@ -156,8 +160,9 @@ export class SignInComponent implements OnInit {
 
 		let url = "/jqkj/pirce/attendance";
 		this.http.post(url, params, null).subscribe(data => {
-			if(data.code == 0){
+			if(data.status == 0){
 				this.todaySignIn = true;
+				this.singInDays++;
 			}else{
 				this.errorMsg = data.msg;
 				this.showTip = true;
