@@ -10,16 +10,18 @@
         <p class="a"><img [src]="detail?.headimgurl || headImg"  alt=""></p>
         <!-- myauthor/main -->
         <p class="b">{{detail?.circleName}}</p>
-        <p (click)="myAuthorClick();" class="c"></p><!-- 管理 按钮 -->
+        <p (click)="myAuthorClick();" class="c">管理</p><!-- 管理 按钮 -->
     </div>
     <div (click)="myIntroductionClick();" class="myinfoB">
         圈子简介：{{detail?.synopsis || ""}}<span></span>
     </div>
 </div>
 
+
 <div class="chuangjiantipsText" *ngIf="!hasNas">
     <p class="tibg"></p>
-    <div (click)="createCircleQa()" class="tipsTextBtn"></div><!-- 申请加入按钮 -->
+    <p class="b">你还没有属于自己的圈子</p>
+    <div (click)="createCircleQa()" class="tipsTextBtn">查看如何创建圈子</div><!-- 申请加入按钮 -->
 </div>
 
 <div *ngIf="hasNas" class="contDivOutside">
