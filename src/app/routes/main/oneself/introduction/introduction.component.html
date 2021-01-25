@@ -1,8 +1,7 @@
 <loading [isshow]="loading"></loading>
 <div *ngIf="showTip" class="tip_text">{{showMsg}}</div>
-
-<div class="topDiv">
-    <div (click)="back()" class="topDiv-btnL"></div>
+<div class="topDiv textc">
+    <div (click)="back()" class="topDiv-btnL topDiv-btnLT">取消</div>
     编辑简介
     <div (click)="saveInfo()" class="topDiv-btnR topDiv-btnRT">完成</div>
 </div>

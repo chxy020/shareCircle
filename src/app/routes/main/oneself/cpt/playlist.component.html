@@ -3,7 +3,7 @@
 <div *ngIf="noData" style="padding-bottom: 100px;" class="chuangjiantipsText" >
     <p class="tibg imga"></p>
     <p class="a">暂无视频</p>
-    <p class="b">试着去发布内容吧</p>
+    <p class="b">你还没有发布任何视频哦～</p>
 </div>
 
 <self-play-list2 [filesName]="filesName" [filesId]="filesId" (changeFolder)="showFolderList()" *ngIf="!isFolder" ></self-play-list2>

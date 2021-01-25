@@ -1,7 +1,7 @@
 <!-- <loading [isshow]="loading"></loading> -->
 <div *ngIf="showTip" class="tip_text">{{showMsg}}</div>
 
-<div class="bgfff">
+<div class="bgfff mt20">
     <div dropload (drapDown)="drapDown($event,1)" (drapUp)="drapUp($event,1)" >
         <ul class="detailsCont detailsContFenxiang" >
             <li *ngFor="let item of data1">

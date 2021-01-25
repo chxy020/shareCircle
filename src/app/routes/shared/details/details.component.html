@@ -37,7 +37,7 @@
             <!-- <span>圈主</span> -->
         </div>
         <!-- <div class="c">{{detail.isAdd == 0 ? '已加入圈子' : (detail.isAdd == 1 ? '+ 未加入' : (detail.isAdd == 2 ? '待审核' : '我的圈子')) }}</div> -->
-        <div *ngIf="!detail.isAdmin" class="c">{{(detail.isAdd == 0 ? '已加入圈子' : (detail.isAdd == 1 ? '+ 未加入' : (detail.isAdd == 2 ? '待审核' : '我的圈子'))) }}</div>
+        <div *ngIf="!detail.isAdmin" class="c">{{(detail.isAdd == 0 ? '已加入' : (detail.isAdd == 1 ? '未加入圈子' : (detail.isAdd == 2 ? '待审核' : '我的圈子'))) }}</div>
         <!-- <div class="c">+ 加入圈子</div> -->
     </div>
     
@@ -122,4 +122,4 @@
         </li>
     </ul>
 </div>
-<div (click)="startApp()" class="ggbtn"></div>
+<div (click)="startApp()" class="ggbtn"><span></span>打开APP查看</div>
