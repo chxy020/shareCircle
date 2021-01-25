@@ -2411,7 +2411,7 @@ border-radius: .08rem;
 	background-size:100%;
 }
 .gerenbg{
-	background: #01b6d8 url(../images/geren_bg.jpg) no-repeat center bottom;
+	background: url(../images/geren_bg.jpg) no-repeat center bottom;
 	height: 3.58rem;
 }
 .detailsContDiv .formDIV{
@@ -2783,8 +2783,17 @@ background: #C32828;
 }
 
 
+
 .hsbg{
-	background-color: #FBC530;
+	background-color: #DDB578;
+}
+
+
+.topDiv.hsbg{color: #1B2023;}
+.hsbg .topDiv-btnL {
+    background: url(../images/icon5.png) no-repeat center;
+    background-size: 0.6rem 0.6rem;
+    border-right: 0.01rem solid #AF8749;
 }
 
 .jinbi_info{
@@ -2877,8 +2886,8 @@ background: #C32828;
 }
 .qiandao{
 	height: 3.9rem;
-	background:url(../images/jinbi/jinbibg2.jpg) no-repeat center;
-	background-size:7.5rem 3.9rem;
+	background:url(../images/jinbi/jinbibg2.png) no-repeat center top;
+	background-size:7.5rem 3.1rem;
 	padding:0.2rem 0.3rem;
 }
 .qiandaoimg{
