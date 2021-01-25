@@ -181,6 +181,14 @@ export class DetailsComponent implements OnInit {
 	}
 	
 	headerClick(item):void{
+		if(this.uid == '47231dcf8c0947b0baace15c4d21ad11'){
+			this.showMsg = "游客身份，功能不可用";
+			this.showTip = true;
+			setTimeout(() =>{
+				this.showTip = false;
+			},2500);
+			return;
+		}
 		if(this.uid == item.uid){
 			//自己的视频，进入自己首页
 			this.router.navigate(['/myauthor/main']);
@@ -194,6 +202,15 @@ export class DetailsComponent implements OnInit {
 	}
 	
 	sharedVideo(){
+		if(this.uid == '47231dcf8c0947b0baace15c4d21ad11'){
+			this.showMsg = "游客身份，功能不可用";
+			this.showTip = true;
+			setTimeout(() =>{
+				this.showTip = false;
+			},2500);
+			return;
+		}
+
 		let u = navigator.userAgent;
         let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
         let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
@@ -245,6 +262,15 @@ export class DetailsComponent implements OnInit {
 	}
 
 	downloadVideo(){
+		if(this.uid == '47231dcf8c0947b0baace15c4d21ad11'){
+			this.showMsg = "游客身份，功能不可用";
+			this.showTip = true;
+			setTimeout(() =>{
+				this.showTip = false;
+			},2500);
+			return;
+		}
+
 		let u = navigator.userAgent;
         let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
         let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
@@ -338,6 +364,15 @@ export class DetailsComponent implements OnInit {
 	}
 
 	addComment(){
+		if(this.uid == '47231dcf8c0947b0baace15c4d21ad11'){
+			this.showMsg = "游客身份，功能不可用";
+			this.showTip = true;
+			setTimeout(() =>{
+				this.showTip = false;
+			},2500);
+			return;
+		}
+
 		if(!this.commentMsg){
 			alert("请输入评论信息");
 			return;
@@ -377,6 +412,15 @@ export class DetailsComponent implements OnInit {
 	}
 
 	addGive(){
+		if(this.uid == '47231dcf8c0947b0baace15c4d21ad11'){
+			this.showMsg = "游客身份，功能不可用";
+			this.showTip = true;
+			setTimeout(() =>{
+				this.showTip = false;
+			},2500);
+			return;
+		}
+		
 		this.loading = true;
 		const params: Map<string, any> = new Map<string, any>();
 		params.set("uid",this.uid);

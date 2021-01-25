@@ -15,6 +15,9 @@ export class ChoiceComponent implements OnInit {
 	// titles=["","设备绑定","姓名绑定"];
 	// title;
 	// id=1;
+	showTip = false;
+	showMsg = "";
+	
 	userInfo = [];
 
 	data = [];
@@ -82,6 +85,15 @@ export class ChoiceComponent implements OnInit {
 	}
 
 	headerClick(item):void{
+		if(this.uid == '47231dcf8c0947b0baace15c4d21ad11'){
+			this.showMsg = "游客身份，功能不可用";
+			this.showTip = true;
+			setTimeout(() =>{
+				this.showTip = false;
+			},2500);
+			return;
+		}
+
 		if(this.uid == item.uid){
 			//自己的视频，进入自己首页
 			this.router.navigate(['/myauthor/main']);

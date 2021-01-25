@@ -16,17 +16,35 @@
 				</div>
 				
 				<div class="contDiv-text">
+					<div class="contDiv-text-right">
+						<div class="t">{{item.title}}</div>
+						<div class="c">
+							<div (click)="headerClick(item)" class="contDiv-text-left">
+								<img [src]="item.headimgurl || headImg" alt="">
+							</div>
+							<div class="c_c">
+                                <h4>{{item.name}}</h4>
+                                <p>{{item.create_time | formattime}}</p>
+							</div>
+							<p (click)="videoClick(item)" class="d">{{item.comment_num || 0}}</p>
+							<!-- <p>{{item.name}}·{{item.create_time | formattime}} </p> -->
+							<!-- <p (click)="videoClick(item)" class="d">{{item.comment_num || 0}}</p> -->
+						</div>
+					</div>
+				</div>
+				<!-- 
+				<div class="contDiv-text">
 					<div (click)="headerClick(item)" class="contDiv-text-left">
 						<img [src]="item.headimgurl || headImg" alt="">
 					</div>
 					<div class="contDiv-text-right">
 						<div class="t">{{item.title}}</div>
 						<div class="c">
-							<p>{{item.name}}·{{item.create_time | formattime}} <!--<span>圈主</span>--></p>
+							<p>{{item.name}}·{{item.create_time | formattime}} </p>
 							<p (click)="videoClick(item)" class="d">{{item.comment_num || 0}}</p>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</li>
 		</ul>
 	</div>

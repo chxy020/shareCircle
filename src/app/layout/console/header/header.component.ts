@@ -8,6 +8,7 @@ import { SubjectService } from 'src/app/shared/services/subjectService.service';
 @Component({
     selector: 'header-console',
     template: `
+    <div *ngIf="showTip" class="tip_text">{{showMsg}}</div>
     <div class="searchTop">
         <div class="inputDiv">
             <input type="text" #term (keyup)="keyWordSearch(term.value)" autocomplete="off" placeholder="搜索资源" >
@@ -33,6 +34,9 @@ import { SubjectService } from 'src/app/shared/services/subjectService.service';
 
 
 export class HeaderConsoleComponent implements OnInit {
+    showTip = false;
+    showMsg = "";
+    
     loading = true;
 
 	headImg = "./assets/images/headimg.png";
@@ -49,9 +53,9 @@ export class HeaderConsoleComponent implements OnInit {
     
     // <li class="tabDivActive">精选</li>
     menus:Array<any> = [
-        {id:1,name:"精选",current:false},
-        {id:2,name:"关注",current:false},
-        {id:3,name:"我的圈子",current:false}
+        // {id:1,name:"精选",current:false}
+        // {id:2,name:"关注",current:false},
+        // {id:3,name:"我的圈子",current:false}
     ];
 
     myuid;
@@ -70,9 +74,7 @@ export class HeaderConsoleComponent implements OnInit {
         
         // console.log(this.router.url);
 
-        this.menus.map((item)=>item.current=false);
-
-        this.currentPage();
+        
 
         // this.route.params.pipe(map).map(params => {
         //     return params['id'];
@@ -103,6 +105,23 @@ export class HeaderConsoleComponent implements OnInit {
 
     ngOnInit() {
         this.uid = window["context"]["uid"];
+
+        if(this.uid != '47231dcf8c0947b0baace15c4d21ad11'){
+            this.menus = [
+                {id:1,name:"精选",current:false},
+                {id:2,name:"关注",current:false},
+                {id:3,name:"我的圈子",current:false}
+            ];
+        }else{
+            this.menus = [
+                {id:1,name:"精选",current:false}
+            ];
+        }
+
+        this.menus.map((item)=>item.current=false);
+
+        this.currentPage();
+
         this.routeUrl = this.router.url.toString();
 
         this.keySub = this.searchTermStream.pipe(debounceTime(500)).subscribe((keyword) => {
@@ -146,10 +165,22 @@ export class HeaderConsoleComponent implements OnInit {
 
     myAuthorClick(){
         // this.router.navigate(['/myauthor/main']);
+        if(this.uid == '47231dcf8c0947b0baace15c4d21ad11'){
+            this.showMsg = "游客身份，功能不可用";
+			this.showTip = true;
+			setTimeout(() =>{
+				this.showTip = false;
+			},2500);
+			return;
+		}
         this.router.navigate(['/usercenter/main']);
     }
 
     getMineNavigation():void{
+        if(this.uid == '47231dcf8c0947b0baace15c4d21ad11'){
+			return;
+        }
+        
 		this.loading = true;
 
 		const params: Map<string, any> = new Map<string, any>();

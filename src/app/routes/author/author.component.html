@@ -59,10 +59,10 @@
             <div (click)="quitPop=false;" class="rbtn"></div>
         </div>
         <div class="circleExitpop-list">
-                <label><input type="radio" [(ngModel)]="quitType" name="exit" value="1" >退出并删除圈子动态</label>
-                <label><input type="radio" [(ngModel)]="quitType" name="exit" value="0" >退出但保留圈子动态</label>
+                <label><input type="radio" [(ngModel)]="quitType" name="exit" value="1" ><span [class.on]="quitType=='1'"></span>退出并删除圈子动态</label>
+                <label><input type="radio" [(ngModel)]="quitType" name="exit" value="0" ><span [class.on]="quitType=='0'"></span>退出但保留圈子动态</label>
         </div>
-        <div class="circleExitpop-btn">
+        <div class="choosepop-btn">
             <div (click)="quitPop=false;" class="a">再想想</div>
             <div (click)="quitEnter()" class="b">确定</div>
         </div>
