@@ -380,6 +380,9 @@ margin-right: 0.2rem;
 	background-size:0.28rem 0.28rem;
 	vertical-align:middle;
 }
+
+
+
 .contDivOutside {
 	margin:0.2rem;
 	/* border-radius:0.12rem;
@@ -2537,10 +2540,34 @@ background: #C32828;
 	border-radius:0.08rem;
 	margin:0 .3rem;
 }
+.topDiv-c-bg{
+background: #FFFFFF;
+text-align: center;
+color: #000;
+}
+.topDiv-btnL-c {
+	position:absolute;
+	top:0.09rem;
+	left:0.1rem;
+	width:0.8rem;
+	height:0.8rem;
+	background:url(../images/p_icon1.png) no-repeat center;
+	background-size:0.4rem 0.4rem;
+}
+.topDiv-btnR-c {
+	position:absolute;
+	top:0.09rem;
+	right:0.1rem;
+	width:0.8rem;
+	height:0.8rem;
+	background:url(../images/p_icon2.png) no-repeat center;
+	background-size:0.44rem 0.44rem;
+}
+
 .promote_bg{
-	height: 10.09rem;
+	height: 10.11rem;
 	background:url(../images/promote_bg.jpg) no-repeat center;
-	background-size:7.5rem 10.09rem;
+	background-size:7.5rem 10.11rem;
 }
 .promote_bg p{
 	font-size: 0.22rem;
@@ -2617,7 +2644,7 @@ background: #C32828;
 	top:0.21rem;
 	width: 0.1rem;
 	height: 0.1rem;
-	background: #1091FF;
+	background: #DDB273;
 }
 .promote_list ul li.a{
 	width: 55%;
@@ -2639,26 +2666,17 @@ background: #C32828;
 	padding-top: 0.25rem;
 	height: 1.48rem;
 	background: #2C2D2F;
-	box-shadow: 0px 0px 17px 0px rgba(106, 104, 104, 0.23);
+	box-shadow: 0 0 .17rem 0 rgba(106, 104, 104, 0.23);
 }
 .promote_btbtn{
-	width: 6.1rem;
+	width: 6.4rem;
 	height: 0.98rem;
 	text-align: center;
 	line-height: 0.98rem;
-	border-radius: 0.49rem;
+	border-radius: 0.09rem;
 	margin-left:auto;
 	margin-right: auto;
-	background-color:#06a7ff;
-	background:-moz-linear-gradient(top,rgb(122,194,255) 0%,rgb(50,160,255) 45%,rgb(0,137,255) 100%);
-	/* FF3.6-15 */
-        background:-webkit-linear-gradient(top,rgb(122,194,255) 0%,rgb(50,160,255) 45%,rgb(0,137,255) 100%);
-	/* Chrome10-25,Safari5.1-6 */
-        background:linear-gradient(to bottom,rgb(122,194,255) 0%,rgb(50,160,255) 45%,rgb(0,137,255) 100%);
-	/* W3C,IE10+,FF16+,Chrome26+,Opera12+,Safari7+ */
-        filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#7ac2ff',endColorstr='#0089ff',GradientType=0 );
-	/* IE6-9 */
-	color:#06a7ff;
+	background: #C32828;
 	font-size: 0.34rem;
 	font-family: PingFang SC;
 	font-weight: bold;
@@ -2670,8 +2688,19 @@ background: #C32828;
 .promotepop {
 	margin-top:-3.15rem;
 	height:6.3rem;
-	font-weight:normal
+	font-weight:normal;
+	background-color: #fff;
 }
+.promotepop .ltext {
+	color: #000;
+}
+
+.promotepop .det-sharepop-bt .rbtn {
+    background: url(../images/guanbi_h.png) no-repeat center;
+    background-size: 0.28rem 0.28rem;
+}
+
+
 .popcontent-text3 {
 	font-size:.30rem;
 	font-family:PingFang SC;
@@ -2705,7 +2734,7 @@ background: #C32828;
 	margin-top:0.2rem;
 	font-size:.3rem;
 	font-family:PingFang SC;
-	color:#9A9A9A;
+	color:#000;
 	text-align:left;
 	padding-left:.2rem;
 	background-color: #fff;
@@ -2724,14 +2753,15 @@ background: #C32828;
 	width: 1.8rem;
 	height: 0.60rem;
 	line-height: 0.6rem;
-	background: #31A0FF;
-	border-radius: 30px;
+	border-radius: .3rem;
 	font-size: 0.24rem;
 	font-family: PingFang SC;
 	font-weight: bold;
-	color: #FFFFFF;
+
+color: #C32828;
 	text-align: center;
-	margin-top:0.2rem
+	margin-top:0.2rem;
+background:rgba(195,40,40,0.3);
 }
 .yanzhengmaD{
 	width: 1.8rem;
@@ -2749,30 +2779,24 @@ background: #C32828;
 	height: 0.88rem;
 	text-align: center;
 	line-height: 0.88rem;
-	border-radius: 0.44rem;
-	background-color:#06a7ff;
-	background:-moz-linear-gradient(top,rgb(122,194,255) 0%,rgb(50,160,255) 45%,rgb(0,137,255) 100%);
-	/* FF3.6-15 */
-        background:-webkit-linear-gradient(top,rgb(122,194,255) 0%,rgb(50,160,255) 45%,rgb(0,137,255) 100%);
-	/* Chrome10-25,Safari5.1-6 */
-        background:linear-gradient(to bottom,rgb(122,194,255) 0%,rgb(50,160,255) 45%,rgb(0,137,255) 100%);
-	/* W3C,IE10+,FF16+,Chrome26+,Opera12+,Safari7+ */
-        filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#7ac2ff',endColorstr='#0089ff',GradientType=0 );
-	/* IE6-9 */
-	color:#06a7ff;
 	font-size: 0.30rem;
 	font-weight: bold;
 	color: #FFFFFF;
-	margin-top:0.6rem
+	margin-top:0.6rem;
+
+    background: #C32828;
+    color: #FFFFFF;
+    border-radius: 0.09rem;
 }
 .pinfo{
 	font-size: 0.22rem;
-	color: #717171;
+
+color: #717171;
 	text-align: center;
 	margin-top: 0.5rem;
 }
 .pinfo a{
-	color: #2B7EE2;
+	color: #C32828;
 	text-decoration: underline;
 }
 .errorMessage{
@@ -2797,12 +2821,25 @@ background: #C32828;
 	margin-top: -1.8rem;
 	height: 3.6rem;
 	font-weight: normal;
+	background-color: #fff;
+	/* margin-left: -2.5rem; */
+    /* width: 5rem; */
 }
-.pinfo2{
-	font-size: 0.32rem;
-	margin-top:0.8rem
+.messagepop .ltext{
+	color: #fff;
+}
+.messagepop .ltext{
+	color: #fff;
 }
 
+.pinfo2{
+	font-size: 0.32rem;
+	/* margin-top:0.8rem */
+}
+.messagepop .det-sharepop-bt .rbtn {
+    background: url(../images/guanbi_h.png) no-repeat center;
+    background-size: 0.28rem 0.28rem;
+}
 
 
 .hsbg{
@@ -2819,8 +2856,9 @@ background: #C32828;
 
 .jinbi_info{
 	height: 3.14rem;
-	background:url(../images/jinbi/jinbibg.jpg) no-repeat center;
-	background-size:7.5rem 3.14rem;
+	/* background:url(../images/jinbi/jinbibg.jpg) no-repeat center;
+	background-size:7.5rem 3.14rem; */
+background: linear-gradient(180deg, #DDB273 0%, #E2CAA7 100%);
 	display:-webkit-box;
 	display:-ms-flexbox;
 	display:flex;
@@ -2836,22 +2874,23 @@ background: #C32828;
 }
 .jinbi_info .a .a1{
 	font-size:0.24rem;
-	color: #000000;
+	color: #66491D;
 	line-height: 0.56rem;
-	padding-bottom: 0.3rem;
+	/* padding-bottom: 0.3rem; */
 }
 .jinbi_info .a .a2{
-	height: 0.6rem;
-	line-height: 0.6rem;
-	font-size: 0.8rem;
-	color: #000000;
+	/* height: 0.6rem; */
+	/* line-height: 0.6rem; */
+	font-size: 1.2rem;
+	color: #78541D;
 	font-family: DIN;
+	font-weight: bold;
 }
 .jinbi_info .b{
 	width: 1.32rem;
 	height: 0.74rem;
 	line-height:0.74rem;
-	color: #000000;
+	color: #ddb373;
 	background:url(../images/jinbi/jinbiicon.png) no-repeat center;
 	background-size:1.32rem 0.74rem;
 	text-align: right;
@@ -2862,14 +2901,15 @@ background: #C32828;
 	border-radius: 0.12rem;
 	margin-top: -0.1rem;
 	margin-bottom: 0.5rem;
-	background-color: #fff;
+	background-color: #1B2023;
+	
 }
 .qiandao_bt{
 	padding:0.3rem 0.3rem 0.8rem;
 	height: 0.8rem;
 	line-height: 0.8rem;
 	font-size: 0.36rem;
-	color: #000000;
+	color: #fff;
 }
 .qiandao_list{
 	padding:0 0.3rem;
@@ -2891,31 +2931,33 @@ background: #C32828;
 	font-size: 0.3rem;
 	font-family: PingFang SC;
 	font-weight: bold;
-	color: #000000;
+	color: #D8D8D8;
 	line-height: 0.56rem;
 }
 .qiandao_list .a .a2{
 	font-size: 0.24rem;
-	color: #BBBBBB;
+	color: #646464;
 	line-height: 0.56rem;
 }
 .qiandao_list .b{
-	font-size: 0.34rem;
+	font-size: 0.36rem;
 	font-weight: bold;
-	color: #000000;
+	color: #DDB273;
 	line-height: 0.56rem;
 }
 .qiandao{
 	height: 3.9rem;
 	background:url(../images/jinbi/jinbibg2.png) no-repeat center top;
+	/* background-size:cover; */
 	background-size:7.5rem 3.1rem;
-	padding:0.2rem 0.3rem;
+	padding:0.2rem;
 }
 .qiandaoimg{
 	height: 3.5rem;
 	background:url(../images/jinbi/jinbiimg.jpg) no-repeat center;
-	background-size:6.9rem 3.5rem;
-	border-radius: 0.2rem;
+	background-size:100% 100%;
+	border-radius: 0.12rem;
+	box-shadow: 0 0.04rem 0.08rem 0 rgba(0, 0, 0, 0.5);
 }
 .qiandaoimg p{
 	font-size: 0.18rem;
@@ -2925,13 +2967,19 @@ background: #C32828;
 	padding-right: 0.2rem;
 	text-align: right;
 }
+.signinOutside{
+background: #23282D;
+box-shadow: 0 0.04rem 0.08rem 0 rgba(0, 0, 0, 0.5);
+border-radius: .12rem;
+margin:0 0.2rem 0.2rem;
+}
 .biaoti{
 	font-size: 0.3rem;
 	font-family: PingFang SC;
-	font-weight: bold;
-	color: #333333;
+	font-weight: normal;
 	line-height: 0.56rem;
-	padding:0.3rem 0.3rem 0.4rem
+	padding:0.3rem 0.3rem 0.4rem;
+	color: #FFFFFF;
 }
 .biaoti span{
 	display: inline-block;
@@ -2940,20 +2988,23 @@ background: #C32828;
 	width: 0.34rem;
 	background:url(../images/icon_r.png) no-repeat center;
 	background-size:0.34rem 0.34rem;
-	margin-left:0.02rem
+	margin-left:0.02rem;
+	margin-top: -.06rem;
 }
 .biaotiinfo{
 	text-align: center;
 	font-size: 0.34rem;
 	font-weight: bold;
-	color: #000000;
+	color: #FFFFFF;
 	line-height: 0.68rem;
 	letter-spacing: 0.03rem;
+
+
 }
 .biaotiinfo span{
 	font-size: 0.42rem;
 	font-weight: bold;
-	color: #FBC530;
+	color: #DDB273;
 	padding:0 .15rem;
 	vertical-align: middle;
 }
@@ -2963,7 +3014,7 @@ background: #C32828;
 	display:flex;
 	align-items:center;
 	justify-content: center;
-	padding: 0.3rem 0;
+	padding: 0.3rem .2rem;
 }
 .qiandaoa_list li{
 	-webkit-box-flex:1;
@@ -2974,22 +3025,22 @@ background: #C32828;
 .qiandaoa_list li .a{
 	font-size: 0.2rem;
 	font-family: PingFang SC;
-	font-weight: bold;
+	/* font-weight: bold; */
 	color: #FFFFFF;
-	line-height: 0.94rem;
+	line-height: 0.76rem;
 	text-align: center;
 	background:url(../images/jinbi/jinbiicon1.png) no-repeat center;
-	background-size:0.94rem 0.94rem;
+	background-size:0.76rem 0.76rem;
 }
 .qiandaoa_list li.on .a{
 	background:url(../images/jinbi/jinbiicon2.png) no-repeat center;
-	background-size:0.94rem 0.94rem;
+	background-size:0.76rem 0.76rem;
 }
 .qiandaoa_list li .b{
 	font-size: 0.2rem;
 	font-family: PingFang SC;
-	font-weight: bold;
-	color: #999999;
+	/* font-weight: bold; */
+	color: #fff;
 }
 .textc{
 	text-align: center;
