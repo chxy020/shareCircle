@@ -1845,6 +1845,16 @@ color: #9A9A9A;
 	background-size:.4rem .4rem;
 	margin-right:.1rem;
 }
+.delpoptext{
+	width: 100%;
+	height:.68rem;
+	line-height:.68rem;
+	text-align:center;
+	margin-top:.2rem;
+	margin-bottom: 0.58rem;
+	font-size: .28rem;
+	color: #999999;
+}
 .forminput input{
 	outline:0;
 	-webkit-box-sizing:border-box;
