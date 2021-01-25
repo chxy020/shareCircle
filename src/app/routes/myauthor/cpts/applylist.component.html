@@ -16,7 +16,7 @@
                         <p>{{item.publishName}} > {{item.fileName || "未分组" }}</p>
                     </div>
                     <div class="bofanglist-text-bottom">
-                        <div class="rbtn-a">{{item.status == 0 ? "待平台审核" : (item.status == 1 ? "已加精" : "加精失败")}}</div>
+                        <div class="rbtn-a" [ngClass]="{'d':item.status == 1,'y':(item.status != 1 && item.status != 0)}">{{item.status == 0 ? "待平台审核" : (item.status == 1 ? "已加精" : "加精失败")}}</div>
                     </div>
                 </div>
             </li>
