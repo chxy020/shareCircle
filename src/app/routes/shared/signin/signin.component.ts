@@ -23,6 +23,8 @@ export class SignInComponent implements OnInit {
 
 	goldNum = 0;
 
+	today = "";
+
 	constructor(
 		private route: ActivatedRoute,
 		private http: HttpService,
@@ -35,11 +37,22 @@ export class SignInComponent implements OnInit {
 	ngOnInit() {
 		this.userCode = this.route.snapshot.paramMap.get('uid') || "";
 
-		
+		this.getToday();
 
 		this.getPirceNum();
 
 		this.getAttendanceList();
+	}
+
+	getToday(){
+		let st = new Date();
+		let y = st.getFullYear();
+		let m:any = st.getMonth() + 1;
+		m = m < 10 ? "0"+m : m;
+		let d:any = st.getDate();
+		d = d < 10 ? "0"+d : d;
+
+		this.today = y + "年" + m + "月" + d + "日";
 	}
 
 	gotoGold(){
@@ -108,30 +121,33 @@ export class SignInComponent implements OnInit {
 		this.http.get(url, params, null).subscribe(data => {
 			if(data.code == 0){
 				// this.goldNum = data.data || 0;
-				var list = data.data || [];
-				var item = list[0] || {};
+				let list = data.data || [];
+				let item = list[0] || {};
 
 				// item.continuous_num  = 0
-				var created_at = item.created_at || 0;
+				
+				let created_at = item.created_at || 0;
 				if(created_at){
-					var st = new Date(+created_at);
-					var y = st.getFullYear();
-					var m = st.getMonth();
-					var d = st.getDate();
-					var stt = new Date(y,m,d).getTime();
-					var now = new Date();
-					var ntt = new Date(now.getFullYear(),now.getMonth(),now.getDate()).getTime();
+					let st = new Date(+created_at);
+					let y = st.getFullYear();
+					let m = st.getMonth();
+					let d = st.getDate();
+					let stt = new Date(y,m,d).getTime();
+					let now = new Date();
+					let ntt = new Date(now.getFullYear(),now.getMonth(),now.getDate()).getTime();
 
-					var stime = ntt - stt;
+					let stime = ntt - stt;
 					if(stime > (24 * 60 * 60 * 1000)){
 						this.todaySignIn = false;
+						item.continuous_num  = 0;
 					}else{
 						this.todaySignIn = true;
 					}
+				}else{
+					item.continuous_num  = 0;
 				}
-
 				this.singInDays = (+item.continuous_num || 0);
-				var num = (+item.continuous_num || 0) + 1;
+				let num = (+item.continuous_num || 0) + 1;
 				if(this.todaySignIn == true){
 					num--;
 				}
