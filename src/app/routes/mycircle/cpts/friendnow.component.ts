@@ -86,6 +86,7 @@ export class NowListComponent implements OnInit {
 		this.applySelected();
 	}
 
+	deleteTip = false;
 	delItem(evt:MouseEvent){
 		evt.preventDefault();
 		evt.stopPropagation();
@@ -93,13 +94,15 @@ export class NowListComponent implements OnInit {
 			this.currentMenuEle.style.display = "none";
 		}
 
-		let item = this.currentItem;
+		this.deleteTip = true;
 
-		this.currentItem = item;
-		let b = window.confirm("确认删除吗?");
-		if(b){
-			this.delectCircle();
-		}
+		// let item = this.currentItem;
+
+		// this.currentItem = item;
+		// let b = window.confirm("确认删除吗?");
+		// if(b){
+		// 	this.delectCircle();
+		// }
 	}
 	
 	delcount = 0;

@@ -22,6 +22,8 @@ export class DetailsComponent implements OnInit {
 	showTip = false;
 	showMsg = "";
 
+	isGive = false;
+
 	uid;
 	baseUrl;
 	id;
@@ -478,18 +480,24 @@ export class DetailsComponent implements OnInit {
 				this.detail.give_num++;
 
 				this.giveRefresh++;
+
+				this.isGive = true;
 			}else if(data.status ==  -1){
 				this.showMsg = "点赞失败";
 				this.showTip = true;
 				setTimeout(() =>{
 					this.showTip = false;
 				},2500);
+
+				this.isGive = false;
 			}else if(data.status ==  -2){
 				this.showMsg = "已经点过赞了";
 				this.showTip = true;
 				setTimeout(() =>{
 					this.showTip = false;
 				},2500);
+
+				this.isGive = true;
 			}
 			this.loading = false;
 		}, error => {

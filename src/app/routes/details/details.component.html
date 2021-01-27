@@ -64,7 +64,7 @@
 <div class="bottomBtn">
     <div class="form"><input type="text" (click)="textBottom='0px';commentText.focus();" [(ngModel)]="commentMsg" placeholder="快捷评论"></div>
     <div (click)="addComment()" class="pinglun"><span></span></div>
-    <div (click)="addGive()" class="dianzan"><span></span></div>
+    <div (click)="addGive()" class="dianzan" [class.on]="isGive"><span></span></div>
     <div (click)="sharedVideo()" class="fengxiang"><span></span></div>
     <div (click)="downloadVideo()" class="zhuancun"><span></span></div>
 </div>

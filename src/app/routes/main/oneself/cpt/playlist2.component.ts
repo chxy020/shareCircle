@@ -74,6 +74,9 @@ export class PlayList2Component implements OnInit {
 		},3000);
 	}
 
+	
+	deleteTip = false;
+	circleId;
 	delBtn(evt:MouseEvent,item:any){
 		evt.preventDefault();
 		evt.stopPropagation();
@@ -82,17 +85,15 @@ export class PlayList2Component implements OnInit {
 			this.currentMenuEle.style.display = "none";
 		}
 
-		let circleId = item.id;
+		
+		this.circleId = item.id;
+		this.deleteTip = true;
 
-		let b = window.confirm("确认删除吗?");
-		if(b){
-			this.updateMovePublish(circleId);
-		}
-
-		// this.folderName = item.filename;
-		// this.folderId = item.id;
-		// this.newPopEdit = true;
-		// this.newPop = true;
+		// let circleId = item.id;
+		// let b = window.confirm("确认删除吗?");
+		// if(b){
+		// 	this.updateMovePublish(circleId);
+		// }
 	}
 
 	updateMovePublish(circleId):void{

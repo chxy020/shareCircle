@@ -5,11 +5,11 @@
             <li *ngFor="let item of data">
                 <div class="a"><img [src]="item.headimgurl || headImg" alt="" /></div>
                 <div class="b">
-                    <div class="b1">{{item.username}}</div>
                     <div class="b2">
-                        <div class="pl">点赞了此资源</div>
+                        <div class="pl">{{item.username}}</div>
                         <div class="time">{{item.create_time}}</div>
                     </div>
+                    <div class="b1">点赞了此资源</div>
                 </div>
             </li>
         </ul>

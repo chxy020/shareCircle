@@ -128,6 +128,7 @@ export class PlayListComponent implements OnInit {
 		this.newPop = true;
 	}
 
+	deleteTip = false;
 	delBtn(evt:MouseEvent){
 		evt.preventDefault();
 		evt.stopPropagation();
@@ -135,19 +136,15 @@ export class PlayListComponent implements OnInit {
 		if(this.currentMenuEle){
 			this.currentMenuEle.style.display = "none";
 		}
+
 		
-		let b = window.confirm("确认删除吗?");
+		this.deleteTip = true;
 
-		let item = this.currentItem;
-
-		if(b){
-			this.deletePlayList(item);
-		}
-
-		// this.folderName = item.filename;
-		// this.folderId = item.id;
-		// this.newPopEdit = true;
-		// this.newPop = true;
+		// let item = this.currentItem;
+		// let b = window.confirm("确认删除吗?");
+		// if(b){
+		// 	this.deletePlayList(item);
+		// }
 	}
 
 

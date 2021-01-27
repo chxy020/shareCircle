@@ -4,6 +4,26 @@
         <li (click)="delItem($event)">删除</li>
     </ul>
 </div>
+
+<!-- 删除提示弹框 -->
+<div class="pop-mask" *ngIf="deleteTip">
+    <div class="editpop">
+        <div class="det-sharepop-bt">
+            <div class="ltext">
+                删除提示
+            </div>
+            <div (click)="deleteTip=false;" class="rbtn"></div>
+        </div>
+        <div class="delpoptext">
+            确认删除吗?
+        </div>
+        <div class="choosepop-btn">
+            <div (click)="deleteTip=false;" class="a">取消</div>
+            <div (click)="delectCircle();deleteTip=false;" class="b">确定</div>
+        </div>
+    </div>
+</div>
+
 <!-- 最新发布 -->
 <div dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
     <div class="contDiv" >

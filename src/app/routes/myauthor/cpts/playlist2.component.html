@@ -2,6 +2,25 @@
 
 <div *ngIf="showTip" class="tip_text">{{showMsg}}</div>
 
+<!-- 删除提示弹框 -->
+<div class="pop-mask" *ngIf="deleteTip">
+    <div class="editpop">
+        <div class="det-sharepop-bt">
+            <div class="ltext">
+                删除提示
+            </div>
+            <div (click)="deleteTip=false;" class="rbtn"></div>
+        </div>
+        <div class="delpoptext">
+            确认删除吗?
+        </div>
+        <div class="choosepop-btn">
+            <div (click)="deleteTip=false;" class="a">取消</div>
+            <div (click)="deletePlayList(currentItem.id,currentItem);deleteTip=false;" class="b">确定</div>
+        </div>
+    </div>
+</div>
+
 <div #menuele (click)="menuele.style.display='none'" class="tip_operlist" style="display: none;">
     <ul>
         <li (click)="delBtn($event)">删除</li>
