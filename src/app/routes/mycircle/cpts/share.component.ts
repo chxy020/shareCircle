@@ -51,27 +51,28 @@ export class ShareListComponent implements OnInit {
 	currentItem;
 	currentMenuEle;
 	eleOut;
-	menuBtn(evt:MouseEvent,ele:any){
+	menuBtn(evt:MouseEvent,ele:any,item:any){
 		evt.preventDefault();
 		evt.stopPropagation();
 		
 		if(this.currentMenuEle){
 			this.currentMenuEle.style.display = "none";
 		}
+		this.currentItem = item;
 
 		this.currentMenuEle = ele;
 		ele.style.display = "block";
 
-		clearTimeout(this.eleOut);
-		this.eleOut = setTimeout(()=>{
-			ele.style.display = "none";
-		},3000);
+		// clearTimeout(this.eleOut);
+		// this.eleOut = setTimeout(()=>{
+		// 	ele.style.display = "none";
+		// },3000);
 	}
 
-	addRecommend(evt:MouseEvent,item:any){
+	addRecommend(evt:MouseEvent){
 		evt.preventDefault();
 		evt.stopPropagation();
-
+		let item = this.currentItem;
 		if(+item.type === 0){
 			return;
 		}
@@ -84,12 +85,13 @@ export class ShareListComponent implements OnInit {
 		this.applySelected();
 	}
 
-	delItem(evt:MouseEvent,item:any){
+	delItem(evt:MouseEvent){
 		evt.preventDefault();
 		evt.stopPropagation();
 		if(this.currentMenuEle){
 			this.currentMenuEle.style.display = "none";
 		}
+		let item = this.currentItem;
 
 		this.currentItem = item;
 		let b = window.confirm("确认删除吗?");
@@ -178,7 +180,7 @@ export class ShareListComponent implements OnInit {
 		this.http.get(url, params, null).subscribe(data => {
 			if(data.code == 0){
 				let list = data.data || [];
-
+				
 				this.data = this.data.concat(list);
 
 				if(list.length < this.limit){

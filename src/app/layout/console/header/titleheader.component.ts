@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
         {{title}}
 
         <div (click)="menuBtn($event,menuele)" *ngIf="(title=='管理圈子' || title=='作者主页') && isShow" class="topDiv-btnR"></div>
-        <div #menuele style="display:none;" class="tip_operlist">
+        <div #menuele (click)="menuele.style.display='none'" style="display:none;" class="tip_operlist">
             <ul *ngIf="title=='管理圈子'" >
                 <li (click)="shareCode()" >分享邀请码</li>
             </ul>
@@ -130,10 +130,10 @@ export class TitleHeaderComponent implements OnInit {
 		this.currentMenuEle = ele;
 		ele.style.display = "block";
 
-		clearTimeout(this.eleOut);
-		this.eleOut = setTimeout(()=>{
-			ele.style.display = "none";
-		},3000);
+		// clearTimeout(this.eleOut);
+		// this.eleOut = setTimeout(()=>{
+		// 	ele.style.display = "none";
+		// },3000);
     }
     
     shareCode(){

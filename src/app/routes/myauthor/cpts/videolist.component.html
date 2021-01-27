@@ -15,6 +15,15 @@
 
 <div *ngIf="showTip" class="tip_text">{{showMsg}}</div>
 
+<div #menuele (click)="menuele.style.display='none'" class="tip_operlist" style="display: none;">
+    <ul>
+        <li (click)="addFolderPop($event)" [class.disabled]="currentItem && !!currentItem.filesId">加入列表</li>
+        <li (click)="addRecommend($event)" [class.disabled]="currentItem && !(+currentItem.type===0 && currentItem.isforward==0 && currentItem.examineStatus == null)">申请加精</li>
+        <li (click)="changeShowStatus($event)" [class.active]="currentItem && +currentItem.isshow === 0" >{{currentItem && +currentItem.isshow === 0 ? '仅自己可见' : '公开' }}</li>
+        <li (click)="delItem($event)">删除</li>
+    </ul>
+</div>
+
 <!-- 加入文件夹弹框 -->
 <div class="pop-mask" *ngIf="filePop">
     <div class="choosepop" style="height:auto;">
@@ -56,17 +65,15 @@
                         <p>{{item.name}} > {{item.fileName || '未分组'}}</p>
                     </div>
                     <div class="bofanglist-text-bottom">
-                        <div (click)="menuBtn($event,menuele)" class="rbtn"></div>
-                        <div #menuele class="tip_operlist" >
+                        <div (click)="menuBtn($event,menuele,item)" class="rbtn"></div>
+                        <!-- <div #menuele class="tip_operlist" >
                             <ul>
                                 <li (click)="addFolderPop($event,item)" [class.disabled]="!!item.filesId">加入列表</li>
                                 <li (click)="addRecommend($event,item)" [class.disabled]="!(+item.type===0 && item.isforward==0 && item.examineStatus == null)">申请加精</li>
                                 <li (click)="changeShowStatus($event,item)">{{+item.isshow === 0 ? '仅自己可见' : '公开' }}</li>
                                 <li (click)="delItem($event,item)">删除</li>
-                                <!-- <li class="disabled">加入列表</li> -->
-                                <!-- <li class="active">仅自己可见</li> -->
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </li>

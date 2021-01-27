@@ -94,7 +94,7 @@ export class PlayListComponent implements OnInit {
 	currentItem;
 	currentMenuEle;
 	eleOut;
-	menuBtn(evt:MouseEvent,ele:any){
+	menuBtn(evt:MouseEvent,ele:any,item:any){
 		evt.preventDefault();
 		evt.stopPropagation();
 		
@@ -102,16 +102,18 @@ export class PlayListComponent implements OnInit {
 			this.currentMenuEle.style.display = "none";
 		}
 
+		this.currentItem = item;
+
 		this.currentMenuEle = ele;
 		ele.style.display = "block";
 
-		clearTimeout(this.eleOut);
-		this.eleOut = setTimeout(()=>{
-			ele.style.display = "none";
-		},3000);
+		// clearTimeout(this.eleOut);
+		// this.eleOut = setTimeout(()=>{
+		// 	ele.style.display = "none";
+		// },3000);
 	}
 	
-	renameBtn(evt:MouseEvent,item:any){
+	renameBtn(evt:MouseEvent){
 		evt.preventDefault();
 		evt.stopPropagation();
 
@@ -119,22 +121,25 @@ export class PlayListComponent implements OnInit {
 			this.currentMenuEle.style.display = "none";
 		}
 
-		this.currentItem = item;
+		let item = this.currentItem;
 		this.folderName = item.filename;
 		this.folderId = item.id;
 		this.newPopEdit = true;
 		this.newPop = true;
 	}
 
-	delBtn(evt:MouseEvent,item:any){
+	delBtn(evt:MouseEvent){
 		evt.preventDefault();
 		evt.stopPropagation();
 
 		if(this.currentMenuEle){
 			this.currentMenuEle.style.display = "none";
 		}
-
+		
 		let b = window.confirm("确认删除吗?");
+
+		let item = this.currentItem;
+
 		if(b){
 			this.deletePlayList(item);
 		}

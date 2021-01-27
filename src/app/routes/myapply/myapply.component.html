@@ -1,7 +1,17 @@
 <!-- <loading [isshow]="loading"></loading> -->
 <div *ngIf="showTip" class="tip_text">{{showMsg}}</div>
 
-<div class="bgfff mt20">
+<div #menuele (click)="menuele.style.display='none'" class="tip_operlist" style="display: none;">
+    <ul>
+        <li *ngIf="currentType==1" (click)="reviewBtn($event,1)" >通过并允许发布</li>
+        <li *ngIf="currentType==1" (click)="reviewBtn($event,2)" >通过但只能查看</li>
+        <li *ngIf="currentType==1" (click)="reviewBtn($event,3)" >拒绝</li>
+
+        <li *ngIf="currentType==2" (click)="changeBtn($event)" >{{currentItem && (currentItem.ispublish == 0 ? '通过但只能查看' : (currentItem.ispublish == 1 ? '通过并允许发布' : '')) }}</li>
+    </ul>
+</div>
+
+<div class="bgfff mt20" *ngIf="data1 && data1.length > 0">
     <div dropload (drapDown)="drapDown($event,1)" (drapUp)="drapUp($event,1)" >
         <ul class="detailsCont detailsContFenxiang" >
             <li *ngFor="let item of data1">
@@ -15,14 +25,14 @@
                     </div>
                 </div>
                 <div class="list-rbtn">
-                    <p (click)="menuBtn($event,menuele)" class="l">审核</p>
-                    <div #menuele class="tip_operlist" >
+                    <p (click)="menuBtn($event,menuele,item,1)" class="l">审核</p>
+                    <!-- <div #menuele class="tip_operlist" >
                         <ul>
                             <li (click)="reviewBtn($event,item,1)" >通过并允许发布</li>
                             <li (click)="reviewBtn($event,item,2)" >通过但只能查看</li>
                             <li (click)="reviewBtn($event,item,3)" >拒绝</li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
             </li>
             <!-- <li>
@@ -78,13 +88,13 @@
 
                 <div class="list-rbtn location1">
                     <p *ngIf="item.ispass == 2" class="r">拒绝</p>
-                    <p *ngIf="item.ispass != 2" (click)="menuBtn($event,menuele)" class="h">修改</p>
+                    <p *ngIf="item.ispass != 2" (click)="menuBtn($event,menuele,item,2)" class="h">修改</p>
                     <p *ngIf="item.ispass != 2" class="t">{{item.ispublish == 0 ? '通过并允许发布' : (item.ispublish == 1 ? '通过但只能查看' : '') }}</p>
-                    <div #menuele class="tip_operlist" >
+                    <!-- <div #menuele class="tip_operlist" >
                         <ul>
                             <li (click)="changeBtn($event,item)" >{{item.ispublish == 0 ? '通过但只能查看' : (item.ispublish == 1 ? '通过并允许发布' : '') }}</li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- <div class="list-rbtn" style="position: relative;">
                     <p *ngIf="item.ispass != 2" class="h">修改</p>

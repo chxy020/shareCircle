@@ -1,3 +1,10 @@
+
+<div #menuele (click)="menuele.style.display='none'" class="tip_operlist" style="display: none;">
+    <ul>
+        <li (click)="addRecommend($event)" [class.disabled]="currentItem && +currentItem.type===0">申请加精</li>
+        <li (click)="delItem($event)">删除</li>
+    </ul>
+</div>
 <!-- 最新发布 -->
 <div dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
     <div class="contDiv" >
@@ -15,13 +22,13 @@
                         <p>{{item.nickname}}</p>
                     </div>
                     <div class="bofanglist-text-bottom">
-                        <div (click)="menuBtn($event,menuele)" class="rbtn"></div>
-                        <div #menuele class="tip_operlist" >
+                        <div (click)="menuBtn($event,menuele,item)" class="rbtn"></div>
+                        <!-- <div #menuele class="tip_operlist" >
                             <ul>
                                 <li (click)="addRecommend($event,item)" [class.disabled]="+item.type===0">申请加精</li>
                                 <li (click)="delItem($event,item)">删除</li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </li>

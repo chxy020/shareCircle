@@ -38,6 +38,8 @@ export class DetailsComponent implements OnInit {
 	commentRefresh = 0;
 	giveRefresh = 0;
 
+	userInfo = null;
+
 	textBottom = "-2rem";
 	@ViewChild('commentText',{static: true}) commentText: ElementRef;
 
@@ -331,6 +333,36 @@ export class DetailsComponent implements OnInit {
 		});
 	}
 
+	getSelectUserInfo():void{
+
+		const params: Map<string, any> = new Map<string, any>();
+
+		let url = "/jqkj/circleMine/getSelectUserInfo";
+		this.http.get(url, params, null).subscribe(data => {
+			// console.log(data)
+			if(data.status == 0){
+				this.userInfo = data.data || [];
+
+				this.replaceUserInfo();
+			}
+			// this.loading = false;
+		}, error => {
+			console.error(error);
+			// this.loading = false;
+		});
+	}
+
+	replaceUserInfo():void{
+		if(this.userInfo.length > 0){
+			this.userInfo.forEach(item=>{
+				if(this.detail.uid == item.uid){
+					this.detail.name = item.nick;
+					this.detail.headimgurl = item.headimgurl;
+				}
+			})
+		}
+	}
+
 	findUserPublish():void{
 		this.loading = true;
 
@@ -344,6 +376,12 @@ export class DetailsComponent implements OnInit {
 			if(data.status == 0){
 				this.detail = data.data || {};
 
+				if(!this.userInfo){
+					this.getSelectUserInfo();
+				}else{
+					this.replaceUserInfo();
+				}
+				
 
 				//定义一个变量：videoObject，用来做为视频初始化配置
 				// var videoObject = {

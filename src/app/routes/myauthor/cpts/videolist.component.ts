@@ -60,7 +60,7 @@ export class VideoListComponent implements OnInit {
 	currentItem;
 	currentMenuEle;
 	eleOut;
-	menuBtn(evt:MouseEvent,ele:any){
+	menuBtn(evt:MouseEvent,ele:any,item){
 		evt.preventDefault();
 		evt.stopPropagation();
 		
@@ -68,18 +68,22 @@ export class VideoListComponent implements OnInit {
 			this.currentMenuEle.style.display = "none";
 		}
 
+		this.currentItem = item;
+
 		this.currentMenuEle = ele;
 		ele.style.display = "block";
 
-		clearTimeout(this.eleOut);
-		this.eleOut = setTimeout(()=>{
-			ele.style.display = "none";
-		},3000);
+		// clearTimeout(this.eleOut);
+		// this.eleOut = setTimeout(()=>{
+		// 	ele.style.display = "none";
+		// },3000);
 	}
 
-	addFolderPop(evt:MouseEvent,item:any){
+	addFolderPop(evt:MouseEvent){
 		evt.preventDefault();
 		evt.stopPropagation();
+
+		let item = this.currentItem;
 
 		if(!!item.filesId){
 			return;
@@ -93,9 +97,11 @@ export class VideoListComponent implements OnInit {
 
 		this.filePop = true;
 	}
-	addRecommend(evt:MouseEvent,item:any){
+	addRecommend(evt:MouseEvent){
 		evt.preventDefault();
 		evt.stopPropagation();
+
+		let item = this.currentItem;
 
 		if(+item.type === 1){
 			return;
@@ -114,24 +120,27 @@ export class VideoListComponent implements OnInit {
 
 		this.applySelected();
 	}
-	changeShowStatus(evt:MouseEvent,item:any){
+	changeShowStatus(evt:MouseEvent){
 		evt.preventDefault();
 		evt.stopPropagation();
 		if(this.currentMenuEle){
 			this.currentMenuEle.style.display = "none";
 		}
+		let item = this.currentItem;
 
 		this.currentItem = item;
 
 		let isshow = +!item.isshow
 		this.updateIsShow(isshow);
 	}
-	delItem(evt:MouseEvent,item:any){
+	delItem(evt:MouseEvent){
 		evt.preventDefault();
 		evt.stopPropagation();
 		if(this.currentMenuEle){
 			this.currentMenuEle.style.display = "none";
 		}
+
+		let item = this.currentItem;
 
 		this.currentItem = item;
 		let b = window.confirm("确认删除吗?");

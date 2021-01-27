@@ -53,7 +53,7 @@ export class PlayList2Component implements OnInit {
 	currentItem;
 	currentMenuEle;
 	eleOut;
-	menuBtn(evt:MouseEvent,ele:any){
+	menuBtn(evt:MouseEvent,ele:any,item){
 		evt.preventDefault();
 		evt.stopPropagation();
 		
@@ -61,22 +61,26 @@ export class PlayList2Component implements OnInit {
 			this.currentMenuEle.style.display = "none";
 		}
 
+		this.currentItem = item;
+
 		this.currentMenuEle = ele;
 		ele.style.display = "block";
 
-		clearTimeout(this.eleOut);
-		this.eleOut = setTimeout(()=>{
-			ele.style.display = "none";
-		},3000);
+		// clearTimeout(this.eleOut);
+		// this.eleOut = setTimeout(()=>{
+		// 	ele.style.display = "none";
+		// },3000);
 	}
 
-	delBtn(evt:MouseEvent,item:any){
+	delBtn(evt:MouseEvent){
 		evt.preventDefault();
 		evt.stopPropagation();
 
 		if(this.currentMenuEle){
 			this.currentMenuEle.style.display = "none";
 		}
+
+		let item = this.currentItem;
 
 		let circleId = item.id;
 

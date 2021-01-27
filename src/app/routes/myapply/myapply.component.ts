@@ -67,11 +67,11 @@ export class MyApplyComponent implements OnInit {
         this.pageType = i;
 	}
 
-
+	currentType = 1;
 	currentItem;
 	currentMenuEle;
 	eleOut;
-	menuBtn(evt:MouseEvent,ele:any){
+	menuBtn(evt:MouseEvent,ele:any,item:any,type:number){
 		evt.preventDefault();
 		evt.stopPropagation();
 		
@@ -79,16 +79,19 @@ export class MyApplyComponent implements OnInit {
 			this.currentMenuEle.style.display = "none";
 		}
 
+		this.currentType = type;
+		this.currentItem = item;
+
 		this.currentMenuEle = ele;
 		ele.style.display = "block";
 
-		clearTimeout(this.eleOut);
-		this.eleOut = setTimeout(()=>{
-			ele.style.display = "none";
-		},3000);
+		// clearTimeout(this.eleOut);
+		// this.eleOut = setTimeout(()=>{
+		// 	ele.style.display = "none";
+		// },3000);
 	}
 
-	changeBtn(evt:MouseEvent,item:any){
+	changeBtn(evt:MouseEvent){
 		evt.preventDefault();
 		evt.stopPropagation();
 
@@ -96,6 +99,8 @@ export class MyApplyComponent implements OnInit {
 			this.currentMenuEle.style.display = "none";
 		}
 
+		let item = this.currentItem;
+		
 		// ipass = 1 & ispublish = 0   对应 设置允许发布
 		// ipass = 1 & ispublish = 1  对应 设置允许查看
 		// ipass = 2 & ispublish = 2  对应 拒绝
@@ -109,14 +114,14 @@ export class MyApplyComponent implements OnInit {
 		this.updateAddStatus2(item,item.ispass,ispublish);
 	}
 
-	reviewBtn(evt:MouseEvent,item:any,type:number){
+	reviewBtn(evt:MouseEvent,type:number){
 		evt.preventDefault();
 		evt.stopPropagation();
 
 		if(this.currentMenuEle){
 			this.currentMenuEle.style.display = "none";
 		}
-
+		let item = this.currentItem;
 		// ipass = 1 & ispublish = 0   对应 设置允许发布
 		// ipass = 1 & ispublish = 1  对应 设置允许查看
 		// ipass = 2 & ispublish = 2  对应 拒绝
