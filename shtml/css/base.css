@@ -182,6 +182,7 @@ background: #22292C;
 	padding-right:0.3rem;
 	font-size:0.34rem;
 	color: #9A9A9A;
+	font-weight: bold;
 }
 .tabDiv-box li.tabDivActive {
 color: #C32828;
@@ -333,7 +334,7 @@ margin-bottom: .02rem;
 
 .contDiv-text-right .c p.d {
 	padding-left: 0.38rem;
-    padding-top: .22rem;
+    padding-top: .28rem;
 	background:url(../images/icon02.png) no-repeat left top;
 	background-size:0.48rem 0.48rem;
 font-size: .16rem;
@@ -341,6 +342,7 @@ font-family: PingFangSC-Regular, PingFang SC;
 color: #9A9A9A;
 height: .48rem;
 margin-right: 0.2rem;
+line-height: .3rem;
 }
 /*------myindex------*/
 .myinfo {
@@ -729,11 +731,12 @@ color: #D8D8D8;
 
 .authorInfo {
 	height:3.38rem;
-	background:#122255 url(../images/authorbg.jpg) no-repeat center;
-	background-size:100% 3.38rem;
+	background:url(../images/myindexbg.jpg) repeat-y center;
+	background-size:100%;
+	/* background:#122255 url(../images/authorbg.jpg) no-repeat center; */
+	/* background-size:100% 3.38rem; */
     /* background: url(../images/myindexbg.jpg) repeat-y center;
     background-size: 100%; */
-
 	font-weight: bold;
 }
 .authorInfo .a {
@@ -993,6 +996,10 @@ background: #2D3335;
 	background:url(../images/dianzan.png) no-repeat center;
 	background-size:0.46rem 0.46rem;
 }
+.bottomBtn .dianzan.on span {
+	background:url(../images/dianzanon.png) no-repeat center;
+	background-size:0.46rem 0.46rem;
+}
 .bottomBtn .fengxiang span {
 	background:url(../images/fengxiang.png) no-repeat center;
 	background-size:0.46rem 0.46rem;
@@ -1003,7 +1010,8 @@ background: #2D3335;
 }
 .bottomBtn .fabu{
 	text-align: center;
-	padding:0 0.4rem 0 0.2rem
+	padding:0 0.4rem 0 0.2rem;
+	color: #fff;
 }
 .bottomBtnBig {
 	height:2rem;
@@ -1014,7 +1022,8 @@ background: #2D3335;
 	left:0;
 	right:0;
 	bottom:-2rem;
-	background-color:#fff;
+	/* background-color:#fff; */
+	background: #22292C;
 	z-index:10;
 	justify-items:center;
 	align-items:center;
@@ -1030,13 +1039,15 @@ background: #2D3335;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	width:100%;
 	font-size:0.26rem;
-	color:#999999;
-	background:#F2F6FC;
+	/* color:#999999; */
+	/* background:#F2F6FC; */
 	border-radius:0.12rem;
 	padding:0.2rem;
 	transform-origin:0 0;
 	box-sizing: border-box;
-    	font-family: arial;
+		font-family: arial;
+		color: #fff;
+		background: #2D3335;
 }
 
 .detailsContTab,.detailsContDiv {
@@ -1419,7 +1430,7 @@ color: #FFFFFF;
 	color:#C32828
 }
 .tip_operlist .disabled {
-	color:#cccccc
+	color:#636363
 }
 /* applyjoin */
 .list-rbtn{
@@ -1535,14 +1546,14 @@ background: #282C2F;
 	flex:1;
 	font-size:.30rem;
 	font-family:PingFang SC;
-	font-weight:bold;
-
+	/* font-weight:bold; */
+	font-weight: normal;
 color: #FFFFFF;
 }
 .tab-list ul li {
 	float:left;
 	padding:0 .2rem;
-
+	font-weight: normal;
 color: #D8D8D8;
 }
 .tab-list ul li.on {
@@ -2266,7 +2277,7 @@ border: 0.02rem solid rgba(255, 255, 255, 0.2)
 	height:0.44rem;
 	width:0.44rem;
 	background:url(../images/icon3.png) no-repeat center;
-	background-size:0.28rem 0.28rem;
+	background-size:0.30rem 0.32rem;
 	vertical-align:middle;
 }
 .myinfoB{
@@ -2283,7 +2294,7 @@ color: #D8D8D8;
 	display:inline-block;
 	height:0.26rem;
 	width:0.44rem;
-	background:url(../images/icon3.png) no-repeat center;
+	background:url(../images/icon3_1.png) no-repeat center;
 	background-size:0.26rem 0.26rem;
 	vertical-align:middle;
 }
