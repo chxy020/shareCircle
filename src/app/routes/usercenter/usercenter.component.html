@@ -56,14 +56,17 @@
 
 <!-- 修改昵称弹框 -->
 <div class="pop-mask" *ngIf="editModel" >
-    <div class="editpop">
+    <div class="editpop editspecial">
         <div class="det-sharepop-bt">
             <div class="ltext">
                 修改昵称
             </div>
             <div class="rbtn" (click)="editModel=false;"></div>
         </div>
-        <div class="forminput"><input type="text" [(ngModel)]="detail.circleName" placeholder="请输入2-16个字符的昵称"></div>
+        <div class="forminput">
+            <input type="text" [(ngModel)]="detail.circleName" placeholder="请输入2-16个字符的昵称">
+            <span *ngIf="detail.circleName" class="icondel" (click)="detail.circleName='';"></span>
+        </div>
         <div class="choosepop-btn">
             <div class="a" (click)="editModel=false;">取消</div>
             <div class="b" (click)="updateCircleMine();">确定</div>

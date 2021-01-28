@@ -11,8 +11,8 @@ import { Subscription } from 'rxjs';
     <div class="topDiv">
         <div (click)="back()" class="topDiv-btnL"></div>
         {{title}}
-
-        <div (click)="menuBtn($event,menuele)" *ngIf="(title=='管理圈子' || title=='作者主页') && isShow" class="topDiv-btnR"></div>
+       
+        <div (click)="menuBtn($event,menuele,title)" *ngIf="(title=='管理圈子' || title=='作者主页' || title=='圈友管理') && isShow" [class.btnR-fabu]="title=='作者主页' || title=='圈友管理'" class="topDiv-btnR"></div>
         <div #menuele (click)="menuele.style.display='none'" style="display:none;" class="tip_operlist">
             <ul *ngIf="title=='管理圈子'" >
                 <li (click)="shareCode()" >分享邀请码</li>
@@ -119,10 +119,19 @@ export class TitleHeaderComponent implements OnInit {
     currentItem;
 	currentMenuEle;
 	eleOut;
-	menuBtn(evt:MouseEvent,ele:any){
+	menuBtn(evt:MouseEvent,ele:any,title){
 		evt.preventDefault();
 		evt.stopPropagation();
-		
+        
+        if(title == "管理圈子"){
+            this.shareCode();
+            return;
+        }
+        if(title == "圈友管理"){
+            this.choiceShare();
+            return;
+        }
+
 		if(this.currentMenuEle){
 			this.currentMenuEle.style.display = "none";
 		}

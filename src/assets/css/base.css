@@ -739,12 +739,10 @@ color: #D8D8D8;
 
 .authorInfo {
 	height:3.38rem;
-	background:url(../images/myindexbg.jpg) repeat-y center;
-	background-size:100%;
-	/* background:#122255 url(../images/authorbg.jpg) no-repeat center; */
-	/* background-size:100% 3.38rem; */
-    /* background: url(../images/myindexbg.jpg) repeat-y center;
-    background-size: 100%; */
+	/* background:url(../images/myindexbg.jpg) repeat-y center;
+	background-size:100%; */
+	background:#122255 url(../images/authorbg.jpg) no-repeat center; 
+	background-size:100% 3.38rem;
 	font-weight: bold;
 }
 .authorInfo .a {
@@ -2389,6 +2387,42 @@ border-right:none
 	/* border:none;
 	border-radius: 0;
 	font-size: .28rem; */
+}
+
+
+.editpop.editspecial .forminput{
+	
+	margin-left:.4rem;
+	margin-right: .4rem;
+	position: relative;
+}
+.editpop.editspecial .forminput input{
+	border-bottom: 0.02rem solid rgba(155,155,155,0.1);
+	background-color: #1B2023;
+	border-radius:0;
+	padding:0
+}
+
+.editpop.editspecial .choosepop-btn{
+	border-top:none;
+
+}
+.editpop.editspecial .choosepop-btn .a{
+	border-right:none;
+
+}
+
+.editpop.editspecial .choosepop-btn .b {
+    color: #fff;
+}
+
+.editpop.editspecial .icondel {
+    right: -.08rem;
+    bottom: 0;
+    width: 0.60rem;
+    height: 0.70rem;
+    background: url(../images/promote_del_1.png) no-repeat center;
+    background-size: 0.32rem 0.32rem;
 }
 .contDiv2 {
 	padding-top:.6rem;

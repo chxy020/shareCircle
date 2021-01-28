@@ -19,14 +19,17 @@
 </div> -->
 
 <div class="pop-mask" *ngIf="newPop">
-    <div class="editpop">
+    <div class="editpop editspecial">
         <div class="det-sharepop-bt">
             <div class="ltext">
                 {{newPopEdit?'重命名列表':'创建列表'}}
             </div>
             <div (click)="closePop()" class="rbtn"></div>
         </div>
-        <div class="forminput"><input type="text"  [(ngModel)]="folderName"  placeholder="请输入列表名称"></div>
+        <div class="forminput">
+            <input type="text"  [(ngModel)]="folderName"  placeholder="请输入列表名称">
+            <span *ngIf="folderName" class="icondel" (click)="folderName='';"></span>
+        </div>
         <div class="choosepop-btn">
             <div (click)="closePop()" class="a">取消</div>
             <div (click)="createFolderBtn()" class="b">确定</div>
@@ -36,7 +39,7 @@
 
 <!-- 删除提示弹框 -->
 <div class="pop-mask" *ngIf="deleteTip">
-    <div class="editpop">
+    <div class="editpop editspecial">
         <div class="det-sharepop-bt">
             <div class="ltext">
                 删除提示
