@@ -19,8 +19,13 @@
                     <div><img #vimg [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" /></div>
                     <p>刘德华99红磡演唱会，至今公认华人最完美的演唱会！完整版奉上</p>
 				</div> -->
-				<div *ngIf="!item.isforward" (click)="videoClick(item)" class="contDiv-img">
+				<!-- <div *ngIf="!item.isforward" (click)="videoClick(item)" class="contDiv-img">
 					<img #vimg [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" />
+					<span>{{item.video_len}}</span>
+				</div> -->
+
+				<div *ngIf="!item.isforward" (click)="videoClick(item)" #imgdiv class="contDiv-img" style="background-image:url(./assets/images/default-img.png);" >
+					<img #vimg style="width: 0px;height: 0px;" (load)="imgLoad(imgdiv,item.video_image)" [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" />
 					<span>{{item.video_len}}</span>
 				</div>
 

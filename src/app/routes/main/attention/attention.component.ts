@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Injector } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Injector, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { HttpService } from 'src/app/shared/services/http';
@@ -37,6 +37,7 @@ export class AttentionComponent implements OnInit {
 		private route: ActivatedRoute,
 		private http: HttpService,
 		private sub: SubjectService,
+		private render: Renderer2,
 		private router: Router
 	) {
 		this.baseUrl = window["context"]["apiroot"];
@@ -65,6 +66,10 @@ export class AttentionComponent implements OnInit {
         // }else{
         //     this.router.navigate(['/seatlist/name',{id:this.id,meetid:item.id}]);
         // }
+	}
+
+	imgLoad(ele,img):void{
+		this.render.setStyle(ele, 'background-image',  'url('+img+')');   
 	}
 
 	videoClick(item):void{

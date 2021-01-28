@@ -4,9 +4,13 @@
 	<div class="contDiv">
 		<ul class="contDiv-list">
 			<li *ngFor="let item of data;let i = index;">
-				<div *ngIf="!item.isforward" (click)="videoClick(item)" class="contDiv-img">
+				<!-- <div *ngIf="!item.isforward" (click)="videoClick(item)" class="contDiv-img">
 					<img #vimg [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" />
-					<!-- baseUrl + '/' + item.video_image ||  -->
+					<span>{{item.video_len}}</span>
+				</div> -->
+
+				<div *ngIf="!item.isforward" (click)="videoClick(item)" #imgdiv class="contDiv-img" style="background-image:url(./assets/images/default-img.png);" >
+					<img #vimg style="width: 0px;height: 0px;" (load)="imgLoad(imgdiv,item.video_image)" [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" />
 					<span>{{item.video_len}}</span>
 				</div>
 
