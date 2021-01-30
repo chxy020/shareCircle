@@ -69,6 +69,47 @@ export class TitleHeaderComponent implements OnInit {
         if(this.n){
             this.closeWebView();
         }else{
+            if(this.title == "邀请码"){
+                let u = navigator.userAgent;
+                let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+                let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        
+                if (isAndroid) {
+                    //这个是安卓操作系统
+                    // alert("android");
+                    // alert(window["circle"]);
+                    if(typeof window["circle"] != "undefined"){
+                        try{
+                            window["circle"].hideBottom();
+                        }catch(ex){
+                            alert("hideBottom catch")
+                        }
+                        // var msg = circle.choiceJoinOrShareCircle();
+                        // var msg = H5JsStorage.showDetail("{'test':'123'}");
+                        // document.getElementById("native").innerHTML = "native响应：" + msg;
+                    }else{
+                        alert("circle不存在");
+                    }
+                }
+                if (isIOS) {
+                    //这个是ios操作系统
+                    // alert("ios");
+                    // if(typeof webkit != "undefined"){
+                    //     if(typeof webkit.messageHandlers != "undefined"){
+                    //         if(typeof webkit.messageHandlers.showDetail != "undefined"){
+                    //             var msg = webkit.messageHandlers.showDetail.postMessage("{'test':'123'}");
+                    //             document.getElementById("native").innerHTML = "native响应：" + msg;
+                    //         }else{
+                    //             alert("window.webkit.messageHandlers.showDetail不存在");
+                    //         }
+                    //     }else{
+                    //         alert("window.webkit.messageHandlers不存在");
+                    //     }
+                    // }else{
+                    //     alert("window.webkit不存在");
+                    // }
+                }
+            }
             this.location.back();
         }
     }
