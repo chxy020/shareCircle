@@ -4,7 +4,13 @@ import { HttpService } from 'src/app/shared/services/http';
 
 @Component({
 	selector: 'mycircle',
-	templateUrl: './mycircle.component.html'
+	templateUrl: './mycircle.component.html',
+	styles:[`
+		.authorInfo{
+			background: #122255 url('assets/images/myindexbg.jpg') no-repeat center;
+			background-size: 100% 3.38rem;
+		}
+	`]
 })
 
 export class MyCircleComponent implements OnInit {

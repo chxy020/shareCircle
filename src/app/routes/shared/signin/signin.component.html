@@ -3,7 +3,7 @@
 <!-- 错误提示 -->
 <div class="errorMessage" *ngIf="showTip">{{errorMsg}}</div>
 <div class="topDiv hsbg">
-    <div class="topDiv-btnL"></div>
+    <div (click)="back()" class="topDiv-btnL"></div>
     签到
 </div>
 <div class="qiandao">
