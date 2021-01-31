@@ -451,3 +451,82 @@ body {background:#1B2023;}
 .jjbtn{position: absolute;left:0;right:0;bottom:0;text-align: center;font-size:.2rem;color: #9A9A9A;height: .4rem;line-height: .4rem;background: rgba( 57, 61, 63,0.9);border-radius: 0 0 0.12rem 0.12rem;}
 .jjbtn.d {color:#C32828;}
 .jjbtn.y {color:#DDB273;}
+
+/* search page */
+.searchTopDiv{
+    padding:0 .3rem 0 1.2rem;
+}
+.searchinputDiv {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    position: relative;
+    height: 0.98rem;
+}
+
+.searchinputDiv input {
+    height: 0.68rem;
+    line-height: 0.68rem;
+    background: #2D3335;
+    border-radius: 0.08rem;
+    width: 100%;
+    padding-left: 0.76rem;
+    font-size: .28rem;
+    font-family: "Microsoft Yahei","Hiragino Sans GB",arial;
+}
+.searchinputDiv img {
+    position: absolute;
+    left: 0.18rem;
+    top:50%;
+    margin-top:-0.2rem;
+    width: 0.4rem;
+    height: 0.4rem;
+}
+.sDelete{
+    position: absolute;
+    right: 0;
+    top:50%;
+    margin-top:-0.34rem;
+    width: 0.68rem;
+    height: 0.68rem;
+
+    background:url(../images/guanbi-s.png) no-repeat center;background-size:0.32rem 0.32rem;
+}
+.section-title {
+    display: flex;
+    align-items: center;
+    margin-left: .3rem;
+    margin-right: .3rem;
+    margin-top: .24rem;
+    font-size: .32rem;
+    line-height: .84rem;
+    font-weight: 600;
+    color: #D8D8D8;
+}
+.section-title .section-title-del {
+    margin-left: auto;
+    margin-right: -.08rem;
+    
+    height: 0.48rem;
+    width: 0.48rem;
+    background:url(../images/s_del.png) no-repeat center;background-size:0.4rem 0.4rem;
+}
+.search-lishi-list{
+    margin-left:0.3rem
+}
+.search-lishi-list li{
+    width:50%;
+    padding-right:0.3rem;
+    float: left;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    font-size: 0.28rem;
+    font-weight: 400;
+    color: #D8D8D8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+
