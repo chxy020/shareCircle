@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http';
 import { Location } from '@angular/common';
 declare var wx:any;
+declare var sendCommentMsg:any;
 
 // declare var ckplayer:any;
 
@@ -82,6 +83,15 @@ export class DetailsComponent implements OnInit {
 
 		this.showBottom();
 		
+
+		if(sendCommentMsg){
+			sendCommentMsg("",this,function(msg){
+				this.commentMsg = msg;
+				this.addComment();
+			}.bind(this))
+		}
+
+
 		// 视频详情页 打开的时候调用一下showBottom()   点击左上角调用hideBottom()
 		// this.getWxSign();
 	}
@@ -184,6 +194,26 @@ export class DetailsComponent implements OnInit {
 		this.location.back();
 	}
 	
+
+	showComment():void{
+		let u = navigator.userAgent;
+        let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+        let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+		if (isAndroid) {
+            //这个是安卓操作系统
+            if(typeof window["circle"] != "undefined"){
+                try{
+                    window["circle"].showBottomComment();
+                }catch(ex){
+                    alert("showBottomComment catch")
+                }
+            }else{
+                alert("circle不存在");
+            }
+        }
+	}
+
 	headerClick(item):void{
 		if(this.uid == '47231dcf8c0947b0baace15c4d21ad11'){
 			this.showMsg = "游客身份，功能不可用";
@@ -436,6 +466,7 @@ export class DetailsComponent implements OnInit {
 				this.detail.comment_num++;
 				this.commentMsg = "";
 
+				console.log("commentRefresh-----",this.commentRefresh)
 				this.commentRefresh++;
 			}else{
 				this.showMsg = data.msg;
