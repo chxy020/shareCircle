@@ -19,6 +19,9 @@ const routes: Routes = [
 			// { path: 'name', data: { id: 2 }, loadChildren: () => import('./routes/meetlist/meetlist.module').then(m => m.MeetListModule) },
 		]
 	},
+
+	{ path: 'search', loadChildren: () => import('./routes/search/search.module').then(m => m.SearchListModule) },
+
 	{
 		path: 'author',
 		component: TitleBackComponent,

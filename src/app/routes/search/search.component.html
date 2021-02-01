@@ -1,0 +1,75 @@
+<!-- <loading [isshow]="loading"></loading> -->
+<div *ngIf="showTip" class="tip_text">{{showMsg}}</div>
+
+<div class="topDiv searchTopDiv">
+    <div class="topDiv-btnL"></div>
+    <div class="searchinputDiv">
+		<form id="searchForm" (submit)="searchSubmit()" action="" >
+			<input type="search" name="keyWord" style="color:#fff;" #term [(ngModel)]="keyWord" (keyup)="keyWordSearch(term.value)" autocomplete="off" placeholder="搜索资源 " >
+		</form>
+        <div *ngIf="keyWord" (click)="keyWord='';" class="sDelete"></div>
+        <img src="assets/images/searchTop.png" alt="">
+    </div>
+</div>
+
+<div class="tabDiv">
+    <!-- <ul class="tabDiv-box">
+        <li class="tabDivActive">精选</li>
+		<li>关注</li>
+		<li>关注</li>
+		<li>关注</li>
+		<li>关注</li>
+		<li>关注</li>
+		<li>关注</li>
+		<li>关注</li>
+		<li>关注</li>
+		<li>关注</li>
+		<li>关注</li>
+		<li>关注</li>
+		
+	</ul> -->
+	<ul class="tabDiv-box">
+		<li (click)="menuClick(item);" *ngFor="let item of menus;let i = index;" [class.tabDivActive]="item.current" >{{item.name}}</li>
+	</ul>
+</div>
+
+<div style="display: none1;">
+    <div class="section-title">
+        历史搜索
+        <span class="section-title-del"></span>
+    </div>
+    <ul class="search-lishi-list clearfix">
+        <li>1. 漫威电影电影电影电影电电影电影电电影电影电影电影电影</li>
+        <li>2. 测试视频视频视频视视电影电影电电影电影电频视视频视</li>
+        <li>3. 哈莉·奎恩　</li>
+        <li>4. 赛博朋克</li>
+    </ul>
+</div>
+
+<div dropload (drapDown)="drapDown($event)" (drapUp)="drapUp($event)" >
+	<div class="contDiv">
+		<ul class="contDiv-list">
+			<li *ngFor="let item of data;let i = index;">
+				<div (click)="videoClick(item)" #imgdiv class="contDiv-img" style="background-image:url(./assets/images/default-img.png);" >
+					<img #vimg style="width: 0px;height: 0px;" (load)="imgLoad(imgdiv,item.video_image)" [src]="videoImg | imagelazyload:vimg:item.video_image" alt="" />
+					<span>{{item.video_len}}</span>
+				</div>
+				<div class="contDiv-text">
+					<div class="contDiv-text-right">
+						<div class="t">{{item.title}}</div>
+						<div class="c">
+							<div (click)="headerClick(item)" class="contDiv-text-left">
+								<img [src]="item.headimgurl || headImg" alt="">
+							</div>
+							<div class="c_c">
+                                <h4>{{item.name}}</h4>
+                                <p>{{item.create_time | formattime}}</p>
+							</div>
+							<p (click)="videoClick(item)" class="d">{{item.comment_num || 0}}</p>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>

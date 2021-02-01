@@ -11,7 +11,7 @@ import { SubjectService } from 'src/app/shared/services/subjectService.service';
     <div *ngIf="showTip" class="tip_text">{{showMsg}}</div>
     <div class="searchTop">
         <div class="inputDiv">
-            <input style="color:#fff;" type="text" #term [value]="keyWord" (keyup)="keyWordSearch(term.value)" autocomplete="off" placeholder="搜索资源" >
+            <input style="color:#fff;" readonly (click)="searchPage()" type="text" #term [value]="keyWord" (keyup)="keyWordSearch(term.value)" autocomplete="off" placeholder="搜索资源" >
             <img src="./assets/images/searchTop.png" alt="" />
         </div>
         <div (click)="myAuthorClick();" class="rightBtn">
@@ -141,6 +141,10 @@ export class HeaderConsoleComponent implements OnInit {
         // }else{
         //     this.id = 1;
         // }
+    }
+
+    searchPage():void{
+        this.router.navigate(['/search']);
     }
 
     menuClick(item):void{
