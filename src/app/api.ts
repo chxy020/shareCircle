@@ -24,16 +24,18 @@ window['playDetailVideo'] = function(){
 }
 window["__commentcpt"] = "";
 window["__commentcallback"] = "";
+window["__commentmsg"] = "";
 window["sendCommentMsg"] = function(msg,scope,callback){
-	if(scope){
-		window["__commentcpt"] = scope;
-	}
-	if(callback){
-		window["__commentcallback"] = callback;
-	}
-	if(msg){
-		window["__commentcallback"].call(window["__commentcpt"],msg);
-	}
+	window["__commentmsg"] = msg;
+	// if(scope){
+	// 	window["__commentcpt"] = scope;
+	// }
+	// if(callback){
+	// 	window["__commentcallback"] = callback;
+	// }
+	// if(msg){
+	// 	window["__commentcallback"].call(window["__commentcpt"],msg);
+	// }
 }
 
 // 5bea735b8c324eafbfd11b679eb758d01

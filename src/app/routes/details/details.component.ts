@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http';
 import { Location } from '@angular/common';
 declare var wx:any;
-declare var sendCommentMsg:any;
+// declare var sendCommentMsg:any;
 
 // declare var ckplayer:any;
 
@@ -66,6 +66,11 @@ export class DetailsComponent implements OnInit {
 	) {
 	}
 
+	ngOnDestroy(){
+		console.log(1111111111111)
+		clearTimeout(this.msgOut);
+	}
+
 	ngOnInit() {
 		// this.id = +this.route.snapshot.data.id;
 		// this.title = this.titles[this.id];
@@ -84,13 +89,16 @@ export class DetailsComponent implements OnInit {
 		this.showBottom();
 		
 
-		if(sendCommentMsg){
-			sendCommentMsg("",this,function(msg){
-				this.commentMsg = msg;
-				this.addComment();
-			}.bind(this))
-		}
+		// if(window["sendCommentMsg"]){
+		// 	window["sendCommentMsg"]("",this,function(msg){
+		// 		setTimeout(()=>{
+		// 			this.commentMsg = msg;
+		// 			this.addComment();
+		// 		},300);
+		// 	}.bind(this));
+		// }
 
+		
 
 		// 视频详情页 打开的时候调用一下showBottom()   点击左上角调用hideBottom()
 		// this.getWxSign();
@@ -198,13 +206,15 @@ export class DetailsComponent implements OnInit {
 	showComment():void{
 		let u = navigator.userAgent;
         let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
-        let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-
+		let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		
 		if (isAndroid) {
             //这个是安卓操作系统
             if(typeof window["circle"] != "undefined"){
                 try{
-                    window["circle"].showBottomComment();
+					window["circle"].showBottomComment();
+					
+					this.getCommentMsg();
                 }catch(ex){
                     alert("showBottomComment catch")
                 }
@@ -212,6 +222,20 @@ export class DetailsComponent implements OnInit {
                 alert("circle不存在");
             }
         }
+	}
+
+	msgOut = null;
+	getCommentMsg():void{
+		clearTimeout(this.msgOut);
+		this.msgOut = setTimeout(()=>{
+			let msg = window["__commentmsg"] || "";
+			if(msg){
+				this.commentMsg = msg;
+				this.addComment();
+			}else{
+				this.getCommentMsg();
+			}
+		},300);
 	}
 
 	headerClick(item):void{
@@ -456,6 +480,7 @@ export class DetailsComponent implements OnInit {
 		let url = "/jqkj/cricle/comment";
 		this.http.post(url, params, null).subscribe(data => {
 			// console.log(data)
+			window["__commentmsg"] = "";
 			if(data.status == 0){
 				this.showMsg = "评论成功";
 				this.showTip = true;
