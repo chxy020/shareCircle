@@ -132,6 +132,8 @@ export class SearchComponent implements OnInit {
                     }
                 });
 			}
+
+			console.log(this.menus)
 			this.loading = false;
 		}, error => {
 			console.error(error);
@@ -171,9 +173,17 @@ export class SearchComponent implements OnInit {
 		if(has.length > 0){
 			//在里面
 			let si = keyList.indexOf(key);
-			keyList.splice(si,1);
 			
+			//删除原来的数据
+			keyList.splice(si,1);
 		}
+		
+		//添加到最前面
+		keyList.unshift(key);
+
+		//保存到本地
+
+		window.localStorage.setItem(this.uid+"_keyword",JSON.stringify(keyList));
 	}
 
 
