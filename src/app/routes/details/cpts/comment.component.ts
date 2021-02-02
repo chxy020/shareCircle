@@ -43,6 +43,7 @@ export class CommentListComponent implements OnInit {
 		}
 		else if(changes['refresh'] && changes['refresh'].currentValue){
 			this.refresh = changes['refresh'].currentValue;
+			console.log("refresh-----",this.refresh)
 			this.getFirstComment();
 		}
     }

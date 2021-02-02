@@ -163,27 +163,13 @@ export class GoldComponent implements OnInit {
 		
         this.page = 1;
         this.data = [];
-        // this.getSelectedCircle();
+		this.getPirceEvents();
     }
     drapDown(me:any){
         console.log("drapDown------------");
         this.me = me;
         this.page++;
 		this.getPirceEvents();
-		
-		
-		// this.me.lock();
-		// // 无数据
-		// this.me.noData(true);
-		
-		// setTimeout(()=>{
-		// 	this.me.resetload();
-		// },200);
 	}
-
-
-
-
-
 
 }

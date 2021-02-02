@@ -1,6 +1,6 @@
 
 <loading [isshow]="loading"></loading>
-<div *ngIf="showTip" class="tip_text">{{showMsg}}</div>
+<div *ngIf="showTip" class="tip_text" style="position: fixed;top:65%;">{{showMsg}}</div>
 
 <div class="topDiv" style="position: fixed;top:0;width: 100%;">
     <div (click)="back()" class="topDiv-btnL"></div>
@@ -42,7 +42,7 @@
 
     </div>
     <div class="managementInfo-b">
-        <div class="a">下载此资源，需消耗<span>{{detail.transfer_pirce}}</span>金币</div>
+        <div class="a">下载此资源，需消耗<span>{{detail.downloadPirce}}</span>金币</div>
         <div class="b">{{detail.create_time}}发布</div>
     </div>
 </div>
@@ -62,18 +62,18 @@
 <transfer-list *ngIf="tabType==4" [circleId]="detail.id"></transfer-list>
 
 <div class="bottomBtn">
-    <div class="form"><input type="text" (click)="textBottom='0px';commentText.focus();" [(ngModel)]="commentMsg" placeholder="快捷评论"></div>
-    <div (click)="addComment()" class="pinglun"><span></span></div>
+    <!-- (click)="textBottom='0px';commentText.focus();"  -->
+    <div class="form"><input type="text" readonly (click)="showComment()" [(ngModel)]="commentMsg" placeholder="快捷评论"></div>
+    <div (click)="showComment()" class="pinglun"><span></span></div>
     <div (click)="addGive()" class="dianzan" [class.on]="isGive"><span></span></div>
     <div (click)="sharedVideo()" class="fengxiang"><span></span></div>
     <div (click)="downloadVideo()" class="zhuancun"><span></span></div>
 </div>
 
-<div class="bottomBtn bottomBtnBig" [style.bottom]="textBottom">
+<!-- <div class="bottomBtn bottomBtnBig" [style.bottom]="textBottom">
     <div class="form"><textarea #commentText (blur)="textBottom='-2rem';" name="commenttext" rows="4"  [(ngModel)]="commentMsg" placeholder="快捷评论" ></textarea></div>
     <div class="fabu" (click)="addComment()" style="height: 100px;line-height: 100px;">发布</div>
-    <!-- background: url(assets/images/fabu.png);padding:0 0.4rem 0 0.8rem; -->
-</div>
+</div> -->
 
 <!-- 分享弹框 -->
 <!-- <div class="pop-mask" *ngIf="sharedPop">
