@@ -31,6 +31,8 @@ export class MyApplyComponent implements OnInit {
 	data1 = [];
 	data2 = [];
 
+	hideData1 = false;
+
 	loading = false;
 	showTip = false;
 	showMsg = "";
@@ -260,7 +262,7 @@ export class MyApplyComponent implements OnInit {
 
 	getAddCircleNo():void{
 		this.loading = true;
-
+		this.hideData1 = false;
 		// 全部：只填uid和page，limit
 		// 可发布：只填ispublish=0和uid，page，limit
 		// 仅查看：只填ispublish=1和uid，page，limit
@@ -289,6 +291,10 @@ export class MyApplyComponent implements OnInit {
 				setTimeout(()=>{
 					this.me1.resetload();
 				},200);
+			}
+
+			if(this.data1.length == 0){
+				this.hideData1 = true;
 			}
 
 			this.loading = false;

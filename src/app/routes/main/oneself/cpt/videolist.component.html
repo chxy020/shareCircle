@@ -36,7 +36,7 @@
 				<div *ngIf="!!item.isforward" (click)="videoClick(item)" class="contDiv-img-forwarding" >
                     <div class="imgCont" >
 						<div #imgdiv2 style="background-image:url(./assets/images/default-img.png);"></div>
-						<img #vimg2 style="width: 0px;height: 0px;" (load)="imgLoad(imgdiv2,item.video_image)" [src]="videoImg | imagelazyload:vimg2:item.video_image" alt="" />
+						<img #vimg2 style="display: block;width: 0px;height: 0px;" (load)="imgLoad(imgdiv2,item.video_image)" [src]="videoImg | imagelazyload:vimg2:item.video_image" alt="" />
 					</div>
                     <p>{{item.forwardTitle}}</p>
 				</div>

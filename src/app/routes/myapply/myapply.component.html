@@ -11,7 +11,7 @@
     </ul>
 </div>
 
-<div class="bgfff mt20" *ngIf="data1 && data1.length > 0">
+<div class="bgfff mt20" [style.display]="hideData1?'none':'block'">
     <div dropload (drapDown)="drapDown($event,1)" (drapUp)="drapUp($event,1)" >
         <ul class="detailsCont detailsContFenxiang" >
             <li *ngFor="let item of data1">
@@ -21,7 +21,7 @@
                         <div class="nc">{{item.applyName}}</div>
                     </div>
                     <div class="b2">
-                        <div class="pl">{{item.applyPhone}}</div>
+                        <div class="pl">{{item.applyPhone.substring(0,3) + "****" + item.applyPhone.substring(7,12)}}</div>
                     </div>
                 </div>
                 <div class="list-rbtn">
@@ -82,7 +82,7 @@
                         <div class="nc">{{item.applyName}}</div>
                     </div>
                     <div class="b2">
-                        <div class="pl">{{item.applyPhone}}</div>
+                        <div class="pl">{{item.applyPhone.substring(0,3) + "****" + item.applyPhone.substring(7,12)}}</div>
                     </div>
                 </div>
 
