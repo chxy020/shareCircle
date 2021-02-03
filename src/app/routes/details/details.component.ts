@@ -212,9 +212,8 @@ export class DetailsComponent implements OnInit {
             //这个是安卓操作系统
             if(typeof window["circle"] != "undefined"){
                 try{
-					window["circle"].showBottomComment();
-					
 					this.getCommentMsg();
+					window["circle"].showBottomComment();
                 }catch(ex){
                     alert("showBottomComment catch")
                 }
@@ -230,12 +229,13 @@ export class DetailsComponent implements OnInit {
 		this.msgOut = setTimeout(()=>{
 			let msg = window["__commentmsg"] || "";
 			if(msg){
+				window["__commentmsg"] = "";
 				this.commentMsg = msg;
 				this.addComment();
 			}else{
 				this.getCommentMsg();
 			}
-		},300);
+		},100);
 	}
 
 	headerClick(item):void{
