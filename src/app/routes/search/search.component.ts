@@ -74,13 +74,13 @@ export class SearchComponent implements OnInit {
 
         if(this.uid != '47231dcf8c0947b0baace15c4d21ad11'){
             this.menus = [
-                {id:1,name:"精选",current:false},
+                {id:1,name:"精选",current:true},
                 {id:2,name:"关注",current:false},
                 {id:3,name:"我的圈子",current:false}
             ];
         }else{
             this.menus = [
-                {id:1,name:"精选",current:false}
+                {id:1,name:"精选",current:true}
             ];
 		}
 		
@@ -106,6 +106,13 @@ export class SearchComponent implements OnInit {
 		this.render.setStyle(ele, 'background-image',  'url('+img+')');   
 	}
 
+	menuClick(item:any):void{
+		this.menus.map((item)=>item.current=false);
+		item.current = true;
+		this.page = 1;
+        this.data = [];
+		this.getSelectedCircle();
+	}
 
 	getMineNavigation():void{
         if(this.uid == '47231dcf8c0947b0baace15c4d21ad11'){
@@ -120,12 +127,13 @@ export class SearchComponent implements OnInit {
 		let url = "/jqkj/circleMine/getMineNavigation";
 		this.http.get(url, params, null).subscribe(data => {
 			if(data.status == 0){
-				this.menus.map((item)=>item.current=false);
+				// this.menus.map((item)=>item.current=false);
 				
                 let list = data.data || [];
                 list.forEach((item,index)=>{
 					if(this.uid != item.uid){
                         this.menus.push({
+							"id":4,
                             "uid":item.uid,
                             "name":item.circleName
                         });
@@ -256,11 +264,16 @@ export class SearchComponent implements OnInit {
 
 		let url = "/jqkj/cricle/search";
 		
+
+		let menu = this.menus.filter(item=>{
+			return item.current == true;
+		})[0] || {};
+
 		params.set("title",this.keyWord);
 		params.set("pageNum",this.page);
 		params.set("limit",this.limit);
-		params.set("circleUid",this.uid);
-		params.set("type",0);
+		params.set("circleUid",menu.uid ? menu.uid : this.uid);
+		params.set("type",menu.id - 1);
 
 		this.http.get(url, params, null).subscribe(data => {
 			if(data.code == 0){
