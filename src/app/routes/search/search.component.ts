@@ -4,6 +4,7 @@ import { Subject, Subscription } from 'rxjs';
 import { HttpService } from 'src/app/shared/services/http';
 import { SubjectService } from 'src/app/shared/services/subjectService.service';
 import { debounceTime } from 'rxjs/operators';
+import { Location } from '@angular/common';
 declare var $;
 
 @Component({
@@ -46,6 +47,10 @@ export class SearchComponent implements OnInit {
 	@ViewChild('term',{static: true}) term: ElementRef;
 	keyWord = "";
 	menus:Array<any> = [];
+	showMenus = false;
+
+	searchKeyList = [];
+	showKeyList = true;
 
     ngOnDestroy(): void {
         if (this.keySub) {
@@ -58,6 +63,7 @@ export class SearchComponent implements OnInit {
 		private http: HttpService,
 		private sub: SubjectService,
 		private render: Renderer2,
+		private location: Location,
 		private router: Router
 	) {
 		this.baseUrl = window["context"]["apiroot"];
@@ -87,7 +93,6 @@ export class SearchComponent implements OnInit {
 		this.getMineNavigation();
 
 		this.keySub = this.searchTermStream.pipe(debounceTime(500)).subscribe((keyword:string) => {
-			
 			if(!this.keyWord){
 				//清空数据
 				this.data.length = 0;
@@ -98,10 +103,16 @@ export class SearchComponent implements OnInit {
 					this.me.resetload();
 				},200);
 			}
-			
 		});
+
+		this.getHistoryKey();
 	}
 
+
+	back(){
+        this.location.back();
+	}
+	
 	imgLoad(ele,img):void{
 		this.render.setStyle(ele, 'background-image',  'url('+img+')');   
 	}
@@ -112,6 +123,31 @@ export class SearchComponent implements OnInit {
 		this.page = 1;
         this.data = [];
 		this.getSelectedCircle();
+	}
+
+	historyKeySearch(item):void{
+		this.keyWord = item;
+		this.page = 1;
+        this.data = [];
+		this.getSelectedCircle();
+
+		this.saveKeyWord(item);
+		this.showMenus = true;
+		this.showKeyList = false;
+	}
+
+	getHistoryKey():void{
+		//首先判断关键字 在不在历史记录
+		let keyList:any = window.localStorage.getItem(this.uid+"_keyword") || "";
+		if(keyList){
+			try{
+				keyList = JSON.parse(keyList);
+			}catch(ex){}
+		}else{
+			keyList = [];
+		}
+
+		this.searchKeyList = keyList;
 	}
 
 	getMineNavigation():void{
@@ -157,12 +193,26 @@ export class SearchComponent implements OnInit {
 		this.term.nativeElement.blur();
 		this.getSelectedCircle();
 
+		this.showMenus = true;
+		this.showKeyList = false;
 		//保存关键字
 		if(this.keyWord){
 			this.saveKeyWord(this.keyWord);
 		}
 	}
 
+	clearKeyWord(){
+		this.keyWord = '';
+		this.showMenus = false;
+		this.showKeyList = true;
+		this.page = 1;
+        this.data = [];
+	}
+
+	clearAllKey(){
+		window.localStorage.setItem(this.uid+"_keyword","");
+		this.searchKeyList = [];
+	}
 
 	saveKeyWord(key){
 		//首先判断关键字 在不在历史记录
@@ -189,6 +239,7 @@ export class SearchComponent implements OnInit {
 		//添加到最前面
 		keyList.unshift(key);
 
+		this.searchKeyList = keyList;
 		//保存到本地
 
 		window.localStorage.setItem(this.uid+"_keyword",JSON.stringify(keyList));

@@ -2,47 +2,29 @@
 <div *ngIf="showTip" class="tip_text">{{showMsg}}</div>
 
 <div class="topDiv searchTopDiv">
-    <div class="topDiv-btnL"></div>
+    <div (click)="back();" class="topDiv-btnL"></div>
     <div class="searchinputDiv">
 		<form id="searchForm" (submit)="searchSubmit()" action="" >
 			<input type="search" name="keyWord" style="color:#fff;" #term [(ngModel)]="keyWord" (keyup)="keyWordSearch(term.value)" autocomplete="off" placeholder="搜索资源 " >
 		</form>
-        <div *ngIf="keyWord" (click)="keyWord='';" class="sDelete"></div>
+        <div *ngIf="keyWord" (click)="clearKeyWord();" class="sDelete"></div>
         <img src="assets/images/searchTop.png" alt="">
     </div>
 </div>
 
-<div class="tabDiv">
-    <!-- <ul class="tabDiv-box">
-        <li class="tabDivActive">精选</li>
-		<li>关注</li>
-		<li>关注</li>
-		<li>关注</li>
-		<li>关注</li>
-		<li>关注</li>
-		<li>关注</li>
-		<li>关注</li>
-		<li>关注</li>
-		<li>关注</li>
-		<li>关注</li>
-		<li>关注</li>
-		
-	</ul> -->
+<div class="tabDiv" *ngIf="showMenus">
 	<ul class="tabDiv-box">
 		<li (click)="menuClick(item);" *ngFor="let item of menus;let i = index;" [class.tabDivActive]="item.current" >{{item.name}}</li>
 	</ul>
 </div>
 
-<div style="display: none1;">
+<div *ngIf="showKeyList">
     <div class="section-title">
         历史搜索
-        <span class="section-title-del"></span>
+        <span (click)="clearAllKey()" class="section-title-del"></span>
     </div>
     <ul class="search-lishi-list clearfix">
-        <li>1. 漫威电影电影电影电影电电影电影电电影电影电影电影电影</li>
-        <li>2. 测试视频视频视频视视电影电影电电影电影电频视视频视</li>
-        <li>3. 哈莉·奎恩　</li>
-        <li>4. 赛博朋克</li>
+        <li (click)="historyKeySearch(item)" *ngFor="let item of searchKeyList;let i = index;">{{ (i+1) + '. '+ item}}</li>
     </ul>
 </div>
 
