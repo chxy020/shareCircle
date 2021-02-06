@@ -4,7 +4,7 @@
 <div class="topDiv searchTopDiv">
     <div (click)="back();" class="topDiv-btnL"></div>
     <div class="searchinputDiv">
-		<form id="searchForm" (submit)="searchSubmit()" action="" >
+		<form id="searchForm" (submit)="searchSubmit($event)" action="" >
 			<input type="search" name="keyWord" style="color:#fff;" #term [(ngModel)]="keyWord" (keyup)="keyWordSearch(term.value)" autocomplete="off" placeholder="搜索资源 " >
 		</form>
         <div *ngIf="keyWord" (click)="clearKeyWord();" class="sDelete"></div>

@@ -239,6 +239,10 @@ export class SearchComponent implements OnInit {
 		//添加到最前面
 		keyList.unshift(key);
 
+		if(keyList.length > 10){
+			keyList.length = 10;
+		}
+
 		this.searchKeyList = keyList;
 		//保存到本地
 
