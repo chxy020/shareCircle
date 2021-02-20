@@ -223,7 +223,7 @@ export class VideoListComponent implements OnInit {
 
 		const params: Map<string, any> = new Map<string, any>();
 		params.set("circleId",this.currentItem.id);
-		params.set("uid",this.uid);
+		params.set("uid",this.currentItem.uid);
 		
 		let url = "/jqkj/circleMine/applySelected";
 		this.http.post(url, params, null).subscribe(data => {

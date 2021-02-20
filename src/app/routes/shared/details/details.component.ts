@@ -108,7 +108,8 @@ export class DetailsComponent implements OnInit {
 
 
 	downloadApp(){
-		this.router.navigate(['/shared/download']);
+		// this.router.navigate(['/shared/download']);
+		window.location.href = "http://thinnas.com/download.html";
 	}
 
 	startApp(){
