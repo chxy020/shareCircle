@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Injector } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Injector, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http';
 import { Location } from '@angular/common';
@@ -56,6 +56,7 @@ export class DetailsComponent implements OnInit {
 		private route: ActivatedRoute,
 		private http: HttpService,
 		private location: Location,
+		private render: Renderer2,
 		private router: Router
 	) {
 	}
@@ -78,6 +79,10 @@ export class DetailsComponent implements OnInit {
 		this.findUserPublish();
 		this.getSelectedCircle();
 		this.getCircleComment();
+	}
+
+	imgLoad(ele,img):void{
+		this.render.setStyle(ele, 'background-image',  'url('+img+')');   
 	}
 
 	back(){

@@ -191,6 +191,9 @@ export class SearchComponent implements OnInit {
 			evt.preventDefault();
 		}
 		this.term.nativeElement.blur();
+
+		this.page = 1;
+        this.data = [];
 		this.getSelectedCircle();
 
 		this.showMenus = true;
@@ -311,6 +314,10 @@ export class SearchComponent implements OnInit {
 			setTimeout(()=>{
 				this.me.resetload();
 			},200);
+			return;
+		}
+
+		if(this.loading){
 			return;
 		}
 
