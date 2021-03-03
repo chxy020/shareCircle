@@ -332,7 +332,7 @@ export class SearchComponent implements OnInit {
 		})[0] || {};
 
 		params.set("title",this.keyWord);
-		params.set("pageNum",this.page);
+		params.set("page",this.page);
 		params.set("limit",this.limit);
 		params.set("circleUid",menu.uid ? menu.uid : this.uid);
 		params.set("type",menu.id - 1);
