@@ -119,6 +119,8 @@ const routes: Routes = [
 
 	{ path: 'details/:id', loadChildren: () => import('./routes/details/details.module').then(m => m.DetailsModule) },
 	
+	{ path: 'shared/vdetails', loadChildren: () => import('./routes/shared/vdetails/vdetails.module').then(m => m.VDetailsModule) },
+
 	{ path: 'shared/details/:id/:uid', loadChildren: () => import('./routes/shared/details/details.module').then(m => m.DetailsModule) },
 	{ path: 'shared/invitecode/:code', loadChildren: () => import('./routes/shared/invitecode/invitecode.module').then(m => m.InviteCodeModule) },
 	{ path: 'shared/download', loadChildren: () => import('./routes/shared/download/download.module').then(m => m.DownloadModule) },

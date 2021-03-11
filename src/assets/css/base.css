@@ -529,6 +529,80 @@ body {background:#1B2023;}
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+/* fenxiang 2021年3月5日17:56:13*/
+#videoInfoA{
+    display: flex;
+    display: -webkit-flex;
+    height: 100vh;
+    align-items:center;
+    justify-content:center;
+}
+.item{
+    width: 100%;
+    position: relative;
+}
+.playbtnA {left:0;top:0;width:100%;height:100%;
+    background:rgba(0,0,0,0.5) url(../images/bofangA.png) no-repeat center;position:absolute;z-index:18;background-size:1.4rem 1.4rem;}
+
+.zantingA{left:0;top:0;width:100%;height:100%;
+    background:rgba(0,0,0,0.5) url(../images/zantingA.png) no-repeat center;position:absolute;z-index:18;background-size:1.4rem 1.4rem;}
+
+
+.bottomNav{
+    height: 1.02rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    justify-items: center;
+    align-items: center;
+    box-shadow: 0px 0px 16px 0px rgb(0 0 0 / 10%);
+    background: #1B2023;
+    box-shadow: 0px -2px 5px 0px rgba(0, 0, 0, 0.5);
+    border-top: 1px solid #293339;
+    padding:0 0.2rem
+}
+.bottomLogo{
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+font-size: 0.26rem;
+font-family: PingFangSC-Regular, PingFang SC;
+font-weight: 400;
+color: #FFFFFF;
+letter-spacing: 0.01rem;
+height: 0.56rem;
+line-height: 0.56rem;
+}
+
+.bottomLogo span{
+    display: block;
+    float: left;
+    width: 0.56rem;
+    height: 0.56rem;
+    background:url(../images/blogo.png) no-repeat center;
+   background-size:0.56rem 0.56rem;
+margin-right:0.1rem}
+
+    .bottomBtnd{
+        width: 1.22rem;
+        height: 0.54rem;
+        line-height: 0.54rem;
+        background: #C32828;
+        border-radius: 0.27rem;
+        font-size: 0.24rem;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #FFFFFF;
+        letter-spacing: 0.01rem;
+        text-align: center;
+    }
+
+
 
 
 

@@ -25,6 +25,11 @@ export class QaComponent implements OnInit {
 		this.uid = window['context']['uid'];
 	}
 
+	vdetail(){
+		var aa =  "url=http://dev-storage.jinquntech.com/d?e=3&token=wt:x-Y=&name=aa.mp4&source=app&uid=5";
+		location.href = "http://localhost:4100/shared/vdetails?" + encodeURIComponent(aa);
+	}
+
 	ngOnInit() {
 	}
 

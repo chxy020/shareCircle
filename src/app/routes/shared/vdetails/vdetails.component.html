@@ -1,0 +1,25 @@
+
+<loading [isshow]="loading"></loading>
+<div *ngIf="showTip" class="tip_text">{{showMsg}}</div>
+
+
+<div id="videoInfoA">
+    <div class="item">
+        <!-- <video id="video1" width="100%" muted controls autoplay loop="loop">
+            <source src="http://static.99114.com/static/cyw_video/festival_wine.mp4" type="video/mp4">
+        </video> -->
+        <!--   -->
+        <video autoplay #myvideo (play)="videoPlay()" (pause)="videoPause()" [src]="videoUrl" style="object-fit: fill;" type="video/mp4" width="100%" playsinline  height="100%" controls  ></video>
+        <!-- <div class="playbtnA" (click)="myvideo.play();videoPlayClick();" *ngIf="playStatus!=1"></div> -->
+        <!-- <div class="zantingA" *ngIf="playStatus!=1"></div> -->
+    </div>
+</div>
+
+<div class="bottomNav">
+    <div class="bottomLogo">
+        <span></span>
+        口袋视频存储
+    </div>
+    <div (click)="startApp()" class="bottomBtnd">打开</div>
+</div>
+<!-- <div (click)="startApp()" class="ggbtn"><span></span>打开APP查看</div> -->
