@@ -112,7 +112,7 @@ export class InviteRegComponent implements OnInit {
 
 	downloadApp(){
 		// this.router.navigate(['/shared/download']);
-		window.location.href = "http://thinnas.com/download.html";
+		window.location.href = "http://m.thinnas.com/downloadapp.html";
 	}
 
 	enterBtn(){

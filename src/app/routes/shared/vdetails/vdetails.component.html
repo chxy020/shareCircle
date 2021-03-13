@@ -8,8 +8,8 @@
         <!-- <video id="video1" width="100%" muted controls autoplay loop="loop">
             <source src="http://static.99114.com/static/cyw_video/festival_wine.mp4" type="video/mp4">
         </video> -->
-        <!--   -->
-        <video autoplay #myvideo (play)="videoPlay()" (pause)="videoPause()" [src]="videoUrl" style="object-fit: fill;" type="video/mp4" width="100%" playsinline  height="100%" controls  ></video>
+        <!-- default-img.png  -->
+        <video autoplay #myvideo [poster]="getVideoImagePath" (play)="videoPlay()" (pause)="videoPause()" [src]="videoUrl" style="object-fit: fill;" type="video/mp4" width="100%" playsinline  height="100%" controls  ></video>
         <!-- <div class="playbtnA" (click)="myvideo.play();videoPlayClick();" *ngIf="playStatus!=1"></div> -->
         <!-- <div class="zantingA" *ngIf="playStatus!=1"></div> -->
     </div>
@@ -22,4 +22,13 @@
     </div>
     <div (click)="startApp()" class="bottomBtnd">打开</div>
 </div>
+
+<!-- 2021年3月12日　添加 -->
+<div class="ottomNavTSzz" (click)="showAppTip=0;" *ngIf="showAppTip"><!-- divHide 隐藏 -->
+    <div class="bottomNavTS">
+        <p><img src="./assets/images/keai.gif" alt="">客官儿：安装APP, <br />更多精彩内容等着你噢<img class="a" src="./assets/images/lai.gif" alt=""></p>
+    </div>
+</div>
+
+
 <!-- <div (click)="startApp()" class="ggbtn"><span></span>打开APP查看</div> -->

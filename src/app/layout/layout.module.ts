@@ -7,11 +7,13 @@ import { HeaderConsoleComponent } from './console/header/header.component';
 import { TitleHeaderComponent } from './console/header/titleheader.component';
 import { TitleBackComponent } from './console/titleback.component';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		FormsModule,
+		SharedModule,
 		RouterModule
 	],
 	declarations: [

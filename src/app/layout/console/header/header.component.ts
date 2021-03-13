@@ -15,7 +15,7 @@ import { SubjectService } from 'src/app/shared/services/subjectService.service';
             <img src="./assets/images/searchTop.png" alt="" />
         </div>
         <div (click)="myAuthorClick();" class="rightBtn">
-            <img src="./assets/images/icon1.png" alt="">
+            <img #vimg [src]="headImg | imagelazyload:vimg:detail.headimgurl" alt="">
         </div>
     </div>
     <div class="tabDiv">
@@ -132,6 +132,8 @@ export class HeaderConsoleComponent implements OnInit {
             }
         );
 
+        this.getCircleMine();
+
         this.getMineNavigation();
 
         this.keyWord = window["context"]["keyWord"] || "";
@@ -235,7 +237,25 @@ export class HeaderConsoleComponent implements OnInit {
 		});
     }
     
-    
+    detail;
+    getCircleMine():void{
+		this.loading = true;
+
+		const params: Map<string, any> = new Map<string, any>();
+		params.set("uid",this.uid);
+		
+		let url = "/jqkj/circleMine/getUserCircleMine";
+		this.http.get(url, params, null).subscribe(data => {
+			if(data.status == 0){
+				this.detail = data.data || {};
+			}
+			this.loading = false;
+		}, error => {
+			console.error(error);
+			this.loading = false;
+		});
+	}
+
     keyWordSearch(term:string) {
         this.searchTermStream.next(term); 
     }

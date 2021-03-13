@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http';
 import { Location } from '@angular/common';
 
+declare var $:any;
+
 @Component({
 	selector: 'shared-vdetails',
 	templateUrl: './vdetails.component.html',
@@ -12,7 +14,7 @@ import { Location } from '@angular/common';
 export class VDetailsComponent implements OnInit {
 	
 	headImg = "./assets/images/headimg.png";
-	videoImg = "./assets/images/listimg.jpg";
+	videoImg = "./assets/images/default-img.png";
 
 	detail:any = {};
 	loading = true;
@@ -30,6 +32,8 @@ export class VDetailsComponent implements OnInit {
 	videoUrl = "";
 
 	playStatus = 0;
+
+	showAppTip = 1;
 
 	// get getVideoPath(): string {
 	// 	return this.baseUrl + this.detail.video_path;
@@ -49,9 +53,11 @@ export class VDetailsComponent implements OnInit {
 		private render: Renderer2,
 		private router: Router
 	) {
+		$('title').text('私人分享黑科技，你懂的！');
 	}
 
 	ngOnInit() {
+		$('title').text('私人分享黑科技，你懂的！');
 		
 		// var href = decodeURIComponent(location.href);
 
@@ -94,7 +100,7 @@ export class VDetailsComponent implements OnInit {
 	
 	downloadApp(){
 		// this.router.navigate(['/shared/download']);
-		window.location.href = "http://m.thinnas.com/download.html";
+		window.location.href = "http://m.thinnas.com/downloadapp.html";
 	}
 
 	startApp(){
